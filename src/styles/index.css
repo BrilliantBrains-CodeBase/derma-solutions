@@ -1,0 +1,39 @@
+@import "tailwindcss";
+@import "./tokens.css";
+@import "./fonts/fonts.css";
+
+/*
+ * theme-reference/README.md: "No prefers-reduced-motion handling anywhere.
+ * Every GSAP effect runs regardless." Establishing the guard now, before any
+ * animation lands, is cheaper than retrofitting it across finished sections.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*
+ * Base element defaults live in @layer base so a utility class can override
+ * them. Unlayered rules beat every layered one in the cascade regardless of
+ * specificity, so an unlayered `h2 { color }` would silently win over
+ * `class="text-white"` — which is exactly what a heading on the dark footer
+ * panel needs to do.
+ */
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-body);
+    background: var(--color-white);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--color-primary);
+  }
+}

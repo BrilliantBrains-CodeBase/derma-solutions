@@ -1,0 +1,32 @@
+/* Glowix design tokens - Tailwind v4.
+ * Derived from computed styles across 58 pages, reconciled against the
+ * theme's own css-variable.css. Import once in your Vite entry CSS:
+ *
+ *   @import "tailwindcss";
+ *   @import "./tokens.css";
+ */
+@theme {
+  /* -- colour ------------------------------------------------------------ */
+  --color-primary:      #481E0B;   /* deep brown  - headings, dark sections  */
+  --color-secondary:    #FCF4F1;   /* cream       - alternating section bg   */
+  --color-accent:       #CD5F37;   /* terracotta  - CTAs, eyebrows, icons    */
+  --color-body:         #69615D;   /* warm grey   - paragraph text           */
+  --color-white:        #FFFFFF;
+  --color-black:        #000000;
+  --color-divider:      #CD5F371A; /* accent @10% - hairlines on light       */
+  --color-divider-dark: #FFFFFF1A; /* white  @10% - hairlines on dark        */
+
+  /* -- type -------------------------------------------------------------- */
+  --font-display: "Marcellus", ui-serif, Georgia, serif;
+  --font-sans:    "Sora", ui-sans-serif, system-ui, sans-serif;
+
+  /* -- radius ------------------------------------------------------------ */
+  --radius-pill: 100px;  /* primary buttons     */
+  --radius-field: 40px;  /* inputs              */
+  --radius-card: 20px;   /* cards, media frames */
+  --radius-10: 10px;
+  --radius-12: 12px;
+  --radius-16: 16px;
+  --radius-30: 30px;
+  --radius-50: 50px;
+}

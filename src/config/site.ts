@@ -101,6 +101,10 @@ export const contact = {
   contactType: "appointments and patient enquiries",
   languages: ["English", "Hindi", "Kannada"],
   ctaLabel: "Book An Appointment",
+  // TODO(rebuild): the page is not built yet, so this 404s today. Whitelisted in
+  // scripts/verify-links.ts — remove that entry when the page lands. Same
+  // situation as /contact-us/, which the Service schema already points at.
+  ctaHref: "/book-appointment/",
 } as const;
 
 /* -------------------------------------------------------------------------- */
@@ -190,9 +194,17 @@ export const socialProfiles = [
 export const assets = {
   /** Header logo. src: 2024/12/DermaSolutions-Logo.svg */
   logo: "/images/brand/derma-solutions-logo.svg",
+  // TODO(brand): there is no white/mono mark for use on the dark footer panel.
+  // Until one exists the footer renders this white-background PNG on a small
+  // white chip, which reads as deliberate rather than as a broken transparency.
   /** Solid-background logo used in footer + schema. src: 2024/12/Derma-Solutions-LOGO-with-bg-12.png */
   logoWithBackground: "/images/brand/derma-solutions-logo-bg.png",
   logoAlt: "Derma Solutions Logo",
+  // TODO(brand): vendor artwork. theme-reference/06-assets/manifest.json tags it
+  // "licence": "reference-only" — it belongs to the Glowix theme author and must
+  // be replaced with Derma Solutions' own decor before launch.
+  /** Decorative line-art behind the footer panel. src: theme-reference 2025-04-footer-bg-shape.svg */
+  footerShape: "/images/decor/footer-bg-shape.svg",
   favicon: {
     ico: "/favicon.ico",
     /** src: 2024/12/cropped-DermaSolutions-Favicon-with-BG-32x32.png */
@@ -483,12 +495,37 @@ export const navigation = {
       ],
     },
     { label: "Blogs", path: "/blogs/" },
-    { label: "Call Now", href: contact.telHref, isCta: true },
+    // The header's accent pill. The phone number beside it is rendered straight
+    // from `contact`, not from here, so this entry is the booking CTA alone.
+    { label: contact.ctaLabel, href: contact.ctaHref, isCta: true },
+  ],
+  // The footer's "Quick Link" column. Deliberately short — it is a shortcut list,
+  // not a second copy of the header. /contact-us/ is omitted because it 404s (see
+  // the KNOWN_DANGLING note in scripts/verify-links.ts); add it once the page exists.
+  quickLinks: [
+    { label: "Home", path: "/" },
+    { label: "About Us", path: team[0].path },
+    { label: "Blogs", path: "/blogs/" },
+    { label: "Image Gallery", path: "/image-gallery/" },
+    { label: "Video Gallery", path: "/video-gallery/" },
   ],
   footer: [
     { label: "Privacy Policy", path: legal.privacyPolicyPath },
     { label: "Terms Of Use", path: legal.termsPath },
   ],
+} as const;
+
+/* -------------------------------------------------------------------------- */
+/* Footer call-to-action                                                       */
+/* -------------------------------------------------------------------------- */
+
+// The Glowix reference puts a newsletter signup here. There is no newsletter
+// backend, so the same band carries the appointment CTA instead. Placeholder
+// copy — edit it here, not in the component.
+export const footerCta = {
+  heading: "Ready to start your skin & hair transformation?",
+  buttonLabel: contact.ctaLabel,
+  buttonHref: contact.telHref,
 } as const;
 
 /* -------------------------------------------------------------------------- */
@@ -539,6 +576,7 @@ export const siteConfig = {
   team,
   founder,
   navigation,
+  footerCta,
   serviceMenu,
   serviceAreas,
 } as const;
