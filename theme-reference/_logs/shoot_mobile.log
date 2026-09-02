@@ -1,0 +1,64 @@
+[mobile 1/58] _homepage                                           4329KB  h=16739
+[mobile 2/58] 404                                                  131KB  h=1852
+[mobile 3/58] tpl__footer                                           77KB  h=1046
+[mobile 4/58] tpl__footer-layout-2                                  68KB  h=965
+[mobile 5/58] tpl__footer-layout-3                                  61KB  h=975
+[mobile 6/58] tpl__footer-layout-4                                  30KB  h=341
+[mobile 7/58] tpl__header                                            8KB  h=90
+[mobile 8/58] tpl__header-layout-2                                   8KB  h=91
+[mobile 9/58] tpl__header-layout-3                                   8KB  h=91
+[mobile 10/58] tpl__header-layout-4                                   8KB  h=91
+[mobile 11/58] about-us                                            3108KB  h=13106
+[mobile 12/58] blog                                                1214KB  h=4138
+[mobile 13/58] book-appointment                                     560KB  h=4232
+[mobile 14/58] casestudy                                           1466KB  h=4602
+[mobile 15/58] choose-a-qualified-surgeon-for-safe                  470KB  h=4751
+[mobile 16/58] contact-us                                           296KB  h=3204
+[mobile 17/58] faqs                                                 433KB  h=4175
+[mobile 18/58] follow-pre-surgery-guidelines-to-ensure-a-smooth     480KB  h=4787
+[mobile 19/58] home-image                                          4410KB  h=16532
+[mobile 20/58] home-slider                                         4413KB  h=16532
+[mobile 21/58] home-video                                          4372KB  h=16532
+[mobile 22/58] image-gallery                                       1264KB  h=4177
+[mobile 23/58] maintain-a-healthy-lifestyle-for-better-healing      491KB  h=4787
+[mobile 24/58] myths-and-facts-about-plastic-surgery                517KB  h=4751
+[mobile 25/58] our-team                                            1449KB  h=5282
+[mobile 26/58] services                                            1604KB  h=7847
+[mobile 27/58] testimonials                                         674KB  h=5079
+[mobile 28/58] top-tips-for-preparing-for-plastic-surgery           505KB  h=4751
+[mobile 29/58] video-gallery                                       1349KB  h=4347
+[mobile 30/58] what-to-expect-during-your-first-consultation        516KB  h=4787
+[mobile 31/58] casestudy__a-smoother-glowing-complexion             850KB  h=5698
+[mobile 32/58] casestudy__clear-radiant-skin-guide                  848KB  h=5662
+[mobile 33/58] casestudy__glow-up-perfect-skin-routine              842KB  h=5662
+[mobile 34/58] casestudy__natural-beautiful-results                 867KB  h=5662
+[mobile 35/58] casestudy__radiant-skin-tips-for-a-glow              863KB  h=5662
+[mobile 36/58] casestudy__restoring-post-pregnancy-beauty           841KB  h=5698
+[mobile 37/58] casestudy__restoring-youthful-radiance               874KB  h=5662
+[mobile 38/58] casestudy__secrets-to-soft-radiant-skin              848KB  h=5662
+[mobile 39/58] casestudy__smooth-skin-radiant-glow-tips             850KB  h=5662
+[mobile 40/58] category__uncategorized                             1218KB  h=4138
+[mobile 41/58] elementskit-content__dynamic-content-widget-1690da   238KB  h=670
+[mobile 42/58] elementskit-content__dynamic-content-widget-1690da   229KB  h=670
+[mobile 43/58] elementskit-content__dynamic-content-widget-2548a9    27KB  h=683
+[mobile 44/58] elementskit-content__dynamic-content-widget-47f261   238KB  h=670
+[mobile 45/58] elementskit-content__dynamic-content-widget-47f261   229KB  h=670
+[mobile 46/58] our-team__dr-ayesha-kapoor                           431KB  h=4180
+[mobile 47/58] our-team__dr-cameron-williamson                      418KB  h=4242
+[mobile 48/58] our-team__dr-neha-verma                              401KB  h=4180
+[mobile 49/58] our-team__dr-rahul-mehta                             421KB  h=4180
+[mobile 50/58] services__botox-and-dermal-fillers                   811KB  h=5556
+[mobile 51/58] services__laser-skin-or-treatments                   826KB  h=5556
+[mobile 52/58] services__male-aesthetic-procedures                  811KB  h=5558
+[mobile 53/58] services__medical-spa-and-treatments                 807KB  h=5558
+[mobile 54/58] services__post-weight-loss-surgery                   807KB  h=5558
+[mobile 55/58] services__tighten-define-neck-contours               817KB  h=5558
+[mobile 56/58] tag__book-now                                       1217KB  h=4138
+[mobile 57/58] tag__consultation                                   1218KB  h=4138
+[mobile 58/58] tag__treatments                                     1217KB  h=4138
+
+SHOOT DONE captured=58 suspect=4
+  SUSPECT mobile/tpl__header {"ok":true,"kb":8,"height":90,"suspect":true}
+  SUSPECT mobile/tpl__header-layout-2 {"ok":true,"kb":8,"height":91,"suspect":true}
+  SUSPECT mobile/tpl__header-layout-3 {"ok":true,"kb":8,"height":91,"suspect":true}
+  SUSPECT mobile/tpl__header-layout-4 {"ok":true,"kb":8,"height":91,"suspect":true}

@@ -1,0 +1,80 @@
+{
+ "zone": "content",
+ "dataId": "d3eb101",
+ "classes": "elementor-element elementor-element-d3eb101 e-con-full e-flex e-con e-parent e-lazyloaded",
+ "rect": {
+  "top": 0,
+  "h": 470,
+  "w": 1440
+ },
+ "style": {
+  "display": "flex",
+  "flexDirection": "column",
+  "gap": "20px",
+  "padding": "0px 20px 0px 20px",
+  "background": "rgba(0, 0, 0, 0)",
+  "backgroundImage": null,
+  "radius": 0,
+  "maxWidth": "100%",
+  "width": 1440,
+  "alignItems": "normal",
+  "justifyContent": "normal"
+ },
+ "children": [
+  {
+   "cls": "elementor-element elementor-element-b1da708 e-flex e-con-boxed e-con e-child",
+   "w": 1400,
+   "h": 470,
+   "display": "flex",
+   "flex": "0 1 auto",
+   "gap": "normal",
+   "grid": null,
+   "pad": "0px 0px 0px 0px",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": 0
+  }
+ ],
+ "widgets": [
+  "image",
+  "text-editor",
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "heading",
+  "ekit-vertical-menu",
+  "heading",
+  "elementskit-social-media",
+  "heading",
+  "ekit-vertical-menu",
+  "elementskit-copyright"
+ ],
+ "headings": [
+  {
+   "tag": "h3",
+   "text": "(+22) 123 456 789"
+  },
+  {
+   "tag": "h3",
+   "text": "domainname@Gmail.Com"
+  },
+  {
+   "tag": "h2",
+   "text": "Quick Link"
+  },
+  {
+   "tag": "h2",
+   "text": "Social"
+  },
+  {
+   "tag": "h2",
+   "text": "Services"
+  }
+ ],
+ "animations": [
+  "at-animation-image-none",
+  "at-animation-heading-none",
+  "at-animation-heading-none",
+  "at-animation-heading-none"
+ ],
+ "shinyGlassElements": 0,
+ "firstSeenOn": "tpl__footer-layout-3"
+}

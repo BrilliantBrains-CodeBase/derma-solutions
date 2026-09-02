@@ -1,0 +1,350 @@
+{
+ "tablet/_homepage": {
+  "ok": true,
+  "kb": 5742,
+  "height": 13891,
+  "suspect": false
+ },
+ "tablet/404": {
+  "ok": true,
+  "kb": 165,
+  "height": 1759,
+  "suspect": false
+ },
+ "tablet/tpl__footer": {
+  "ok": true,
+  "kb": 90,
+  "height": 770,
+  "suspect": false
+ },
+ "tablet/tpl__footer-layout-2": {
+  "ok": true,
+  "kb": 76,
+  "height": 543,
+  "suspect": false
+ },
+ "tablet/tpl__footer-layout-3": {
+  "ok": true,
+  "kb": 67,
+  "height": 541,
+  "suspect": false
+ },
+ "tablet/tpl__footer-layout-4": {
+  "ok": true,
+  "kb": 42,
+  "height": 327,
+  "suspect": false
+ },
+ "tablet/tpl__header": {
+  "ok": true,
+  "kb": 10,
+  "height": 90,
+  "suspect": true
+ },
+ "tablet/tpl__header-layout-2": {
+  "ok": true,
+  "kb": 10,
+  "height": 91,
+  "suspect": true
+ },
+ "tablet/tpl__header-layout-3": {
+  "ok": true,
+  "kb": 10,
+  "height": 91,
+  "suspect": true
+ },
+ "tablet/tpl__header-layout-4": {
+  "ok": true,
+  "kb": 10,
+  "height": 91,
+  "suspect": true
+ },
+ "tablet/about-us": {
+  "ok": true,
+  "kb": 4795,
+  "height": 11830,
+  "suspect": false
+ },
+ "tablet/blog": {
+  "ok": true,
+  "kb": 1180,
+  "height": 2518,
+  "suspect": false
+ },
+ "tablet/book-appointment": {
+  "ok": true,
+  "kb": 1104,
+  "height": 4167,
+  "suspect": false
+ },
+ "tablet/casestudy": {
+  "ok": true,
+  "kb": 1482,
+  "height": 2903,
+  "suspect": false
+ },
+ "tablet/choose-a-qualified-surgeon-for-safe": {
+  "ok": true,
+  "kb": 677,
+  "height": 3546,
+  "suspect": false
+ },
+ "tablet/contact-us": {
+  "ok": true,
+  "kb": 523,
+  "height": 2487,
+  "suspect": false
+ },
+ "tablet/faqs": {
+  "ok": true,
+  "kb": 634,
+  "height": 3750,
+  "suspect": false
+ },
+ "tablet/follow-pre-surgery-guidelines-to-ensure-a-smooth": {
+  "ok": true,
+  "kb": 728,
+  "height": 3546,
+  "suspect": false
+ },
+ "tablet/home-image": {
+  "ok": true,
+  "kb": 5841,
+  "height": 13511,
+  "suspect": false
+ },
+ "tablet/home-slider": {
+  "ok": true,
+  "kb": 5829,
+  "height": 13486,
+  "suspect": false
+ },
+ "tablet/home-video": {
+  "ok": true,
+  "kb": 5778,
+  "height": 13511,
+  "suspect": false
+ },
+ "tablet/image-gallery": {
+  "ok": true,
+  "kb": 656,
+  "height": 1770,
+  "suspect": false
+ },
+ "tablet/maintain-a-healthy-lifestyle-for-better-healing": {
+  "ok": true,
+  "kb": 734,
+  "height": 3546,
+  "suspect": false
+ },
+ "tablet/myths-and-facts-about-plastic-surgery": {
+  "ok": true,
+  "kb": 795,
+  "height": 3546,
+  "suspect": false
+ },
+ "tablet/our-team": {
+  "ok": true,
+  "kb": 1460,
+  "height": 3084,
+  "suspect": false
+ },
+ "tablet/services": {
+  "ok": true,
+  "kb": 2326,
+  "height": 6797,
+  "suspect": false
+ },
+ "tablet/testimonials": {
+  "ok": true,
+  "kb": 1178,
+  "height": 4324,
+  "suspect": false
+ },
+ "tablet/top-tips-for-preparing-for-plastic-surgery": {
+  "ok": true,
+  "kb": 758,
+  "height": 3546,
+  "suspect": false
+ },
+ "tablet/video-gallery": {
+  "ok": true,
+  "kb": 1364,
+  "height": 2773,
+  "suspect": false
+ },
+ "tablet/what-to-expect-during-your-first-consultation": {
+  "ok": true,
+  "kb": 810,
+  "height": 3546,
+  "suspect": false
+ },
+ "tablet/casestudy__a-smoother-glowing-complexion": {
+  "ok": true,
+  "kb": 1374,
+  "height": 4664,
+  "suspect": false
+ },
+ "tablet/casestudy__clear-radiant-skin-guide": {
+  "ok": true,
+  "kb": 1370,
+  "height": 4610,
+  "suspect": false
+ },
+ "tablet/casestudy__glow-up-perfect-skin-routine": {
+  "ok": true,
+  "kb": 1361,
+  "height": 4664,
+  "suspect": false
+ },
+ "tablet/casestudy__natural-beautiful-results": {
+  "ok": true,
+  "kb": 1443,
+  "height": 4664,
+  "suspect": false
+ },
+ "tablet/casestudy__radiant-skin-tips-for-a-glow": {
+  "ok": true,
+  "kb": 1420,
+  "height": 4610,
+  "suspect": false
+ },
+ "tablet/casestudy__restoring-post-pregnancy-beauty": {
+  "ok": true,
+  "kb": 1365,
+  "height": 4664,
+  "suspect": false
+ },
+ "tablet/casestudy__restoring-youthful-radiance": {
+  "ok": true,
+  "kb": 1486,
+  "height": 4664,
+  "suspect": false
+ },
+ "tablet/casestudy__secrets-to-soft-radiant-skin": {
+  "ok": true,
+  "kb": 1373,
+  "height": 4664,
+  "suspect": false
+ },
+ "tablet/casestudy__smooth-skin-radiant-glow-tips": {
+  "ok": true,
+  "kb": 1384,
+  "height": 4664,
+  "suspect": false
+ },
+ "tablet/category__uncategorized": {
+  "ok": true,
+  "kb": 1184,
+  "height": 2518,
+  "suspect": false
+ },
+ "tablet/elementskit-content__dynamic-content-widget-1690dac-7f784d8": {
+  "ok": true,
+  "kb": 383,
+  "height": 610,
+  "suspect": false
+ },
+ "tablet/elementskit-content__dynamic-content-widget-1690dac-aa1dc66": {
+  "ok": true,
+  "kb": 386,
+  "height": 610,
+  "suspect": false
+ },
+ "tablet/elementskit-content__dynamic-content-widget-2548a92-99": {
+  "ok": true,
+  "kb": 31,
+  "height": 708,
+  "suspect": false
+ },
+ "tablet/elementskit-content__dynamic-content-widget-47f261e-7f784d8": {
+  "ok": true,
+  "kb": 383,
+  "height": 610,
+  "suspect": false
+ },
+ "tablet/elementskit-content__dynamic-content-widget-47f261e-aa1dc66": {
+  "ok": true,
+  "kb": 386,
+  "height": 610,
+  "suspect": false
+ },
+ "tablet/our-team__dr-ayesha-kapoor": {
+  "ok": true,
+  "kb": 681,
+  "height": 3614,
+  "suspect": false
+ },
+ "tablet/our-team__dr-cameron-williamson": {
+  "ok": true,
+  "kb": 637,
+  "height": 3614,
+  "suspect": false
+ },
+ "tablet/our-team__dr-neha-verma": {
+  "ok": true,
+  "kb": 607,
+  "height": 3614,
+  "suspect": false
+ },
+ "tablet/our-team__dr-rahul-mehta": {
+  "ok": true,
+  "kb": 671,
+  "height": 3614,
+  "suspect": false
+ },
+ "tablet/services__botox-and-dermal-fillers": {
+  "ok": true,
+  "kb": 1384,
+  "height": 4649,
+  "suspect": false
+ },
+ "tablet/services__laser-skin-or-treatments": {
+  "ok": true,
+  "kb": 1442,
+  "height": 4649,
+  "suspect": false
+ },
+ "tablet/services__male-aesthetic-procedures": {
+  "ok": true,
+  "kb": 1388,
+  "height": 4651,
+  "suspect": false
+ },
+ "tablet/services__medical-spa-and-treatments": {
+  "ok": true,
+  "kb": 1379,
+  "height": 4651,
+  "suspect": false
+ },
+ "tablet/services__post-weight-loss-surgery": {
+  "ok": true,
+  "kb": 1377,
+  "height": 4651,
+  "suspect": false
+ },
+ "tablet/services__tighten-define-neck-contours": {
+  "ok": true,
+  "kb": 1412,
+  "height": 4705,
+  "suspect": false
+ },
+ "tablet/tag__book-now": {
+  "ok": true,
+  "kb": 1184,
+  "height": 2518,
+  "suspect": false
+ },
+ "tablet/tag__consultation": {
+  "ok": true,
+  "kb": 1184,
+  "height": 2518,
+  "suspect": false
+ },
+ "tablet/tag__treatments": {
+  "ok": true,
+  "kb": 1183,
+  "height": 2518,
+  "suspect": false
+ }
+}

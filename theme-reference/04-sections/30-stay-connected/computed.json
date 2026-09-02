@@ -1,0 +1,74 @@
+{
+ "zone": "content",
+ "dataId": "441542d",
+ "classes": "elementor-element elementor-element-441542d e-con-full header-version-4 e-flex e-con e-parent e-lazyloaded",
+ "rect": {
+  "top": 0,
+  "h": 107,
+  "w": 1440
+ },
+ "style": {
+  "display": "flex",
+  "flexDirection": "column",
+  "gap": "20px",
+  "padding": "0px 20px 0px 20px",
+  "background": "rgba(0, 0, 0, 0)",
+  "backgroundImage": null,
+  "radius": 0,
+  "maxWidth": "100%",
+  "width": 1440,
+  "alignItems": "normal",
+  "justifyContent": "normal"
+ },
+ "children": [
+  {
+   "cls": "elementor-element elementor-element-40bd2c4 e-flex e-con-boxed e-con e-child",
+   "w": 1400,
+   "h": 107,
+   "display": "flex",
+   "flex": "0 1 auto",
+   "gap": "normal",
+   "grid": null,
+   "pad": "0px 0px 0px 0px",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": 0
+  }
+ ],
+ "widgets": [
+  "glowix-site-logo",
+  "ekit-nav-menu",
+  "elementskit-header-search",
+  "elementskit-header-offcanvas",
+  "elementskit-icon-box",
+  "divider",
+  "elementskit-icon-box",
+  "divider",
+  "elementskit-icon-box",
+  "divider",
+  "heading",
+  "elementskit-social-media"
+ ],
+ "headings": [
+  {
+   "tag": "h3",
+   "text": "Phone"
+  },
+  {
+   "tag": "h3",
+   "text": "Email"
+  },
+  {
+   "tag": "h3",
+   "text": "Address"
+  },
+  {
+   "tag": "h2",
+   "text": "Stay Connected"
+  }
+ ],
+ "animations": [
+  "at-animation-heading-none"
+ ],
+ "shinyGlassElements": 0,
+ "firstSeenOn": "tpl__header-layout-4"
+}

@@ -1,0 +1,114 @@
+{
+ "zone": "content",
+ "dataId": "97e2ae6",
+ "classes": "elementor-element elementor-element-97e2ae6 e-con-full e-flex e-con e-parent e-lazyloaded",
+ "rect": {
+  "top": 0,
+  "h": 718,
+  "w": 1440
+ },
+ "style": {
+  "display": "flex",
+  "flexDirection": "column",
+  "gap": "20px",
+  "padding": "0px 20px 0px 20px",
+  "background": "rgba(0, 0, 0, 0)",
+  "backgroundImage": null,
+  "radius": 0,
+  "maxWidth": "100%",
+  "width": 1440,
+  "alignItems": "normal",
+  "justifyContent": "normal"
+ },
+ "children": [
+  {
+   "cls": "elementor-element elementor-element-5b619c5 e-flex e-con-boxed e-con e-child",
+   "w": 1400,
+   "h": 718,
+   "display": "flex",
+   "flex": "0 1 auto",
+   "gap": "normal",
+   "grid": null,
+   "pad": "0px 0px 0px 0px",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": 0
+  }
+ ],
+ "widgets": [
+  "heading",
+  "elementskit-contact-form7",
+  "image",
+  "text-editor",
+  "elementskit-social-media",
+  "heading",
+  "ekit-vertical-menu",
+  "heading",
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "heading",
+  "elementskit-icon-box",
+  "heading",
+  "elementskit-icon-box",
+  "heading",
+  "elementskit-icon-box",
+  "elementskit-copyright",
+  "ekit-vertical-menu"
+ ],
+ "headings": [
+  {
+   "tag": "h2",
+   "text": "Our latest insights on plastic surgery & skincare"
+  },
+  {
+   "tag": "h2",
+   "text": "Quick Link"
+  },
+  {
+   "tag": "h2",
+   "text": "Open Hours:"
+  },
+  {
+   "tag": "h3",
+   "text": "Mon-Sat: 10:00 To 07:00"
+  },
+  {
+   "tag": "h3",
+   "text": "Saturday-Closed"
+  },
+  {
+   "tag": "h2",
+   "text": "Contact:"
+  },
+  {
+   "tag": "h3",
+   "text": "(+22) 123 456 789"
+  },
+  {
+   "tag": "h2",
+   "text": "E-mail:"
+  },
+  {
+   "tag": "h3",
+   "text": "domainname@Gmail.Com"
+  },
+  {
+   "tag": "h2",
+   "text": "Address:"
+  },
+  {
+   "tag": "h3",
+   "text": "123 High Street LN1 1AB Street UK"
+  }
+ ],
+ "animations": [
+  "at-animation-heading-none",
+  "at-animation-image-none",
+  "at-animation-heading-none",
+  "at-animation-heading-none",
+  "at-animation-heading-none",
+  "at-animation-heading-none",
+  "at-animation-heading-none"
+ ],
+ "shinyGlassElements": 0,
+ "firstSeenOn": "tpl__footer"
+}

@@ -1,0 +1,158 @@
+{
+ "zone": "content",
+ "dataId": "3ff8d3c",
+ "classes": "elementor-element elementor-element-3ff8d3c e-flex e-con-boxed e-con e-parent e-lazyloaded",
+ "rect": {
+  "top": 468,
+  "h": 2936,
+  "w": 1440
+ },
+ "style": {
+  "display": "flex",
+  "flexDirection": "column",
+  "gap": "normal",
+  "padding": "0px 10px 0px 10px",
+  "background": "rgba(0, 0, 0, 0)",
+  "backgroundImage": null,
+  "radius": 0,
+  "maxWidth": "100%",
+  "width": 1440,
+  "alignItems": "normal",
+  "justifyContent": "normal"
+ },
+ "children": [
+  {
+   "cls": "e-con-inner",
+   "w": 1300,
+   "h": 2936,
+   "display": "flex",
+   "flex": "1 1 auto",
+   "gap": "0px",
+   "grid": null,
+   "pad": "100px 0px 100px 0px",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": 0
+  }
+ ],
+ "widgets": [
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "elementskit-social-media",
+  "glowix-elementor-template",
+  "image",
+  "elementskit-icon-box",
+  "image",
+  "text-editor",
+  "heading",
+  "text-editor",
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "image",
+  "heading",
+  "text-editor",
+  "icon-list",
+  "elementskit-icon-box",
+  "heading",
+  "text-editor",
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "heading",
+  "elementskit-accordion"
+ ],
+ "headings": [
+  {
+   "tag": "h3",
+   "text": "Case Study"
+  },
+  {
+   "tag": "h3",
+   "text": "Start Date"
+  },
+  {
+   "tag": "h3",
+   "text": "Location"
+  },
+  {
+   "tag": "h3",
+   "text": "Client Name"
+  },
+  {
+   "tag": "h3",
+   "text": "Duration"
+  },
+  {
+   "tag": "h3",
+   "text": "Opening Hours:"
+  },
+  {
+   "tag": "h2",
+   "text": "Transformative beauty journeys"
+  },
+  {
+   "tag": "h3",
+   "text": "Personal Aesthetic Solutions"
+  },
+  {
+   "tag": "h3",
+   "text": "Real Results, Real Confidence"
+  },
+  {
+   "tag": "h3",
+   "text": "Expert Procedures"
+  },
+  {
+   "tag": "h3",
+   "text": "Ongoing Support & Follow-Up"
+  },
+  {
+   "tag": "h2",
+   "text": "Glow up"
+  },
+  {
+   "tag": "h3",
+   "text": "Beauty enhance"
+  },
+  {
+   "tag": "h2",
+   "text": "Real Transformations, Real Confidence"
+  },
+  {
+   "tag": "h3",
+   "text": "Achieve a youthful, natural-looking glow."
+  },
+  {
+   "tag": "h3",
+   "text": "Unlock radiant skin with a natural glow."
+  },
+  {
+   "tag": "h3",
+   "text": "Unlock the secret to timeless beauty."
+  },
+  {
+   "tag": "h3",
+   "text": "Glow from within beauty starts with care."
+  },
+  {
+   "tag": "h2",
+   "text": "Got questions? We've got answers!"
+  }
+ ],
+ "animations": [
+  "at-animation-image-none",
+  "at-animation-image-style-1",
+  "at-animation-heading-style-3",
+  "at-animation-image-style-1",
+  "at-animation-heading-style-3",
+  "at-animation-heading-style-3",
+  "at-animation-heading-style-3"
+ ],
+ "shinyGlassElements": 2,
+ "firstSeenOn": "casestudy__a-smoother-glowing-complexion"
+}

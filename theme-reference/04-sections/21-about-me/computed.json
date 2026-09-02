@@ -1,0 +1,89 @@
+{
+ "zone": "content",
+ "dataId": "84214cc",
+ "classes": "elementor-element elementor-element-84214cc e-flex e-con-boxed e-con e-parent e-lazyloaded",
+ "rect": {
+  "top": 468,
+  "h": 1864,
+  "w": 1440
+ },
+ "style": {
+  "display": "flex",
+  "flexDirection": "column",
+  "gap": "normal",
+  "padding": "0px 10px 0px 10px",
+  "background": "rgba(0, 0, 0, 0)",
+  "backgroundImage": null,
+  "radius": 0,
+  "maxWidth": "100%",
+  "width": 1440,
+  "alignItems": "normal",
+  "justifyContent": "normal"
+ },
+ "children": [
+  {
+   "cls": "e-con-inner",
+   "w": 1300,
+   "h": 1864,
+   "display": "flex",
+   "flex": "1 1 auto",
+   "gap": "60px 20px",
+   "grid": null,
+   "pad": "100px 0px 100px 0px",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": 0
+  }
+ ],
+ "widgets": [
+  "image",
+  "heading",
+  "heading",
+  "text-editor",
+  "icon-list",
+  "elementskit-social-media",
+  "heading",
+  "text-editor",
+  "icon-list",
+  "heading",
+  "text-editor",
+  "elementskit-progressbar",
+  "elementskit-progressbar",
+  "elementskit-progressbar",
+  "icon-list",
+  "heading",
+  "text-editor",
+  "elementskit-contact-form7"
+ ],
+ "headings": [
+  {
+   "tag": "h3",
+   "text": "EXPERT PLASTIC SURGEON"
+  },
+  {
+   "tag": "h2",
+   "text": "About me"
+  },
+  {
+   "tag": "h2",
+   "text": "Personals info"
+  },
+  {
+   "tag": "h2",
+   "text": "Professional skills"
+  },
+  {
+   "tag": "h2",
+   "text": "Send a message"
+  }
+ ],
+ "animations": [
+  "at-animation-image-style-1",
+  "at-animation-heading-none",
+  "at-animation-heading-style-3",
+  "at-animation-heading-style-3",
+  "at-animation-heading-style-3",
+  "at-animation-heading-style-2"
+ ],
+ "shinyGlassElements": 1,
+ "firstSeenOn": "our-team__dr-ayesha-kapoor"
+}

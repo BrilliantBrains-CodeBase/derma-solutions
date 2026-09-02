@@ -1,0 +1,82 @@
+{
+ "zone": "content",
+ "dataId": "5e213c7",
+ "classes": "elementor-element elementor-element-5e213c7 e-flex e-con-boxed e-con e-parent e-lazyloaded",
+ "rect": {
+  "top": 468,
+  "h": 2627,
+  "w": 1440
+ },
+ "style": {
+  "display": "flex",
+  "flexDirection": "column",
+  "gap": "normal",
+  "padding": "0px 10px 0px 10px",
+  "background": "rgba(0, 0, 0, 0)",
+  "backgroundImage": null,
+  "radius": 0,
+  "maxWidth": "100%",
+  "width": 1440,
+  "alignItems": "normal",
+  "justifyContent": "normal"
+ },
+ "children": [
+  {
+   "cls": "e-con-inner",
+   "w": 1300,
+   "h": 2627,
+   "display": "flex",
+   "flex": "1 1 auto",
+   "gap": "0px",
+   "grid": null,
+   "pad": "100px 0px 100px 0px",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": 0
+  }
+ ],
+ "widgets": [
+  "icon-list",
+  "glowix-elementor-template",
+  "image",
+  "elementskit-icon-box",
+  "heading",
+  "elementskit-accordion",
+  "heading",
+  "elementskit-accordion",
+  "heading",
+  "elementskit-accordion",
+  "heading",
+  "elementskit-accordion"
+ ],
+ "headings": [
+  {
+   "tag": "h3",
+   "text": "Opening Hours:"
+  },
+  {
+   "tag": "h2",
+   "text": "General information"
+  },
+  {
+   "tag": "h2",
+   "text": "Treatment process"
+  },
+  {
+   "tag": "h2",
+   "text": "Safety & results"
+  },
+  {
+   "tag": "h2",
+   "text": "Aftercare & recovery"
+  }
+ ],
+ "animations": [
+  "at-animation-image-none",
+  "at-animation-heading-style-3",
+  "at-animation-heading-style-3",
+  "at-animation-heading-style-3",
+  "at-animation-heading-style-3"
+ ],
+ "shinyGlassElements": 0,
+ "firstSeenOn": "faqs"
+}

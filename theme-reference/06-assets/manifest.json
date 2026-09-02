@@ -1,0 +1,4013 @@
+{
+ "note": "Glowix demo assets. Licensed to the theme vendor, captured as a DESIGN REFERENCE ONLY. Every entry is licence:reference-only and must be replaced with Derma Solutions' own photography before launch.",
+ "count": 221,
+ "assets": [
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/themes/glowix/assets/images/404-error-img.png",
+   "local": "06-assets/images/theme-404-error-img.png",
+   "bytes": 35315,
+   "sha256": "1139e8fb8e497f75",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "404"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/themes/glowix/assets/images/loader.svg",
+   "local": "06-assets/icons/theme-loader.svg",
+   "bytes": 1340,
+   "sha256": "b30365a78cd3c2a8",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "404",
+    "_homepage",
+    "about-us",
+    "blog",
+    "book-appointment",
+    "casestudy",
+    "casestudy__a-smoother-glowing-complexion",
+    "casestudy__clear-radiant-skin-guide",
+    "casestudy__glow-up-perfect-skin-routine",
+    "casestudy__natural-beautiful-results",
+    "casestudy__radiant-skin-tips-for-a-glow",
+    "casestudy__restoring-post-pregnancy-beauty",
+    "casestudy__restoring-youthful-radiance",
+    "casestudy__secrets-to-soft-radiant-skin",
+    "casestudy__smooth-skin-radiant-glow-tips",
+    "category__uncategorized",
+    "choose-a-qualified-surgeon-for-safe",
+    "contact-us",
+    "elementskit-content__dynamic-content-widget-1690dac-7f784d8",
+    "elementskit-content__dynamic-content-widget-1690dac-aa1dc66",
+    "elementskit-content__dynamic-content-widget-2548a92-99",
+    "elementskit-content__dynamic-content-widget-47f261e-7f784d8",
+    "elementskit-content__dynamic-content-widget-47f261e-aa1dc66",
+    "faqs",
+    "follow-pre-surgery-guidelines-to-ensure-a-smooth",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "image-gallery",
+    "maintain-a-healthy-lifestyle-for-better-healing",
+    "myths-and-facts-about-plastic-surgery",
+    "our-team",
+    "our-team__dr-ayesha-kapoor",
+    "our-team__dr-cameron-williamson",
+    "our-team__dr-neha-verma",
+    "our-team__dr-rahul-mehta",
+    "services",
+    "services__botox-and-dermal-fillers",
+    "services__laser-skin-or-treatments",
+    "services__male-aesthetic-procedures",
+    "services__medical-spa-and-treatments",
+    "services__post-weight-loss-surgery",
+    "services__tighten-define-neck-contours",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments",
+    "testimonials",
+    "top-tips-for-preparing-for-plastic-surgery",
+    "tpl__footer",
+    "tpl__footer-layout-2",
+    "tpl__footer-layout-3",
+    "tpl__footer-layout-4",
+    "tpl__header",
+    "tpl__header-layout-2",
+    "tpl__header-layout-3",
+    "tpl__header-layout-4",
+    "video-gallery",
+    "what-to-expect-during-your-first-consultation"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/03/favicon.png",
+   "local": "06-assets/images/2025-03-favicon.png",
+   "bytes": 1063,
+   "sha256": "742bd248e3dfa34a",
+   "in_media_library": true,
+   "alt": "",
+   "width": 32,
+   "height": 33,
+   "mime": "image/png",
+   "used_on": [
+    "404",
+    "_homepage",
+    "about-us",
+    "blog",
+    "book-appointment",
+    "casestudy",
+    "casestudy__a-smoother-glowing-complexion",
+    "casestudy__clear-radiant-skin-guide",
+    "casestudy__glow-up-perfect-skin-routine",
+    "casestudy__natural-beautiful-results",
+    "casestudy__radiant-skin-tips-for-a-glow",
+    "casestudy__restoring-post-pregnancy-beauty",
+    "casestudy__restoring-youthful-radiance",
+    "casestudy__secrets-to-soft-radiant-skin",
+    "casestudy__smooth-skin-radiant-glow-tips",
+    "category__uncategorized",
+    "choose-a-qualified-surgeon-for-safe",
+    "contact-us",
+    "elementskit-content__dynamic-content-widget-1690dac-7f784d8",
+    "elementskit-content__dynamic-content-widget-1690dac-aa1dc66",
+    "elementskit-content__dynamic-content-widget-2548a92-99",
+    "elementskit-content__dynamic-content-widget-47f261e-7f784d8",
+    "elementskit-content__dynamic-content-widget-47f261e-aa1dc66",
+    "faqs",
+    "follow-pre-surgery-guidelines-to-ensure-a-smooth",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "image-gallery",
+    "maintain-a-healthy-lifestyle-for-better-healing",
+    "myths-and-facts-about-plastic-surgery",
+    "our-team",
+    "our-team__dr-ayesha-kapoor",
+    "our-team__dr-cameron-williamson",
+    "our-team__dr-neha-verma",
+    "our-team__dr-rahul-mehta",
+    "services",
+    "services__botox-and-dermal-fillers",
+    "services__laser-skin-or-treatments",
+    "services__male-aesthetic-procedures",
+    "services__medical-spa-and-treatments",
+    "services__post-weight-loss-surgery",
+    "services__tighten-define-neck-contours",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments",
+    "testimonials",
+    "top-tips-for-preparing-for-plastic-surgery",
+    "tpl__footer",
+    "tpl__footer-layout-2",
+    "tpl__footer-layout-3",
+    "tpl__footer-layout-4",
+    "tpl__header",
+    "tpl__header-layout-2",
+    "tpl__header-layout-3",
+    "tpl__header-layout-4",
+    "video-gallery",
+    "what-to-expect-during-your-first-consultation"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/03/logo.svg",
+   "local": "06-assets/icons/2025-03-logo.svg",
+   "bytes": 10266,
+   "sha256": "1e10a194342c5d5a",
+   "in_media_library": true,
+   "alt": "",
+   "width": 159,
+   "height": 51,
+   "mime": "image/svg+xml",
+   "used_on": [
+    "404",
+    "_homepage",
+    "about-us",
+    "blog",
+    "book-appointment",
+    "casestudy",
+    "casestudy__a-smoother-glowing-complexion",
+    "casestudy__clear-radiant-skin-guide",
+    "casestudy__glow-up-perfect-skin-routine",
+    "casestudy__natural-beautiful-results",
+    "casestudy__radiant-skin-tips-for-a-glow",
+    "casestudy__restoring-post-pregnancy-beauty",
+    "casestudy__restoring-youthful-radiance",
+    "casestudy__secrets-to-soft-radiant-skin",
+    "casestudy__smooth-skin-radiant-glow-tips",
+    "category__uncategorized",
+    "choose-a-qualified-surgeon-for-safe",
+    "contact-us",
+    "faqs",
+    "follow-pre-surgery-guidelines-to-ensure-a-smooth",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "image-gallery",
+    "maintain-a-healthy-lifestyle-for-better-healing",
+    "myths-and-facts-about-plastic-surgery",
+    "our-team",
+    "our-team__dr-ayesha-kapoor",
+    "our-team__dr-cameron-williamson",
+    "our-team__dr-neha-verma",
+    "our-team__dr-rahul-mehta",
+    "services",
+    "services__botox-and-dermal-fillers",
+    "services__laser-skin-or-treatments",
+    "services__male-aesthetic-procedures",
+    "services__medical-spa-and-treatments",
+    "services__post-weight-loss-surgery",
+    "services__tighten-define-neck-contours",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments",
+    "testimonials",
+    "top-tips-for-preparing-for-plastic-surgery",
+    "tpl__header",
+    "tpl__header-layout-2",
+    "tpl__header-layout-3",
+    "tpl__header-layout-4",
+    "video-gallery",
+    "what-to-expect-during-your-first-consultation"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/about-experience-image-300x179.jpg",
+   "local": "06-assets/images/2025-04-about-experience-image-300x179.jpg",
+   "bytes": 15496,
+   "sha256": "4adb1a0497323f6d",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "about-us",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/about-experience-image.jpg",
+   "local": "06-assets/images/2025-04-about-experience-image.jpg",
+   "bytes": 97938,
+   "sha256": "f370acaf1773bcc3",
+   "in_media_library": true,
+   "alt": "",
+   "width": 302,
+   "height": 180,
+   "mime": "image/jpeg",
+   "used_on": [
+    "_homepage",
+    "about-us",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/about-img-1-239x300.jpg",
+   "local": "06-assets/images/2025-04-about-img-1-239x300.jpg",
+   "bytes": 16611,
+   "sha256": "f8a7499263bd2b8c",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "about-us",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/about-img-1.jpg",
+   "local": "06-assets/images/2025-04-about-img-1.jpg",
+   "bytes": 68914,
+   "sha256": "ef8a7fa67d668a6c",
+   "in_media_library": true,
+   "alt": "",
+   "width": 358,
+   "height": 450,
+   "mime": "image/jpeg",
+   "used_on": [
+    "_homepage",
+    "about-us",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/about-img-2-240x300.jpg",
+   "local": "06-assets/images/2025-04-about-img-2-240x300.jpg",
+   "bytes": 16747,
+   "sha256": "c8eb1e39a93b3aa1",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "about-us",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/about-img-2.jpg",
+   "local": "06-assets/images/2025-04-about-img-2.jpg",
+   "bytes": 71438,
+   "sha256": "cdd68e3b93323209",
+   "in_media_library": true,
+   "alt": "",
+   "width": 360,
+   "height": 450,
+   "mime": "image/jpeg",
+   "used_on": [
+    "_homepage",
+    "about-us",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/about-text-path-icon.svg",
+   "local": "06-assets/icons/2025-04-about-text-path-icon.svg",
+   "bytes": 1218,
+   "sha256": "74d38030259e94af",
+   "in_media_library": true,
+   "alt": "",
+   "width": 71,
+   "height": 71,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/about-us-image-bg-shape.svg",
+   "local": "06-assets/icons/2025-04-about-us-image-bg-shape.svg",
+   "bytes": 1113,
+   "sha256": "5ccab5ea9da4ec2c",
+   "in_media_library": true,
+   "alt": "",
+   "width": 76,
+   "height": 77,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/appointment-bg-shape.svg",
+   "local": "06-assets/icons/2025-04-appointment-bg-shape.svg",
+   "bytes": 16521,
+   "sha256": "e40a79ab70b55ce7",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1800,
+   "height": 801,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/appointment-image-195x300.png",
+   "local": "06-assets/images/2025-04-appointment-image-195x300.png",
+   "bytes": 91958,
+   "sha256": "eceb6209b288f94f",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "about-us",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/appointment-image.png",
+   "local": "06-assets/images/2025-04-appointment-image.png",
+   "bytes": 124467,
+   "sha256": "c52bb1931378d0f9",
+   "in_media_library": true,
+   "alt": "",
+   "width": 465,
+   "height": 715,
+   "mime": "image/png",
+   "used_on": [
+    "_homepage",
+    "about-us",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/approach-bg-shape.svg",
+   "local": "06-assets/icons/2025-04-approach-bg-shape.svg",
+   "bytes": 27571,
+   "sha256": "e698601c50d63758",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1800,
+   "height": 980,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/approach-image-1-242x300.jpg",
+   "local": "06-assets/images/2025-04-approach-image-1-242x300.jpg",
+   "bytes": 13767,
+   "sha256": "9d3fd9cb4ea31ae9",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "about-us"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/approach-image-1.jpg",
+   "local": "06-assets/images/2025-04-approach-image-1.jpg",
+   "bytes": 55183,
+   "sha256": "3f629397bf8b9d89",
+   "in_media_library": true,
+   "alt": "",
+   "width": 524,
+   "height": 649,
+   "mime": "image/jpeg",
+   "used_on": [
+    "about-us"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/approach-image-2-178x300.jpg",
+   "local": "06-assets/images/2025-04-approach-image-2-178x300.jpg",
+   "bytes": 12104,
+   "sha256": "92751fd706ee4bf3",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "about-us"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/approach-image-2.jpg",
+   "local": "06-assets/images/2025-04-approach-image-2.jpg",
+   "bytes": 102027,
+   "sha256": "219e450598f7c611",
+   "in_media_library": true,
+   "alt": "",
+   "width": 222,
+   "height": 375,
+   "mime": "image/jpeg",
+   "used_on": [
+    "about-us"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/arrow-primary.svg",
+   "local": "06-assets/icons/2025-04-arrow-primary.svg",
+   "bytes": 237,
+   "sha256": "1c2e4fe5a9195cf8",
+   "in_media_library": true,
+   "alt": "",
+   "width": 15,
+   "height": 15,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/arrow-text.svg",
+   "local": "06-assets/icons/2025-04-arrow-text.svg",
+   "bytes": 240,
+   "sha256": "ff5be55fd1de5ea3",
+   "in_media_library": true,
+   "alt": "",
+   "width": 24,
+   "height": 24,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/author-1.jpg",
+   "local": "06-assets/images/2025-04-author-1.jpg",
+   "bytes": 6445,
+   "sha256": "8812b12fb2b8706e",
+   "in_media_library": true,
+   "alt": "",
+   "width": 50,
+   "height": 50,
+   "mime": "image/jpeg",
+   "used_on": [
+    "_homepage",
+    "about-us",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "testimonials"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/author-2.jpg",
+   "local": "06-assets/images/2025-04-author-2.jpg",
+   "bytes": 7703,
+   "sha256": "43591f8e8bc91586",
+   "in_media_library": true,
+   "alt": "",
+   "width": 50,
+   "height": 50,
+   "mime": "image/jpeg",
+   "used_on": [
+    "_homepage",
+    "about-us",
+    "book-appointment",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "testimonials"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/author-3.jpg",
+   "local": "06-assets/images/2025-04-author-3.jpg",
+   "bytes": 7552,
+   "sha256": "310cdc3ad4ccae3e",
+   "in_media_library": true,
+   "alt": "",
+   "width": 50,
+   "height": 50,
+   "mime": "image/jpeg",
+   "used_on": [
+    "_homepage",
+    "about-us",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "testimonials"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/author-4.jpg",
+   "local": "06-assets/images/2025-04-author-4.jpg",
+   "bytes": 5868,
+   "sha256": "10e38c7bbe7dca51",
+   "in_media_library": true,
+   "alt": "",
+   "width": 50,
+   "height": 50,
+   "mime": "image/jpeg",
+   "used_on": [
+    "_homepage",
+    "about-us",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "testimonials"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/author-5.jpg",
+   "local": "06-assets/images/2025-04-author-5.jpg",
+   "bytes": 5015,
+   "sha256": "f4cfe0da53c1fe23",
+   "in_media_library": true,
+   "alt": "",
+   "width": 50,
+   "height": 50,
+   "mime": "image/jpeg",
+   "used_on": [
+    "testimonials"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/author-6.jpg",
+   "local": "06-assets/images/2025-04-author-6.jpg",
+   "bytes": 6637,
+   "sha256": "0bfe62d9099acd3b",
+   "in_media_library": true,
+   "alt": "",
+   "width": 50,
+   "height": 50,
+   "mime": "image/jpeg",
+   "used_on": [
+    "testimonials"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-1-1024x683.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-1-1024x683.jpg",
+   "bytes": 99031,
+   "sha256": "0ddcb975983733cc",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "casestudy",
+    "casestudy__restoring-youthful-radiance",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-1-300x200.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-1-300x200.jpg",
+   "bytes": 16665,
+   "sha256": "e92f8c2063682a48",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "casestudy",
+    "casestudy__restoring-youthful-radiance",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-1-768x512.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-1-768x512.jpg",
+   "bytes": 64957,
+   "sha256": "38a17eb971a8d2d6",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "casestudy",
+    "casestudy__restoring-youthful-radiance",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-1.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-1.jpg",
+   "bytes": 183529,
+   "sha256": "768815c0bfdd702b",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1200,
+   "height": 800,
+   "mime": "image/jpeg",
+   "used_on": [
+    "_homepage",
+    "casestudy",
+    "casestudy__restoring-youthful-radiance",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-2-1024x683.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-2-1024x683.jpg",
+   "bytes": 92378,
+   "sha256": "d6c81689439eafd8",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "casestudy",
+    "casestudy__natural-beautiful-results",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-2-300x200.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-2-300x200.jpg",
+   "bytes": 14743,
+   "sha256": "7630e7c7aa4a3ede",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "casestudy",
+    "casestudy__natural-beautiful-results",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-2-768x512.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-2-768x512.jpg",
+   "bytes": 59720,
+   "sha256": "abcc16cc5d2410ac",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "casestudy",
+    "casestudy__natural-beautiful-results",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-2.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-2.jpg",
+   "bytes": 170449,
+   "sha256": "9e1838bcea711802",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "casestudy",
+    "casestudy__natural-beautiful-results",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-3-1024x683.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-3-1024x683.jpg",
+   "bytes": 64912,
+   "sha256": "b651f0c32fd43626",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "casestudy",
+    "casestudy__restoring-post-pregnancy-beauty",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-3-300x200.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-3-300x200.jpg",
+   "bytes": 11224,
+   "sha256": "12bab8ff4eca7e20",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "casestudy",
+    "casestudy__restoring-post-pregnancy-beauty",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-3-768x512.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-3-768x512.jpg",
+   "bytes": 42662,
+   "sha256": "34338835316fdb6d",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "casestudy",
+    "casestudy__restoring-post-pregnancy-beauty",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-3.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-3.jpg",
+   "bytes": 184870,
+   "sha256": "8edad76a00f5d2f0",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "casestudy",
+    "casestudy__restoring-post-pregnancy-beauty",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-4-1024x683.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-4-1024x683.jpg",
+   "bytes": 65905,
+   "sha256": "1e747e1f2f4281a1",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "casestudy",
+    "casestudy__a-smoother-glowing-complexion",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-4-300x200.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-4-300x200.jpg",
+   "bytes": 11777,
+   "sha256": "06ad9e1d5ea17a67",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "casestudy",
+    "casestudy__a-smoother-glowing-complexion",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-4-768x512.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-4-768x512.jpg",
+   "bytes": 43332,
+   "sha256": "166c5a32111ab9f7",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "casestudy",
+    "casestudy__a-smoother-glowing-complexion",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-4.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-4.jpg",
+   "bytes": 154969,
+   "sha256": "60ca0460bb1db9d6",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "casestudy",
+    "casestudy__a-smoother-glowing-complexion",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-5-1024x683.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-5-1024x683.jpg",
+   "bytes": 90246,
+   "sha256": "71eb75a3a9345e88",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "casestudy",
+    "casestudy__radiant-skin-tips-for-a-glow"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-5-300x200.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-5-300x200.jpg",
+   "bytes": 15249,
+   "sha256": "ede5982cc100c3d7",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "casestudy",
+    "casestudy__radiant-skin-tips-for-a-glow"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-5-768x512.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-5-768x512.jpg",
+   "bytes": 59010,
+   "sha256": "eae754fbb5cdcb30",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "casestudy",
+    "casestudy__radiant-skin-tips-for-a-glow"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-5.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-5.jpg",
+   "bytes": 164312,
+   "sha256": "d6f6084971f244c5",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "casestudy",
+    "casestudy__radiant-skin-tips-for-a-glow"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-6-1024x683.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-6-1024x683.jpg",
+   "bytes": 70081,
+   "sha256": "a7bd3560d5568f28",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "casestudy",
+    "casestudy__clear-radiant-skin-guide"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-6-300x200.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-6-300x200.jpg",
+   "bytes": 12877,
+   "sha256": "860728f42c5734d3",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "casestudy",
+    "casestudy__clear-radiant-skin-guide"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-6-768x512.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-6-768x512.jpg",
+   "bytes": 46681,
+   "sha256": "0deb346eb00e9c6c",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "casestudy",
+    "casestudy__clear-radiant-skin-guide"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-6.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-6.jpg",
+   "bytes": 155754,
+   "sha256": "983e6e983deec60a",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "casestudy",
+    "casestudy__clear-radiant-skin-guide"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-7-1024x683.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-7-1024x683.jpg",
+   "bytes": 70292,
+   "sha256": "5bf0f38448656e6c",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "casestudy",
+    "casestudy__smooth-skin-radiant-glow-tips"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-7-300x200.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-7-300x200.jpg",
+   "bytes": 13174,
+   "sha256": "e2515be1748f0199",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "casestudy",
+    "casestudy__smooth-skin-radiant-glow-tips"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-7-768x512.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-7-768x512.jpg",
+   "bytes": 46936,
+   "sha256": "612aa5b88029cba0",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "casestudy",
+    "casestudy__smooth-skin-radiant-glow-tips"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-7.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-7.jpg",
+   "bytes": 157118,
+   "sha256": "97aa19b5cc50902d",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "casestudy",
+    "casestudy__smooth-skin-radiant-glow-tips"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-8-1024x683.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-8-1024x683.jpg",
+   "bytes": 68681,
+   "sha256": "0bc0903ff9ff2e57",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "casestudy",
+    "casestudy__glow-up-perfect-skin-routine"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-8-300x200.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-8-300x200.jpg",
+   "bytes": 11628,
+   "sha256": "c73e5db5e8fc6ce1",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "casestudy",
+    "casestudy__glow-up-perfect-skin-routine"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-8-768x512.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-8-768x512.jpg",
+   "bytes": 44777,
+   "sha256": "ec682543b065119d",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "casestudy",
+    "casestudy__glow-up-perfect-skin-routine"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-8.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-8.jpg",
+   "bytes": 155441,
+   "sha256": "f6229b2b07ba1698",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "casestudy",
+    "casestudy__glow-up-perfect-skin-routine"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-9-1024x683.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-9-1024x683.jpg",
+   "bytes": 68528,
+   "sha256": "87d85fe8e470bd27",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "casestudy",
+    "casestudy__secrets-to-soft-radiant-skin"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-9-300x200.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-9-300x200.jpg",
+   "bytes": 12298,
+   "sha256": "7dfcdc5c6f1107e5",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "casestudy",
+    "casestudy__secrets-to-soft-radiant-skin"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-9-768x512.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-9-768x512.jpg",
+   "bytes": 45101,
+   "sha256": "d9e9323c47a60a3c",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "casestudy",
+    "casestudy__secrets-to-soft-radiant-skin"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/case-study-image-9.jpg",
+   "local": "06-assets/images/2025-04-case-study-image-9.jpg",
+   "bytes": 152065,
+   "sha256": "e0c50c8f486ff4cd",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "casestudy",
+    "casestudy__secrets-to-soft-radiant-skin"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/faq-dot-img.svg",
+   "local": "06-assets/icons/2025-04-faq-dot-img.svg",
+   "bytes": 7616,
+   "sha256": "465e72d2a4cce556",
+   "in_media_library": true,
+   "alt": "",
+   "width": 84,
+   "height": 85,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/faq-img-1-201x300.jpg",
+   "local": "06-assets/images/2025-04-faq-img-1-201x300.jpg",
+   "bytes": 14384,
+   "sha256": "8fa12f3b9d531a37",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "about-us",
+    "book-appointment",
+    "services",
+    "testimonials"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/faq-img-1.jpg",
+   "local": "06-assets/images/2025-04-faq-img-1.jpg",
+   "bytes": 80968,
+   "sha256": "8fda3652da4d8860",
+   "in_media_library": true,
+   "alt": "",
+   "width": 363,
+   "height": 542,
+   "mime": "image/jpeg",
+   "used_on": [
+    "about-us",
+    "book-appointment",
+    "services",
+    "testimonials"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/faq-img-2-260x300.jpg",
+   "local": "06-assets/images/2025-04-faq-img-2-260x300.jpg",
+   "bytes": 17811,
+   "sha256": "d52283eb984359be",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "about-us",
+    "book-appointment",
+    "services",
+    "testimonials"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/faq-img-2.jpg",
+   "local": "06-assets/images/2025-04-faq-img-2.jpg",
+   "bytes": 61307,
+   "sha256": "648e66c9ffd6402b",
+   "in_media_library": true,
+   "alt": "",
+   "width": 353,
+   "height": 407,
+   "mime": "image/jpeg",
+   "used_on": [
+    "about-us",
+    "book-appointment",
+    "services",
+    "testimonials"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/faq-text-path-icon.svg",
+   "local": "06-assets/icons/2025-04-faq-text-path-icon.svg",
+   "bytes": 338,
+   "sha256": "14dd113974ede213",
+   "in_media_library": true,
+   "alt": "",
+   "width": 70,
+   "height": 71,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/footer-bg-shape.svg",
+   "local": "06-assets/icons/2025-04-footer-bg-shape.svg",
+   "bytes": 40859,
+   "sha256": "f69969db5db981dd",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1864,
+   "height": 816,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/footer-logo.svg",
+   "local": "06-assets/icons/2025-04-footer-logo.svg",
+   "bytes": 10282,
+   "sha256": "3cd8edafaeb28d7b",
+   "in_media_library": true,
+   "alt": "",
+   "width": 159,
+   "height": 51,
+   "mime": "image/svg+xml",
+   "used_on": [
+    "404",
+    "_homepage",
+    "about-us",
+    "blog",
+    "book-appointment",
+    "casestudy",
+    "casestudy__a-smoother-glowing-complexion",
+    "casestudy__clear-radiant-skin-guide",
+    "casestudy__glow-up-perfect-skin-routine",
+    "casestudy__natural-beautiful-results",
+    "casestudy__radiant-skin-tips-for-a-glow",
+    "casestudy__restoring-post-pregnancy-beauty",
+    "casestudy__restoring-youthful-radiance",
+    "casestudy__secrets-to-soft-radiant-skin",
+    "casestudy__smooth-skin-radiant-glow-tips",
+    "category__uncategorized",
+    "choose-a-qualified-surgeon-for-safe",
+    "contact-us",
+    "faqs",
+    "follow-pre-surgery-guidelines-to-ensure-a-smooth",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "image-gallery",
+    "maintain-a-healthy-lifestyle-for-better-healing",
+    "myths-and-facts-about-plastic-surgery",
+    "our-team",
+    "our-team__dr-ayesha-kapoor",
+    "our-team__dr-cameron-williamson",
+    "our-team__dr-neha-verma",
+    "our-team__dr-rahul-mehta",
+    "services",
+    "services__botox-and-dermal-fillers",
+    "services__laser-skin-or-treatments",
+    "services__male-aesthetic-procedures",
+    "services__medical-spa-and-treatments",
+    "services__post-weight-loss-surgery",
+    "services__tighten-define-neck-contours",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments",
+    "testimonials",
+    "top-tips-for-preparing-for-plastic-surgery",
+    "tpl__footer",
+    "tpl__footer-layout-2",
+    "tpl__footer-layout-3",
+    "tpl__footer-layout-4",
+    "video-gallery",
+    "what-to-expect-during-your-first-consultation"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-1-1024x683.jpg",
+   "local": "06-assets/images/2025-04-gallery-1-1024x683.jpg",
+   "bytes": 76889,
+   "sha256": "7399cd4edd94d23c",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-1-300x200.jpg",
+   "local": "06-assets/images/2025-04-gallery-1-300x200.jpg",
+   "bytes": 13133,
+   "sha256": "b2b9d37815ae2361",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-1-768x512.jpg",
+   "local": "06-assets/images/2025-04-gallery-1-768x512.jpg",
+   "bytes": 49992,
+   "sha256": "a2e4b5b303162453",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-1.jpg",
+   "local": "06-assets/images/2025-04-gallery-1.jpg",
+   "bytes": 171421,
+   "sha256": "bc041c91b8f32130",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1200,
+   "height": 800,
+   "mime": "image/jpeg",
+   "used_on": [
+    "image-gallery",
+    "video-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-2-1024x683.jpg",
+   "local": "06-assets/images/2025-04-gallery-2-1024x683.jpg",
+   "bytes": 80026,
+   "sha256": "50011877f363fedd",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-2-300x200.jpg",
+   "local": "06-assets/images/2025-04-gallery-2-300x200.jpg",
+   "bytes": 12637,
+   "sha256": "d76daa1aa46e5769",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-2-768x512.jpg",
+   "local": "06-assets/images/2025-04-gallery-2-768x512.jpg",
+   "bytes": 50738,
+   "sha256": "c77751ef8162a3eb",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-2.jpg",
+   "local": "06-assets/images/2025-04-gallery-2.jpg",
+   "bytes": 146890,
+   "sha256": "c919ce97442c84f7",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1200,
+   "height": 800,
+   "mime": "image/jpeg",
+   "used_on": [
+    "image-gallery",
+    "video-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-3-1024x683.jpg",
+   "local": "06-assets/images/2025-04-gallery-3-1024x683.jpg",
+   "bytes": 80915,
+   "sha256": "1a0bdf9ae14e4b88",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-3-300x200.jpg",
+   "local": "06-assets/images/2025-04-gallery-3-300x200.jpg",
+   "bytes": 12651,
+   "sha256": "75f90adcb1a348fd",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-3-768x512.jpg",
+   "local": "06-assets/images/2025-04-gallery-3-768x512.jpg",
+   "bytes": 51395,
+   "sha256": "73a3f846f9ca901f",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-3.jpg",
+   "local": "06-assets/images/2025-04-gallery-3.jpg",
+   "bytes": 152174,
+   "sha256": "eac8a93ef96eb07d",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1200,
+   "height": 800,
+   "mime": "image/jpeg",
+   "used_on": [
+    "image-gallery",
+    "video-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-4-1024x683.jpg",
+   "local": "06-assets/images/2025-04-gallery-4-1024x683.jpg",
+   "bytes": 71397,
+   "sha256": "9992e64a2b58c412",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-4-300x200.jpg",
+   "local": "06-assets/images/2025-04-gallery-4-300x200.jpg",
+   "bytes": 12698,
+   "sha256": "086ee9254cb77bdf",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-4-768x512.jpg",
+   "local": "06-assets/images/2025-04-gallery-4-768x512.jpg",
+   "bytes": 46980,
+   "sha256": "30280c24f678c9d7",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-4.jpg",
+   "local": "06-assets/images/2025-04-gallery-4.jpg",
+   "bytes": 156720,
+   "sha256": "8950323419835e99",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1200,
+   "height": 800,
+   "mime": "image/jpeg",
+   "used_on": [
+    "image-gallery",
+    "video-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-5-1024x683.jpg",
+   "local": "06-assets/images/2025-04-gallery-5-1024x683.jpg",
+   "bytes": 73927,
+   "sha256": "97537ffd39c0c26e",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-5-300x200.jpg",
+   "local": "06-assets/images/2025-04-gallery-5-300x200.jpg",
+   "bytes": 12159,
+   "sha256": "f3a909629f98cc49",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-5-768x512.jpg",
+   "local": "06-assets/images/2025-04-gallery-5-768x512.jpg",
+   "bytes": 47648,
+   "sha256": "65617fcccd84ff75",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-5.jpg",
+   "local": "06-assets/images/2025-04-gallery-5.jpg",
+   "bytes": 165898,
+   "sha256": "e2fe2bfed57d03c5",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1200,
+   "height": 800,
+   "mime": "image/jpeg",
+   "used_on": [
+    "image-gallery",
+    "video-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-6-1024x683.jpg",
+   "local": "06-assets/images/2025-04-gallery-6-1024x683.jpg",
+   "bytes": 80393,
+   "sha256": "3e928b820ef2bf7d",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-6-300x200.jpg",
+   "local": "06-assets/images/2025-04-gallery-6-300x200.jpg",
+   "bytes": 13853,
+   "sha256": "2c52d6555f5a9c5b",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-6-768x512.jpg",
+   "local": "06-assets/images/2025-04-gallery-6-768x512.jpg",
+   "bytes": 53092,
+   "sha256": "2bef1da82e285d7e",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-6.jpg",
+   "local": "06-assets/images/2025-04-gallery-6.jpg",
+   "bytes": 146898,
+   "sha256": "724dfb0b4eeb9c1e",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1200,
+   "height": 800,
+   "mime": "image/jpeg",
+   "used_on": [
+    "image-gallery",
+    "video-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-7-1024x683.jpg",
+   "local": "06-assets/images/2025-04-gallery-7-1024x683.jpg",
+   "bytes": 62742,
+   "sha256": "92b0cd055c680644",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-7-300x200.jpg",
+   "local": "06-assets/images/2025-04-gallery-7-300x200.jpg",
+   "bytes": 10734,
+   "sha256": "ad165e580ff6ceb9",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-7-768x512.jpg",
+   "local": "06-assets/images/2025-04-gallery-7-768x512.jpg",
+   "bytes": 40632,
+   "sha256": "2dbaa3bbbcc49603",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-7.jpg",
+   "local": "06-assets/images/2025-04-gallery-7.jpg",
+   "bytes": 142829,
+   "sha256": "84a98bc06c18f20a",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1200,
+   "height": 800,
+   "mime": "image/jpeg",
+   "used_on": [
+    "image-gallery",
+    "video-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-8-1024x683.jpg",
+   "local": "06-assets/images/2025-04-gallery-8-1024x683.jpg",
+   "bytes": 79919,
+   "sha256": "a0963e5888b463af",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-8-300x200.jpg",
+   "local": "06-assets/images/2025-04-gallery-8-300x200.jpg",
+   "bytes": 13326,
+   "sha256": "6c24a6ebdbea4335",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-8-768x512.jpg",
+   "local": "06-assets/images/2025-04-gallery-8-768x512.jpg",
+   "bytes": 51733,
+   "sha256": "769c381ae80296b9",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-8.jpg",
+   "local": "06-assets/images/2025-04-gallery-8.jpg",
+   "bytes": 146826,
+   "sha256": "c36a2de5f407541e",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1200,
+   "height": 800,
+   "mime": "image/jpeg",
+   "used_on": [
+    "image-gallery",
+    "video-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-9-1024x683.jpg",
+   "local": "06-assets/images/2025-04-gallery-9-1024x683.jpg",
+   "bytes": 81152,
+   "sha256": "9f91e991185ac2d4",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-9-300x200.jpg",
+   "local": "06-assets/images/2025-04-gallery-9-300x200.jpg",
+   "bytes": 13949,
+   "sha256": "26f873127c5cae48",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-9-768x512.jpg",
+   "local": "06-assets/images/2025-04-gallery-9-768x512.jpg",
+   "bytes": 53318,
+   "sha256": "e5a2783b0bacf8b8",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "image-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/gallery-9.jpg",
+   "local": "06-assets/images/2025-04-gallery-9.jpg",
+   "bytes": 148774,
+   "sha256": "c2deaa9cc226b99a",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1200,
+   "height": 800,
+   "mime": "image/jpeg",
+   "used_on": [
+    "image-gallery",
+    "video-gallery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/glow-up-image-224x300.jpg",
+   "local": "06-assets/images/2025-04-glow-up-image-224x300.jpg",
+   "bytes": 16309,
+   "sha256": "1fc18f66869d13ce",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "casestudy__a-smoother-glowing-complexion",
+    "casestudy__clear-radiant-skin-guide",
+    "casestudy__glow-up-perfect-skin-routine",
+    "casestudy__natural-beautiful-results",
+    "casestudy__radiant-skin-tips-for-a-glow",
+    "casestudy__restoring-post-pregnancy-beauty",
+    "casestudy__restoring-youthful-radiance",
+    "casestudy__secrets-to-soft-radiant-skin",
+    "casestudy__smooth-skin-radiant-glow-tips"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/glow-up-image.jpg",
+   "local": "06-assets/images/2025-04-glow-up-image.jpg",
+   "bytes": 279191,
+   "sha256": "d46f150c07ece953",
+   "in_media_library": true,
+   "alt": "",
+   "width": 414,
+   "height": 555,
+   "mime": "image/jpeg",
+   "used_on": [
+    "casestudy__a-smoother-glowing-complexion",
+    "casestudy__clear-radiant-skin-guide",
+    "casestudy__glow-up-perfect-skin-routine",
+    "casestudy__natural-beautiful-results",
+    "casestudy__radiant-skin-tips-for-a-glow",
+    "casestudy__restoring-post-pregnancy-beauty",
+    "casestudy__restoring-youthful-radiance",
+    "casestudy__secrets-to-soft-radiant-skin",
+    "casestudy__smooth-skin-radiant-glow-tips"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/hero-bg-2.jpg",
+   "local": "06-assets/images/2025-04-hero-bg-2.jpg",
+   "bytes": 209350,
+   "sha256": "59cd3c0eb277cdcd",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1920,
+   "height": 1280,
+   "mime": "image/jpeg",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/hero-bg-shape.svg",
+   "local": "06-assets/icons/2025-04-hero-bg-shape.svg",
+   "bytes": 28757,
+   "sha256": "196a3764b30ce931",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1800,
+   "height": 801,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/hero-bg.jpg",
+   "local": "06-assets/images/2025-04-hero-bg.jpg",
+   "bytes": 225810,
+   "sha256": "d1365af40e4a451c",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1920,
+   "height": 1280,
+   "mime": "image/jpeg",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/hero-image-bg-star.svg",
+   "local": "06-assets/icons/2025-04-hero-image-bg-star.svg",
+   "bytes": 1049,
+   "sha256": "92d4baed9e26aec3",
+   "in_media_library": true,
+   "alt": "",
+   "width": 673,
+   "height": 362,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/hero-img-300x256.png",
+   "local": "06-assets/images/2025-04-hero-img-300x256.png",
+   "bytes": 84835,
+   "sha256": "1c713d6e9d2bc535",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/hero-img-768x654.png",
+   "local": "06-assets/images/2025-04-hero-img-768x654.png",
+   "bytes": 454351,
+   "sha256": "3ca934a769d14134",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/hero-img.png",
+   "local": "06-assets/images/2025-04-hero-img.png",
+   "bytes": 551849,
+   "sha256": "9d4d35774e976ad3",
+   "in_media_library": true,
+   "alt": "",
+   "width": 797,
+   "height": 679,
+   "mime": "image/png",
+   "used_on": [
+    "_homepage"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/icon-appointment-item-1.svg",
+   "local": "06-assets/icons/2025-04-icon-appointment-item-1.svg",
+   "bytes": 6825,
+   "sha256": "5e6ce684e0220b3e",
+   "in_media_library": true,
+   "alt": "",
+   "width": 41,
+   "height": 41,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/icon-appointment-item-2.svg",
+   "local": "06-assets/icons/2025-04-icon-appointment-item-2.svg",
+   "bytes": 4214,
+   "sha256": "31334bce36e79fff",
+   "in_media_library": true,
+   "alt": "",
+   "width": 40,
+   "height": 41,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/icon-clock.svg",
+   "local": "06-assets/icons/2025-04-icon-clock.svg",
+   "bytes": 863,
+   "sha256": "b3b42ea6c7706d8e",
+   "in_media_library": true,
+   "alt": "",
+   "width": 22,
+   "height": 22,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/icon-facts-counter-2.svg",
+   "local": "06-assets/icons/2025-04-icon-facts-counter-2.svg",
+   "bytes": 1029,
+   "sha256": "a14b03fed7174a69",
+   "in_media_library": true,
+   "alt": "",
+   "width": 51,
+   "height": 51,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/icon-facts-counter-4.svg",
+   "local": "06-assets/icons/2025-04-icon-facts-counter-4.svg",
+   "bytes": 1387,
+   "sha256": "7132479bd7f43f53",
+   "in_media_library": true,
+   "alt": "",
+   "width": 51,
+   "height": 51,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/icon-google.svg",
+   "local": "06-assets/icons/2025-04-icon-google.svg",
+   "bytes": 1446,
+   "sha256": "0f2c4d04771ad600",
+   "in_media_library": true,
+   "alt": "",
+   "width": 20,
+   "height": 21,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/icon-how-work-step-2.svg",
+   "local": "06-assets/icons/2025-04-icon-how-work-step-2.svg",
+   "bytes": 1349,
+   "sha256": "a78ee5dfcaacd6af",
+   "in_media_library": true,
+   "alt": "",
+   "width": 34,
+   "height": 35,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/icon-how-work-step-4.svg",
+   "local": "06-assets/icons/2025-04-icon-how-work-step-4.svg",
+   "bytes": 2674,
+   "sha256": "1eba1cf5e36a2175",
+   "in_media_library": true,
+   "alt": "",
+   "width": 34,
+   "height": 35,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/icon-location.svg",
+   "local": "06-assets/icons/2025-04-icon-location.svg",
+   "bytes": 1445,
+   "sha256": "1c75589672adef3d",
+   "in_media_library": true,
+   "alt": "",
+   "width": 25,
+   "height": 25,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/icon-mail.svg",
+   "local": "06-assets/icons/2025-04-icon-mail.svg",
+   "bytes": 569,
+   "sha256": "ae8eda1246a010d5",
+   "in_media_library": true,
+   "alt": "",
+   "width": 25,
+   "height": 26,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/icon-mission.svg",
+   "local": "06-assets/icons/2025-04-icon-mission.svg",
+   "bytes": 1358,
+   "sha256": "8b9155d2900ff51a",
+   "in_media_library": true,
+   "alt": "",
+   "width": 34,
+   "height": 35,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/icon-open-hour.svg",
+   "local": "06-assets/icons/2025-04-icon-open-hour.svg",
+   "bytes": 4215,
+   "sha256": "92838fd2ac934e06",
+   "in_media_library": true,
+   "alt": "",
+   "width": 40,
+   "height": 41,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/icon-phone.svg",
+   "local": "06-assets/icons/2025-04-icon-phone.svg",
+   "bytes": 3277,
+   "sha256": "adf0ac1078579d4c",
+   "in_media_library": true,
+   "alt": "",
+   "width": 30,
+   "height": 30,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/icon-vision.svg",
+   "local": "06-assets/icons/2025-04-icon-vision.svg",
+   "bytes": 1044,
+   "sha256": "5d021763eecc3e77",
+   "in_media_library": true,
+   "alt": "",
+   "width": 34,
+   "height": 35,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/journey-bg-shape.svg",
+   "local": "06-assets/icons/2025-04-journey-bg-shape.svg",
+   "bytes": 17878,
+   "sha256": "d4f96e4fae2cbcf4",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1800,
+   "height": 844,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/journey-img-1.jpg",
+   "local": "06-assets/images/2025-04-journey-img-1.jpg",
+   "bytes": 103931,
+   "sha256": "dd5217b71fc803e5",
+   "in_media_library": true,
+   "alt": "",
+   "width": 287,
+   "height": 254,
+   "mime": "image/jpeg",
+   "used_on": [
+    "about-us"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/journey-img-2.jpg",
+   "local": "06-assets/images/2025-04-journey-img-2.jpg",
+   "bytes": 88470,
+   "sha256": "a3d0fe1046a31df2",
+   "in_media_library": true,
+   "alt": "",
+   "width": 287,
+   "height": 254,
+   "mime": "image/jpeg",
+   "used_on": [
+    "about-us"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/journey-img-3-300x183.jpg",
+   "local": "06-assets/images/2025-04-journey-img-3-300x183.jpg",
+   "bytes": 10860,
+   "sha256": "b85c160a429267b4",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "about-us"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/journey-img-3.jpg",
+   "local": "06-assets/images/2025-04-journey-img-3.jpg",
+   "bytes": 58242,
+   "sha256": "9a5de4719776ecd1",
+   "in_media_library": true,
+   "alt": "",
+   "width": 524,
+   "height": 320,
+   "mime": "image/jpeg",
+   "used_on": [
+    "about-us"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/page-header-bg.svg",
+   "local": "06-assets/icons/2025-04-page-header-bg.svg",
+   "bytes": 10681,
+   "sha256": "5cffe630f0eda85a",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1872,
+   "height": 427,
+   "mime": "image/svg+xml",
+   "used_on": [
+    "404",
+    "blog",
+    "casestudy",
+    "category__uncategorized",
+    "choose-a-qualified-surgeon-for-safe",
+    "follow-pre-surgery-guidelines-to-ensure-a-smooth",
+    "maintain-a-healthy-lifestyle-for-better-healing",
+    "myths-and-facts-about-plastic-surgery",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments",
+    "top-tips-for-preparing-for-plastic-surgery",
+    "what-to-expect-during-your-first-consultation"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-1-1024x575.jpg",
+   "local": "06-assets/images/2025-04-post-1-1024x575.jpg",
+   "bytes": 69741,
+   "sha256": "c86dd54a35d070bc",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "blog",
+    "category__uncategorized",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments",
+    "top-tips-for-preparing-for-plastic-surgery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-1-300x168.jpg",
+   "local": "06-assets/images/2025-04-post-1-300x168.jpg",
+   "bytes": 12249,
+   "sha256": "662d3a605cba32f9",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "blog",
+    "category__uncategorized",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments",
+    "top-tips-for-preparing-for-plastic-surgery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-1-768x431.jpg",
+   "local": "06-assets/images/2025-04-post-1-768x431.jpg",
+   "bytes": 46049,
+   "sha256": "0e94ef2c59572650",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "blog",
+    "category__uncategorized",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments",
+    "top-tips-for-preparing-for-plastic-surgery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-1.jpg",
+   "local": "06-assets/images/2025-04-post-1.jpg",
+   "bytes": 141299,
+   "sha256": "c2625ee556c7bd9d",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1366,
+   "height": 767,
+   "mime": "image/jpeg",
+   "used_on": [
+    "_homepage",
+    "blog",
+    "category__uncategorized",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments",
+    "top-tips-for-preparing-for-plastic-surgery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-2-1024x575.jpg",
+   "local": "06-assets/images/2025-04-post-2-1024x575.jpg",
+   "bytes": 87875,
+   "sha256": "b94429bb7b2eb78c",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "blog",
+    "category__uncategorized",
+    "myths-and-facts-about-plastic-surgery",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-2-300x168.jpg",
+   "local": "06-assets/images/2025-04-post-2-300x168.jpg",
+   "bytes": 14866,
+   "sha256": "2e2b88994d1a77d5",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "blog",
+    "category__uncategorized",
+    "myths-and-facts-about-plastic-surgery",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-2-768x431.jpg",
+   "local": "06-assets/images/2025-04-post-2-768x431.jpg",
+   "bytes": 58078,
+   "sha256": "f7b5d1c5edce3c03",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "blog",
+    "category__uncategorized",
+    "myths-and-facts-about-plastic-surgery",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-2.jpg",
+   "local": "06-assets/images/2025-04-post-2.jpg",
+   "bytes": 165244,
+   "sha256": "43bc7a7969896767",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1366,
+   "height": 767,
+   "mime": "image/jpeg",
+   "used_on": [
+    "_homepage",
+    "blog",
+    "category__uncategorized",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "myths-and-facts-about-plastic-surgery",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-3-1024x575.jpg",
+   "local": "06-assets/images/2025-04-post-3-1024x575.jpg",
+   "bytes": 92960,
+   "sha256": "15d59f280ef34e6f",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "blog",
+    "category__uncategorized",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments",
+    "what-to-expect-during-your-first-consultation"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-3-300x168.jpg",
+   "local": "06-assets/images/2025-04-post-3-300x168.jpg",
+   "bytes": 15233,
+   "sha256": "33967b639f1a0990",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "blog",
+    "category__uncategorized",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments",
+    "what-to-expect-during-your-first-consultation"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-3-768x431.jpg",
+   "local": "06-assets/images/2025-04-post-3-768x431.jpg",
+   "bytes": 60932,
+   "sha256": "3deedeecd4867838",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "blog",
+    "category__uncategorized",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments",
+    "what-to-expect-during-your-first-consultation"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-3.jpg",
+   "local": "06-assets/images/2025-04-post-3.jpg",
+   "bytes": 170159,
+   "sha256": "e8ab817785be2698",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1366,
+   "height": 767,
+   "mime": "image/jpeg",
+   "used_on": [
+    "_homepage",
+    "blog",
+    "category__uncategorized",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments",
+    "what-to-expect-during-your-first-consultation"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-4-1024x575.jpg",
+   "local": "06-assets/images/2025-04-post-4-1024x575.jpg",
+   "bytes": 52835,
+   "sha256": "6bf74c914af52868",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "blog",
+    "category__uncategorized",
+    "choose-a-qualified-surgeon-for-safe",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-4-300x168.jpg",
+   "local": "06-assets/images/2025-04-post-4-300x168.jpg",
+   "bytes": 9196,
+   "sha256": "f302422c35b4d30a",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "blog",
+    "category__uncategorized",
+    "choose-a-qualified-surgeon-for-safe",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-4-768x431.jpg",
+   "local": "06-assets/images/2025-04-post-4-768x431.jpg",
+   "bytes": 34321,
+   "sha256": "23ce911399777201",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "blog",
+    "category__uncategorized",
+    "choose-a-qualified-surgeon-for-safe",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-4.jpg",
+   "local": "06-assets/images/2025-04-post-4.jpg",
+   "bytes": 163635,
+   "sha256": "bde3a094c86c7d29",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1366,
+   "height": 767,
+   "mime": "image/jpeg",
+   "used_on": [
+    "blog",
+    "category__uncategorized",
+    "choose-a-qualified-surgeon-for-safe",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-5-1024x575.jpg",
+   "local": "06-assets/images/2025-04-post-5-1024x575.jpg",
+   "bytes": 61886,
+   "sha256": "3441a369831f76a4",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "blog",
+    "category__uncategorized",
+    "follow-pre-surgery-guidelines-to-ensure-a-smooth",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-5-300x168.jpg",
+   "local": "06-assets/images/2025-04-post-5-300x168.jpg",
+   "bytes": 9805,
+   "sha256": "0ccd70f691551047",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "blog",
+    "category__uncategorized",
+    "follow-pre-surgery-guidelines-to-ensure-a-smooth",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-5-768x431.jpg",
+   "local": "06-assets/images/2025-04-post-5-768x431.jpg",
+   "bytes": 39691,
+   "sha256": "a7902f4fd830af29",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "blog",
+    "category__uncategorized",
+    "follow-pre-surgery-guidelines-to-ensure-a-smooth",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-5.jpg",
+   "local": "06-assets/images/2025-04-post-5.jpg",
+   "bytes": 147656,
+   "sha256": "f0a6a4db7d2da256",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1366,
+   "height": 767,
+   "mime": "image/jpeg",
+   "used_on": [
+    "blog",
+    "category__uncategorized",
+    "follow-pre-surgery-guidelines-to-ensure-a-smooth",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-6-1024x575.jpg",
+   "local": "06-assets/images/2025-04-post-6-1024x575.jpg",
+   "bytes": 60501,
+   "sha256": "6307534dba92ecf2",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "blog",
+    "category__uncategorized",
+    "maintain-a-healthy-lifestyle-for-better-healing",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-6-300x168.jpg",
+   "local": "06-assets/images/2025-04-post-6-300x168.jpg",
+   "bytes": 10467,
+   "sha256": "5754ea5f1fb8e55b",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "blog",
+    "category__uncategorized",
+    "maintain-a-healthy-lifestyle-for-better-healing",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-6-768x431.jpg",
+   "local": "06-assets/images/2025-04-post-6-768x431.jpg",
+   "bytes": 39377,
+   "sha256": "561ee288c56f986e",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "blog",
+    "category__uncategorized",
+    "maintain-a-healthy-lifestyle-for-better-healing",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/post-6.jpg",
+   "local": "06-assets/images/2025-04-post-6.jpg",
+   "bytes": 149026,
+   "sha256": "1a3129a10ec88418",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1366,
+   "height": 767,
+   "mime": "image/jpeg",
+   "used_on": [
+    "blog",
+    "category__uncategorized",
+    "maintain-a-healthy-lifestyle-for-better-healing",
+    "tag__book-now",
+    "tag__consultation",
+    "tag__treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-bg-shape.svg",
+   "local": "06-assets/icons/2025-04-service-bg-shape.svg",
+   "bytes": 42854,
+   "sha256": "28fbe8fd3bb2758d",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1800,
+   "height": 1511,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-1-1024x683.jpg",
+   "local": "06-assets/images/2025-04-service-image-1-1024x683.jpg",
+   "bytes": 89601,
+   "sha256": "8bd19580b9082c6e",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__botox-and-dermal-fillers"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-1-300x200.jpg",
+   "local": "06-assets/images/2025-04-service-image-1-300x200.jpg",
+   "bytes": 15424,
+   "sha256": "9f042d463ad4c530",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__botox-and-dermal-fillers"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-1-768x512.jpg",
+   "local": "06-assets/images/2025-04-service-image-1-768x512.jpg",
+   "bytes": 59276,
+   "sha256": "9fd7b266bee10b63",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__botox-and-dermal-fillers"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-1.jpg",
+   "local": "06-assets/images/2025-04-service-image-1.jpg",
+   "bytes": 162370,
+   "sha256": "f64078689988eac3",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1200,
+   "height": 800,
+   "mime": "image/jpeg",
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__botox-and-dermal-fillers"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-2-1024x683.jpg",
+   "local": "06-assets/images/2025-04-service-image-2-1024x683.jpg",
+   "bytes": 94320,
+   "sha256": "e23d177aa8ff7335",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__laser-skin-or-treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-2-300x200.jpg",
+   "local": "06-assets/images/2025-04-service-image-2-300x200.jpg",
+   "bytes": 16186,
+   "sha256": "6725b0584881d066",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__laser-skin-or-treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-2-768x512.jpg",
+   "local": "06-assets/images/2025-04-service-image-2-768x512.jpg",
+   "bytes": 61626,
+   "sha256": "93bc5e3bccfc891b",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__laser-skin-or-treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-2.jpg",
+   "local": "06-assets/images/2025-04-service-image-2.jpg",
+   "bytes": 173386,
+   "sha256": "019ae06e282b6067",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1200,
+   "height": 800,
+   "mime": "image/jpeg",
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__laser-skin-or-treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-3-1024x683.jpg",
+   "local": "06-assets/images/2025-04-service-image-3-1024x683.jpg",
+   "bytes": 89027,
+   "sha256": "6e019da7a490dd0c",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__male-aesthetic-procedures"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-3-300x200.jpg",
+   "local": "06-assets/images/2025-04-service-image-3-300x200.jpg",
+   "bytes": 15511,
+   "sha256": "6c981fcffa57eb68",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__male-aesthetic-procedures"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-3-768x512.jpg",
+   "local": "06-assets/images/2025-04-service-image-3-768x512.jpg",
+   "bytes": 58988,
+   "sha256": "42d7c15beafc1235",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__male-aesthetic-procedures"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-3.jpg",
+   "local": "06-assets/images/2025-04-service-image-3.jpg",
+   "bytes": 159495,
+   "sha256": "62fd270168eb04ec",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1200,
+   "height": 800,
+   "mime": "image/jpeg",
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__male-aesthetic-procedures"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-4-1024x683.jpg",
+   "local": "06-assets/images/2025-04-service-image-4-1024x683.jpg",
+   "bytes": 79774,
+   "sha256": "5649bc08c034f76c",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__post-weight-loss-surgery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-4-300x200.jpg",
+   "local": "06-assets/images/2025-04-service-image-4-300x200.jpg",
+   "bytes": 13610,
+   "sha256": "89e9b4784ae36639",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__post-weight-loss-surgery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-4-768x512.jpg",
+   "local": "06-assets/images/2025-04-service-image-4-768x512.jpg",
+   "bytes": 52266,
+   "sha256": "9a4d4d8d146eb1a5",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__post-weight-loss-surgery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-4.jpg",
+   "local": "06-assets/images/2025-04-service-image-4.jpg",
+   "bytes": 147179,
+   "sha256": "b9f31088990a377e",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1200,
+   "height": 800,
+   "mime": "image/jpeg",
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__post-weight-loss-surgery"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-5-1024x683.jpg",
+   "local": "06-assets/images/2025-04-service-image-5-1024x683.jpg",
+   "bytes": 86129,
+   "sha256": "9364f4d30593f64a",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__medical-spa-and-treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-5-300x200.jpg",
+   "local": "06-assets/images/2025-04-service-image-5-300x200.jpg",
+   "bytes": 14157,
+   "sha256": "e810568dc5fd6c6f",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__medical-spa-and-treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-5-768x512.jpg",
+   "local": "06-assets/images/2025-04-service-image-5-768x512.jpg",
+   "bytes": 55783,
+   "sha256": "e0a134b2fcc03663",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__medical-spa-and-treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-5.jpg",
+   "local": "06-assets/images/2025-04-service-image-5.jpg",
+   "bytes": 158043,
+   "sha256": "09f14279604cc42e",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1200,
+   "height": 800,
+   "mime": "image/jpeg",
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__medical-spa-and-treatments"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-6-1024x683.jpg",
+   "local": "06-assets/images/2025-04-service-image-6-1024x683.jpg",
+   "bytes": 94791,
+   "sha256": "a9c5c73b19a3d02b",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__tighten-define-neck-contours"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-6-300x200.jpg",
+   "local": "06-assets/images/2025-04-service-image-6-300x200.jpg",
+   "bytes": 15585,
+   "sha256": "aa32beefb9d69d4b",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__tighten-define-neck-contours"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-6-768x512.jpg",
+   "local": "06-assets/images/2025-04-service-image-6-768x512.jpg",
+   "bytes": 62206,
+   "sha256": "16b11303fc2fd3aa",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__tighten-define-neck-contours"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/service-image-6.jpg",
+   "local": "06-assets/images/2025-04-service-image-6.jpg",
+   "bytes": 176310,
+   "sha256": "a185c4d167f6c210",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1200,
+   "height": 800,
+   "mime": "image/jpeg",
+   "used_on": [
+    "_homepage",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "services__tighten-define-neck-contours"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/servie-entry-video-image.jpg",
+   "local": "06-assets/images/2025-04-servie-entry-video-image.jpg",
+   "bytes": 87324,
+   "sha256": "4b7c24778097f8e9",
+   "in_media_library": true,
+   "alt": "",
+   "width": 857,
+   "height": 382,
+   "mime": "image/jpeg",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/sidebar-cta-bg-246x300.jpg",
+   "local": "06-assets/images/2025-04-sidebar-cta-bg-246x300.jpg",
+   "bytes": 16697,
+   "sha256": "a7b21e2a22bc23f3",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "casestudy__a-smoother-glowing-complexion",
+    "casestudy__clear-radiant-skin-guide",
+    "casestudy__glow-up-perfect-skin-routine",
+    "casestudy__natural-beautiful-results",
+    "casestudy__radiant-skin-tips-for-a-glow",
+    "casestudy__restoring-post-pregnancy-beauty",
+    "casestudy__restoring-youthful-radiance",
+    "casestudy__secrets-to-soft-radiant-skin",
+    "casestudy__smooth-skin-radiant-glow-tips",
+    "faqs",
+    "services__botox-and-dermal-fillers",
+    "services__laser-skin-or-treatments",
+    "services__male-aesthetic-procedures",
+    "services__medical-spa-and-treatments",
+    "services__post-weight-loss-surgery",
+    "services__tighten-define-neck-contours"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/sidebar-cta-bg.jpg",
+   "local": "06-assets/images/2025-04-sidebar-cta-bg.jpg",
+   "bytes": 28882,
+   "sha256": "1d064889ee0cfb98",
+   "in_media_library": true,
+   "alt": "",
+   "width": 390,
+   "height": 476,
+   "mime": "image/jpeg",
+   "used_on": [
+    "casestudy__a-smoother-glowing-complexion",
+    "casestudy__clear-radiant-skin-guide",
+    "casestudy__glow-up-perfect-skin-routine",
+    "casestudy__natural-beautiful-results",
+    "casestudy__radiant-skin-tips-for-a-glow",
+    "casestudy__restoring-post-pregnancy-beauty",
+    "casestudy__restoring-youthful-radiance",
+    "casestudy__secrets-to-soft-radiant-skin",
+    "casestudy__smooth-skin-radiant-glow-tips",
+    "faqs",
+    "services__botox-and-dermal-fillers",
+    "services__laser-skin-or-treatments",
+    "services__male-aesthetic-procedures",
+    "services__medical-spa-and-treatments",
+    "services__post-weight-loss-surgery",
+    "services__tighten-define-neck-contours"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/team-1-260x300.jpg",
+   "local": "06-assets/images/2025-04-team-1-260x300.jpg",
+   "bytes": 14488,
+   "sha256": "cb341bc1f38b2ae2",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "about-us",
+    "our-team",
+    "our-team__dr-neha-verma"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/team-1.jpg",
+   "local": "06-assets/images/2025-04-team-1.jpg",
+   "bytes": 27119,
+   "sha256": "ece597cd8d7052a1",
+   "in_media_library": true,
+   "alt": "",
+   "width": 400,
+   "height": 462,
+   "mime": "image/jpeg",
+   "used_on": [
+    "about-us",
+    "our-team",
+    "our-team__dr-neha-verma"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/team-2-260x300.jpg",
+   "local": "06-assets/images/2025-04-team-2-260x300.jpg",
+   "bytes": 16254,
+   "sha256": "93c6ba9a85d4aee5",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "about-us",
+    "our-team",
+    "our-team__dr-cameron-williamson"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/team-2.jpg",
+   "local": "06-assets/images/2025-04-team-2.jpg",
+   "bytes": 27092,
+   "sha256": "cdbb08dfcc42f771",
+   "in_media_library": true,
+   "alt": "",
+   "width": 400,
+   "height": 462,
+   "mime": "image/jpeg",
+   "used_on": [
+    "about-us",
+    "our-team",
+    "our-team__dr-cameron-williamson"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/team-3-260x300.jpg",
+   "local": "06-assets/images/2025-04-team-3-260x300.jpg",
+   "bytes": 18187,
+   "sha256": "9d4f288b30430282",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "about-us",
+    "our-team",
+    "our-team__dr-ayesha-kapoor"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/team-3.jpg",
+   "local": "06-assets/images/2025-04-team-3.jpg",
+   "bytes": 29206,
+   "sha256": "2a528b52d60dda49",
+   "in_media_library": true,
+   "alt": "",
+   "width": 400,
+   "height": 462,
+   "mime": "image/jpeg",
+   "used_on": [
+    "about-us",
+    "our-team",
+    "our-team__dr-ayesha-kapoor"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/team-4-260x300.jpg",
+   "local": "06-assets/images/2025-04-team-4-260x300.jpg",
+   "bytes": 17782,
+   "sha256": "422403c294af893c",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "about-us",
+    "our-team",
+    "our-team__dr-rahul-mehta"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/team-4.jpg",
+   "local": "06-assets/images/2025-04-team-4.jpg",
+   "bytes": 27916,
+   "sha256": "a1c33a2d932e8757",
+   "in_media_library": true,
+   "alt": "",
+   "width": 400,
+   "height": 462,
+   "mime": "image/jpeg",
+   "used_on": [
+    "about-us",
+    "our-team",
+    "our-team__dr-rahul-mehta"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/team-5-260x300.jpg",
+   "local": "06-assets/images/2025-04-team-5-260x300.jpg",
+   "bytes": 16862,
+   "sha256": "427e48ed9f303742",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "our-team"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/team-5.jpg",
+   "local": "06-assets/images/2025-04-team-5.jpg",
+   "bytes": 26912,
+   "sha256": "30ff21cd1bdfb26d",
+   "in_media_library": true,
+   "alt": "",
+   "width": 400,
+   "height": 462,
+   "mime": "image/jpeg",
+   "used_on": [
+    "our-team"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/team-6-260x300.jpg",
+   "local": "06-assets/images/2025-04-team-6-260x300.jpg",
+   "bytes": 15518,
+   "sha256": "ff56cbc22901af3a",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "our-team"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/team-6.jpg",
+   "local": "06-assets/images/2025-04-team-6.jpg",
+   "bytes": 196764,
+   "sha256": "419c1cec94f91bfa",
+   "in_media_library": true,
+   "alt": "",
+   "width": 400,
+   "height": 462,
+   "mime": "image/jpeg",
+   "used_on": [
+    "our-team"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/team-7-260x300.jpg",
+   "local": "06-assets/images/2025-04-team-7-260x300.jpg",
+   "bytes": 17695,
+   "sha256": "a18396f6d7544ffa",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "our-team"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/team-7.jpg",
+   "local": "06-assets/images/2025-04-team-7.jpg",
+   "bytes": 28334,
+   "sha256": "81026141590e120a",
+   "in_media_library": true,
+   "alt": "",
+   "width": 400,
+   "height": 462,
+   "mime": "image/jpeg",
+   "used_on": [
+    "our-team"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/team-8-260x300.jpg",
+   "local": "06-assets/images/2025-04-team-8-260x300.jpg",
+   "bytes": 15723,
+   "sha256": "28ce2adc4371ec8e",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "our-team"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/team-8.jpg",
+   "local": "06-assets/images/2025-04-team-8.jpg",
+   "bytes": 28041,
+   "sha256": "d066c2de05639c79",
+   "in_media_library": true,
+   "alt": "",
+   "width": 400,
+   "height": 462,
+   "mime": "image/jpeg",
+   "used_on": [
+    "our-team"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/testimonial-image-300x256.jpg",
+   "local": "06-assets/images/2025-04-testimonial-image-300x256.jpg",
+   "bytes": 15249,
+   "sha256": "4567d48b23a653a1",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "about-us",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/testimonial-image.jpg",
+   "local": "06-assets/images/2025-04-testimonial-image.jpg",
+   "bytes": 49145,
+   "sha256": "40a8ca6cbc254091",
+   "in_media_library": true,
+   "alt": "",
+   "width": 605,
+   "height": 516,
+   "mime": "image/jpeg",
+   "used_on": [
+    "_homepage",
+    "about-us",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/testimonials-bg-shape.png",
+   "local": "06-assets/images/2025-04-testimonials-bg-shape.png",
+   "bytes": 44549,
+   "sha256": "6254aba987e83807",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1800,
+   "height": 1041,
+   "mime": "image/png",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/transformation-img-1.jpg",
+   "local": "06-assets/images/2025-04-transformation-img-1.jpg",
+   "bytes": 91571,
+   "sha256": "30ec7c24c69c0ad6",
+   "in_media_library": true,
+   "alt": "",
+   "width": 308,
+   "height": 501,
+   "mime": "image/jpeg",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/transformation-img-2.jpg",
+   "local": "06-assets/images/2025-04-transformation-img-2.jpg",
+   "bytes": 86593,
+   "sha256": "73b51eb62fd7abb5",
+   "in_media_library": true,
+   "alt": "",
+   "width": 309,
+   "height": 501,
+   "mime": "image/jpeg",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/transformation-img-3.jpg",
+   "local": "06-assets/images/2025-04-transformation-img-3.jpg",
+   "bytes": 65965,
+   "sha256": "bc3008b0eda042a5",
+   "in_media_library": true,
+   "alt": "",
+   "width": 308,
+   "height": 501,
+   "mime": "image/jpeg",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/transformation-img-4.jpg",
+   "local": "06-assets/images/2025-04-transformation-img-4.jpg",
+   "bytes": 60586,
+   "sha256": "d35ef68b5abfa326",
+   "in_media_library": true,
+   "alt": "",
+   "width": 303,
+   "height": 501,
+   "mime": "image/jpeg",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/what-we-image-1-188x300.png",
+   "local": "06-assets/images/2025-04-what-we-image-1-188x300.png",
+   "bytes": 71442,
+   "sha256": "d5c792bd33de68f2",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "about-us",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/what-we-image-1.png",
+   "local": "06-assets/images/2025-04-what-we-image-1.png",
+   "bytes": 88436,
+   "sha256": "bc49802922fac6f9",
+   "in_media_library": true,
+   "alt": "",
+   "width": 392,
+   "height": 626,
+   "mime": "image/png",
+   "used_on": [
+    "_homepage",
+    "about-us",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/what-we-image-2-189x300.jpg",
+   "local": "06-assets/images/2025-04-what-we-image-2-189x300.jpg",
+   "bytes": 14398,
+   "sha256": "6c4e831fcd8b65e1",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "about-us",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/what-we-image-2.jpg",
+   "local": "06-assets/images/2025-04-what-we-image-2.jpg",
+   "bytes": 36899,
+   "sha256": "e836e0deb378e527",
+   "in_media_library": true,
+   "alt": "",
+   "width": 391,
+   "height": 621,
+   "mime": "image/jpeg",
+   "used_on": [
+    "_homepage",
+    "about-us",
+    "home-image",
+    "home-slider",
+    "home-video"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/why-choose-bg-shape.svg",
+   "local": "06-assets/icons/2025-04-why-choose-bg-shape.svg",
+   "bytes": 3032,
+   "sha256": "f0cd206595de51c1",
+   "in_media_library": true,
+   "alt": "",
+   "width": 1800,
+   "height": 762,
+   "mime": "image/svg+xml",
+   "used_on": [],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/why-choose-image-1-194x300.jpg",
+   "local": "06-assets/images/2025-04-why-choose-image-1-194x300.jpg",
+   "bytes": 12818,
+   "sha256": "f30725e9ff6699f5",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "book-appointment",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "testimonials"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/why-choose-image-1.jpg",
+   "local": "06-assets/images/2025-04-why-choose-image-1.jpg",
+   "bytes": 44496,
+   "sha256": "df20125e4ea0d7fb",
+   "in_media_library": true,
+   "alt": "",
+   "width": 264,
+   "height": 408,
+   "mime": "image/jpeg",
+   "used_on": [
+    "_homepage",
+    "book-appointment",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "testimonials"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/why-choose-image-2-194x300.jpg",
+   "local": "06-assets/images/2025-04-why-choose-image-2-194x300.jpg",
+   "bytes": 15607,
+   "sha256": "1030e7ab8d6f3859",
+   "in_media_library": false,
+   "alt": "",
+   "width": null,
+   "height": null,
+   "mime": null,
+   "used_on": [
+    "_homepage",
+    "book-appointment",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "testimonials"
+   ],
+   "licence": "reference-only"
+  },
+  {
+   "url": "https://demo.awaikenthemes.com/glowix/wp-content/uploads/2025/04/why-choose-image-2.jpg",
+   "local": "06-assets/images/2025-04-why-choose-image-2.jpg",
+   "bytes": 57144,
+   "sha256": "3935df439f4ca9c1",
+   "in_media_library": true,
+   "alt": "",
+   "width": 264,
+   "height": 408,
+   "mime": "image/jpeg",
+   "used_on": [
+    "_homepage",
+    "book-appointment",
+    "home-image",
+    "home-slider",
+    "home-video",
+    "services",
+    "testimonials"
+   ],
+   "licence": "reference-only"
+  }
+ ]
+}

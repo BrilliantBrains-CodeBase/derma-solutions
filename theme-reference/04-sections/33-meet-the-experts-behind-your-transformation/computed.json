@@ -1,0 +1,81 @@
+{
+ "zone": "content",
+ "dataId": "c42e451",
+ "classes": "elementor-element elementor-element-c42e451 e-flex e-con-boxed e-con e-parent e-lazyloaded",
+ "rect": {
+  "top": 3950,
+  "h": 909,
+  "w": 1440
+ },
+ "style": {
+  "display": "flex",
+  "flexDirection": "column",
+  "gap": "normal",
+  "padding": "0px 10px 0px 10px",
+  "background": "rgba(0, 0, 0, 0)",
+  "backgroundImage": null,
+  "radius": 0,
+  "maxWidth": "100%",
+  "width": 1440,
+  "alignItems": "normal",
+  "justifyContent": "normal"
+ },
+ "children": [
+  {
+   "cls": "e-con-inner",
+   "w": 1300,
+   "h": 909,
+   "display": "flex",
+   "flex": "1 1 auto",
+   "gap": "60px 20px",
+   "grid": null,
+   "pad": "100px 0px 100px 0px",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": 0
+  }
+ ],
+ "widgets": [
+  "heading",
+  "heading",
+  "elementskit-image-box",
+  "elementskit-social-media",
+  "elementskit-image-box",
+  "elementskit-social-media",
+  "elementskit-image-box",
+  "elementskit-social-media",
+  "elementskit-image-box",
+  "elementskit-social-media"
+ ],
+ "headings": [
+  {
+   "tag": "h3",
+   "text": "OUR TEAM"
+  },
+  {
+   "tag": "h2",
+   "text": "Meet the experts behind your transformation"
+  },
+  {
+   "tag": "h3",
+   "text": "Dr. Neha Verma"
+  },
+  {
+   "tag": "h3",
+   "text": "Dr. Cameron Williamson"
+  },
+  {
+   "tag": "h3",
+   "text": "Dr. Ayesha Kapoor"
+  },
+  {
+   "tag": "h3",
+   "text": "Dr. Rahul Mehta"
+  }
+ ],
+ "animations": [
+  "at-animation-heading-none",
+  "at-animation-heading-style-3"
+ ],
+ "shinyGlassElements": 0,
+ "firstSeenOn": "about-us"
+}

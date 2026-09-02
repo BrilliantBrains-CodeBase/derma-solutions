@@ -1,0 +1,70 @@
+{
+ "zone": "content",
+ "dataId": "c845795",
+ "classes": "elementor-element elementor-element-c845795 e-flex e-con-boxed e-con e-parent e-lazyloaded",
+ "rect": {
+  "top": 0,
+  "h": 621,
+  "w": 1440
+ },
+ "style": {
+  "display": "flex",
+  "flexDirection": "column",
+  "gap": "normal",
+  "padding": "0px 0px 0px 0px",
+  "background": "rgba(255, 255, 255, 0)",
+  "backgroundImage": null,
+  "radius": 0,
+  "maxWidth": "100%",
+  "width": 1440,
+  "alignItems": "normal",
+  "justifyContent": "normal"
+ },
+ "children": [
+  {
+   "cls": "e-con-inner",
+   "w": 1300,
+   "h": 621,
+   "display": "flex",
+   "flex": "1 1 auto",
+   "gap": "20px",
+   "grid": null,
+   "pad": "0px 0px 0px 0px",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": 0
+  }
+ ],
+ "widgets": [
+  "elementskit-icon-box",
+  "divider",
+  "elementskit-icon-box",
+  "divider",
+  "elementskit-icon-box",
+  "divider",
+  "heading",
+  "elementskit-social-media"
+ ],
+ "headings": [
+  {
+   "tag": "h3",
+   "text": "Phone"
+  },
+  {
+   "tag": "h3",
+   "text": "Email"
+  },
+  {
+   "tag": "h3",
+   "text": "Address"
+  },
+  {
+   "tag": "h2",
+   "text": "Stay Connected"
+  }
+ ],
+ "animations": [
+  "at-animation-heading-none"
+ ],
+ "shinyGlassElements": 0,
+ "firstSeenOn": "elementskit-content__dynamic-content-widget-2548a92-99"
+}

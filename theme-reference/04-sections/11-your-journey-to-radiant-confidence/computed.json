@@ -1,0 +1,72 @@
+{
+ "zone": "content",
+ "dataId": "09b055b",
+ "classes": "elementor-element elementor-element-09b055b e-flex e-con-boxed e-con e-parent e-lazyloaded",
+ "rect": {
+  "top": 804,
+  "h": 815,
+  "w": 1440
+ },
+ "style": {
+  "display": "flex",
+  "flexDirection": "column",
+  "gap": "normal",
+  "padding": "0px 10px 0px 10px",
+  "background": "rgba(0, 0, 0, 0)",
+  "backgroundImage": null,
+  "radius": 0,
+  "maxWidth": "100%",
+  "width": 1440,
+  "alignItems": "normal",
+  "justifyContent": "normal"
+ },
+ "children": [
+  {
+   "cls": "e-con-inner",
+   "w": 1300,
+   "h": 815,
+   "display": "flex",
+   "flex": "1 1 auto",
+   "gap": "0px",
+   "grid": null,
+   "pad": "100px 0px 100px 0px",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": 0
+  }
+ ],
+ "widgets": [
+  "image",
+  "text-path",
+  "image",
+  "heading",
+  "heading",
+  "text-editor",
+  "icon-list",
+  "image",
+  "elementskit-icon-box",
+  "button"
+ ],
+ "headings": [
+  {
+   "tag": "h3",
+   "text": "ABOUT US"
+  },
+  {
+   "tag": "h2",
+   "text": "Your journey to radiant confidence"
+  },
+  {
+   "tag": "h3",
+   "text": "Need Help!"
+  }
+ ],
+ "animations": [
+  "at-animation-image-style-1",
+  "at-animation-image-style-1",
+  "at-animation-heading-none",
+  "at-animation-heading-style-3",
+  "at-animation-image-style-1"
+ ],
+ "shinyGlassElements": 3,
+ "firstSeenOn": "_homepage"
+}

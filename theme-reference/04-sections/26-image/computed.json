@@ -1,0 +1,49 @@
+{
+ "zone": "content",
+ "dataId": "5e9677d",
+ "classes": "elementor-element elementor-element-5e9677d e-flex e-con-boxed e-con e-parent e-lazyloaded",
+ "rect": {
+  "top": 0,
+  "h": 377,
+  "w": 1440
+ },
+ "style": {
+  "display": "flex",
+  "flexDirection": "column",
+  "gap": "normal",
+  "padding": "0px 20px 0px 20px",
+  "background": "rgba(0, 0, 0, 0)",
+  "backgroundImage": null,
+  "radius": 0,
+  "maxWidth": "100%",
+  "width": 1440,
+  "alignItems": "normal",
+  "justifyContent": "normal"
+ },
+ "children": [
+  {
+   "cls": "e-con-inner",
+   "w": 1400,
+   "h": 377,
+   "display": "flex",
+   "flex": "1 1 auto",
+   "gap": "20px",
+   "grid": null,
+   "pad": "0px 0px 0px 0px",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": 0
+  }
+ ],
+ "widgets": [
+  "image",
+  "text-editor",
+  "elementskit-social-media",
+  "elementskit-copyright"
+ ],
+ "headings": [],
+ "animations": [
+  "at-animation-image-none"
+ ],
+ "shinyGlassElements": 0,
+ "firstSeenOn": "tpl__footer-layout-4"
+}

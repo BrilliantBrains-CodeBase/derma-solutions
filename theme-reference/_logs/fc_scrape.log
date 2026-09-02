@@ -1,0 +1,59 @@
+[1/58] SKIP _homepage
+[2/58] SKIP 404
+[3/58] SKIP tpl__footer
+[4/58] SKIP tpl__footer-layout-2
+[5/58] SKIP tpl__footer-layout-3
+[6/58] SKIP tpl__footer-layout-4
+[7/58] SKIP tpl__header
+[8/58] SKIP tpl__header-layout-2
+[9/58] SKIP tpl__header-layout-3
+[10/58] SKIP tpl__header-layout-4
+[11/58] about-us  md=13402 links=44 imgs=26
+[12/58] blog  md=6495 links=41 imgs=11
+[13/58] book-appointment  md=7495 links=41 imgs=9
+[14/58] casestudy  md=8218 links=44 imgs=14
+[15/58] choose-a-qualified-surgeon-for-safe  md=8308 links=44 imgs=6
+[16/58] contact-us  md=5409 links=41 imgs=4
+[17/58] faqs  md=11097 links=60 imgs=5
+[18/58] follow-pre-surgery-guidelines-to-ensure-a-smooth  md=8490 links=44 imgs=6
+[19/58] home-image  md=16346 links=51 imgs=30
+[20/58] home-slider  md=17571 links=51 imgs=30
+[21/58] home-video  md=16341 links=51 imgs=30
+[22/58] SKIP image-gallery
+[23/58] SKIP maintain-a-healthy-lifestyle-for-better-healing
+[24/58] myths-and-facts-about-plastic-surgery  md=8335 links=44 imgs=6
+[25/58] our-team  md=7549 links=39 imgs=12
+[26/58] services  md=10907 links=46 imgs=19
+[27/58] testimonials  md=8810 links=41 imgs=14
+[28/58] top-tips-for-preparing-for-plastic-surgery  md=8405 links=44 imgs=6
+[29/58] video-gallery  md=6077 links=37 imgs=13
+[30/58] what-to-expect-during-your-first-consultation  md=8447 links=44 imgs=6
+[31/58] casestudy__a-smoother-glowing-complexion  md=10283 links=40 imgs=7
+[32/58] casestudy__clear-radiant-skin-guide  md=10153 links=40 imgs=7
+[33/58] casestudy__glow-up-perfect-skin-routine  md=10249 links=40 imgs=7
+[34/58] casestudy__natural-beautiful-results  md=10181 links=40 imgs=7
+[35/58] casestudy__radiant-skin-tips-for-a-glow  md=10249 links=40 imgs=7
+[36/58] casestudy__restoring-post-pregnancy-beauty  md=10332 links=40 imgs=7
+[37/58] casestudy__restoring-youthful-radiance  md=10224 links=40 imgs=7
+[38/58] casestudy__secrets-to-soft-radiant-skin  md=10249 links=40 imgs=7
+[39/58] casestudy__smooth-skin-radiant-glow-tips  md=10276 links=40 imgs=7
+[40/58] category__uncategorized  md=6780 links=41 imgs=11
+[41/58] elementskit-content__dynamic-content-widget-1690dac-7f784d8  md=1007 links=4 imgs=2
+[42/58] elementskit-content__dynamic-content-widget-1690dac-aa1dc66  md=1008 links=4 imgs=2
+[43/58] elementskit-content__dynamic-content-widget-2548a92-99  md=1042 links=5 imgs=2
+[44/58] elementskit-content__dynamic-content-widget-47f261e-7f784d8  md=964 links=4 imgs=2
+[45/58] elementskit-content__dynamic-content-widget-47f261e-aa1dc66  md=964 links=4 imgs=2
+[46/58] our-team__dr-ayesha-kapoor  md=7226 links=36 imgs=5
+[47/58] our-team__dr-cameron-williamson  md=7346 links=36 imgs=5
+[48/58] our-team__dr-neha-verma  md=7154 links=36 imgs=5
+[49/58] our-team__dr-rahul-mehta  md=7178 links=36 imgs=5
+[50/58] services__botox-and-dermal-fillers  md=10402 links=46 imgs=6
+[51/58] services__laser-skin-or-treatments  md=10402 links=46 imgs=6
+[52/58] services__male-aesthetic-procedures  md=10333 links=46 imgs=6
+[53/58] services__medical-spa-and-treatments  md=10353 links=46 imgs=6
+[54/58] services__post-weight-loss-surgery  md=10312 links=46 imgs=6
+[55/58] services__tighten-define-neck-contours  md=10404 links=46 imgs=6
+[56/58] tag__book-now  md=6655 links=41 imgs=11
+[57/58] tag__consultation  md=6711 links=41 imgs=11
+[58/58] tag__treatments  md=6683 links=41 imgs=11
+FC-DONE ok=46 fail=0  markdown files: 58/58

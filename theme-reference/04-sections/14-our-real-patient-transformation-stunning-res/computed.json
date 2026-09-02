@@ -1,0 +1,101 @@
+{
+ "zone": "content",
+ "dataId": "08a8b77",
+ "classes": "elementor-element elementor-element-08a8b77 e-flex e-con-boxed e-con e-parent e-lazyloaded",
+ "rect": {
+  "top": 8383,
+  "h": 1238,
+  "w": 1440
+ },
+ "style": {
+  "display": "flex",
+  "flexDirection": "column",
+  "gap": "normal",
+  "padding": "0px 10px 0px 10px",
+  "background": "rgba(0, 0, 0, 0)",
+  "backgroundImage": null,
+  "radius": 0,
+  "maxWidth": "100%",
+  "width": 1440,
+  "alignItems": "normal",
+  "justifyContent": "normal"
+ },
+ "children": [
+  {
+   "cls": "e-con-inner",
+   "w": 1300,
+   "h": 1238,
+   "display": "flex",
+   "flex": "1 1 auto",
+   "gap": "60px 20px",
+   "grid": null,
+   "pad": "100px 0px 100px 0px",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": 0
+  }
+ ],
+ "widgets": [
+  "heading",
+  "heading",
+  "heading",
+  "heading",
+  "heading",
+  "heading",
+  "elementskit-funfact",
+  "elementskit-funfact",
+  "elementskit-funfact",
+  "elementskit-funfact"
+ ],
+ "headings": [
+  {
+   "tag": "h3",
+   "text": "SEE THE DIFFERENCE"
+  },
+  {
+   "tag": "h2",
+   "text": "Our real patient transformation & stunning results"
+  },
+  {
+   "tag": "h2",
+   "text": "Before"
+  },
+  {
+   "tag": "h2",
+   "text": "After"
+  },
+  {
+   "tag": "h2",
+   "text": "Before"
+  },
+  {
+   "tag": "h2",
+   "text": "After"
+  },
+  {
+   "tag": "h3",
+   "text": "Years Of Experience"
+  },
+  {
+   "tag": "h3",
+   "text": "Satisfied Clients"
+  },
+  {
+   "tag": "h3",
+   "text": "Countries Reached"
+  },
+  {
+   "tag": "h3",
+   "text": "Classes Conducted"
+  }
+ ],
+ "animations": [
+  "at-animation-heading-none",
+  "at-animation-heading-style-3",
+  "at-animation-heading-none",
+  "at-animation-heading-none",
+  "at-animation-heading-none",
+  "at-animation-heading-none"
+ ],
+ "shinyGlassElements": 0,
+ "firstSeenOn": "_homepage"
+}

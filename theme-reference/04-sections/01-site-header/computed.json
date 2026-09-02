@@ -1,0 +1,52 @@
+{
+ "zone": "header",
+ "dataId": "77113fa",
+ "classes": "elementor-element elementor-element-77113fa e-con-full header-version-1 e-flex e-con e-parent e-lazyloaded",
+ "rect": {
+  "top": 0,
+  "h": 110,
+  "w": 1440
+ },
+ "style": {
+  "display": "flex",
+  "flexDirection": "column",
+  "gap": "20px",
+  "padding": "0px 20px 0px 20px",
+  "background": "rgba(0, 0, 0, 0)",
+  "backgroundImage": null,
+  "radius": 0,
+  "maxWidth": "100%",
+  "width": 1440,
+  "alignItems": "normal",
+  "justifyContent": "normal"
+ },
+ "children": [
+  {
+   "cls": "elementor-element elementor-element-b4ab51f e-flex e-con-boxed e-con e-child",
+   "w": 1400,
+   "h": 110,
+   "display": "flex",
+   "flex": "0 1 auto",
+   "gap": "normal",
+   "grid": null,
+   "pad": "0px 0px 0px 0px",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": 0
+  }
+ ],
+ "widgets": [
+  "glowix-site-logo",
+  "ekit-nav-menu",
+  "elementskit-icon-box",
+  "button"
+ ],
+ "headings": [
+  {
+   "tag": "h3",
+   "text": "(+22) 123 456 789"
+  }
+ ],
+ "animations": [],
+ "shinyGlassElements": 0,
+ "firstSeenOn": "_homepage"
+}

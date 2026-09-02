@@ -1,0 +1,65 @@
+{
+ "zone": "content",
+ "dataId": "ac9e4f3",
+ "classes": "elementor-element elementor-element-ac9e4f3 e-flex e-con-boxed e-con e-parent e-lazyloaded",
+ "rect": {
+  "top": 3109,
+  "h": 871,
+  "w": 1440
+ },
+ "style": {
+  "display": "flex",
+  "flexDirection": "column",
+  "gap": "normal",
+  "padding": "0px 10px 0px 10px",
+  "background": "rgba(0, 0, 0, 0)",
+  "backgroundImage": null,
+  "radius": 0,
+  "maxWidth": "100%",
+  "width": 1440,
+  "alignItems": "normal",
+  "justifyContent": "normal"
+ },
+ "children": [
+  {
+   "cls": "e-con-inner",
+   "w": 1300,
+   "h": 871,
+   "display": "flex",
+   "flex": "1 1 auto",
+   "gap": "0px",
+   "grid": null,
+   "pad": "100px 0px 100px 0px",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": 0
+  }
+ ],
+ "widgets": [
+  "image",
+  "heading",
+  "heading",
+  "text-editor",
+  "icon-list",
+  "button",
+  "image",
+  "counter"
+ ],
+ "headings": [
+  {
+   "tag": "h3",
+   "text": "WHAT WE DO"
+  },
+  {
+   "tag": "h2",
+   "text": "Transforming beauty confidence"
+  }
+ ],
+ "animations": [
+  "at-animation-image-none",
+  "at-animation-heading-none",
+  "at-animation-heading-style-3",
+  "at-animation-image-style-1"
+ ],
+ "shinyGlassElements": 1,
+ "firstSeenOn": "_homepage"
+}

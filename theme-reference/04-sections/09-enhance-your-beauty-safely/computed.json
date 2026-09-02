@@ -1,0 +1,117 @@
+{
+ "zone": "content",
+ "dataId": "7276128",
+ "classes": "elementor-element elementor-element-7276128 e-flex e-con-boxed e-con e-parent e-lazyloaded",
+ "rect": {
+  "top": 468,
+  "h": 3140,
+  "w": 1440
+ },
+ "style": {
+  "display": "flex",
+  "flexDirection": "column",
+  "gap": "normal",
+  "padding": "0px 10px 0px 10px",
+  "background": "rgba(0, 0, 0, 0)",
+  "backgroundImage": null,
+  "radius": 0,
+  "maxWidth": "100%",
+  "width": 1440,
+  "alignItems": "normal",
+  "justifyContent": "normal"
+ },
+ "children": [
+  {
+   "cls": "e-con-inner",
+   "w": 1300,
+   "h": 3140,
+   "display": "flex",
+   "flex": "1 1 auto",
+   "gap": "0px",
+   "grid": null,
+   "pad": "100px 0px 100px 0px",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": 0
+  }
+ ],
+ "widgets": [
+  "glowix-elementor-template",
+  "heading",
+  "icon-list",
+  "glowix-elementor-template",
+  "image",
+  "elementskit-icon-box",
+  "image",
+  "text-editor",
+  "heading",
+  "text-editor",
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "elementskit-video",
+  "text-editor",
+  "heading",
+  "text-editor",
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "heading",
+  "elementskit-accordion"
+ ],
+ "headings": [
+  {
+   "tag": "h3",
+   "text": "PROFESSIONAL SERVICES"
+  },
+  {
+   "tag": "h3",
+   "text": "Opening Hours:"
+  },
+  {
+   "tag": "h2",
+   "text": "Enhance your beauty safely"
+  },
+  {
+   "tag": "h3",
+   "text": "Beauty Enhance"
+  },
+  {
+   "tag": "h3",
+   "text": "Glow Sculpt"
+  },
+  {
+   "tag": "h3",
+   "text": "Age Refine"
+  },
+  {
+   "tag": "h2",
+   "text": "Achieve a youthful glow with expert"
+  },
+  {
+   "tag": "h3",
+   "text": "Non-Surgical rejuvenation"
+  },
+  {
+   "tag": "h3",
+   "text": "Personalized beauty solutions"
+  },
+  {
+   "tag": "h3",
+   "text": "Long-lasting radiance"
+  },
+  {
+   "tag": "h2",
+   "text": "Got questions? We've got answers!"
+  }
+ ],
+ "animations": [
+  "at-animation-heading-none",
+  "at-animation-image-none",
+  "at-animation-image-style-1",
+  "at-animation-heading-style-3",
+  "at-animation-heading-style-3",
+  "at-animation-heading-style-3"
+ ],
+ "shinyGlassElements": 1,
+ "firstSeenOn": "services__botox-and-dermal-fillers"
+}

@@ -1,0 +1,1556 @@
+[
+ {
+  "id": "01-site-header",
+  "zone": "header",
+  "height": 110,
+  "widgets": [
+   "glowix-site-logo",
+   "ekit-nav-menu",
+   "elementskit-icon-box",
+   "button"
+  ],
+  "headings": [
+   "(+22) 123 456 789"
+  ],
+  "animations": [],
+  "usedOnCount": 45,
+  "usedOn": [
+   "_homepage",
+   "404",
+   "about-us",
+   "blog",
+   "book-appointment",
+   "casestudy",
+   "choose-a-qualified-surgeon-for-safe",
+   "contact-us",
+   "faqs",
+   "follow-pre-surgery-guidelines-to-ensure-a-smooth",
+   "home-image",
+   "home-slider",
+   "home-video",
+   "image-gallery",
+   "maintain-a-healthy-lifestyle-for-better-healing",
+   "myths-and-facts-about-plastic-surgery",
+   "our-team",
+   "services",
+   "testimonials",
+   "top-tips-for-preparing-for-plastic-surgery",
+   "video-gallery",
+   "what-to-expect-during-your-first-consultation",
+   "casestudy__a-smoother-glowing-complexion",
+   "casestudy__clear-radiant-skin-guide",
+   "casestudy__glow-up-perfect-skin-routine",
+   "casestudy__natural-beautiful-results",
+   "casestudy__radiant-skin-tips-for-a-glow",
+   "casestudy__restoring-post-pregnancy-beauty",
+   "casestudy__restoring-youthful-radiance",
+   "casestudy__secrets-to-soft-radiant-skin",
+   "casestudy__smooth-skin-radiant-glow-tips",
+   "category__uncategorized",
+   "our-team__dr-ayesha-kapoor",
+   "our-team__dr-cameron-williamson",
+   "our-team__dr-neha-verma",
+   "our-team__dr-rahul-mehta",
+   "services__botox-and-dermal-fillers",
+   "services__laser-skin-or-treatments",
+   "services__male-aesthetic-procedures",
+   "services__medical-spa-and-treatments",
+   "services__post-weight-loss-surgery",
+   "services__tighten-define-neck-contours",
+   "tag__book-now",
+   "tag__consultation",
+   "tag__treatments"
+  ]
+ },
+ {
+  "id": "02-site-footer",
+  "zone": "footer",
+  "height": 718,
+  "widgets": [
+   "heading",
+   "elementskit-contact-form7",
+   "image",
+   "text-editor",
+   "elementskit-social-media",
+   "heading",
+   "ekit-vertical-menu",
+   "heading",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "heading",
+   "elementskit-icon-box",
+   "heading",
+   "elementskit-icon-box",
+   "heading",
+   "elementskit-icon-box",
+   "elementskit-copyright",
+   "ekit-vertical-menu"
+  ],
+  "headings": [
+   "Our latest insights on plastic surgery & skincare",
+   "Quick Link",
+   "Open Hours:",
+   "Mon-Sat: 10:00 To 07:00",
+   "Saturday-Closed",
+   "Contact:",
+   "(+22) 123 456 789",
+   "E-mail:",
+   "domainname@Gmail.Com",
+   "Address:",
+   "123 High Street LN1 1AB Street UK"
+  ],
+  "animations": [
+   "at-animation-heading-none",
+   "at-animation-image-none",
+   "at-animation-heading-none",
+   "at-animation-heading-none",
+   "at-animation-heading-none",
+   "at-animation-heading-none",
+   "at-animation-heading-none"
+  ],
+  "usedOnCount": 45,
+  "usedOn": [
+   "_homepage",
+   "404",
+   "about-us",
+   "blog",
+   "book-appointment",
+   "casestudy",
+   "choose-a-qualified-surgeon-for-safe",
+   "contact-us",
+   "faqs",
+   "follow-pre-surgery-guidelines-to-ensure-a-smooth",
+   "home-image",
+   "home-slider",
+   "home-video",
+   "image-gallery",
+   "maintain-a-healthy-lifestyle-for-better-healing",
+   "myths-and-facts-about-plastic-surgery",
+   "our-team",
+   "services",
+   "testimonials",
+   "top-tips-for-preparing-for-plastic-surgery",
+   "video-gallery",
+   "what-to-expect-during-your-first-consultation",
+   "casestudy__a-smoother-glowing-complexion",
+   "casestudy__clear-radiant-skin-guide",
+   "casestudy__glow-up-perfect-skin-routine",
+   "casestudy__natural-beautiful-results",
+   "casestudy__radiant-skin-tips-for-a-glow",
+   "casestudy__restoring-post-pregnancy-beauty",
+   "casestudy__restoring-youthful-radiance",
+   "casestudy__secrets-to-soft-radiant-skin",
+   "casestudy__smooth-skin-radiant-glow-tips",
+   "category__uncategorized",
+   "our-team__dr-ayesha-kapoor",
+   "our-team__dr-cameron-williamson",
+   "our-team__dr-neha-verma",
+   "our-team__dr-rahul-mehta",
+   "services__botox-and-dermal-fillers",
+   "services__laser-skin-or-treatments",
+   "services__male-aesthetic-procedures",
+   "services__medical-spa-and-treatments",
+   "services__post-weight-loss-surgery",
+   "services__tighten-define-neck-contours",
+   "tag__book-now",
+   "tag__consultation",
+   "tag__treatments"
+  ]
+ },
+ {
+  "id": "03-about-us",
+  "zone": "content",
+  "height": 358,
+  "widgets": [
+   "heading",
+   "glowix-breadcrumb"
+  ],
+  "headings": [
+   "ABOUT US"
+  ],
+  "animations": [
+   "at-animation-heading-style-3"
+  ],
+  "usedOnCount": 28,
+  "usedOn": [
+   "about-us",
+   "book-appointment",
+   "contact-us",
+   "faqs",
+   "image-gallery",
+   "our-team",
+   "services",
+   "testimonials",
+   "video-gallery",
+   "casestudy__a-smoother-glowing-complexion",
+   "casestudy__clear-radiant-skin-guide",
+   "casestudy__glow-up-perfect-skin-routine",
+   "casestudy__natural-beautiful-results",
+   "casestudy__radiant-skin-tips-for-a-glow",
+   "casestudy__restoring-post-pregnancy-beauty",
+   "casestudy__restoring-youthful-radiance",
+   "casestudy__secrets-to-soft-radiant-skin",
+   "casestudy__smooth-skin-radiant-glow-tips",
+   "our-team__dr-ayesha-kapoor",
+   "our-team__dr-cameron-williamson",
+   "our-team__dr-neha-verma",
+   "our-team__dr-rahul-mehta",
+   "services__botox-and-dermal-fillers",
+   "services__laser-skin-or-treatments",
+   "services__male-aesthetic-procedures",
+   "services__medical-spa-and-treatments",
+   "services__post-weight-loss-surgery",
+   "services__tighten-define-neck-contours"
+  ]
+ },
+ {
+  "id": "04-opening-hours",
+  "zone": "content",
+  "height": 468,
+  "widgets": [
+   "image",
+   "elementskit-icon-box"
+  ],
+  "headings": [
+   "Opening Hours:"
+  ],
+  "animations": [
+   "at-animation-image-none"
+  ],
+  "usedOnCount": 16,
+  "usedOn": [
+   "faqs",
+   "casestudy__a-smoother-glowing-complexion",
+   "casestudy__clear-radiant-skin-guide",
+   "casestudy__glow-up-perfect-skin-routine",
+   "casestudy__natural-beautiful-results",
+   "casestudy__radiant-skin-tips-for-a-glow",
+   "casestudy__restoring-post-pregnancy-beauty",
+   "casestudy__restoring-youthful-radiance",
+   "casestudy__secrets-to-soft-radiant-skin",
+   "casestudy__smooth-skin-radiant-glow-tips",
+   "services__botox-and-dermal-fillers",
+   "services__laser-skin-or-treatments",
+   "services__male-aesthetic-procedures",
+   "services__medical-spa-and-treatments",
+   "services__post-weight-loss-surgery",
+   "services__tighten-define-neck-contours"
+  ]
+ },
+ {
+  "id": "05-transformative-beauty-journeys",
+  "zone": "content",
+  "height": 2936,
+  "widgets": [
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-social-media",
+   "glowix-elementor-template",
+   "image",
+   "elementskit-icon-box",
+   "image",
+   "text-editor",
+   "heading",
+   "text-editor",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "image",
+   "heading",
+   "text-editor",
+   "icon-list",
+   "elementskit-icon-box",
+   "heading",
+   "text-editor",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "heading",
+   "elementskit-accordion"
+  ],
+  "headings": [
+   "Case Study",
+   "Start Date",
+   "Location",
+   "Client Name",
+   "Duration",
+   "Opening Hours:",
+   "Transformative beauty journeys",
+   "Personal Aesthetic Solutions",
+   "Real Results, Real Confidence",
+   "Expert Procedures",
+   "Ongoing Support & Follow-Up",
+   "Glow up",
+   "Beauty enhance",
+   "Real Transformations, Real Confidence",
+   "Achieve a youthful, natural-looking glow.",
+   "Unlock radiant skin with a natural glow.",
+   "Unlock the secret to timeless beauty.",
+   "Glow from within beauty starts with care.",
+   "Got questions? We've got answers!"
+  ],
+  "animations": [
+   "at-animation-image-none",
+   "at-animation-image-style-1",
+   "at-animation-heading-style-3",
+   "at-animation-image-style-1",
+   "at-animation-heading-style-3",
+   "at-animation-heading-style-3",
+   "at-animation-heading-style-3"
+  ],
+  "usedOnCount": 9,
+  "usedOn": [
+   "casestudy__a-smoother-glowing-complexion",
+   "casestudy__clear-radiant-skin-guide",
+   "casestudy__glow-up-perfect-skin-routine",
+   "casestudy__natural-beautiful-results",
+   "casestudy__radiant-skin-tips-for-a-glow",
+   "casestudy__restoring-post-pregnancy-beauty",
+   "casestudy__restoring-youthful-radiance",
+   "casestudy__secrets-to-soft-radiant-skin",
+   "casestudy__smooth-skin-radiant-glow-tips"
+  ]
+ },
+ {
+  "id": "06-experience-the-art-of-beauty-with-expert-han",
+  "zone": "content",
+  "height": 750,
+  "widgets": [
+   "image",
+   "image",
+   "heading",
+   "heading",
+   "heading",
+   "text-editor",
+   "heading",
+   "image",
+   "icon",
+   "elementskit-icon-box"
+  ],
+  "headings": [
+   "25YEARS EXPERIENCE",
+   "WHY CHOOSE US",
+   "Experience the art of beauty with expert hands",
+   "Delivering Exceptional Care Expert Treatments, Solutions Your Beauty, Boost Confidence, and Ensure Outstanding Results w",
+   "Contact Us:"
+  ],
+  "animations": [
+   "at-animation-image-style-1",
+   "at-animation-image-style-1",
+   "at-animation-heading-none",
+   "at-animation-heading-none",
+   "at-animation-heading-style-3",
+   "at-animation-heading-none",
+   "at-animation-image-none"
+  ],
+  "usedOnCount": 7,
+  "usedOn": [
+   "_homepage",
+   "book-appointment",
+   "home-image",
+   "home-slider",
+   "home-video",
+   "services",
+   "testimonials"
+  ]
+ },
+ {
+  "id": "07-discover-your-best-self-with-us",
+  "zone": "content",
+  "height": 765,
+  "widgets": [
+   "heading",
+   "heading",
+   "text-editor",
+   "button",
+   "elementskit-video"
+  ],
+  "headings": [
+   "WELCOME TO GLOWIX",
+   "DISCOVER YOUR BEST SELF WITH US!"
+  ],
+  "animations": [
+   "at-animation-heading-none",
+   "at-animation-heading-style-3"
+  ],
+  "usedOnCount": 7,
+  "usedOn": [
+   "home-image",
+   "home-slider",
+   "home-video",
+   "elementskit-content__dynamic-content-widget-1690dac-7f784d8",
+   "elementskit-content__dynamic-content-widget-1690dac-aa1dc66",
+   "elementskit-content__dynamic-content-widget-47f261e-7f784d8",
+   "elementskit-content__dynamic-content-widget-47f261e-aa1dc66"
+  ]
+ },
+ {
+  "id": "08-life-changing-results-from-our-clients",
+  "zone": "content",
+  "height": 1013,
+  "widgets": [
+   "image",
+   "heading",
+   "heading",
+   "text-editor",
+   "elementskit-icon-box",
+   "elementskit-testimonial"
+  ],
+  "headings": [
+   "TESTIMONIALS",
+   "Life-Changing results from our clients",
+   "Kristin Watson"
+  ],
+  "animations": [
+   "at-animation-image-style-1",
+   "at-animation-heading-none",
+   "at-animation-heading-style-3"
+  ],
+  "usedOnCount": 6,
+  "usedOn": [
+   "_homepage",
+   "about-us",
+   "home-image",
+   "home-slider",
+   "home-video",
+   "services"
+  ]
+ },
+ {
+  "id": "09-enhance-your-beauty-safely",
+  "zone": "content",
+  "height": 3140,
+  "widgets": [
+   "glowix-elementor-template",
+   "heading",
+   "icon-list",
+   "glowix-elementor-template",
+   "image",
+   "elementskit-icon-box",
+   "image",
+   "text-editor",
+   "heading",
+   "text-editor",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-video",
+   "text-editor",
+   "heading",
+   "text-editor",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "heading",
+   "elementskit-accordion"
+  ],
+  "headings": [
+   "PROFESSIONAL SERVICES",
+   "Opening Hours:",
+   "Enhance your beauty safely",
+   "Beauty Enhance",
+   "Glow Sculpt",
+   "Age Refine",
+   "Achieve a youthful glow with expert",
+   "Non-Surgical rejuvenation",
+   "Personalized beauty solutions",
+   "Long-lasting radiance",
+   "Got questions? We've got answers!"
+  ],
+  "animations": [
+   "at-animation-heading-none",
+   "at-animation-image-none",
+   "at-animation-image-style-1",
+   "at-animation-heading-style-3",
+   "at-animation-heading-style-3",
+   "at-animation-heading-style-3"
+  ],
+  "usedOnCount": 6,
+  "usedOn": [
+   "services__botox-and-dermal-fillers",
+   "services__laser-skin-or-treatments",
+   "services__male-aesthetic-procedures",
+   "services__medical-spa-and-treatments",
+   "services__post-weight-loss-surgery",
+   "services__tighten-define-neck-contours"
+  ]
+ },
+ {
+  "id": "10-professional-services",
+  "zone": "content",
+  "height": 461,
+  "widgets": [
+   "heading",
+   "icon-list"
+  ],
+  "headings": [
+   "PROFESSIONAL SERVICES"
+  ],
+  "animations": [
+   "at-animation-heading-none"
+  ],
+  "usedOnCount": 6,
+  "usedOn": [
+   "services__botox-and-dermal-fillers",
+   "services__laser-skin-or-treatments",
+   "services__male-aesthetic-procedures",
+   "services__medical-spa-and-treatments",
+   "services__post-weight-loss-surgery",
+   "services__tighten-define-neck-contours"
+  ]
+ },
+ {
+  "id": "11-your-journey-to-radiant-confidence",
+  "zone": "content",
+  "height": 815,
+  "widgets": [
+   "image",
+   "text-path",
+   "image",
+   "heading",
+   "heading",
+   "text-editor",
+   "icon-list",
+   "image",
+   "elementskit-icon-box",
+   "button"
+  ],
+  "headings": [
+   "ABOUT US",
+   "Your journey to radiant confidence",
+   "Need Help!"
+  ],
+  "animations": [
+   "at-animation-image-style-1",
+   "at-animation-image-style-1",
+   "at-animation-heading-none",
+   "at-animation-heading-style-3",
+   "at-animation-image-style-1"
+  ],
+  "usedOnCount": 5,
+  "usedOn": [
+   "_homepage",
+   "about-us",
+   "home-image",
+   "home-slider",
+   "home-video"
+  ]
+ },
+ {
+  "id": "12-transforming-beauty-confidence",
+  "zone": "content",
+  "height": 871,
+  "widgets": [
+   "image",
+   "heading",
+   "heading",
+   "text-editor",
+   "icon-list",
+   "button",
+   "image",
+   "counter"
+  ],
+  "headings": [
+   "WHAT WE DO",
+   "Transforming beauty confidence"
+  ],
+  "animations": [
+   "at-animation-image-none",
+   "at-animation-heading-none",
+   "at-animation-heading-style-3",
+   "at-animation-image-style-1"
+  ],
+  "usedOnCount": 5,
+  "usedOn": [
+   "_homepage",
+   "about-us",
+   "home-image",
+   "home-slider",
+   "home-video"
+  ]
+ },
+ {
+  "id": "13-simple-steps-to-stunning-transformations",
+  "zone": "content",
+  "height": 810,
+  "widgets": [
+   "heading",
+   "heading",
+   "text-editor",
+   "button",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-icon-box"
+  ],
+  "headings": [
+   "HOW IT WORK",
+   "Simple steps to stunning transformations",
+   "01. Comprehensive Consultation",
+   "02. Personalized Treatment Plan",
+   "03. Expert Procedures",
+   "04. Ongoing Support & Follow-Up"
+  ],
+  "animations": [
+   "at-animation-heading-none",
+   "at-animation-heading-style-3"
+  ],
+  "usedOnCount": 5,
+  "usedOn": [
+   "_homepage",
+   "home-image",
+   "home-slider",
+   "home-video",
+   "services"
+  ]
+ },
+ {
+  "id": "14-our-real-patient-transformation-stunning-res",
+  "zone": "content",
+  "height": 1238,
+  "widgets": [
+   "heading",
+   "heading",
+   "heading",
+   "heading",
+   "heading",
+   "heading",
+   "elementskit-funfact",
+   "elementskit-funfact",
+   "elementskit-funfact",
+   "elementskit-funfact"
+  ],
+  "headings": [
+   "SEE THE DIFFERENCE",
+   "Our real patient transformation & stunning results",
+   "Before",
+   "After",
+   "Before",
+   "After",
+   "Years Of Experience",
+   "Satisfied Clients",
+   "Countries Reached",
+   "Classes Conducted"
+  ],
+  "animations": [
+   "at-animation-heading-none",
+   "at-animation-heading-style-3",
+   "at-animation-heading-none",
+   "at-animation-heading-none",
+   "at-animation-heading-none",
+   "at-animation-heading-none"
+  ],
+  "usedOnCount": 5,
+  "usedOn": [
+   "_homepage",
+   "about-us",
+   "home-image",
+   "home-slider",
+   "home-video"
+  ]
+ },
+ {
+  "id": "15-schedule-your-consultation-today",
+  "zone": "content",
+  "height": 827,
+  "widgets": [
+   "image",
+   "heading",
+   "heading",
+   "elementskit-contact-form7"
+  ],
+  "headings": [
+   "APPOINTMENT",
+   "Schedule your consultation today!"
+  ],
+  "animations": [
+   "at-animation-image-none",
+   "at-animation-heading-none",
+   "at-animation-heading-style-3"
+  ],
+  "usedOnCount": 5,
+  "usedOn": [
+   "_homepage",
+   "about-us",
+   "home-image",
+   "home-slider",
+   "home-video"
+  ]
+ },
+ {
+  "id": "16-explore-our-wide-range-of-aesthetic-treatmen",
+  "zone": "content",
+  "height": 1489,
+  "widgets": [
+   "heading",
+   "heading",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "heading",
+   "text-editor"
+  ],
+  "headings": [
+   "SERVICES",
+   "Explore our wide range of aesthetic treatments",
+   "Botox And Dermal Fillers",
+   "Laser Skin Or Treatments",
+   "Male Aesthetic Procedures",
+   "Post-Weight Loss Surgery",
+   "Medical Spa & Treatments",
+   "Tighten & Define Neck Contours"
+  ],
+  "animations": [
+   "at-animation-heading-none",
+   "at-animation-heading-style-3",
+   "at-animation-heading-none"
+  ],
+  "usedOnCount": 4,
+  "usedOn": [
+   "_homepage",
+   "home-image",
+   "home-slider",
+   "home-video"
+  ]
+ },
+ {
+  "id": "17-elementskit-video",
+  "zone": "content",
+  "height": 800,
+  "widgets": [
+   "elementskit-video"
+  ],
+  "headings": [],
+  "animations": [],
+  "usedOnCount": 4,
+  "usedOn": [
+   "_homepage",
+   "home-image",
+   "home-slider",
+   "home-video"
+  ]
+ },
+ {
+  "id": "18-our-remarkable-transformation",
+  "zone": "content",
+  "height": 1030,
+  "widgets": [
+   "heading",
+   "heading",
+   "text-editor",
+   "button",
+   "glowix-casestudy-grid"
+  ],
+  "headings": [
+   "CASE STUDY'S",
+   "Our remarkable transformatioN",
+   "Restoring Youthful Radiance",
+   "Natural & Beautiful Results",
+   "Restoring Post-Pregnancy Beauty",
+   "A Smoother, Glowing Complexion"
+  ],
+  "animations": [
+   "at-animation-heading-none",
+   "at-animation-heading-style-3"
+  ],
+  "usedOnCount": 4,
+  "usedOn": [
+   "_homepage",
+   "home-image",
+   "home-slider",
+   "home-video"
+  ]
+ },
+ {
+  "id": "19-our-latest-insights-on-plastic-surgery-skinc",
+  "zone": "content",
+  "height": 924,
+  "widgets": [
+   "heading",
+   "heading",
+   "elementskit-blog-posts"
+  ],
+  "headings": [
+   "LATEST BLOG",
+   "Our latest insights on plastic surgery & skincare",
+   "Top Tips for Preparing for Plastic Surgery",
+   "Myths and Facts About Plastic Surgery",
+   "What to Expect During Your First Consultation"
+  ],
+  "animations": [
+   "at-animation-heading-none",
+   "at-animation-heading-style-3"
+  ],
+  "usedOnCount": 4,
+  "usedOn": [
+   "_homepage",
+   "home-image",
+   "home-slider",
+   "home-video"
+  ]
+ },
+ {
+  "id": "20-got-questions-we-ve-got-answers",
+  "zone": "content",
+  "height": 867,
+  "widgets": [
+   "image",
+   "image",
+   "text-path",
+   "heading",
+   "heading",
+   "elementskit-accordion"
+  ],
+  "headings": [
+   "FREQUENTLY ASKED QUESTIONS",
+   "Got questions? We've got answers!"
+  ],
+  "animations": [
+   "at-animation-image-style-1",
+   "at-animation-image-style-1",
+   "at-animation-heading-none",
+   "at-animation-heading-style-3"
+  ],
+  "usedOnCount": 4,
+  "usedOn": [
+   "about-us",
+   "book-appointment",
+   "services",
+   "testimonials"
+  ]
+ },
+ {
+  "id": "21-about-me",
+  "zone": "content",
+  "height": 1864,
+  "widgets": [
+   "image",
+   "heading",
+   "heading",
+   "text-editor",
+   "icon-list",
+   "elementskit-social-media",
+   "heading",
+   "text-editor",
+   "icon-list",
+   "heading",
+   "text-editor",
+   "elementskit-progressbar",
+   "elementskit-progressbar",
+   "elementskit-progressbar",
+   "icon-list",
+   "heading",
+   "text-editor",
+   "elementskit-contact-form7"
+  ],
+  "headings": [
+   "EXPERT PLASTIC SURGEON",
+   "About me",
+   "Personals info",
+   "Professional skills",
+   "Send a message"
+  ],
+  "animations": [
+   "at-animation-image-style-1",
+   "at-animation-heading-none",
+   "at-animation-heading-style-3",
+   "at-animation-heading-style-3",
+   "at-animation-heading-style-3",
+   "at-animation-heading-style-2"
+  ],
+  "usedOnCount": 4,
+  "usedOn": [
+   "our-team__dr-ayesha-kapoor",
+   "our-team__dr-cameron-williamson",
+   "our-team__dr-neha-verma",
+   "our-team__dr-rahul-mehta"
+  ]
+ },
+ {
+  "id": "22-discover-your-best-self-with-us-2",
+  "zone": "content",
+  "height": 694,
+  "widgets": [
+   "heading",
+   "heading",
+   "text-editor",
+   "button",
+   "elementskit-video",
+   "elementskit-icon-box",
+   "rating",
+   "heading",
+   "image"
+  ],
+  "headings": [
+   "WELCOME TO GLOWIX",
+   "DISCOVER YOUR BEST SELF WITH US!",
+   "4.5"
+  ],
+  "animations": [
+   "at-animation-heading-none",
+   "at-animation-heading-style-3",
+   "at-animation-heading-none",
+   "at-animation-image-none"
+  ],
+  "usedOnCount": 1,
+  "usedOn": [
+   "_homepage"
+  ]
+ },
+ {
+  "id": "23-our-latest-insights-on-plastic-surgery-skinc-2",
+  "zone": "content",
+  "height": 718,
+  "widgets": [
+   "heading",
+   "elementskit-contact-form7",
+   "image",
+   "text-editor",
+   "elementskit-social-media",
+   "heading",
+   "ekit-vertical-menu",
+   "heading",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "heading",
+   "elementskit-icon-box",
+   "heading",
+   "elementskit-icon-box",
+   "heading",
+   "elementskit-icon-box",
+   "elementskit-copyright",
+   "ekit-vertical-menu"
+  ],
+  "headings": [
+   "Our latest insights on plastic surgery & skincare",
+   "Quick Link",
+   "Open Hours:",
+   "Mon-Sat: 10:00 To 07:00",
+   "Saturday-Closed",
+   "Contact:",
+   "(+22) 123 456 789",
+   "E-mail:",
+   "domainname@Gmail.Com",
+   "Address:",
+   "123 High Street LN1 1AB Street UK"
+  ],
+  "animations": [
+   "at-animation-heading-none",
+   "at-animation-image-none",
+   "at-animation-heading-none",
+   "at-animation-heading-none",
+   "at-animation-heading-none",
+   "at-animation-heading-none",
+   "at-animation-heading-none"
+  ],
+  "usedOnCount": 1,
+  "usedOn": [
+   "tpl__footer"
+  ]
+ },
+ {
+  "id": "24-quick-link",
+  "zone": "content",
+  "height": 475,
+  "widgets": [
+   "image",
+   "text-editor",
+   "elementskit-social-media",
+   "heading",
+   "ekit-vertical-menu",
+   "heading",
+   "ekit-vertical-menu",
+   "heading",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-copyright",
+   "ekit-vertical-menu"
+  ],
+  "headings": [
+   "Quick Link",
+   "Services",
+   "Contact Us",
+   "(+22) 123 456 789",
+   "domainname@Gmail.Com",
+   "123 High Street LN1 1AB Street UK"
+  ],
+  "animations": [
+   "at-animation-image-none",
+   "at-animation-heading-none",
+   "at-animation-heading-none",
+   "at-animation-heading-none"
+  ],
+  "usedOnCount": 1,
+  "usedOn": [
+   "tpl__footer-layout-2"
+  ]
+ },
+ {
+  "id": "25-quick-link-2",
+  "zone": "content",
+  "height": 470,
+  "widgets": [
+   "image",
+   "text-editor",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "heading",
+   "ekit-vertical-menu",
+   "heading",
+   "elementskit-social-media",
+   "heading",
+   "ekit-vertical-menu",
+   "elementskit-copyright"
+  ],
+  "headings": [
+   "(+22) 123 456 789",
+   "domainname@Gmail.Com",
+   "Quick Link",
+   "Social",
+   "Services"
+  ],
+  "animations": [
+   "at-animation-image-none",
+   "at-animation-heading-none",
+   "at-animation-heading-none",
+   "at-animation-heading-none"
+  ],
+  "usedOnCount": 1,
+  "usedOn": [
+   "tpl__footer-layout-3"
+  ]
+ },
+ {
+  "id": "26-image",
+  "zone": "content",
+  "height": 377,
+  "widgets": [
+   "image",
+   "text-editor",
+   "elementskit-social-media",
+   "elementskit-copyright"
+  ],
+  "headings": [],
+  "animations": [
+   "at-animation-image-none"
+  ],
+  "usedOnCount": 1,
+  "usedOn": [
+   "tpl__footer-layout-4"
+  ]
+ },
+ {
+  "id": "27-22-123-456-789",
+  "zone": "content",
+  "height": 110,
+  "widgets": [
+   "glowix-site-logo",
+   "ekit-nav-menu",
+   "elementskit-icon-box",
+   "button"
+  ],
+  "headings": [
+   "(+22) 123 456 789"
+  ],
+  "animations": [],
+  "usedOnCount": 1,
+  "usedOn": [
+   "tpl__header"
+  ]
+ },
+ {
+  "id": "28-glowix-site-logo",
+  "zone": "content",
+  "height": 107,
+  "widgets": [
+   "glowix-site-logo",
+   "ekit-nav-menu",
+   "elementskit-social-media"
+  ],
+  "headings": [],
+  "animations": [],
+  "usedOnCount": 1,
+  "usedOn": [
+   "tpl__header-layout-2"
+  ]
+ },
+ {
+  "id": "29-contact-now",
+  "zone": "content",
+  "height": 110,
+  "widgets": [
+   "glowix-site-logo",
+   "ekit-nav-menu",
+   "elementskit-icon-box"
+  ],
+  "headings": [
+   "Contact Now"
+  ],
+  "animations": [],
+  "usedOnCount": 1,
+  "usedOn": [
+   "tpl__header-layout-3"
+  ]
+ },
+ {
+  "id": "30-stay-connected",
+  "zone": "content",
+  "height": 107,
+  "widgets": [
+   "glowix-site-logo",
+   "ekit-nav-menu",
+   "elementskit-header-search",
+   "elementskit-header-offcanvas",
+   "elementskit-icon-box",
+   "divider",
+   "elementskit-icon-box",
+   "divider",
+   "elementskit-icon-box",
+   "divider",
+   "heading",
+   "elementskit-social-media"
+  ],
+  "headings": [
+   "Phone",
+   "Email",
+   "Address",
+   "Stay Connected"
+  ],
+  "animations": [
+   "at-animation-heading-none"
+  ],
+  "usedOnCount": 1,
+  "usedOn": [
+   "tpl__header-layout-4"
+  ]
+ },
+ {
+  "id": "31-transforming-beauty-with-precision-and-care",
+  "zone": "content",
+  "height": 960,
+  "widgets": [
+   "heading",
+   "heading",
+   "text-editor",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "image",
+   "image",
+   "elementskit-icon-box"
+  ],
+  "headings": [
+   "OUR APPROACH",
+   "Transforming beauty with precision and care",
+   "Our Mission",
+   "Our Vision",
+   "24/7 Support"
+  ],
+  "animations": [
+   "at-animation-heading-none",
+   "at-animation-heading-style-3",
+   "at-animation-image-style-1",
+   "at-animation-image-style-1"
+  ],
+  "usedOnCount": 1,
+  "usedOn": [
+   "about-us"
+  ]
+ },
+ {
+  "id": "32-your-journey-to-radiant-confidence-2",
+  "zone": "content",
+  "height": 837,
+  "widgets": [
+   "image",
+   "image",
+   "image",
+   "text-path",
+   "heading",
+   "heading",
+   "icon-list",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "button"
+  ],
+  "headings": [
+   "OUR JOURNEY",
+   "Your journey to radiant confidence",
+   "Shaping The Future Of Aesthetics",
+   "Where Passion Meets Perfection"
+  ],
+  "animations": [
+   "at-animation-image-style-1",
+   "at-animation-image-style-1",
+   "at-animation-image-style-1",
+   "at-animation-heading-none",
+   "at-animation-heading-style-3"
+  ],
+  "usedOnCount": 1,
+  "usedOn": [
+   "about-us"
+  ]
+ },
+ {
+  "id": "33-meet-the-experts-behind-your-transformation",
+  "zone": "content",
+  "height": 909,
+  "widgets": [
+   "heading",
+   "heading",
+   "elementskit-image-box",
+   "elementskit-social-media",
+   "elementskit-image-box",
+   "elementskit-social-media",
+   "elementskit-image-box",
+   "elementskit-social-media",
+   "elementskit-image-box",
+   "elementskit-social-media"
+  ],
+  "headings": [
+   "OUR TEAM",
+   "Meet the experts behind your transformation",
+   "Dr. Neha Verma",
+   "Dr. Cameron Williamson",
+   "Dr. Ayesha Kapoor",
+   "Dr. Rahul Mehta"
+  ],
+  "animations": [
+   "at-animation-heading-none",
+   "at-animation-heading-style-3"
+  ],
+  "usedOnCount": 1,
+  "usedOn": [
+   "about-us"
+  ]
+ },
+ {
+  "id": "34-make-an-appointment",
+  "zone": "content",
+  "height": 620,
+  "widgets": [
+   "heading",
+   "heading",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-contact-form7"
+  ],
+  "headings": [
+   "APPOINTMENT",
+   "Make an appointment",
+   "Customer Services",
+   "Opening Hours"
+  ],
+  "animations": [
+   "at-animation-heading-none",
+   "at-animation-heading-style-3"
+  ],
+  "usedOnCount": 1,
+  "usedOn": [
+   "book-appointment"
+  ]
+ },
+ {
+  "id": "35-reach-out-for-your-perfect-look",
+  "zone": "content",
+  "height": 440,
+  "widgets": [
+   "heading",
+   "text-editor",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-icon-box"
+  ],
+  "headings": [
+   "Reach out for your perfect look!",
+   "Location",
+   "Contact Us",
+   "Email"
+  ],
+  "animations": [
+   "at-animation-heading-style-3"
+  ],
+  "usedOnCount": 1,
+  "usedOn": [
+   "contact-us"
+  ]
+ },
+ {
+  "id": "36-have-any-questions",
+  "zone": "content",
+  "height": 748,
+  "widgets": [
+   "heading",
+   "elementskit-contact-form7",
+   "google_maps"
+  ],
+  "headings": [
+   "Have any questions?"
+  ],
+  "animations": [
+   "at-animation-heading-style-3"
+  ],
+  "usedOnCount": 1,
+  "usedOn": [
+   "contact-us"
+  ]
+ },
+ {
+  "id": "37-general-information",
+  "zone": "content",
+  "height": 2627,
+  "widgets": [
+   "icon-list",
+   "glowix-elementor-template",
+   "image",
+   "elementskit-icon-box",
+   "heading",
+   "elementskit-accordion",
+   "heading",
+   "elementskit-accordion",
+   "heading",
+   "elementskit-accordion",
+   "heading",
+   "elementskit-accordion"
+  ],
+  "headings": [
+   "Opening Hours:",
+   "General information",
+   "Treatment process",
+   "Safety & results",
+   "Aftercare & recovery"
+  ],
+  "animations": [
+   "at-animation-image-none",
+   "at-animation-heading-style-3",
+   "at-animation-heading-style-3",
+   "at-animation-heading-style-3",
+   "at-animation-heading-style-3"
+  ],
+  "usedOnCount": 1,
+  "usedOn": [
+   "faqs"
+  ]
+ },
+ {
+  "id": "38-discover-your-best-self-with-us-3",
+  "zone": "content",
+  "height": 765,
+  "widgets": [
+   "elementskit-advanced-slider",
+   "heading",
+   "heading",
+   "text-editor",
+   "button",
+   "elementskit-video",
+   "heading",
+   "heading",
+   "text-editor",
+   "button",
+   "elementskit-video",
+   "heading",
+   "heading",
+   "text-editor",
+   "button",
+   "elementskit-video",
+   "heading",
+   "heading",
+   "text-editor",
+   "button",
+   "elementskit-video"
+  ],
+  "headings": [
+   "WELCOME TO GLOWIX",
+   "DISCOVER YOUR BEST SELF WITH US!",
+   "WELCOME TO GLOWIX",
+   "DISCOVER YOUR BEST SELF WITH US!",
+   "WELCOME TO GLOWIX",
+   "DISCOVER YOUR BEST SELF WITH US!",
+   "WELCOME TO GLOWIX",
+   "DISCOVER YOUR BEST SELF WITH US!"
+  ],
+  "animations": [
+   "at-animation-heading-none",
+   "at-animation-heading-none",
+   "at-animation-heading-none",
+   "at-animation-heading-none"
+  ],
+  "usedOnCount": 1,
+  "usedOn": [
+   "home-slider"
+  ]
+ },
+ {
+  "id": "39-image-gallery",
+  "zone": "content",
+  "height": 1249,
+  "widgets": [
+   "image-gallery"
+  ],
+  "headings": [],
+  "animations": [],
+  "usedOnCount": 1,
+  "usedOn": [
+   "image-gallery"
+  ]
+ },
+ {
+  "id": "40-dr-neha-verma",
+  "zone": "content",
+  "height": 1169,
+  "widgets": [
+   "elementskit-image-box",
+   "elementskit-social-media",
+   "elementskit-image-box",
+   "elementskit-social-media",
+   "elementskit-image-box",
+   "elementskit-social-media",
+   "elementskit-image-box",
+   "elementskit-social-media",
+   "elementskit-image-box",
+   "elementskit-social-media",
+   "elementskit-image-box",
+   "elementskit-social-media",
+   "elementskit-image-box",
+   "elementskit-social-media",
+   "elementskit-image-box",
+   "elementskit-social-media"
+  ],
+  "headings": [
+   "Dr. Neha Verma",
+   "Dr. Cameron Williamson",
+   "Dr. Ayesha Kapoor",
+   "Dr. Rahul Mehta",
+   "Dr. Aryan Malhotra",
+   "Dr. Aisha Kapoor",
+   "Dr. Karan Gohel",
+   "Dr. Emily Verma"
+  ],
+  "animations": [],
+  "usedOnCount": 1,
+  "usedOn": [
+   "our-team"
+  ]
+ },
+ {
+  "id": "41-botox-and-dermal-fillers",
+  "zone": "content",
+  "height": 1171,
+  "widgets": [
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-icon-box",
+   "elementskit-icon-box"
+  ],
+  "headings": [
+   "Botox And Dermal Fillers",
+   "Laser Skin Or Treatments",
+   "Male Aesthetic Procedures",
+   "Post-Weight Loss Surgery",
+   "Medical Spa & Treatments",
+   "Tighten & Define Neck Contours"
+  ],
+  "animations": [],
+  "usedOnCount": 1,
+  "usedOn": [
+   "services"
+  ]
+ },
+ {
+  "id": "42-from-start-to-finish-they-made-the-process-s",
+  "zone": "content",
+  "height": 806,
+  "widgets": [
+   "heading",
+   "elementskit-icon-box",
+   "heading",
+   "elementskit-icon-box",
+   "heading",
+   "elementskit-icon-box",
+   "heading",
+   "elementskit-icon-box",
+   "heading",
+   "elementskit-icon-box",
+   "heading",
+   "elementskit-icon-box"
+  ],
+  "headings": [
+   "\"From start to finish, they made the process so easy & stress-free. The result themselves I've never felt better about m",
+   "Kristin Watson",
+   "\"From start to finish, they made the process so easy & stress-free. The result themselves I've never felt better about m",
+   "Brooklyn Simmons",
+   "\"From start to finish, they made the process so easy & stress-free. The result themselves I've never felt better about m",
+   "Darlene Robertson",
+   "\"From start to finish, they made the process so easy & stress-free. The result themselves I've never felt better about m",
+   "Arlene McCoy",
+   "\"From start to finish, they made the process so easy & stress-free. The result themselves I've never felt better about m",
+   "Leslie Alexander",
+   "\"From start to finish, they made the process so easy & stress-free. The result themselves I've never felt better about m",
+   "Floyd Miles"
+  ],
+  "animations": [
+   "at-animation-heading-none",
+   "at-animation-heading-none",
+   "at-animation-heading-none",
+   "at-animation-heading-none",
+   "at-animation-heading-none",
+   "at-animation-heading-none"
+  ],
+  "usedOnCount": 1,
+  "usedOn": [
+   "testimonials"
+  ]
+ },
+ {
+  "id": "43-elementskit-video-gallery",
+  "zone": "content",
+  "height": 1310,
+  "widgets": [
+   "elementskit-video-gallery"
+  ],
+  "headings": [],
+  "animations": [],
+  "usedOnCount": 1,
+  "usedOn": [
+   "video-gallery"
+  ]
+ },
+ {
+  "id": "44-stay-connected-2",
+  "zone": "content",
+  "height": 621,
+  "widgets": [
+   "elementskit-icon-box",
+   "divider",
+   "elementskit-icon-box",
+   "divider",
+   "elementskit-icon-box",
+   "divider",
+   "heading",
+   "elementskit-social-media"
+  ],
+  "headings": [
+   "Phone",
+   "Email",
+   "Address",
+   "Stay Connected"
+  ],
+  "animations": [
+   "at-animation-heading-none"
+  ],
+  "usedOnCount": 1,
+  "usedOn": [
+   "elementskit-content__dynamic-content-widget-2548a92-99"
+  ]
+ }
+]

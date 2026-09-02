@@ -1,0 +1,104 @@
+  + 01-22-123-456-789  (header, 4 widgets, 110px)
+  + 02-welcome-to-glowix  (content, 9 widgets, 694px)
+  + 03-about-us  (content, 10 widgets, 815px)
+  + 04-services  (content, 10 widgets, 1489px)
+  + 05-what-we-do  (content, 8 widgets, 871px)
+  + 06-section  (content, 1 widgets, 800px)
+  + 07-case-study-s  (content, 5 widgets, 1030px)
+  + 08-25years-experience  (content, 10 widgets, 750px)
+  + 09-how-it-work  (content, 8 widgets, 810px)
+  + 10-testimonials  (content, 6 widgets, 1013px)
+  + 11-see-the-difference  (content, 10 widgets, 1238px)
+  + 12-appointment  (content, 4 widgets, 827px)
+  + 13-latest-blog  (content, 3 widgets, 924px)
+  + 14-our-latest-insights-on-plastic-surgery-skinc  (footer, 18 widgets, 718px)
+[1/58] _homepage                                    14 sections, 14 unique so far
+[2/58] 404                                          2 sections, 14 unique so far
+  + 15-our-latest-insights-on-plastic-surgery-skinc  (content, 18 widgets, 718px)
+[3/58] tpl__footer                                  1 sections, 15 unique so far
+  + 16-quick-link  (content, 13 widgets, 475px)
+[4/58] tpl__footer-layout-2                         1 sections, 16 unique so far
+  + 17-22-123-456-789  (content, 11 widgets, 470px)
+[5/58] tpl__footer-layout-3                         1 sections, 17 unique so far
+  + 18-section  (content, 4 widgets, 377px)
+[6/58] tpl__footer-layout-4                         1 sections, 18 unique so far
+  + 19-22-123-456-789  (content, 4 widgets, 110px)
+[7/58] tpl__header                                  1 sections, 19 unique so far
+  + 20-section  (content, 3 widgets, 107px)
+[8/58] tpl__header-layout-2                         1 sections, 20 unique so far
+  + 21-contact-now  (content, 3 widgets, 110px)
+[9/58] tpl__header-layout-3                         1 sections, 21 unique so far
+  + 22-phone  (content, 12 widgets, 107px)
+[10/58] tpl__header-layout-4                         1 sections, 22 unique so far
+  + 23-about-us  (content, 2 widgets, 358px)
+  + 24-our-approach  (content, 8 widgets, 960px)
+  + 25-our-journey  (content, 10 widgets, 837px)
+  + 26-our-team  (content, 10 widgets, 909px)
+  + 27-frequently-asked-questions  (content, 6 widgets, 867px)
+[11/58] about-us                                     12 sections, 27 unique so far
+[12/58] blog                                         2 sections, 27 unique so far
+  + 28-appointment  (content, 5 widgets, 620px)
+[13/58] book-appointment                             6 sections, 28 unique so far
+[14/58] casestudy                                    2 sections, 28 unique so far
+[15/58] choose-a-qualified-surgeon-for-safe          2 sections, 28 unique so far
+  + 29-reach-out-for-your-perfect-look  (content, 5 widgets, 440px)
+  + 30-have-any-questions  (content, 3 widgets, 748px)
+[16/58] contact-us                                   5 sections, 30 unique so far
+  + 31-opening-hours  (content, 12 widgets, 2627px)
+  + 32-opening-hours  (content, 2 widgets, 468px)
+[17/58] faqs                                         5 sections, 32 unique so far
+[18/58] follow-pre-surgery-guidelines-to-ensure-a-sm 2 sections, 32 unique so far
+  + 33-welcome-to-glowix  (content, 5 widgets, 765px)
+[19/58] home-image                                   14 sections, 33 unique so far
+  + 34-welcome-to-glowix  (content, 21 widgets, 765px)
+[20/58] home-slider                                  18 sections, 34 unique so far
+[21/58] home-video                                   14 sections, 34 unique so far
+  + 35-section  (content, 1 widgets, 1249px)
+[22/58] image-gallery                                4 sections, 35 unique so far
+[23/58] maintain-a-healthy-lifestyle-for-better-heal 2 sections, 35 unique so far
+[24/58] myths-and-facts-about-plastic-surgery        2 sections, 35 unique so far
+  + 36-dr-neha-verma  (content, 16 widgets, 1169px)
+[25/58] our-team                                     4 sections, 36 unique so far
+  + 37-botox-and-dermal-fillers  (content, 6 widgets, 1171px)
+[26/58] services                                     8 sections, 37 unique so far
+  + 38-from-start-to-finish-they-made-the-process-s  (content, 12 widgets, 806px)
+[27/58] testimonials                                 6 sections, 38 unique so far
+[28/58] top-tips-for-preparing-for-plastic-surgery   2 sections, 38 unique so far
+  + 39-section  (content, 1 widgets, 1310px)
+[29/58] video-gallery                                4 sections, 39 unique so far
+[30/58] what-to-expect-during-your-first-consultatio 2 sections, 39 unique so far
+  + 40-case-study  (content, 30 widgets, 2936px)
+[31/58] casestudy__a-smoother-glowing-complexion     5 sections, 40 unique so far
+[32/58] casestudy__clear-radiant-skin-guide          5 sections, 40 unique so far
+[33/58] casestudy__glow-up-perfect-skin-routine      5 sections, 40 unique so far
+[34/58] casestudy__natural-beautiful-results         5 sections, 40 unique so far
+[35/58] casestudy__radiant-skin-tips-for-a-glow      5 sections, 40 unique so far
+[36/58] casestudy__restoring-post-pregnancy-beauty   5 sections, 40 unique so far
+[37/58] casestudy__restoring-youthful-radiance       5 sections, 40 unique so far
+[38/58] casestudy__secrets-to-soft-radiant-skin      5 sections, 40 unique so far
+[39/58] casestudy__smooth-skin-radiant-glow-tips     5 sections, 40 unique so far
+[40/58] category__uncategorized                      2 sections, 40 unique so far
+[41/58] elementskit-content__dynamic-content-widget- 1 sections, 40 unique so far
+[42/58] elementskit-content__dynamic-content-widget- 1 sections, 40 unique so far
+  + 41-phone  (content, 8 widgets, 621px)
+[43/58] elementskit-content__dynamic-content-widget- 1 sections, 41 unique so far
+[44/58] elementskit-content__dynamic-content-widget- 1 sections, 41 unique so far
+[45/58] elementskit-content__dynamic-content-widget- 1 sections, 41 unique so far
+  + 42-expert-plastic-surgeon  (content, 18 widgets, 1864px)
+[46/58] our-team__dr-ayesha-kapoor                   4 sections, 42 unique so far
+[47/58] our-team__dr-cameron-williamson              4 sections, 42 unique so far
+[48/58] our-team__dr-neha-verma                      4 sections, 42 unique so far
+[49/58] our-team__dr-rahul-mehta                     4 sections, 42 unique so far
+  + 43-professional-services  (content, 22 widgets, 3140px)
+  + 44-professional-services  (content, 2 widgets, 461px)
+[50/58] services__botox-and-dermal-fillers           6 sections, 44 unique so far
+[51/58] services__laser-skin-or-treatments           6 sections, 44 unique so far
+[52/58] services__male-aesthetic-procedures          6 sections, 44 unique so far
+[53/58] services__medical-spa-and-treatments         6 sections, 44 unique so far
+[54/58] services__post-weight-loss-surgery           6 sections, 44 unique so far
+[55/58] services__tighten-define-neck-contours       6 sections, 44 unique so far
+[56/58] tag__book-now                                2 sections, 44 unique so far
+[57/58] tag__consultation                            2 sections, 44 unique so far
+[58/58] tag__treatments                              2 sections, 44 unique so far
+
+SECTIONS DONE  unique=44  pages=58

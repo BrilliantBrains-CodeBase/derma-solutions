@@ -1,0 +1,24 @@
+sitemap index -> 8 sections
+  wp-sitemap-posts-post-1.xml                    6
+  wp-sitemap-posts-page-1.xml                   24
+  wp-sitemap-posts-elementskit_content-1.xml     5
+  wp-sitemap-posts-elementskit_template-1.xml    8
+  wp-sitemap-posts-awaiken-casestudy-1.xml       9
+  wp-sitemap-taxonomies-category-1.xml           1
+  wp-sitemap-taxonomies-post_tag-1.xml           3
+  wp-sitemap-users-1.xml                         1 (skipped - author archives)
+  REST pages         24
+  REST posts          6
+  REST casestudy      1
+  REST types          1
+  REST media         95 (across 3 page(s))
+
+FROZEN: 58 URLs -> 00-inventory/urls-master.txt
+  page                18
+  casestudy           10
+  layout-template      8
+  service              7
+  team                 5
+  content-fragment     5
+  archive              4
+  404                  1

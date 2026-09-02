@@ -1,0 +1,92 @@
+{
+ "zone": "content",
+ "dataId": "e85a190",
+ "classes": "elementor-element elementor-element-e85a190 e-flex e-con-boxed e-con e-parent e-lazyloaded",
+ "rect": {
+  "top": 468,
+  "h": 1169,
+  "w": 1440
+ },
+ "style": {
+  "display": "flex",
+  "flexDirection": "column",
+  "gap": "normal",
+  "padding": "0px 10px 0px 10px",
+  "background": "rgba(0, 0, 0, 0)",
+  "backgroundImage": null,
+  "radius": 0,
+  "maxWidth": "100%",
+  "width": 1440,
+  "alignItems": "normal",
+  "justifyContent": "normal"
+ },
+ "children": [
+  {
+   "cls": "e-con-inner",
+   "w": 1300,
+   "h": 1169,
+   "display": "flex",
+   "flex": "1 1 auto",
+   "gap": "20px",
+   "grid": null,
+   "pad": "100px 0px 100px 0px",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": 0
+  }
+ ],
+ "widgets": [
+  "elementskit-image-box",
+  "elementskit-social-media",
+  "elementskit-image-box",
+  "elementskit-social-media",
+  "elementskit-image-box",
+  "elementskit-social-media",
+  "elementskit-image-box",
+  "elementskit-social-media",
+  "elementskit-image-box",
+  "elementskit-social-media",
+  "elementskit-image-box",
+  "elementskit-social-media",
+  "elementskit-image-box",
+  "elementskit-social-media",
+  "elementskit-image-box",
+  "elementskit-social-media"
+ ],
+ "headings": [
+  {
+   "tag": "h3",
+   "text": "Dr. Neha Verma"
+  },
+  {
+   "tag": "h3",
+   "text": "Dr. Cameron Williamson"
+  },
+  {
+   "tag": "h3",
+   "text": "Dr. Ayesha Kapoor"
+  },
+  {
+   "tag": "h3",
+   "text": "Dr. Rahul Mehta"
+  },
+  {
+   "tag": "h3",
+   "text": "Dr. Aryan Malhotra"
+  },
+  {
+   "tag": "h3",
+   "text": "Dr. Aisha Kapoor"
+  },
+  {
+   "tag": "h3",
+   "text": "Dr. Karan Gohel"
+  },
+  {
+   "tag": "h3",
+   "text": "Dr. Emily Verma"
+  }
+ ],
+ "animations": [],
+ "shinyGlassElements": 0,
+ "firstSeenOn": "our-team"
+}

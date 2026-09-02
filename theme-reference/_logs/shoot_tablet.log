@@ -1,0 +1,64 @@
+[tablet 1/58] _homepage                                           5742KB  h=13891
+[tablet 2/58] 404                                                  165KB  h=1759
+[tablet 3/58] tpl__footer                                           90KB  h=770
+[tablet 4/58] tpl__footer-layout-2                                  76KB  h=543
+[tablet 5/58] tpl__footer-layout-3                                  67KB  h=541
+[tablet 6/58] tpl__footer-layout-4                                  42KB  h=327
+[tablet 7/58] tpl__header                                           10KB  h=90
+[tablet 8/58] tpl__header-layout-2                                  10KB  h=91
+[tablet 9/58] tpl__header-layout-3                                  10KB  h=91
+[tablet 10/58] tpl__header-layout-4                                  10KB  h=91
+[tablet 11/58] about-us                                            4795KB  h=11830
+[tablet 12/58] blog                                                1180KB  h=2518
+[tablet 13/58] book-appointment                                    1104KB  h=4167
+[tablet 14/58] casestudy                                           1482KB  h=2903
+[tablet 15/58] choose-a-qualified-surgeon-for-safe                  677KB  h=3546
+[tablet 16/58] contact-us                                           523KB  h=2487
+[tablet 17/58] faqs                                                 634KB  h=3750
+[tablet 18/58] follow-pre-surgery-guidelines-to-ensure-a-smooth     728KB  h=3546
+[tablet 19/58] home-image                                          5841KB  h=13511
+[tablet 20/58] home-slider                                         5829KB  h=13486
+[tablet 21/58] home-video                                          5778KB  h=13511
+[tablet 22/58] image-gallery                                        656KB  h=1770
+[tablet 23/58] maintain-a-healthy-lifestyle-for-better-healing      734KB  h=3546
+[tablet 24/58] myths-and-facts-about-plastic-surgery                795KB  h=3546
+[tablet 25/58] our-team                                            1460KB  h=3084
+[tablet 26/58] services                                            2326KB  h=6797
+[tablet 27/58] testimonials                                        1178KB  h=4324
+[tablet 28/58] top-tips-for-preparing-for-plastic-surgery           758KB  h=3546
+[tablet 29/58] video-gallery                                       1364KB  h=2773
+[tablet 30/58] what-to-expect-during-your-first-consultation        810KB  h=3546
+[tablet 31/58] casestudy__a-smoother-glowing-complexion            1374KB  h=4664
+[tablet 32/58] casestudy__clear-radiant-skin-guide                 1370KB  h=4610
+[tablet 33/58] casestudy__glow-up-perfect-skin-routine             1361KB  h=4664
+[tablet 34/58] casestudy__natural-beautiful-results                1443KB  h=4664
+[tablet 35/58] casestudy__radiant-skin-tips-for-a-glow             1420KB  h=4610
+[tablet 36/58] casestudy__restoring-post-pregnancy-beauty          1365KB  h=4664
+[tablet 37/58] casestudy__restoring-youthful-radiance              1486KB  h=4664
+[tablet 38/58] casestudy__secrets-to-soft-radiant-skin             1373KB  h=4664
+[tablet 39/58] casestudy__smooth-skin-radiant-glow-tips            1384KB  h=4664
+[tablet 40/58] category__uncategorized                             1184KB  h=2518
+[tablet 41/58] elementskit-content__dynamic-content-widget-1690da   383KB  h=610
+[tablet 42/58] elementskit-content__dynamic-content-widget-1690da   386KB  h=610
+[tablet 43/58] elementskit-content__dynamic-content-widget-2548a9    31KB  h=708
+[tablet 44/58] elementskit-content__dynamic-content-widget-47f261   383KB  h=610
+[tablet 45/58] elementskit-content__dynamic-content-widget-47f261   386KB  h=610
+[tablet 46/58] our-team__dr-ayesha-kapoor                           681KB  h=3614
+[tablet 47/58] our-team__dr-cameron-williamson                      637KB  h=3614
+[tablet 48/58] our-team__dr-neha-verma                              607KB  h=3614
+[tablet 49/58] our-team__dr-rahul-mehta                             671KB  h=3614
+[tablet 50/58] services__botox-and-dermal-fillers                  1384KB  h=4649
+[tablet 51/58] services__laser-skin-or-treatments                  1442KB  h=4649
+[tablet 52/58] services__male-aesthetic-procedures                 1388KB  h=4651
+[tablet 53/58] services__medical-spa-and-treatments                1379KB  h=4651
+[tablet 54/58] services__post-weight-loss-surgery                  1377KB  h=4651
+[tablet 55/58] services__tighten-define-neck-contours              1412KB  h=4705
+[tablet 56/58] tag__book-now                                       1184KB  h=2518
+[tablet 57/58] tag__consultation                                   1184KB  h=2518
+[tablet 58/58] tag__treatments                                     1183KB  h=2518
+
+SHOOT DONE captured=58 suspect=4
+  SUSPECT tablet/tpl__header {"ok":true,"kb":10,"height":90,"suspect":true}
+  SUSPECT tablet/tpl__header-layout-2 {"ok":true,"kb":10,"height":91,"suspect":true}
+  SUSPECT tablet/tpl__header-layout-3 {"ok":true,"kb":10,"height":91,"suspect":true}
+  SUSPECT tablet/tpl__header-layout-4 {"ok":true,"kb":10,"height":91,"suspect":true}

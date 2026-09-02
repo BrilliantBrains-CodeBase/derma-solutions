@@ -1,0 +1,63 @@
+{
+ "zone": "content",
+ "dataId": "11f4af4",
+ "classes": "elementor-element elementor-element-11f4af4 e-flex e-con-boxed e-con e-parent e-lazyloaded",
+ "rect": {
+  "top": 7937,
+  "h": 867,
+  "w": 1440
+ },
+ "style": {
+  "display": "flex",
+  "flexDirection": "column",
+  "gap": "normal",
+  "padding": "0px 10px 0px 10px",
+  "background": "rgba(0, 0, 0, 0)",
+  "backgroundImage": null,
+  "radius": 0,
+  "maxWidth": "100%",
+  "width": 1440,
+  "alignItems": "normal",
+  "justifyContent": "normal"
+ },
+ "children": [
+  {
+   "cls": "e-con-inner",
+   "w": 1300,
+   "h": 867,
+   "display": "flex",
+   "flex": "1 1 auto",
+   "gap": "0px",
+   "grid": null,
+   "pad": "100px 0px 100px 0px",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": 0
+  }
+ ],
+ "widgets": [
+  "image",
+  "image",
+  "text-path",
+  "heading",
+  "heading",
+  "elementskit-accordion"
+ ],
+ "headings": [
+  {
+   "tag": "h3",
+   "text": "FREQUENTLY ASKED QUESTIONS"
+  },
+  {
+   "tag": "h2",
+   "text": "Got questions? We've got answers!"
+  }
+ ],
+ "animations": [
+  "at-animation-image-style-1",
+  "at-animation-image-style-1",
+  "at-animation-heading-none",
+  "at-animation-heading-style-3"
+ ],
+ "shinyGlassElements": 2,
+ "firstSeenOn": "about-us"
+}

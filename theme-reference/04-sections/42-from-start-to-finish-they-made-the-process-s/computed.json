@@ -1,0 +1,111 @@
+{
+ "zone": "content",
+ "dataId": "0e574dd",
+ "classes": "elementor-element elementor-element-0e574dd e-flex e-con-boxed e-con e-parent e-lazyloaded",
+ "rect": {
+  "top": 468,
+  "h": 806,
+  "w": 1440
+ },
+ "style": {
+  "display": "flex",
+  "flexDirection": "column",
+  "gap": "normal",
+  "padding": "0px 10px 0px 10px",
+  "background": "rgba(0, 0, 0, 0)",
+  "backgroundImage": null,
+  "radius": 0,
+  "maxWidth": "100%",
+  "width": 1440,
+  "alignItems": "normal",
+  "justifyContent": "normal"
+ },
+ "children": [
+  {
+   "cls": "e-con-inner",
+   "w": 1300,
+   "h": 806,
+   "display": "flex",
+   "flex": "1 1 auto",
+   "gap": "20px",
+   "grid": null,
+   "pad": "100px 0px 100px 0px",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": 0
+  }
+ ],
+ "widgets": [
+  "heading",
+  "elementskit-icon-box",
+  "heading",
+  "elementskit-icon-box",
+  "heading",
+  "elementskit-icon-box",
+  "heading",
+  "elementskit-icon-box",
+  "heading",
+  "elementskit-icon-box",
+  "heading",
+  "elementskit-icon-box"
+ ],
+ "headings": [
+  {
+   "tag": "h2",
+   "text": "\"From start to finish, they made the process so easy & stress-free. The result themselves I've never felt better about m"
+  },
+  {
+   "tag": "h3",
+   "text": "Kristin Watson"
+  },
+  {
+   "tag": "h2",
+   "text": "\"From start to finish, they made the process so easy & stress-free. The result themselves I've never felt better about m"
+  },
+  {
+   "tag": "h3",
+   "text": "Brooklyn Simmons"
+  },
+  {
+   "tag": "h2",
+   "text": "\"From start to finish, they made the process so easy & stress-free. The result themselves I've never felt better about m"
+  },
+  {
+   "tag": "h3",
+   "text": "Darlene Robertson"
+  },
+  {
+   "tag": "h2",
+   "text": "\"From start to finish, they made the process so easy & stress-free. The result themselves I've never felt better about m"
+  },
+  {
+   "tag": "h3",
+   "text": "Arlene McCoy"
+  },
+  {
+   "tag": "h2",
+   "text": "\"From start to finish, they made the process so easy & stress-free. The result themselves I've never felt better about m"
+  },
+  {
+   "tag": "h3",
+   "text": "Leslie Alexander"
+  },
+  {
+   "tag": "h2",
+   "text": "\"From start to finish, they made the process so easy & stress-free. The result themselves I've never felt better about m"
+  },
+  {
+   "tag": "h3",
+   "text": "Floyd Miles"
+  }
+ ],
+ "animations": [
+  "at-animation-heading-none",
+  "at-animation-heading-none",
+  "at-animation-heading-none",
+  "at-animation-heading-none",
+  "at-animation-heading-none",
+  "at-animation-heading-none"
+ ],
+ "shinyGlassElements": 0,
+ "firstSeenOn": "testimonials"
+}

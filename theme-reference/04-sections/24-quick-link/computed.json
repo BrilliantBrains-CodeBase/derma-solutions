@@ -1,0 +1,86 @@
+{
+ "zone": "content",
+ "dataId": "ac074e5",
+ "classes": "elementor-element elementor-element-ac074e5 e-con-full e-flex e-con e-parent e-lazyloaded",
+ "rect": {
+  "top": 0,
+  "h": 475,
+  "w": 1440
+ },
+ "style": {
+  "display": "flex",
+  "flexDirection": "column",
+  "gap": "20px",
+  "padding": "0px 20px 0px 20px",
+  "background": "rgba(0, 0, 0, 0)",
+  "backgroundImage": null,
+  "radius": 0,
+  "maxWidth": "100%",
+  "width": 1440,
+  "alignItems": "normal",
+  "justifyContent": "normal"
+ },
+ "children": [
+  {
+   "cls": "elementor-element elementor-element-58575f3 e-flex e-con-boxed e-con e-child",
+   "w": 1400,
+   "h": 475,
+   "display": "flex",
+   "flex": "0 1 auto",
+   "gap": "normal",
+   "grid": null,
+   "pad": "0px 0px 0px 0px",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": 0
+  }
+ ],
+ "widgets": [
+  "image",
+  "text-editor",
+  "elementskit-social-media",
+  "heading",
+  "ekit-vertical-menu",
+  "heading",
+  "ekit-vertical-menu",
+  "heading",
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "elementskit-copyright",
+  "ekit-vertical-menu"
+ ],
+ "headings": [
+  {
+   "tag": "h2",
+   "text": "Quick Link"
+  },
+  {
+   "tag": "h2",
+   "text": "Services"
+  },
+  {
+   "tag": "h2",
+   "text": "Contact Us"
+  },
+  {
+   "tag": "h3",
+   "text": "(+22) 123 456 789"
+  },
+  {
+   "tag": "h3",
+   "text": "domainname@Gmail.Com"
+  },
+  {
+   "tag": "h3",
+   "text": "123 High Street LN1 1AB Street UK"
+  }
+ ],
+ "animations": [
+  "at-animation-image-none",
+  "at-animation-heading-none",
+  "at-animation-heading-none",
+  "at-animation-heading-none"
+ ],
+ "shinyGlassElements": 0,
+ "firstSeenOn": "tpl__footer-layout-2"
+}

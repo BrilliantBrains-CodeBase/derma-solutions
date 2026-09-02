@@ -1,0 +1,52 @@
+{
+ "zone": "content",
+ "dataId": "b59b6f3",
+ "classes": "elementor-element elementor-element-b59b6f3 e-flex e-con-boxed e-con e-parent e-lazyloaded",
+ "rect": {
+  "top": 110,
+  "h": 358,
+  "w": 1440
+ },
+ "style": {
+  "display": "flex",
+  "flexDirection": "column",
+  "gap": "normal",
+  "padding": "0px 20px 0px 20px",
+  "background": "rgba(0, 0, 0, 0)",
+  "backgroundImage": null,
+  "radius": 0,
+  "maxWidth": "100%",
+  "width": 1440,
+  "alignItems": "normal",
+  "justifyContent": "normal"
+ },
+ "children": [
+  {
+   "cls": "e-con-inner",
+   "w": 1400,
+   "h": 358,
+   "display": "flex",
+   "flex": "1 1 auto",
+   "gap": "20px",
+   "grid": null,
+   "pad": "0px 0px 0px 0px",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": 0
+  }
+ ],
+ "widgets": [
+  "heading",
+  "glowix-breadcrumb"
+ ],
+ "headings": [
+  {
+   "tag": "h1",
+   "text": "ABOUT US"
+  }
+ ],
+ "animations": [
+  "at-animation-heading-style-3"
+ ],
+ "shinyGlassElements": 0,
+ "firstSeenOn": "about-us"
+}

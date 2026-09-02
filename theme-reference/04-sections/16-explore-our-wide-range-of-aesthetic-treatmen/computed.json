@@ -1,0 +1,90 @@
+{
+ "zone": "content",
+ "dataId": "98c3013",
+ "classes": "elementor-element elementor-element-98c3013 e-con-full e-flex e-con e-parent e-lazyloaded",
+ "rect": {
+  "top": 1619,
+  "h": 1489,
+  "w": 1440
+ },
+ "style": {
+  "display": "flex",
+  "flexDirection": "column",
+  "gap": "20px",
+  "padding": "0px 20px 0px 20px",
+  "background": "rgba(0, 0, 0, 0)",
+  "backgroundImage": null,
+  "radius": 0,
+  "maxWidth": "100%",
+  "width": 1440,
+  "alignItems": "normal",
+  "justifyContent": "normal"
+ },
+ "children": [
+  {
+   "cls": "elementor-element elementor-element-fea6f71 e-flex e-con-boxed e-con e-child",
+   "w": 1400,
+   "h": 1489,
+   "display": "flex",
+   "flex": "0 1 auto",
+   "gap": "normal",
+   "grid": null,
+   "pad": "0px 0px 0px 0px",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": 0
+  }
+ ],
+ "widgets": [
+  "heading",
+  "heading",
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "heading",
+  "text-editor"
+ ],
+ "headings": [
+  {
+   "tag": "h3",
+   "text": "SERVICES"
+  },
+  {
+   "tag": "h2",
+   "text": "Explore our wide range of aesthetic treatments"
+  },
+  {
+   "tag": "h3",
+   "text": "Botox And Dermal Fillers"
+  },
+  {
+   "tag": "h3",
+   "text": "Laser Skin Or Treatments"
+  },
+  {
+   "tag": "h3",
+   "text": "Male Aesthetic Procedures"
+  },
+  {
+   "tag": "h3",
+   "text": "Post-Weight Loss Surgery"
+  },
+  {
+   "tag": "h3",
+   "text": "Medical Spa & Treatments"
+  },
+  {
+   "tag": "h3",
+   "text": "Tighten & Define Neck Contours"
+  }
+ ],
+ "animations": [
+  "at-animation-heading-none",
+  "at-animation-heading-style-3",
+  "at-animation-heading-none"
+ ],
+ "shinyGlassElements": 0,
+ "firstSeenOn": "_homepage"
+}

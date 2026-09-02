@@ -1,0 +1,70 @@
+{
+ "zone": "content",
+ "dataId": "bcbbf5b",
+ "classes": "elementor-element elementor-element-bcbbf5b e-flex e-con-boxed e-con e-parent e-lazyloaded",
+ "rect": {
+  "top": 10448,
+  "h": 924,
+  "w": 1440
+ },
+ "style": {
+  "display": "flex",
+  "flexDirection": "column",
+  "gap": "normal",
+  "padding": "0px 10px 0px 10px",
+  "background": "rgba(0, 0, 0, 0)",
+  "backgroundImage": null,
+  "radius": 0,
+  "maxWidth": "100%",
+  "width": 1440,
+  "alignItems": "normal",
+  "justifyContent": "normal"
+ },
+ "children": [
+  {
+   "cls": "e-con-inner",
+   "w": 1300,
+   "h": 924,
+   "display": "flex",
+   "flex": "1 1 auto",
+   "gap": "60px 20px",
+   "grid": null,
+   "pad": "100px 0px 100px 0px",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": 0
+  }
+ ],
+ "widgets": [
+  "heading",
+  "heading",
+  "elementskit-blog-posts"
+ ],
+ "headings": [
+  {
+   "tag": "h3",
+   "text": "LATEST BLOG"
+  },
+  {
+   "tag": "h2",
+   "text": "Our latest insights on plastic surgery & skincare"
+  },
+  {
+   "tag": "h2",
+   "text": "Top Tips for Preparing for Plastic Surgery"
+  },
+  {
+   "tag": "h2",
+   "text": "Myths and Facts About Plastic Surgery"
+  },
+  {
+   "tag": "h2",
+   "text": "What to Expect During Your First Consultation"
+  }
+ ],
+ "animations": [
+  "at-animation-heading-none",
+  "at-animation-heading-style-3"
+ ],
+ "shinyGlassElements": 0,
+ "firstSeenOn": "_homepage"
+}

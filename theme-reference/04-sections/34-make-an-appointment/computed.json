@@ -1,0 +1,68 @@
+{
+ "zone": "content",
+ "dataId": "af5d527",
+ "classes": "elementor-element elementor-element-af5d527 e-flex e-con-boxed e-con e-parent e-lazyloaded",
+ "rect": {
+  "top": 468,
+  "h": 620,
+  "w": 1440
+ },
+ "style": {
+  "display": "flex",
+  "flexDirection": "column",
+  "gap": "normal",
+  "padding": "0px 10px 0px 10px",
+  "background": "rgba(0, 0, 0, 0)",
+  "backgroundImage": null,
+  "radius": 0,
+  "maxWidth": "100%",
+  "width": 1440,
+  "alignItems": "normal",
+  "justifyContent": "normal"
+ },
+ "children": [
+  {
+   "cls": "e-con-inner",
+   "w": 1300,
+   "h": 620,
+   "display": "flex",
+   "flex": "1 1 auto",
+   "gap": "0px",
+   "grid": null,
+   "pad": "100px 0px 100px 0px",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": 0
+  }
+ ],
+ "widgets": [
+  "heading",
+  "heading",
+  "elementskit-icon-box",
+  "elementskit-icon-box",
+  "elementskit-contact-form7"
+ ],
+ "headings": [
+  {
+   "tag": "h3",
+   "text": "APPOINTMENT"
+  },
+  {
+   "tag": "h2",
+   "text": "Make an appointment"
+  },
+  {
+   "tag": "h3",
+   "text": "Customer Services"
+  },
+  {
+   "tag": "h3",
+   "text": "Opening Hours"
+  }
+ ],
+ "animations": [
+  "at-animation-heading-none",
+  "at-animation-heading-style-3"
+ ],
+ "shinyGlassElements": 0,
+ "firstSeenOn": "book-appointment"
+}
