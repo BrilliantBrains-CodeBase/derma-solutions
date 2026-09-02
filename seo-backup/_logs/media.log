@@ -1,0 +1,15 @@
+media-library.json: 542 records | missing alt_text: 8
+unique referenced originals: 452
+  40/452 ok=40 cached=0 fail=0
+  80/452 ok=80 cached=0 fail=0
+  120/452 ok=120 cached=0 fail=0
+  160/452 ok=160 cached=0 fail=0
+  200/452 ok=200 cached=0 fail=0
+  240/452 ok=240 cached=0 fail=0
+  280/452 ok=280 cached=0 fail=0
+  320/452 ok=320 cached=0 fail=0
+  360/452 ok=360 cached=0 fail=0
+  400/452 ok=400 cached=0 fail=0
+  440/452 ok=440 cached=0 fail=0
+MEDIA-DONE ok=451 cached=0 fail=1 total=79.6 MB
+  FAIL https://dermasolutions.co.in/wp-content/uploads/breakdance/css/icons/eye.svg HTTP Error 404: Not Found

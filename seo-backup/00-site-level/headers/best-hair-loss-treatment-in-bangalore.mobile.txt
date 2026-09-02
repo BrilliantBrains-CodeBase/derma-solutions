@@ -1,0 +1,19 @@
+HTTP 200
+FINAL_URL https://dermasolutions.co.in/best-hair-loss-treatment-in-bangalore/
+Date: Wed, 02 Sep 2026 04:51:20 GMT
+Server: Apache
+Vary: User-Agent
+Upgrade: h2,h2c
+Connection: Upgrade, close
+Last-Modified: Wed, 15 Jul 2026 03:03:05 GMT
+ETag: "3820897-afcd-6569d8ff53ebd"
+Accept-Ranges: bytes
+Content-Length: 45005
+Cache-Control: no-cache, must-revalidate
+Expires: Wed, 02 Sep 2026 04:51:20 GMT
+Content-Encoding: gzip
+Content-Type: text/html; charset=UTF-8
+Cache-Tag: dermasolutions.co.in
+CDN-Cache-Control: max-age=2592000
+x-flying-press-cache: HIT
+x-flying-press-source: Web Server
