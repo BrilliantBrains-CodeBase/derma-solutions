@@ -82,8 +82,11 @@ const linkStyle =
   'focus-visible:outline-offset-4 focus-visible:outline-accent'
 
 export function Footer() {
+  // The gutter is cream, not the body's white: <PreFooter> above is cream, so a
+  // white gutter would put three colours together at the panel's rounded top
+  // corners. Carrying the cream through makes it one transition, cream -> card.
   return (
-    <footer className="px-[20px] pb-[20px]">
+    <footer className="bg-secondary px-[20px] pb-[20px]">
       <div className="relative overflow-hidden rounded-[20px] bg-primary text-white md:rounded-[30px]">
         {/* Vendor line-art, reference-only licence — see the TODO on assets.footerShape. */}
         <FooterDecor />
