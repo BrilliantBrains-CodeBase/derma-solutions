@@ -16,8 +16,8 @@ import { ChevronDownIcon, CloseIcon, MenuIcon, PhoneIcon } from '@/components/ic
  *  - `Our Services` opens a full-width mega panel. Glowix's largest dropdown is
  *    13 links in one column; ours is 5 groups / 38 links, which would run off
  *    the bottom of the screen stacked.
- *  - The header is sticky and returns on scroll-up. Glowix's scrolls away — but
- *    the service pages here are long, and the CTA is the point of the header.
+ *  - The header is sticky for the whole page. Glowix's scrolls away — but the
+ *    pages here are long, and the CTA is the point of the header.
  *  - The phone number is a <span>, not the reference's <h3>. PageShell owns the
  *    one H1 per page (fix-plan A5); a heading in the site chrome would land in
  *    every page's outline.
@@ -101,7 +101,6 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [openKey, setOpenKey] = useState<string | null>(null)
   const [atTop, setAtTop] = useState(true)
-  const [hidden, setHidden] = useState(false)
 
   const closeAll = () => {
     setMenuOpen(false)
@@ -142,18 +141,15 @@ export function Header() {
     return () => { document.body.style.overflow = previous }
   }, [menuOpen])
 
-  // Sticky-on-scroll-up. prefers-reduced-motion is handled globally in
-  // src/styles/index.css, which flattens the transition to 0.01ms.
+  // The header stays pinned for the whole page; this only decides whether it is
+  // transparent over the hero or opaque over the content scrolling beneath it.
+  // prefers-reduced-motion is handled globally in src/styles/index.css, which
+  // flattens the transition to 0.01ms.
   useEffect(() => {
-    let last = window.scrollY
     let frame = 0
     const read = () => {
       frame = 0
-      const y = window.scrollY
-      setAtTop(y < 10)
-      if (Math.abs(y - last) < 6) return
-      setHidden(y > last && y > 160)
-      last = y
+      setAtTop(window.scrollY < 10)
     }
     const onScroll = () => { if (!frame) frame = requestAnimationFrame(read) }
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -168,17 +164,17 @@ export function Header() {
   const navItems = navigation.header.filter(item => !isCta(item))
 
   /*
-   * The hide-transform is suppressed while the mobile panel is open: a
-   * transformed element becomes the containing block for its `position: fixed`
-   * descendants, which would anchor the offcanvas panel and its overlay to the
-   * header instead of the viewport.
+   * Deliberately carries no transform. A transformed element becomes the
+   * containing block for its `position: fixed` descendants, which would anchor
+   * the mobile offcanvas panel and its overlay to the header instead of the
+   * viewport. Anything added here that animates the header's position has to
+   * reckon with that.
    */
   const shell =
-    'sticky top-0 z-50 px-[20px] transition-[transform,background-color,box-shadow] duration-300 ' +
+    'sticky top-0 z-50 px-[20px] transition-[background-color,box-shadow] duration-300 ' +
     (atTop && !menuOpen
       ? 'bg-transparent'
-      : 'bg-white shadow-[0_2px_20px_rgba(72,30,11,0.08)]') +
-    (hidden && !menuOpen ? ' -translate-y-full' : '')
+      : 'bg-white shadow-[0_2px_20px_rgba(72,30,11,0.08)]')
 
   return (
     <header className={shell}>
