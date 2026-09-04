@@ -15,6 +15,10 @@
   --color-black:        #000000;
   --color-divider:      #CD5F371A; /* accent @10% - hairlines on light       */
   --color-divider-dark: #FFFFFF1A; /* white  @10% - hairlines on dark        */
+  /* Form feedback. The theme's own values, from style.css:
+   * .wpcf7-not-valid-tip and .wpcf7-form.sent .wpcf7-response-output. */
+  --color-error:        #E65757;   /* red         - validation messages      */
+  --color-success:      #46B450;   /* green       - submitted confirmation   */
 
   /* -- type -------------------------------------------------------------- */
   --font-display: "Marcellus", ui-serif, Georgia, serif;

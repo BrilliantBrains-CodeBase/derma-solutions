@@ -322,6 +322,25 @@ export const assets = {
   /** src: theme-reference 2025-04-transformation-img-4.jpg (303x501) */
   transformAfter2: "/images/decor/transformations/after-2.jpg",
   transformAfter2Alt: "The same patient's cheek and nose after treatment",
+  // TODO(assets): vendor photography on the same terms as heroImage above —
+  // theme-reference/06-assets/manifest.json tags it "licence": "reference-only".
+  //
+  // Copy doc section 11 asks specifically for "a real photo of Dr Sandeep
+  // Mahapatra or Dr Sumedha Tirthani" here, and this is a placeholder for that
+  // photo and not a substitute for it. The four portraits already in
+  // public/images/team/ cannot stand in: the reference frame is a 465x715
+  // cut-out at 1:1.538, and those files are 650x450 landscape and 375x375
+  // square. The replacement needs shooting to this crop, on a plain ground, cut
+  // out to transparency — the pale arch behind it is drawn by the section, not
+  // baked into the file, unlike whatWeDoImage1.
+  /** Appointment band, media column. src: theme-reference 2025-04-appointment-image.png (465x715) */
+  appointmentImage: "/images/decor/appointment-image.png",
+  appointmentImageAlt: "Dermatologist in a white coat with a stethoscope, arms folded",
+  // TODO(brand): vendor artwork on the same terms as footerShape, serviceShape
+  // and testimonialsShape above — "licence": "reference-only" in
+  // theme-reference/06-assets/manifest.json.
+  /** Line-art across the top of the Appointment panel. src: theme-reference 2025-04-appointment-bg-shape.svg (1800x801) */
+  appointmentShape: "/images/decor/appointment-bg-shape.svg",
   favicon: {
     ico: "/favicon.ico",
     /** src: 2024/12/cropped-DermaSolutions-Favicon-with-BG-32x32.png */
@@ -684,6 +703,112 @@ export const homeSeeTheDifference = {
   ],
 } as const;
 
+/**
+ * content/home-page/Derma-Solutions-Homepage-Copy-Glowix-Template-2.md,
+ * section 11. The one band on the homepage that takes input rather than
+ * presenting copy.
+ *
+ * The doctor list is deliberately not written out here: `team` above already
+ * carries exactly the four names the copy doc's dropdown asks for, in the same
+ * order, and HomeAppointment reads their `displayName` straight off it. A
+ * second copy would be free to drift from the doctor pages.
+ */
+export const homeAppointment = {
+  /** Uppercased in CSS, as homeHero's and homeAbout's are. */
+  eyebrow: "Appointment",
+  heading: "Schedule your consultation today!",
+  // TODO(rebuild): the Google Apps Script web-app URL. Empty means "not wired
+  // yet", and while it is empty a valid submission renders unconfiguredMessage
+  // rather than successMessage — see the submit handler in HomeAppointment.tsx
+  // for why it must never claim a booking it did not take.
+  //
+  // Paste the /exec URL of the deployed script here. The section POSTs the six
+  // fields below as application/x-www-form-urlencoded, keyed by `name`, so
+  // doPost(e) reads them off e.parameter. No env var: this repo has no .env
+  // file and no import.meta.env convention, and tracking.gtmId sits here the
+  // same way.
+  endpoint: "",
+  /**
+   * The reference labels these with placeholders alone. `label` is the
+   * accessible name the visually-hidden <label> carries — a placeholder stops
+   * being readable the moment a field has content in it.
+   *
+   * `name` is what the Apps Script receives, and matches the reference form's
+   * own field names so a script written against either works.
+   */
+  fields: [
+    {
+      id: "first-name",
+      name: "first-name",
+      label: "First name",
+      placeholder: "First Name",
+      type: "text",
+      autoComplete: "given-name",
+    },
+    {
+      id: "last-name",
+      name: "last-name",
+      label: "Last name",
+      placeholder: "Last Name",
+      type: "text",
+      autoComplete: "family-name",
+    },
+    {
+      id: "email",
+      name: "email",
+      label: "Email address",
+      placeholder: "Email Address",
+      type: "email",
+      autoComplete: "email",
+    },
+    {
+      id: "phone",
+      name: "phone",
+      label: "Phone number",
+      placeholder: "Phone Number",
+      type: "tel",
+      autoComplete: "tel",
+    },
+    // The copy doc asks for dd-mm-yyyy. A native date input renders the
+    // visitor's own locale format and cannot be told otherwise; the alternative
+    // is a datepicker dependency, which is not worth it for one field. The
+    // placeholder is what a browser shows before the native format takes over.
+    {
+      id: "date",
+      name: "date",
+      label: "Preferred date",
+      placeholder: "Preferred Date",
+      type: "date",
+      autoComplete: "off",
+    },
+  ],
+  /** The <select>. Its first option is the label, exactly as the reference's is. */
+  doctorField: {
+    id: "choosedoctor",
+    name: "choosedoctor",
+    label: "Choose doctor",
+    placeholder: "Choose Doctor",
+  },
+  submitLabel: "Get Appointment",
+  submittingLabel: "Sending...",
+  messages: {
+    required: "This field is required.",
+    invalidEmail: "Enter a valid email address.",
+    invalidPhone: "Enter a valid phone number.",
+    success:
+      "Thank you. Your request has reached the clinic and we will call you back to " +
+      "confirm your appointment.",
+    error:
+      "Something went wrong and your request was not sent. Please call the clinic on " +
+      `${contact.phoneDisplay}.`,
+    // Shown in place of `success` while `endpoint` is empty. Deliberately not a
+    // thank-you: nothing has been received by anyone.
+    unconfigured:
+      "Online booking is not live yet. Please call the clinic on " +
+      `${contact.phoneDisplay} to book your consultation.`,
+  },
+} as const;
+
 /* -------------------------------------------------------------------------- */
 /* Footer call-to-action                                                       */
 /* -------------------------------------------------------------------------- */
@@ -1043,6 +1168,67 @@ export const homeTestimonials = {
       initial: "A",
     },
   ],
+} as const;
+
+// Homepage Latest Blog band. content/home-page/Derma-Solutions-Homepage-Copy-
+// Glowix-Template-2.md, section 12 — the strings are the doc's, verbatim.
+//
+// The card titles are the doc's shortened forms and are deliberately NOT the
+// posts' own H1s, which run much longer ("Medical Facial vs Salon Facial:
+// What's the Real Difference?", and a 15-word one for the peels article). Every
+// other band takes the doc string verbatim; this one does the same.
+//
+// No TODO(assets) here, and that is the point: unlike every other band on this
+// page, these three photographs are the clinic's own published featured images,
+// lifted from seo-backup/06-media/files/2026/07/ by way of each post's og:image
+// in src/seo/registry.generated.ts. Nothing here is vendor artwork tagged
+// "licence": "reference-only", so nothing here has to be replaced before launch.
+//
+// They are wide 1.91:1 banners carrying their own title text, which is why the
+// card frame is not the reference's near-square crop. See departure 2 in
+// HomeLatestBlog.tsx.
+//
+// The alt text describes the artwork rather than restating the card title
+// beside it — the two would otherwise be read out back to back.
+//
+// TODO(content): all three destinations are real prerendered routes, but
+// src/pages/BlogPost.tsx still renders an empty body, so today these cards lead
+// to a page with nothing under its H1. Same for cta.href — src/pages/Blogs.tsx
+// is blank by design until the index is built.
+export const homeLatestBlog = {
+  /** Uppercased in CSS, as homeHero's and homeAbout's are. */
+  eyebrow: "Latest Blog",
+  heading: "Our latest insights on skin, hair & aesthetics",
+  cards: [
+    {
+      title: "Medical Facial vs Salon Facial: The Real Difference",
+      path: "/medical-facial-vs-salon-facial/",
+      image: "/images/decor/blog/medical-facial-vs-salon-facial.jpg",
+      imageAlt:
+        "Split artwork comparing a medical facial in a clinic with a salon facial",
+    },
+    {
+      title: "RF vs HIFU Skin Tightening: Which Is Better?",
+      path: "/rf-vs-hifu-skin-tightening/",
+      image: "/images/decor/blog/rf-vs-hifu-skin-tightening.jpg",
+      imageAlt:
+        "Split artwork comparing radiofrequency and HIFU skin tightening treatments",
+    },
+    {
+      title: "Peels, Microneedling, Lasers or Injectables: Which Is Right?",
+      path: "/chemical-peels-vs-microneedling-vs-lasers-vs-injectables/",
+      image:
+        "/images/decor/blog/chemical-peels-vs-microneedling-vs-lasers-vs-injectables.jpg",
+      imageAlt:
+        "Artwork showing chemical peel, microneedling and laser treatments side by side",
+    },
+  ],
+  // Not in the copy doc and not in the reference — see departure 5 in
+  // HomeLatestBlog.tsx. /blogs/ is a real route (src/routes.generated.tsx).
+  cta: {
+    label: "View All Articles",
+    href: "/blogs/",
+  },
 } as const;
 
 /* -------------------------------------------------------------------------- */

@@ -9,6 +9,8 @@ import { HomeWhyChooseUs } from '@/sections/HomeWhyChooseUs'
 import { HomeHowItWorks } from '@/sections/HomeHowItWorks'
 import { HomeTestimonials } from '@/sections/HomeTestimonials'
 import { HomeSeeTheDifference } from '@/sections/HomeSeeTheDifference'
+import { HomeAppointment } from '@/sections/HomeAppointment'
+import { HomeLatestBlog } from '@/sections/HomeLatestBlog'
 
 /**
  * /
@@ -23,14 +25,16 @@ export default function Home() {
   return (
     <PageShell slug="derma-solutions-home" hero={h1 => <HomeHero heading={h1} />}>
       <HomeAbout />
+      <HomeServices />
       <HomeWhatWeDo />
       <HomeVideo />
-      <HomeServices />
       <HomeCaseStudies />
       <HomeWhyChooseUs />
       <HomeHowItWorks />
       <HomeTestimonials />
       <HomeSeeTheDifference />
+      <HomeAppointment />
+      <HomeLatestBlog />
       {/* remaining sections go here */}
     </PageShell>
   )
