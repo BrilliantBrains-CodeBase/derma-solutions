@@ -7,6 +7,149 @@
  * Every GSAP effect runs regardless." Establishing the guard now, before any
  * animation lands, is cheaper than retrofitting it across finished sections.
  */
+/*
+ * The hero headline's entrance. theme-reference/05-animations/animations.md
+ * spec's this as GSAP SplitText per character (perspective 400, Back.easeOut);
+ * the README flags that plugin's licence as unconfirmed and recommends the CSS
+ * equivalent, so this is the same read done per word with no dependency.
+ *
+ * `animation-fill-mode: both` is load-bearing. The reduced-motion block below
+ * collapses the duration to 0.01ms, and the fill mode is what makes the word
+ * land on the visible end state instead of staying at the hidden start.
+ */
+@keyframes hero-word-in {
+  from { opacity: 0; transform: translateY(0.4em) rotateX(-40deg); }
+  to   { opacity: 1; transform: none; }
+}
+
+.hero-word {
+  /* inline-block so `transform` applies — it does not to a non-replaced inline. */
+  display: inline-block;
+  /*
+   * Each word carries its own trailing space so the H1's text content still
+   * reads as the registry string. `pre` is what keeps that space: a browser
+   * trims trailing whitespace inside an inline-block, which ran the words
+   * together. Lines still break between the boxes, not inside them.
+   */
+  white-space: pre;
+  animation: hero-word-in 0.7s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+
+/*
+ * The About band's motion, all three effects from
+ * theme-reference/04-sections/11-your-journey-to-radiant-confidence/notes.md.
+ *
+ * The reference drives the reveals with GSAP ScrollTrigger. This section is
+ * below the fold, so the hero's trick — a keyframe that plays on load — would
+ * finish before anyone scrolled to it, and the repo has no animation library to
+ * reach for. These use a scroll-driven view() timeline instead.
+ *
+ * Everything sits behind @supports for a reason beyond feature detection: the
+ * resting state of both rules is the *finished* state, and only the supporting
+ * branch introduces a hidden start. A browser without view() timelines (Firefox
+ * today) renders the section fully, and no clipped or transparent state is ever
+ * present in the static HTML that vite-react-ssg emits — so there is nothing to
+ * flash between first paint and hydration.
+ */
+/*
+ * `round` keeps the frame's 30px corners through the wipe: clip-path composes
+ * with the wrapper's own rounded overflow clip, and a square inset would fight
+ * it at the corners mid-animation.
+ */
+@keyframes reveal-wipe-in {
+  from { clip-path: inset(0 100% 0 0 round var(--radius-30)); }
+  to   { clip-path: inset(0 0 0 0 round var(--radius-30)); }
+}
+
+@keyframes reveal-word-in {
+  from { opacity: 0; transform: translateY(0.35em); }
+  to   { opacity: 1; transform: none; }
+}
+
+/*
+ * The box the heading's words animate in, on the same terms as .hero-word:
+ * inline-block so `transform` applies at all, and `white-space: pre` so the
+ * trailing space each word carries survives — a browser trims trailing
+ * whitespace inside an inline-block, which ran the words together. This part is
+ * outside the @supports block because it is what makes the heading render
+ * correctly, animation or no animation.
+ */
+.reveal-word {
+  display: inline-block;
+  white-space: pre;
+}
+
+@supports (animation-timeline: view()) {
+  /* The reference: clip-path inset(0 100% 0 0) -> inset(0), 1.5s power2.out. */
+  .reveal-wipe {
+    animation: reveal-wipe-in linear both;
+    animation-timeline: view();
+    animation-range: entry 10% entry 60%;
+  }
+
+  /*
+   * The heading, per word. The reference is GSAP SplitText per character; this
+   * is the same read the hero already made in CSS.
+   *
+   * The stagger is an offset --i rather than animation-delay: a timeline-driven
+   * animation ignores delay and duration entirely, so the only way to move a
+   * word later is to shift the scroll range it is bound to.
+   */
+  .reveal-word {
+    animation: reveal-word-in linear both;
+    animation-timeline: view();
+    animation-range: entry calc(8% + var(--i) * 3%) entry calc(48% + var(--i) * 3%);
+  }
+}
+
+/*
+ * The reduced-motion block below collapses animation-duration, which a
+ * timeline-driven animation does not have — the scroll range is its clock. Both
+ * rules therefore need switching off by name.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-wipe,
+  .reveal-word {
+    animation: none !important;
+  }
+}
+
+/*
+ * The reference's `at-shiny-glass-effect`, verbatim from
+ * theme-reference/05-animations/animations.md section 5: a diagonal band of
+ * white that grows out of the centre on hover. Pure CSS there too.
+ *
+ * It sits in @layer components for the reason the base layer's comment gives:
+ * an unlayered rule beats every layered one whatever the specificity, so an
+ * unlayered `position: relative` here silently won over the `absolute` utility
+ * on the same element and dropped the whole media stack back into normal flow.
+ */
+@layer components {
+  .shiny-glass {
+    position: relative;
+    overflow: hidden;
+  }
+}
+
+.shiny-glass::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 200%;
+  height: 0%;
+  background-color: rgb(255 255 255 / 0.3);
+  transform: translate(-50%, -50%) rotate(-45deg);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.shiny-glass:hover::after {
+  height: 250%;
+  background-color: transparent;
+  transition: all 600ms linear;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

@@ -51,7 +51,7 @@ export const seoRecords: SeoRecord[] = [
     "description": "Derma Solutions-Your One Point Destination for Skin, Hair & Aesthetic Transformation at our premier skin and hair clinic in Marathahalli, Whitefield - Bangalore",
     "canonical": "https://dermasolutions.co.in/",
     "robots": "max-image-preview:large, max-snippet:-1, max-video-preview:-1",
-    "h1": "Trusted Skin & Hair Clinic in Bangalore for Radiant Results.",
+    "h1": "Trusted Skin & Hair Clinic in Bangalore",
     "og": {
       "og:title": "Skin and Hair Clinic in Marathahalli, Whitefield - Bangalore",
       "og:type": "website",

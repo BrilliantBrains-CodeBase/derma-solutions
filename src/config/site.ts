@@ -50,6 +50,8 @@ export const brand = {
   ],
   url: SITE_URL,
   tagline: "Your One Point Destination for Skin, Hair & Aesthetic Transformation",
+  /** Copy doc section 13 — shorter line used under the footer logo. */
+  footerTagline: "Doctor-led skin, hair and aesthetic care in Bangalore.",
   headline: "Trusted Skin & Hair Clinic in Bangalore for Radiant Results.",
   description:
     "Derma Solutions Skin & Hair Clinic is a dermatologist-led skin, hair, laser, anti-aging and cosmetic treatment clinic in Marathahalli, Bangalore, founded by Dr. Sandeep Mahapatra, Senior Dermatologist, Cosmetic Expert and Hair Transplant Surgeon. The clinic provides medical dermatology, cosmetic dermatology, laser treatments, dermatosurgery, hair loss treatments, hair transplant and selected cosmetic surgery services.",
@@ -100,7 +102,10 @@ export const contact = {
   email: "sandeep.mahapatra@dermasolutions.co.in",
   contactType: "appointments and patient enquiries",
   languages: ["English", "Hindi", "Kannada"],
+  /** Footer CTA. The copy doc names the header and hero buttons separately. */
   ctaLabel: "Book An Appointment",
+  /** Copy doc section 01 — the header button. */
+  ctaLabelHeader: "Make An Appointment",
   // TODO(rebuild): the page is not built yet, so this 404s today. Whitelisted in
   // scripts/verify-links.ts — remove that entry when the page lands. Same
   // situation as /contact-us/, which the Service schema already points at.
@@ -121,15 +126,17 @@ export const location = {
     postalCode: "560037",
     country: "IN",
   },
-  // CONFLICT: the visible footer prints a differently-worded, differently-broken
-  // version of the same address ("Munnekoala", "Purvankara Apt"). Both are kept:
-  // `address` above is canonical for schema, these lines are what renders.
-  // TODO(brand): agree one wording and make both match.
+  // The live footer printed a garbled version of the same address ("Munnekoala",
+  // "Purvankara Apt", the landmark repeated twice). The client's copy doc
+  // (content/home-page/, section 13) supplies a clean one, used here.
+  // `address` above stays as-is: it is canonical for the JSON-LD, which ships
+  // byte-verbatim. The two still differ in spelling — TODO(brand): reconcile
+  // them in the source schema so display and structured data agree.
   addressDisplayLines: [
-    "1st floor, Scorpio House,",
-    "Near Marathahalli Bridge Munnekoala, Near Marathahalli Bridge Service Rd,",
-    "Opp. Purvankara Apt,",
-    "Opposite to Purva Apartments, Bengaluru, Karnataka 560037",
+    "1st Floor, Scorpio House,",
+    "near Marathahalli Bridge, Munnekollal,",
+    "opposite Purva Apartments,",
+    "Bengaluru, Karnataka 560037",
   ],
   geo: { latitude: 12.956707, longitude: 77.707275 },
   mapUrl: "https://share.google/SO018gWSkHgepLkdC",
@@ -142,13 +149,16 @@ export const location = {
 /* Opening hours                                                               */
 /* -------------------------------------------------------------------------- */
 
-// CONFLICT — UNRESOLVED, needs a human answer before launch.
+// CONFLICT — narrowed, but still needs a fix before launch.
 //   The live JSON-LD says Mon + Wed–Sun, 10:00–20:00 — Tuesday is absent entirely.
-//   The homepage's own visible footer says "We Are Open On All Days /
-//   Monday to Sunday / 09:30 - 18:00".
-//   Google reads the schema; patients read the footer. They cannot both be right.
-// The schema version is encoded below because it is what currently ranks.
-// TODO(brand): confirm the real hours, then make `openingHours` and `display` agree.
+//   The homepage's visible footer says Monday to Sunday, 09:30–18:00.
+//   The client's copy doc (content/home-page/, section 13) independently states
+//   "Monday to Sunday: 9:30 AM to 6:00 PM / Open all 7 days", which corroborates
+//   the visible hours and makes the SCHEMA the wrong one.
+// `openingHours` below still encodes the schema because it ships byte-verbatim
+// in the JSON-LD and scripts/verify-seo.ts asserts that byte-for-byte.
+// TODO(brand): correct the hours in the source schema, then update `openingHours`
+// here to match `display`. Do not edit one without the other.
 export const hours = {
   openingHours: [
     {
@@ -158,8 +168,8 @@ export const hours = {
     },
   ],
   /** What the footer currently prints — does NOT match `openingHours`. */
-  display: "Monday to Sunday, 09:30 - 18:00",
-  displayHeading: "We Are Open On All Days",
+  display: "Monday to Sunday: 9:30 AM to 6:00 PM",
+  displayHeading: "Open all 7 days",
 } as const;
 
 /* -------------------------------------------------------------------------- */
@@ -205,6 +215,113 @@ export const assets = {
   // be replaced with Derma Solutions' own decor before launch.
   /** Decorative line-art behind the footer panel. src: theme-reference 2025-04-footer-bg-shape.svg */
   footerShape: "/images/decor/footer-bg-shape.svg",
+  // TODO(brand): vendor artwork on the same terms as footerShape above —
+  // "licence": "reference-only" in theme-reference/06-assets/manifest.json.
+  /** Line-art behind the Services band. src: theme-reference 2025-04-service-bg-shape.svg (1800x1511) */
+  serviceShape: "/images/decor/service-bg-shape.svg",
+  // TODO(assets): vendor photography, also tagged "licence": "reference-only".
+  // It is here for crop and art direction only and must be replaced with Derma
+  // Solutions' own photography before launch. clinicPhoto below is NOT a
+  // substitute: it shows another clinic's signage on the back wall.
+  /** Homepage hero photo. src: theme-reference 2025-04-hero-bg.jpg (1920x1280) */
+  heroImage: "/images/decor/home-hero.jpg",
+  heroImageAlt: "Dermatologist assessing a patient's skin during a consultation",
+  // TODO(assets): the three About photographs are vendor artwork on the same
+  // terms as heroImage above — theme-reference/06-assets/manifest.json tags all
+  // three "licence": "reference-only". They hold the crop and art direction of
+  // the reference composition and must be replaced with Derma Solutions' own
+  // photography before launch.
+  /** About stack, upper-right. src: theme-reference 2025-04-about-img-1.jpg (358x450) */
+  aboutImage1: "/images/decor/about-1.jpg",
+  aboutImage1Alt: "Clinician applying a treatment mask during a facial",
+  /** About stack, lower-left. src: theme-reference 2025-04-about-img-2.jpg (360x450) */
+  aboutImage2: "/images/decor/about-2.jpg",
+  aboutImage2Alt: "Patient receiving a laser treatment from a dermatologist",
+  /** About checklist row. src: theme-reference 2025-04-about-experience-image.jpg (302x180) */
+  aboutExperienceImage: "/images/decor/about-experience.jpg",
+  aboutExperienceImageAlt: "Dermatologist treating a patient's face in the clinic",
+  /**
+   * What We Do, left column. A cut-out PNG: the pale arch behind the figure is
+   * baked into the file, which is why this one carries no frame, radius or
+   * reveal in the section. src: theme-reference 2025-04-what-we-image-1.png
+   * (392x626)
+   */
+  whatWeDoImage1: "/images/decor/what-we-do-1.png",
+  whatWeDoImage1Alt: "Patient marked for a body-contouring procedure",
+  /** What We Do, right column. src: theme-reference 2025-04-what-we-image-2.jpg (391x621) */
+  whatWeDoImage2: "/images/decor/what-we-do-2.jpg",
+  whatWeDoImage2Alt: "Clinician smoothing a treatment mask onto a reclining patient's face",
+  // TODO(assets): both Why Choose Us photographs are vendor artwork on the same
+  // terms as heroImage above — theme-reference/06-assets/manifest.json tags the
+  // pair "licence": "reference-only". They hold the reference's 264x408 portrait
+  // crop and the overlap that composition depends on, and must be replaced with
+  // Derma Solutions' own photography before launch. The alt text below describes
+  // the placeholder, so it has to be rewritten with them.
+  //
+  // The band's third reference image, 2025-04-author-2.jpg, is deliberately not
+  // here: the contact row uses founder.photo instead. See the departures list in
+  // src/sections/HomeWhyChooseUs.tsx.
+  /** Why Choose Us, front-left frame. src: theme-reference 2025-04-why-choose-image-1.jpg (264x408) */
+  whyChooseImage1: "/images/decor/why-choose-1.jpg",
+  whyChooseImage1Alt: "Clinician applying a treatment to a patient's face during a facial",
+  /** Why Choose Us, inside the accent panel. src: theme-reference 2025-04-why-choose-image-2.jpg (264x408) */
+  whyChooseImage2: "/images/decor/why-choose-2.jpg",
+  whyChooseImage2Alt: "Dermatologist treating a reclining patient's face in the clinic",
+  // TODO(brand): vendor artwork on the same terms as footerShape and serviceShape
+  // above — "licence": "reference-only" in theme-reference/06-assets/manifest.json.
+  /** Dot field behind the Testimonials band. src: theme-reference 2025-04-testimonials-bg-shape.png (1800x1041) */
+  testimonialsShape: "/images/decor/testimonials-bg-shape.png",
+  // TODO(assets): vendor photography on the same terms as heroImage above, and it
+  // must be replaced with Derma Solutions' own photography before launch.
+  //
+  // Note this is deliberately NOT the reference's 2025-04-testimonial-image.jpg.
+  // That file is a woman posed to camera, and the band sets it directly beside a
+  // named patient's quote, where it reads as that patient's face. This is a
+  // treatment scene instead — nobody in it is being presented as the reviewer.
+  // Same reasoning as 2025-04-author-2.jpg in the Why Choose Us block above. See
+  // the departures list in src/sections/HomeTestimonials.tsx.
+  /** Testimonials band, featured column. src: theme-reference 2025-04-gallery-7.jpg (1200x800) */
+  testimonialImage: "/images/decor/testimonial.jpg",
+  testimonialImageAlt:
+    "Clinician performing a facial treatment on a reclining patient under a clinic lamp",
+  // TODO(assets): unlike the decor above this is the clinic's own footage — a
+  // frame of the video in homeVideo — so it is the one image on the homepage
+  // that needs no licence clearance. It is also the softest: YouTube's frame
+  // stills top out at 480x360, so this is an upscale to 1400x800 and it shows,
+  // particularly along the right and bottom edges. The uploader's own thumbnail
+  // is sharper but unusable — it is an end-card carrying burned-in captions, a
+  // "BOTOX" wordmark and two before/after patient faces, which would drag copy
+  // doc compliance notes 2 and 3 onto the homepage. A still shot at the clinic,
+  // or the real video the copy doc asks for, replaces this and fixes the
+  // sharpness. Re-cut it if homeVideo.youtubeId changes.
+  /** Poster for the homepage video band. src: frame of homeVideo.youtubeId */
+  videoPoster: "/images/decor/home-video-poster.jpg",
+  videoPosterAlt: "Dr Sandeep Mahapatra speaking to camera in the clinic",
+  // TODO(compliance): BLOCKING, not advisory. Copy doc note 2: "Use only the
+  // clinic's own images with signed patient consent on file. Do not use stock
+  // or theme demo images as patient results." These four are the Glowix demo's
+  // own `transformation-img-{1..4}.jpg`, tagged "licence": "reference-only" in
+  // theme-reference/06-assets/manifest.json, and the band labels them Before
+  // and After — which is exactly the case the note rules out. They are here to
+  // hold the 308x501 crop and the pair composition only. Replace with the
+  // clinic's own consented images before launch, and rewrite the alt text with
+  // them: it describes the placeholder.
+  //
+  // As in homeCaseStudies, the alt text deliberately describes only what is in
+  // frame. Naming an improvement in an alt would make the photograph itself
+  // assert the result.
+  /** See the Difference, pair 1. src: theme-reference 2025-04-transformation-img-1.jpg (308x501) */
+  transformBefore1: "/images/decor/transformations/before-1.jpg",
+  transformBefore1Alt: "Close-up of a patient's face before treatment",
+  /** src: theme-reference 2025-04-transformation-img-2.jpg (309x501) */
+  transformAfter1: "/images/decor/transformations/after-1.jpg",
+  transformAfter1Alt: "The same patient's face after treatment, hair wrapped in a towel",
+  /** See the Difference, pair 2. src: theme-reference 2025-04-transformation-img-3.jpg (308x501) */
+  transformBefore2: "/images/decor/transformations/before-2.jpg",
+  transformBefore2Alt: "Close-up of a second patient's cheek and nose before treatment",
+  /** src: theme-reference 2025-04-transformation-img-4.jpg (303x501) */
+  transformAfter2: "/images/decor/transformations/after-2.jpg",
+  transformAfter2Alt: "The same patient's cheek and nose after treatment",
   favicon: {
     ico: "/favicon.ico",
     /** src: 2024/12/cropped-DermaSolutions-Favicon-with-BG-32x32.png */
@@ -284,7 +401,7 @@ export const legal = {
 
 /** "©2026 Derma Solutions. All Rights Reserved." — year never goes stale. */
 export const copyrightLine = (year: number = new Date().getFullYear()): string =>
-  `©${year} ${legal.copyrightHolder}. All Rights Reserved.`;
+  `Copyright © ${year} ${legal.copyrightHolder}. All rights reserved.`;
 
 /* -------------------------------------------------------------------------- */
 /* Clinical team                                                               */
@@ -478,9 +595,14 @@ export const serviceMenu = [
 export const navigation = {
   header: [
     { label: "Home", path: "/" },
-    { label: "Our Services", groups: serviceMenu },
+    // Labels follow the copy doc's section 01; the routes behind them are
+    // unchanged. Its "Contact Us" item is deliberately absent — /contact-us/ is
+    // one of the two known-dangling paths in scripts/verify-links.ts and 404s
+    // today, so putting it in the primary nav would ship a broken link.
+    { label: "About Us", path: team[0].path },
+    { label: "Treatments", groups: serviceMenu },
     {
-      label: "About",
+      label: "Doctors",
       items: team.map((d) => ({
         label: d.displayName,
         sublabel: d.qualification,
@@ -494,10 +616,10 @@ export const navigation = {
         { label: "Video Gallery", path: "/video-gallery/" },
       ],
     },
-    { label: "Blogs", path: "/blogs/" },
+    { label: "Blog", path: "/blogs/" },
     // The header's accent pill. The phone number beside it is rendered straight
     // from `contact`, not from here, so this entry is the booking CTA alone.
-    { label: contact.ctaLabel, href: contact.ctaHref, isCta: true },
+    { label: contact.ctaLabelHeader, href: contact.ctaHref, isCta: true },
   ],
   // The footer's "Quick Link" column. Deliberately short — it is a shortcut list,
   // not a second copy of the header. /contact-us/ is omitted because it 404s (see
@@ -515,8 +637,416 @@ export const navigation = {
   ],
 } as const;
 
+// Homepage See the Difference band. content/home-page/Derma-Solutions-Homepage-
+// Copy-Glowix-Template-2.md, section 10 — the strings are the doc's, verbatim.
+//
+// TODO(compliance): copy doc note 2 sits on the four photographs this band
+// renders — see the blocking TODO on assets.transformBefore1. `disclaimer`
+// below is the doc's required "Results vary from person to person." line and
+// must stay visible next to the images; do not move it into a tooltip, an
+// accordion or the page footer.
+export const homeSeeTheDifference = {
+  /** Uppercased in CSS, as homeHero's and homeAbout's are. */
+  eyebrow: "See the Difference",
+  heading: "Our real patient transformations and visible results",
+  /** The doc's "Image Labels: Before / After (2 pairs)". */
+  beforeLabel: "Before",
+  afterLabel: "After",
+  pairs: [
+    {
+      id: "pair-1",
+      before: { image: assets.transformBefore1, imageAlt: assets.transformBefore1Alt },
+      after: { image: assets.transformAfter1, imageAlt: assets.transformAfter1Alt },
+    },
+    {
+      id: "pair-2",
+      before: { image: assets.transformBefore2, imageAlt: assets.transformBefore2Alt },
+      after: { image: assets.transformAfter2, imageAlt: assets.transformAfter2Alt },
+    },
+  ],
+  disclaimer: "Results vary from person to person.",
+  // TODO(compliance): copy doc note 1, the same ASCI substantiation caveat that
+  // sits on homeAbout.badge, homeWhatWeDo.badgeValue and homeWhyChooseUs.badge —
+  // and the sharpest instance of it on the page, because these are volume
+  // claims rather than a round number of years. Under ASCI rules all four must
+  // be backed by clinic records if challenged. Confirm every figure with
+  // Dr Sandeep before publishing. The reference's own counters read 25+ / 150K+
+  // / 30+ / 2K+; these are the doc's numbers.
+  //
+  // `value` is what the counter tweens to and `suffix` is printed after it, so
+  // 50000 renders "50,000+". The specialist tile has no suffix: "4+ In-House
+  // Specialists" would be a different, vaguer claim than the doc's "4".
+  counters: [
+    { id: "years", value: 20, suffix: "+", label: "Years of Expertise" },
+    { id: "laser", value: 50000, suffix: "+", label: "Laser Procedures" },
+    { id: "transplants", value: 10000, suffix: "+", label: "Hair Transplants" },
+    { id: "specialists", value: 4, suffix: "", label: "In-House Specialists" },
+  ],
+} as const;
+
 /* -------------------------------------------------------------------------- */
 /* Footer call-to-action                                                       */
+/* -------------------------------------------------------------------------- */
+
+// Homepage hero copy. The H1 is deliberately absent — it comes from the SEO
+// registry via PageShell, so it cannot drift from the captured live H1.
+export const homeHero = {
+  eyebrow: `Welcome to ${brand.shortName}`,
+  /** content/home-page/Derma-Solutions-Homepage-Copy-Glowix-Template-2.md, section 02. */
+  body:
+    "Expert dermatology, laser, anti-aging and hair transplant care in Marathahalli, " +
+    "Whitefield. Doctor-led plans built around your skin, your goals and honest advice - " +
+    "open all 7 days.",
+  // The copy doc asks for a Google rating strip, then rules out hardcoding a
+  // figure (compliance note 5) — an uncurrent rating is the risk. This is the
+  // doc's own fallback wording. Swap in a live rating when one is wired up.
+  /** Copy doc section 02 — shorter than the header's button, deliberately. */
+  primaryLabel: "Book Appointment",
+  ratingNote: "Rated highly by patients across Bangalore",
+  // The reference opens a YouTube lightbox here. There is no video ID, so the
+  // same treatment links to the real gallery route instead.
+  secondary: { label: "Watch Video", path: "/video-gallery/" },
+} as const;
+
+// Homepage About band. content/home-page/Derma-Solutions-Homepage-Copy-Glowix-
+// Template-2.md, section 03 — the strings are the doc's, verbatim.
+export const homeAbout = {
+  /** Uppercased in CSS, as homeHero's is. */
+  eyebrow: "About Us",
+  heading: "Your journey to radiant, confident skin",
+  body:
+    "Derma Solutions is a skin and hair clinic in Marathahalli, Whitefield, where " +
+    "dermatologists and plastic surgeons treat every concern under one roof.",
+  checklist: [
+    "Doctor-Led Diagnosis & Plans",
+    "FDA-Approved Laser Technology",
+    "One Clinic, Every Concern",
+  ],
+  // TODO(compliance): copy doc note 1 — under ASCI substantiation rules a
+  // numeric claim must be backed by clinic records. Confirm the figure with
+  // Dr Sandeep before launch. The reference reads "15+ Years of Experience";
+  // this is the doc's own wording for the same badge.
+  badge: "20 Years of Expertise",
+  contactLabel: "Need Help!",
+  /** The doc's target for "More About" — the founder's page, a real route. */
+  cta: { label: "More About", path: team[0].path },
+} as const;
+
+// Homepage What We Do band. content/home-page/Derma-Solutions-Homepage-Copy-
+// Glowix-Template-2.md, section 04 — the strings are the doc's, verbatim.
+export const homeWhatWeDo = {
+  /** Uppercased in CSS, as homeHero's and homeAbout's are. */
+  eyebrow: "What We Do",
+  heading: "Dermatology, not just beauty",
+  body:
+    "We treat skin, hair and body concerns medically - with diagnosis first, then " +
+    "a plan matched to you.",
+  checklist: [
+    "Restore Firmness and Shape",
+    "Minimise Acne Scars and Pigmentation",
+    "Tailored Treatments for Men",
+  ],
+  // TODO(compliance): copy doc note 1, the same ASCI substantiation caveat that
+  // sits on homeAbout.badge. Confirm the figure with Dr Sandeep before launch.
+  // The reference counter reads 25+; this is the doc's own number.
+  badgeValue: 20,
+  badgeSuffix: "+",
+  badgeLabel: "Years of Experience",
+  // The doc gives no target for "Learn More" and the reference points at the
+  // demo's /contact-us/, which 404s here (see KNOWN_DANGLING in
+  // scripts/verify-links.ts). Retargeted to the live medical-dermatology
+  // overview, the closest match to this band's copy.
+  cta: { label: "Learn More", path: "/cosmetic-dermatology-in-bangalore/" },
+} as const;
+
+// The video band under What We Do. Copy doc section 04: "Use a clinic video
+// from the existing Video Gallery. Do not use stock footage."
+export const homeVideo = {
+  // TODO(content): the clinic's own most-embedded video across the captured
+  // site (seo-backup/01-raw-html/desktop/*.html), used here so the band is not
+  // stock footage. Confirm with Dr Sandeep which video should carry the
+  // homepage, then re-pull assets.videoPoster to match.
+  youtubeId: "kaShO9fY0hM",
+  /** The reference's label sits inside the play ring rather than beside it. */
+  playLabel: "Play",
+  /** Names the iframe for screen readers once the facade is replaced. */
+  title: "Derma Solutions clinic video",
+} as const;
+
+// Homepage Services grid. content/home-page/Derma-Solutions-Homepage-Copy-
+// Glowix-Template-2.md, section 05 — titles and body copy are the doc's,
+// verbatim.
+//
+// The six `path`s are the point of this section: it is the homepage's main
+// internal link hub into the treatment pages. Every one was checked against
+// src/routes.generated.tsx and resolves to a real route.
+//
+// TODO(assets): all six photographs are vendor artwork on the same terms as
+// assets.heroImage — theme-reference/06-assets/manifest.json tags each
+// "licence": "reference-only". They hold the reference's 3:2 crop and must be
+// replaced with Derma Solutions' own photography before launch. The alt text
+// below describes the placeholder, so it has to be rewritten with them.
+export const homeServices = {
+  /** Uppercased in CSS, as homeHero's and homeAbout's are. */
+  eyebrow: "Services",
+  heading: "Explore our full range of skin & hair treatments",
+  cards: [
+    {
+      title: "Laser Treatments",
+      body: "FDA-approved lasers for hair removal, tattoo removal, toning and scar reduction.",
+      path: "/laser-hair-removal-in-bangalore/",
+      image: "/images/decor/services/service-1.jpg",
+      imageAlt: "Clinician performing a laser treatment on a patient's face",
+    },
+    {
+      title: "Skin & Cosmetology",
+      body: "Acne scar treatment, peels, HydraFacial and MNRF for even, glowing skin.",
+      path: "/acne-scar-treatment-in-bangalore/",
+      image: "/images/decor/services/service-2.jpg",
+      imageAlt: "Patient's face marked up before a cosmetic skin procedure",
+    },
+    {
+      // TODO(compliance): copy doc note 3 — "Botox" is a prescription brand
+      // name, which sits close to the Drugs and Magic Remedies Act line. Kept
+      // deliberately: the site already names it in serviceMenu and
+      // /botox-treatment-in-bangalore-whitefield-and-marathahalli/ is a live
+      // page, so removing it here alone would buy nothing. The doc's
+      // zero-exposure alternative is "Anti-wrinkle injections, dermal fillers,
+      // HIFU and thread lifts."
+      title: "Anti-Aging & Injectables",
+      body: "Botox, dermal fillers, HIFU and thread lifts to lift and smooth.",
+      path: "/botox-treatment-in-bangalore-whitefield-and-marathahalli/",
+      image: "/images/decor/services/service-3.jpg",
+      imageAlt: "Dermatologist marking treatment points on a patient's face",
+    },
+    {
+      title: "Hair Restoration",
+      body: "Hair transplant, GFC therapy and hair fall treatment with detailed hair analysis.",
+      path: "/hair-transplant-in-bangalore-marathahalli-whitefield/",
+      image: "/images/decor/services/service-4.jpg",
+      imageAlt: "Surgeon assessing a patient's hairline before a transplant",
+    },
+    {
+      title: "Cosmetic Surgery",
+      body: "Liposuction, tummy tuck, rhinoplasty and gynecomastia by in-house plastic surgeons.",
+      path: "/liposuction-treatment-in-bangalore/",
+      image: "/images/decor/services/service-5.jpg",
+      imageAlt: "Surgeon in theatre preparing a patient for a procedure",
+    },
+    {
+      title: "Advanced Facials",
+      body: "HydraFacial, carbon peel and PDRN facials for hydration and glow, no downtime.",
+      path: "/best-hydrafacial-treatment-in-marathahalli-whitefield-bangalore/",
+      image: "/images/decor/services/service-6.jpg",
+      imageAlt: "Therapist performing a hydrating facial on a patient",
+    },
+  ],
+  // TODO(compliance): copy doc note 4 — the reference's strip is a "Free" pill
+  // reading "Get a Free Assessment", and the doc rules that out unless the
+  // consultation genuinely is free. This is the doc's own fallback, so the
+  // pill is deliberately absent. Restore both together, or neither.
+  //
+  // The reference links this at /contact-us/, which 404s here and is already
+  // flagged in scripts/verify-links.ts. contact.ctaHref is the whitelisted
+  // equivalent the hero and header CTAs use.
+  cta: {
+    text: "Not sure which treatment is right for you?",
+    label: "Book a Consultation",
+    href: contact.ctaHref,
+  },
+} as const;
+
+// Homepage Case Studies band. content/home-page/Derma-Solutions-Homepage-Copy-
+// Glowix-Template-2.md, section 06 — the strings are the doc's, verbatim.
+//
+// The doc gives four card titles and no per-card destination, because this
+// rebuild has no case-study routes: the reference's four /casestudy/<slug>/
+// posts have no equivalent here. /image-gallery/ is the one page that holds the
+// clinic's transformation images, so every card and the button point at it.
+//
+// TODO(assets): the four photographs are vendor artwork on the same terms as
+// assets.heroImage — theme-reference/06-assets/manifest.json tags them
+// "licence": "reference-only". They belong to the Glowix theme author, hold the
+// crop and art direction of the reference tiles only, and must be replaced with
+// Derma Solutions' own photography before launch.
+//
+// TODO(compliance): copy doc note 2, and this one is blocking rather than
+// advisory. These are Glowix procedure shots sitting under result-claim titles
+// ("Clearer Skin, Fewer Scars"), which is exactly the "do not use stock or theme
+// demo images as patient results" case the note rules out. Replace with the
+// clinic's own images with signed patient consent on file. The doc's required
+// "Results vary from person to person" line is already the last sentence of
+// `body` below and must stay visible next to the tiles.
+//
+// The alt text deliberately describes only what is in frame. Restating a card's
+// title in its alt would make the photograph itself assert the result.
+export const homeCaseStudies = {
+  /** Uppercased in CSS, as homeHero's and homeAbout's are. */
+  eyebrow: "Case Studies",
+  heading: "Our remarkable transformations",
+  body:
+    "Real patients, real results. See how our doctor-led skin, hair and cosmetic " +
+    "treatments have restored confidence. Results vary from person to person.",
+  cta: {
+    label: "View All Case Studies",
+    href: "/image-gallery/",
+  },
+  cards: [
+    {
+      title: "Clearer Skin, Fewer Scars",
+      image: "/images/decor/case-studies/case-study-1.jpg",
+      imageAlt: "Clinician in scrubs treating a reclining patient's face at the clinic",
+    },
+    {
+      title: "Fuller Hair After Transplant",
+      image: "/images/decor/case-studies/case-study-2.jpg",
+      imageAlt: "Gloved clinician marking guide lines on a patient's face before a procedure",
+    },
+    {
+      title: "Even Tone, Less Pigmentation",
+      image: "/images/decor/case-studies/case-study-3.jpg",
+      imageAlt: "Dermatologist performing a facial treatment on a reclining patient",
+    },
+    {
+      title: "Lifted, Smoother Skin",
+      image: "/images/decor/case-studies/case-study-4.jpg",
+      imageAlt: "Clinician administering an injectable treatment to a patient's face",
+    },
+  ],
+} as const;
+
+// Homepage Why Choose Us band. content/home-page/Derma-Solutions-Homepage-Copy-
+// Glowix-Template-2.md, section 07 — the strings are the doc's, verbatim.
+//
+// The doc labels the two paragraphs "Paragraph 1" and "Paragraph 2". The
+// reference sets the second in Marcellus 22/31 and marks it up as an <h3>;
+// here it stays a paragraph. See the departures list in HomeWhyChooseUs.tsx.
+export const homeWhyChooseUs = {
+  /** Uppercased in CSS, as homeHero's and homeAbout's are. */
+  eyebrow: "Why Choose Us",
+  heading: "Experience skin and hair care in expert hands",
+  body:
+    "Every plan is built on an in-depth diagnosis, not a fixed menu - matched to " +
+    "your skin, concern and budget.",
+  statement:
+    "Skin, hair, anti-aging and cosmetic surgery are handled in-house by qualified " +
+    "specialists, using FDA-approved lasers and modern technology, with clear " +
+    "communication throughout.",
+  contactLabel: "Contact Us:",
+  // TODO(compliance): copy doc note 1, the same ASCI substantiation caveat that
+  // sits on homeAbout.badge and homeWhatWeDo.badgeValue. Confirm the figure with
+  // Dr Sandeep before launch. The reference's badge reads "25YEARS EXPERIENCE";
+  // this is the doc's own number, and it carries the space the demo drops.
+  badge: "20 Years Experience",
+} as const;
+
+// Homepage How It Works band. content/home-page/Derma-Solutions-Homepage-Copy-
+// Glowix-Template-2.md, section 08 — the strings are the doc's, verbatim.
+//
+// `number` and `title` are separate fields even though the reference bakes the
+// numbering into one string ("01. Comprehensive Consultation"). The doc writes
+// them apart, and keeping them apart is what lets the section render an <ol>
+// whose numbering is structural rather than only painted on.
+export const homeHowItWorks = {
+  /** Uppercased in CSS, as homeHero's and homeAbout's are. */
+  eyebrow: "How It Works",
+  heading: "Simple steps to visible results",
+  body:
+    "A clear, unhurried process from first consultation to lasting results. We " +
+    "diagnose the root cause, explain your options, treat you personally and follow " +
+    "up until your skin settles.",
+  // TODO(rebuild): the reference links this button at /contact-us/, which 404s
+  // here and is whitelisted in scripts/verify-links.ts. contact.ctaHref is the
+  // same substitution homeServices.cta makes. Repoint it when the page lands.
+  cta: { label: "Contact Us", href: contact.ctaHref },
+  steps: [
+    {
+      number: "01",
+      title: "Consultation & Analysis",
+      body: "We listen to your concern and assess your skin, hair or scalp in detail.",
+    },
+    {
+      number: "02",
+      title: "Accurate Diagnosis",
+      body:
+        "Our specialists identify the root cause behind the symptom, so treatment is " +
+        "targeted.",
+    },
+    {
+      number: "03",
+      title: "Personalised Treatment Plan",
+      body:
+        "You get a plan matched to your skin type, goals and budget, explained clearly.",
+    },
+    {
+      number: "04",
+      title: "Expert Treatment & Follow-Up",
+      body:
+        "A qualified doctor performs your treatment, then guides aftercare so your " +
+        "results last.",
+    },
+  ],
+} as const;
+
+// Homepage Testimonials band. content/home-page/Derma-Solutions-Homepage-Copy-
+// Glowix-Template-2.md, section 09 — the strings are the doc's, verbatim.
+//
+// The doc supplies one featured quote and three small ones. The reference carries
+// four, in a Swiper with arrows, dots, autoplay and loop all disabled — i.e. a
+// static 3-up grid with a fourth slide parked off-screen. Three quotes fill the
+// grid exactly, which is why there is no carousel here. See HomeTestimonials.tsx.
+//
+// `initial` is stored rather than sliced off `name`: "Dr Manoj Waghmare" begins
+// with the honorific, so the letter on his disc is a content decision and not a
+// string trick. It follows whatever the name becomes.
+//
+// TODO(content): the copy doc's own note under section 09 — testimonials 2 and 3
+// were lightly extended to fill the template's card height, so as written they are
+// not verbatim reviews. Either confirm the patients are happy with the wording or
+// replace both with longer reviews pulled from the Google Business Profile. Every
+// quote here should be traceable to a real, attributable review before launch.
+export const homeTestimonials = {
+  /** Uppercased in CSS, as homeHero's and homeAbout's are. */
+  eyebrow: "Testimonials",
+  heading: "Life-changing results from our patients",
+  featured: {
+    quote:
+      "Derma Solutions is one of the best skin and hair clinics in Bangalore. The " +
+      "doctor is very humble and calm, and always made me feel comfortable during " +
+      "my skin procedures.",
+    name: "Neha Sharma",
+    role: "Patient, Bangalore",
+  },
+  cards: [
+    {
+      quote:
+        "The only dermatologist I trust with my skin is Dr Sandeep Mahapatra. I have " +
+        "been seeing him for more than ten years and I wouldn't use anyone else.",
+      name: "Priyanka Radhakrishna",
+      role: "Patient",
+      initial: "P",
+    },
+    {
+      quote:
+        "He is a blessed, experienced and skilled hair transplant surgeon. The care " +
+        "and precision throughout the procedure were exactly what I hoped for.",
+      name: "Dr Manoj Waghmare",
+      role: "Hair Transplant Patient",
+      initial: "M",
+    },
+    {
+      quote:
+        "Dr Sandeep is very experienced and professional. My injections were " +
+        "absolutely painless and I had no reaction at all afterwards.",
+      name: "Alisha",
+      role: "Patient",
+      initial: "A",
+    },
+  ],
+} as const;
+
+/* -------------------------------------------------------------------------- */
+/* Footer CTA                                                                  */
 /* -------------------------------------------------------------------------- */
 
 // The Glowix reference puts a newsletter signup here. There is no newsletter

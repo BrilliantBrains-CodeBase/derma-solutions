@@ -25,6 +25,21 @@ const NOTES: Record<string, string> = {
 }
 
 /**
+ * Deliberate H1 rewrites, keyed by slug.
+ *
+ * Everything else in this file reproduces the capture; these do not, so each one
+ * is listed here rather than applied silently. An override is a copy decision
+ * signed off by the client, and it trades a live, ranking H1 for a new one —
+ * only add to this map when that trade has actually been made.
+ *
+ * Sourced from content/home-page/Derma-Solutions-Homepage-Copy-Glowix-Template-2.md.
+ */
+const H1_OVERRIDES: Record<string, string> = {
+  // Was: "Trusted Skin & Hair Clinic in Bangalore for Radiant Results."
+  'derma-solutions-home': 'Trusted Skin & Hair Clinic in Bangalore',
+}
+
+/**
  * fix-plan A4: a site-wide og:image so no page can ship without one.
  * Absolute, not root-relative — Facebook/WhatsApp/LinkedIn scrapers fetch
  * og:image out of context and do not reliably resolve a relative path.
@@ -71,8 +86,9 @@ const records = rows.map(r => {
   if (!twitter['twitter:image']) twitter['twitter:image'] = og['og:image']
 
   // A5 — exactly one H1. The 5 multi-H1 pages keep only the first; the extras
-  // become H2s when content lands. The heading TEXT is never changed.
-  const h1 = perPage.h1?.[0] ?? r.h1 ?? r.title
+  // become H2s when content lands. The captured heading TEXT is never edited
+  // here; the only way it changes is an explicit entry in H1_OVERRIDES above.
+  const h1 = H1_OVERRIDES[r.slug] ?? perPage.h1?.[0] ?? r.h1 ?? r.title
 
   return {
     slug: r.slug,

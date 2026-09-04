@@ -62,9 +62,17 @@ const dropdownCard =
   'max-lg:pb-[6px] lg:rounded-[20px] lg:bg-white lg:p-[10px] ' +
   'lg:shadow-[0_20px_60px_rgba(72,30,11,0.12)]'
 
-/** Same pill as the footer's CTA, one size down to fit a 110px bar. */
+/**
+ * Same pill as the footer's CTA, one size down to fit a 110px bar.
+ *
+ * Deliberately carries no display utility: the two call sites need different
+ * ones, and two display classes in a single list are resolved by Tailwind's
+ * emission order rather than by the order they are written — which silently
+ * flipped once, unhiding this pill on mobile when an unrelated source file was
+ * added. Each call site declares its own.
+ */
 const ctaPill =
-  'inline-flex shrink-0 items-center justify-center rounded-pill bg-accent px-[30px] ' +
+  'shrink-0 items-center justify-center rounded-pill bg-accent px-[30px] ' +
   'py-[16px] font-sans text-[16px] leading-[16px] font-semibold text-white ' +
   'transition-opacity hover:opacity-90 focus-visible:outline-2 ' +
   'focus-visible:outline-offset-4 focus-visible:outline-white'
@@ -373,7 +381,7 @@ export function Header() {
               {contact.phoneDisplay}
             </a>
             {cta && (
-              <Link to={cta.href} onClick={closeAll} className={`${ctaPill} w-full`}>
+              <Link to={cta.href} onClick={closeAll} className={`${ctaPill} flex w-full`}>
                 {cta.label}
               </Link>
             )}

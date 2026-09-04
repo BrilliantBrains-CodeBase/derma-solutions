@@ -125,7 +125,7 @@ export function Footer() {
               </Link>
 
               <p className="mt-[24px] max-w-[320px] font-sans text-[16px] leading-[26px] text-white/80">
-                {brand.tagline}
+                {brand.footerTagline}
               </p>
 
               <ul className="mt-[30px] flex flex-wrap gap-[14px]">
