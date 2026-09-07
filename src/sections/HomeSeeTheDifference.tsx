@@ -2,6 +2,7 @@ import type { CSSProperties } from 'react'
 import { homeSeeTheDifference } from '@/config/site'
 import { FourCirclesIcon, LaserIcon, PersonCircleIcon, VennIcon } from '@/components/icons'
 import { Eyebrow } from '@/components/Eyebrow'
+import { CardCarousel } from '@/components/CardCarousel'
 import { useCountUp } from '@/hooks/useCountUp'
 
 /**
@@ -208,7 +209,15 @@ export function HomeSeeTheDifference() {
         its own two-up split at every width: a Before with no After beside it
         would be the one arrangement this band must never render.
       */}
-      <ul className="mt-[50px] grid gap-[30px] lg:mt-[80px] lg:grid-cols-2">
+      <CardCarousel
+        label={homeSeeTheDifference.heading}
+        ulClassName="mt-[50px] grid gap-[30px] lg:mt-[80px] lg:grid-cols-2"
+        // One pair per view at every width below lg, where the other bands go
+        // to two. The <li> is itself a locked two-up split, so two pairs in a
+        // tablet view would put four faces across 768px; and a pair can never
+        // be halved by a snap stop, which is the rule stated above.
+        slidesClassName="[--slides:1]"
+      >
         {homeSeeTheDifference.pairs.map(pair => (
           <li key={pair.id} className="grid grid-cols-2 gap-[5px]">
             <TransformationImage
@@ -225,7 +234,7 @@ export function HomeSeeTheDifference() {
             />
           </li>
         ))}
-      </ul>
+      </CardCarousel>
 
       <p className="mt-[20px] text-center font-sans text-[14px] leading-[24px] text-body">
         {homeSeeTheDifference.disclaimer}

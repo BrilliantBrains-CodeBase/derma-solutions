@@ -3,16 +3,20 @@ import { Link } from 'react-router-dom'
 import { homeCaseStudies } from '@/config/site'
 import { ArrowDiagonalIcon } from '@/components/icons'
 import { Eyebrow } from '@/components/Eyebrow'
+import { CardCarousel } from '@/components/CardCarousel'
 
 /**
  * Built to theme-reference/04-sections/18-our-remarkable-transformation/ — the
  * band the copy doc numbers 06.
  *
- * It is a static two-column band, not a carousel. The only JS the reference
- * binds to `glowix-casestudy-grid` is an Isotope initialiser
+ * At lg it is a static two-column band, not a carousel. The only JS the
+ * reference binds to `glowix-casestudy-grid` is an Isotope initialiser
  * (theme-reference/05-animations/function.js:727) and it short-circuits on the
  * homepage, because the widget's data-config carries `show_filter_bar: ""`
- * rather than "yes". Nothing runs; this is a plain CSS grid there too.
+ * rather than "yes". Nothing runs; this is a plain CSS grid there too. Below lg
+ * the four cards swipe instead of stacking — see CardCarousel — which is a
+ * departure from the reference and from this file's original build, taken
+ * because four stacked cards under a sticky rail made the phone page endless.
  *
  * computed.json gives the outer container only — 1300 wide, padding 100/0/70 —
  * so the split is measured off screenshot.png (1440x1030). The 1300 container
@@ -169,14 +173,25 @@ export function HomeCaseStudies() {
           </Link>
         </div>
 
-        <ul className="grid gap-[30px] sm:grid-cols-2 lg:w-[65.391%]">
+        {/*
+          The 65.391% moves to CardCarousel's wrapper, because the wrapper is
+          now the flex child of the row above and the <ul> inside it can only be
+          100% of whatever that resolves to. The rail is a sibling and is
+          untouched; below lg its `sticky` is inactive anyway.
+        */}
+        <CardCarousel
+          label={homeCaseStudies.heading}
+          className="lg:w-[65.391%]"
+          ulClassName="grid gap-[30px] sm:grid-cols-2"
+          slidesClassName="[--slides:1] sm:[--slides:2]"
+        >
           {homeCaseStudies.cards.map(card => (
             // All four cards share a destination, so the title is the identity.
             <li key={card.title}>
               <CaseStudyCard card={card} />
             </li>
           ))}
-        </ul>
+        </CardCarousel>
       </div>
     </section>
   )

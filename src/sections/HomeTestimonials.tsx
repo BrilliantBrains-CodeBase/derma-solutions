@@ -2,6 +2,7 @@ import type { CSSProperties } from 'react'
 import { assets, homeTestimonials } from '@/config/site'
 import { Eyebrow } from '@/components/Eyebrow'
 import { Photo } from '@/components/Photo'
+import { CardCarousel } from '@/components/CardCarousel'
 
 /**
  * Built to theme-reference/04-sections/08-life-changing-results-from-our-clients/
@@ -45,10 +46,13 @@ import { Photo } from '@/components/Photo'
  *    to 2025-04-author-2.jpg, one step larger. Each card carries an accent disc
  *    with the patient's initial instead, which keeps the 50px rhythm the row is
  *    built on without asserting what anyone looks like.
- *  - No carousel. The reference's Swiper runs arrows, dots, autoplay and loop all
- *    false at slidesPerView 3, so it renders as a static 3-up grid with a fourth
- *    slide parked off-screen. The copy doc supplies three quotes, which fill that
- *    grid exactly. Nothing is lost and no dependency is added.
+ *  - No carousel at lg. The reference's Swiper runs arrows, dots, autoplay and
+ *    loop all false at slidesPerView 3, so it renders as a static 3-up grid with
+ *    a fourth slide parked off-screen. The copy doc supplies three quotes, which
+ *    fill that grid exactly, so the desktop band is a plain grid and no
+ *    dependency is added. Below lg the row does swipe — see CardCarousel, which
+ *    is scroll-snap and still not a dependency — because three stacked quote
+ *    cards were part of what made this page interminable on a phone.
  *  - The heading animates per word in CSS rather than per character in GSAP
  *    SplitText, and the photograph wipes in on a scroll-driven timeline rather
  *    than under ScrollTrigger — as in every other band, and for the same reason.
@@ -60,12 +64,13 @@ import { Photo } from '@/components/Photo'
  *  - Typographic quote marks are rendered on the featured quote only, as the
  *    reference renders them, although the copy doc quotes all four.
  *  - The card gap stays 30px below md. The reference's spaceBetween drops to 10
- *    at 320, but that is horizontal slide spacing in a 1-up carousel, where it is
- *    never seen; as a vertical gap between stacked cards 10px is too tight.
+ *    at 320, but a gap that tight would show as a seam between two cards in the
+ *    swipe track, and 30 is the gutter every other band on the page uses.
  *
- * Note this is the one band on the page with no links or buttons in it — the
- * reference has none either — so unlike every other section here there is no
- * focusRing const to declare.
+ * Note the band's own markup has no links or buttons in it — the reference has
+ * none either — so unlike every other section here there is no focusRing const
+ * to declare. The carousel's dots are the one focusable thing here, and they
+ * carry their own white ring via CardCarousel's `tone`.
  */
 
 /**
@@ -177,8 +182,18 @@ export function HomeTestimonials() {
             </div>
           </div>
 
-          {/* md/lg are the reference Swiper's own 768 and 1024 breakpoints. */}
-          <ul className="mt-[60px] grid gap-[30px] md:grid-cols-2 lg:grid-cols-3">
+          {/*
+            md/lg are the reference Swiper's own 768 and 1024 breakpoints, and
+            the carousel's per-view counts follow them rather than the sm the
+            other bands use — one quote in view below md, two from md, the
+            static 3-up grid from lg.
+          */}
+          <CardCarousel
+            label={homeTestimonials.heading}
+            ulClassName="mt-[60px] grid gap-[30px] md:grid-cols-2 lg:grid-cols-3"
+            slidesClassName="[--slides:1] md:[--slides:2]"
+            tone="dark"
+          >
             {homeTestimonials.cards.map(card => (
               // The <li> is the grid cell and stretches to the row's height; the
               // card fills it, which is what gives `mt-auto` below a box to push
@@ -206,7 +221,7 @@ export function HomeTestimonials() {
                 </figure>
               </li>
             ))}
-          </ul>
+          </CardCarousel>
         </div>
       </div>
     </section>

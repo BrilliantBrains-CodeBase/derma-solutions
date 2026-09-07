@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { assets, homeServices } from '@/config/site'
 import { ArrowDiagonalIcon } from '@/components/icons'
 import { Eyebrow } from '@/components/Eyebrow'
+import { CardCarousel } from '@/components/CardCarousel'
 
 /**
  * Built to theme-reference/04-sections/16-explore-our-wide-range-of-aesthetic-
@@ -148,16 +149,26 @@ export function HomeServices() {
             </h2>
           </div>
 
-          <ul className="mt-[50px] grid gap-[30px] sm:grid-cols-2 lg:mt-[80px] lg:grid-cols-3">
+          {/*
+            Six cards is the longest stack on the page, so below lg they run as
+            a swipeable track — one card in view on a phone, two from sm — and
+            the measured 3-up grid returns at lg untouched. See CardCarousel.
+          */}
+          <CardCarousel
+            label={homeServices.heading}
+            ulClassName="mt-[50px] grid gap-[30px] sm:grid-cols-2 lg:mt-[80px] lg:grid-cols-3"
+            slidesClassName="[--slides:1] sm:[--slides:2]"
+          >
             {homeServices.cards.map(card => (
               // The <li> is the grid cell and stretches to the row's height;
               // the card fills it, which is what gives `mt-auto` on the photo a
-              // box to push against.
+              // box to push against. A flex track stretches it the same way, so
+              // the photos stay aligned in the carousel too.
               <li key={card.path} className="flex">
                 <ServiceCard card={card} />
               </li>
             ))}
-          </ul>
+          </CardCarousel>
 
           <p className="mt-[50px] text-center font-sans text-[16px] leading-[26px] text-body lg:mt-[60px]">
             {homeServices.cta.text}{' '}

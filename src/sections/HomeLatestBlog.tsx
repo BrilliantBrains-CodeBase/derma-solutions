@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { homeLatestBlog } from '@/config/site'
 import { ArrowDiagonalIcon } from '@/components/icons'
 import { Eyebrow } from '@/components/Eyebrow'
+import { CardCarousel } from '@/components/CardCarousel'
 
 /**
  * Built to theme-reference/04-sections/19-our-latest-insights-on-plastic-
@@ -149,13 +150,18 @@ export function HomeLatestBlog() {
         </h2>
       </div>
 
-      <ul className="mt-[50px] grid gap-[30px] sm:grid-cols-2 lg:mt-[60px] lg:grid-cols-3">
+      {/* Swipeable below lg, the measured 3-up grid from lg. See CardCarousel. */}
+      <CardCarousel
+        label={homeLatestBlog.heading}
+        ulClassName="mt-[50px] grid gap-[30px] sm:grid-cols-2 lg:mt-[60px] lg:grid-cols-3"
+        slidesClassName="[--slides:1] sm:[--slides:2]"
+      >
         {homeLatestBlog.cards.map(card => (
           <li key={card.path}>
             <BlogCard card={card} />
           </li>
         ))}
-      </ul>
+      </CardCarousel>
 
       {/* The reference's button: a pill with a detached dark arrow chip. */}
       <div className="mt-[50px] flex justify-center lg:mt-[60px]">
