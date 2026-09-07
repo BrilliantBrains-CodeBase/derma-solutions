@@ -246,27 +246,42 @@ export const assets = {
   // "licence": "reference-only" in theme-reference/06-assets/manifest.json.
   /** Line-art behind the Services band. src: theme-reference 2025-04-service-bg-shape.svg (1800x1511) */
   serviceShape: "/images/decor/service-bg-shape.svg",
-  // TODO(assets): vendor photography, also tagged "licence": "reference-only".
-  // It is here for crop and art direction only and must be replaced with Derma
-  // Solutions' own photography before launch. clinicPhoto below is NOT a
-  // substitute: it shows another clinic's signage on the back wall.
-  /** Homepage hero photo. src: theme-reference 2025-04-hero-bg.jpg (1920x1280) */
+  /**
+   * The homepage hero, which is footage rather than a photograph: a 10s silent
+   * loop of Dr Sandeep examining a patient, shot at the clinic. Both encodes are
+   * the same source at 1440x800 — webm first, mp4 as the fallback.
+   *
+   * heroImage is the first frame of that clip, so it is simultaneously the
+   * video's poster, the still served under prefers-reduced-motion, and the LCP
+   * candidate. Cutting it from the video rather than shooting it separately is
+   * what stops the poster-to-playback handover from being visible. Re-cut it
+   * with scripts/import-home-images.ts if the footage is ever recut.
+   */
+  heroVideoWebm: "/video/home-hero.webm",
+  heroVideoMp4: "/video/home-hero.mp4",
+  /**
+   * Hero poster and reduced-motion still. First frame of heroVideoMp4
+   * (1920x1068).
+   *
+   * No heroImageAlt beside it, unlike every other image in this map. The hero
+   * is a backdrop behind the H1: the <video> cannot carry alt text at all, so
+   * describing only the still would have left reduced-motion visitors hearing
+   * something nobody else does. Both are marked decorative in HomeHero.tsx
+   * instead, and the headline and paragraph over them carry the meaning.
+   */
   heroImage: "/images/decor/home-hero.jpg",
-  heroImageAlt: "Dermatologist assessing a patient's skin during a consultation",
-  // TODO(assets): the three About photographs are vendor artwork on the same
-  // terms as heroImage above — theme-reference/06-assets/manifest.json tags all
-  // three "licence": "reference-only". They hold the crop and art direction of
-  // the reference composition and must be replaced with Derma Solutions' own
-  // photography before launch.
-  /** About stack, upper-right. src: theme-reference 2025-04-about-img-1.jpg (358x450) */
+  /** About stack, upper-right. src: About us/Botox.png (1122x1402) */
   aboutImage1: "/images/decor/about-1.jpg",
-  aboutImage1Alt: "Clinician applying a treatment mask during a facial",
-  /** About stack, lower-left. src: theme-reference 2025-04-about-img-2.jpg (360x450) */
+  aboutImage1Alt:
+    "Dr Sumedha Tirthani administering an injectable treatment to a reclining patient's forehead",
+  /** About stack, lower-left. src: About us/Hair Transplant.png (1122x1402) */
   aboutImage2: "/images/decor/about-2.jpg",
-  aboutImage2Alt: "Patient receiving a laser treatment from a dermatologist",
-  /** About checklist row. src: theme-reference 2025-04-about-experience-image.jpg (302x180) */
+  aboutImage2Alt:
+    "Surgeon in scrubs working at a microscope during a hair transplant procedure",
+  /** About checklist row. src: About us/Chemical Peels 1.png (1672x941) */
   aboutExperienceImage: "/images/decor/about-experience.jpg",
-  aboutExperienceImageAlt: "Dermatologist treating a patient's face in the clinic",
+  aboutExperienceImageAlt:
+    "Clinician brushing a chemical peel solution onto a reclining patient's face",
   /**
    * What We Do, left column. A cut-out PNG: the pale arch behind the figure is
    * baked into the file, which is why this one carries no frame, radius or
@@ -278,22 +293,24 @@ export const assets = {
   /** What We Do, right column. src: theme-reference 2025-04-what-we-image-2.jpg (391x621) */
   whatWeDoImage2: "/images/decor/what-we-do-2.jpg",
   whatWeDoImage2Alt: "Clinician smoothing a treatment mask onto a reclining patient's face",
-  // TODO(assets): both Why Choose Us photographs are vendor artwork on the same
-  // terms as heroImage above — theme-reference/06-assets/manifest.json tags the
-  // pair "licence": "reference-only". They hold the reference's 264x408 portrait
-  // crop and the overlap that composition depends on, and must be replaced with
-  // Derma Solutions' own photography before launch. The alt text below describes
-  // the placeholder, so it has to be rewritten with them.
+  // Two treatment scenes rather than the two studio portraits the shoot supplies
+  // for this band. Its second portrait is the same setup and pose as
+  // appointmentImage below, and at two bands apart the pair read as one photo
+  // printed twice; the peel shot is the portrait framing of aboutExperienceImage's
+  // scene and sits beside the laser one as a matching pair. See the note in
+  // scripts/import-home-images.ts.
   //
   // The band's third reference image, 2025-04-author-2.jpg, is deliberately not
   // here: the contact row uses founder.photo instead. See the departures list in
   // src/sections/HomeWhyChooseUs.tsx.
-  /** Why Choose Us, front-left frame. src: theme-reference 2025-04-why-choose-image-1.jpg (264x408) */
+  /** Why Choose Us, front-left frame. src: WHY CHOOSE US/DR. Sandeep treatment.png (941x1672) */
   whyChooseImage1: "/images/decor/why-choose-1.jpg",
-  whyChooseImage1Alt: "Clinician applying a treatment to a patient's face during a facial",
-  /** Why Choose Us, inside the accent panel. src: theme-reference 2025-04-why-choose-image-2.jpg (264x408) */
+  whyChooseImage1Alt:
+    "Dr Sandeep Mahapatra performing a laser treatment on a reclining patient wearing eye shields",
+  /** Why Choose Us, inside the accent panel. src: About us/Chemical Peels 2.png (1122x1402) */
   whyChooseImage2: "/images/decor/why-choose-2.jpg",
-  whyChooseImage2Alt: "Dermatologist treating a reclining patient's face in the clinic",
+  whyChooseImage2Alt:
+    "Clinician brushing a chemical peel solution onto a reclining patient's face",
   // TODO(brand): vendor artwork on the same terms as footerShape and serviceShape
   // above — "licence": "reference-only" in theme-reference/06-assets/manifest.json.
   /** Dot field behind the Testimonials band. src: theme-reference 2025-04-testimonials-bg-shape.png (1800x1041) */
@@ -324,45 +341,58 @@ export const assets = {
   /** Poster for the homepage video band. src: frame of homeVideo.youtubeId */
   videoPoster: "/images/decor/home-video-poster.jpg",
   videoPosterAlt: "Dr Sandeep Mahapatra speaking to camera in the clinic",
-  // TODO(compliance): BLOCKING, not advisory. Copy doc note 2: "Use only the
-  // clinic's own images with signed patient consent on file. Do not use stock
-  // or theme demo images as patient results." These four are the Glowix demo's
-  // own `transformation-img-{1..4}.jpg`, tagged "licence": "reference-only" in
-  // theme-reference/06-assets/manifest.json, and the band labels them Before
-  // and After — which is exactly the case the note rules out. They are here to
-  // hold the 308x501 crop and the pair composition only. Replace with the
-  // clinic's own consented images before launch, and rewrite the alt text with
-  // them: it describes the placeholder.
+  // TODO(compliance): still BLOCKING, but for a different reason than before.
+  // Copy doc note 2 is "Use only the clinic's own images with signed patient
+  // consent on file. Do not use stock or theme demo images as patient results."
+  // The second half is now satisfied — these are the clinic's own four patients,
+  // not the Glowix demo's stock faces. The first half is not: confirm signed
+  // consent is on file for each of the four before launch. Photographs of
+  // identifiable patients under result claims are the one thing on this page
+  // that cannot ship on an assumption.
+  //
+  // Unlike every other image on the homepage these arrive pre-composed: each
+  // file is the before shot and the after shot side by side with the words
+  // "Before" and "After" already burned in, which is why the band renders them
+  // whole and draws no captions of its own. See HomeSeeTheDifference.tsx.
+  //
+  // Transformations 3 and 4 carry clinic signage on the back wall reading
+  // "FOLLICLE TRANSPLANT". Confirm that is Derma Solutions' own room before
+  // launch — another clinic's branding under these claims would be worse than
+  // no photograph.
   //
   // As in homeCaseStudies, the alt text deliberately describes only what is in
   // frame. Naming an improvement in an alt would make the photograph itself
   // assert the result.
-  /** See the Difference, pair 1. src: theme-reference 2025-04-transformation-img-1.jpg (308x501) */
-  transformBefore1: "/images/decor/transformations/before-1.jpg",
-  transformBefore1Alt: "Close-up of a patient's face before treatment",
-  /** src: theme-reference 2025-04-transformation-img-2.jpg (309x501) */
-  transformAfter1: "/images/decor/transformations/after-1.jpg",
-  transformAfter1Alt: "The same patient's face after treatment, hair wrapped in a towel",
-  /** See the Difference, pair 2. src: theme-reference 2025-04-transformation-img-3.jpg (308x501) */
-  transformBefore2: "/images/decor/transformations/before-2.jpg",
-  transformBefore2Alt: "Close-up of a second patient's cheek and nose before treatment",
-  /** src: theme-reference 2025-04-transformation-img-4.jpg (303x501) */
-  transformAfter2: "/images/decor/transformations/after-2.jpg",
-  transformAfter2Alt: "The same patient's cheek and nose after treatment",
-  // TODO(assets): vendor photography on the same terms as heroImage above —
-  // theme-reference/06-assets/manifest.json tags it "licence": "reference-only".
+  /** src: Before & After/1.png (1402x1122) */
+  transformation1: "/images/decor/transformations/transformation-1.jpg",
+  transformation1Alt:
+    "A patient's face photographed before and after treatment, the two shots side by side and labelled",
+  /** src: Before & After/2.png (1317x1040) */
+  transformation2: "/images/decor/transformations/transformation-2.jpg",
+  transformation2Alt:
+    "A second patient's cheek in profile before and after treatment, the two shots side by side and labelled",
+  /** src: Before & After/3.png (1346x1068) */
+  transformation3: "/images/decor/transformations/transformation-3.jpg",
+  transformation3Alt:
+    "A third patient's hairline before and after treatment, the two shots side by side and labelled",
+  /** src: Before & After/4.png (1324x1032) */
+  transformation4: "/images/decor/transformations/transformation-4.jpg",
+  transformation4Alt:
+    "A fourth patient's hairline and forehead before and after treatment, the two shots side by side and labelled",
+  // The photo copy doc section 11 asks for — "a real photo of Dr Sandeep
+  // Mahapatra or Dr Sumedha Tirthani" — rather than the placeholder that stood
+  // in for it.
   //
-  // Copy doc section 11 asks specifically for "a real photo of Dr Sandeep
-  // Mahapatra or Dr Sumedha Tirthani" here, and this is a placeholder for that
-  // photo and not a substitute for it. The four portraits already in
-  // public/images/team/ cannot stand in: the reference frame is a 465x715
-  // cut-out at 1:1.538, and those files are 650x450 landscape and 375x375
-  // square. The replacement needs shooting to this crop, on a plain ground, cut
-  // out to transparency — the pale arch behind it is drawn by the section, not
-  // baked into the file, unlike whatWeDoImage1.
-  /** Appointment band, media column. src: theme-reference 2025-04-appointment-image.png (465x715) */
-  appointmentImage: "/images/decor/appointment-image.png",
-  appointmentImageAlt: "Dermatologist in a white coat with a stethoscope, arms folded",
+  // It is NOT the transparent cut-out the reference's appointment-image.png is,
+  // and the section changed to suit: this is a studio portrait on a soft grey
+  // ground, nothing in the toolchain does subject segmentation, and a luminance
+  // key would take the white coat along with the backdrop. HomeAppointment.tsx
+  // clips it to the arch it used to draw behind the cut-out instead. If the
+  // clinic can supply a cut-out to transparency later, that section's comment
+  // says what to revert.
+  /** Appointment band, media column. src: WHY CHOOSE US/DR Sandeep.png (941x1672) */
+  appointmentImage: "/images/decor/appointment-image.jpg",
+  appointmentImageAlt: "Dr Sandeep Mahapatra in a white coat, arms folded",
   // TODO(brand): vendor artwork on the same terms as footerShape, serviceShape
   // and testimonialsShape above — "licence": "reference-only" in
   // theme-reference/06-assets/manifest.json.
@@ -687,28 +717,27 @@ export const navigation = {
 // Copy-Glowix-Template-2.md, section 10 — the strings are the doc's, verbatim.
 //
 // TODO(compliance): copy doc note 2 sits on the four photographs this band
-// renders — see the blocking TODO on assets.transformBefore1. `disclaimer`
-// below is the doc's required "Results vary from person to person." line and
-// must stay visible next to the images; do not move it into a tooltip, an
-// accordion or the page footer.
+// renders — see the blocking consent TODO on assets.transformation1.
+// `disclaimer` below is the doc's required "Results vary from person to person."
+// line and must stay visible next to the images; do not move it into a tooltip,
+// an accordion or the page footer.
+//
+// The doc asks for "Image Labels: Before / After (2 pairs)" and this is four
+// singles instead, with no beforeLabel/afterLabel to render. Both changes follow
+// from the photographs: the clinic supplied four composites that already carry
+// their own burned-in Before and After labels, so a caption here would print the
+// word twice and a "pair" has nothing left to pair. The doc's intent — every
+// after shot shown against its own before, never alone — is stronger this way,
+// since the two halves cannot be separated by a layout at any width.
 export const homeSeeTheDifference = {
   /** Uppercased in CSS, as homeHero's and homeAbout's are. */
   eyebrow: "See the Difference",
   heading: "Our real patient transformations and visible results",
-  /** The doc's "Image Labels: Before / After (2 pairs)". */
-  beforeLabel: "Before",
-  afterLabel: "After",
-  pairs: [
-    {
-      id: "pair-1",
-      before: { image: assets.transformBefore1, imageAlt: assets.transformBefore1Alt },
-      after: { image: assets.transformAfter1, imageAlt: assets.transformAfter1Alt },
-    },
-    {
-      id: "pair-2",
-      before: { image: assets.transformBefore2, imageAlt: assets.transformBefore2Alt },
-      after: { image: assets.transformAfter2, imageAlt: assets.transformAfter2Alt },
-    },
+  transformations: [
+    { id: "transformation-1", image: assets.transformation1, imageAlt: assets.transformation1Alt },
+    { id: "transformation-2", image: assets.transformation2, imageAlt: assets.transformation2Alt },
+    { id: "transformation-3", image: assets.transformation3, imageAlt: assets.transformation3Alt },
+    { id: "transformation-4", image: assets.transformation4, imageAlt: assets.transformation4Alt },
   ],
   disclaimer: "Results vary from person to person.",
   // TODO(compliance): copy doc note 1, the same ASCI substantiation caveat that
@@ -933,11 +962,9 @@ export const homeVideo = {
 // internal link hub into the treatment pages. Every one was checked against
 // src/routes.generated.tsx and resolves to a real route.
 //
-// TODO(assets): all six photographs are vendor artwork on the same terms as
-// assets.heroImage — theme-reference/06-assets/manifest.json tags each
-// "licence": "reference-only". They hold the reference's 3:2 crop and must be
-// replaced with Derma Solutions' own photography before launch. The alt text
-// below describes the placeholder, so it has to be rewritten with them.
+// All six photographs are the clinic's own, one shot per card, and the shoot
+// delivered them at 1536x1024 — exactly the 3:2 the cards render, so none of the
+// six is cropped to fit. See scripts/import-home-images.ts.
 export const homeServices = {
   /** Uppercased in CSS, as homeHero's and homeAbout's are. */
   eyebrow: "Services",
@@ -948,14 +975,16 @@ export const homeServices = {
       body: "FDA-approved lasers for hair removal, tattoo removal, toning and scar reduction.",
       path: "/laser-hair-removal-in-bangalore/",
       image: "/images/decor/services/service-1.jpg",
-      imageAlt: "Clinician performing a laser treatment on a patient's face",
+      imageAlt:
+        "Patient in protective eyewear receiving a laser treatment to the cheek from a clinician",
     },
     {
       title: "Skin & Cosmetology",
       body: "Acne scar treatment, peels, HydraFacial and MNRF for even, glowing skin.",
       path: "/acne-scar-treatment-in-bangalore/",
       image: "/images/decor/services/service-2.jpg",
-      imageAlt: "Patient's face marked up before a cosmetic skin procedure",
+      imageAlt:
+        "Clinician brushing a peel solution onto a reclining patient's cheek",
     },
     {
       // TODO(compliance): copy doc note 3 — "Botox" is a prescription brand
@@ -969,28 +998,32 @@ export const homeServices = {
       body: "Botox, dermal fillers, HIFU and thread lifts to lift and smooth.",
       path: "/botox-treatment-in-bangalore-whitefield-and-marathahalli/",
       image: "/images/decor/services/service-3.jpg",
-      imageAlt: "Dermatologist marking treatment points on a patient's face",
+      imageAlt:
+        "Gloved clinician injecting a fine needle above a reclining patient's lip",
     },
     {
       title: "Hair Restoration",
       body: "Hair transplant, GFC therapy and hair fall treatment with detailed hair analysis.",
       path: "/hair-transplant-in-bangalore-marathahalli-whitefield/",
       image: "/images/decor/services/service-4.jpg",
-      imageAlt: "Surgeon assessing a patient's hairline before a transplant",
+      imageAlt:
+        "Surgeon in scrubs working along a patient's hairline during a transplant",
     },
     {
       title: "Cosmetic Surgery",
       body: "Liposuction, tummy tuck, rhinoplasty and gynecomastia by in-house plastic surgeons.",
       path: "/liposuction-treatment-in-bangalore/",
       image: "/images/decor/services/service-5.jpg",
-      imageAlt: "Surgeon in theatre preparing a patient for a procedure",
+      imageAlt:
+        "Surgeon drawing contouring guide lines on a patient's abdomen before surgery",
     },
     {
       title: "Advanced Facials",
       body: "HydraFacial, carbon peel and PDRN facials for hydration and glow, no downtime.",
       path: "/best-hydrafacial-treatment-in-marathahalli-whitefield-bangalore/",
       image: "/images/decor/services/service-6.jpg",
-      imageAlt: "Therapist performing a hydrating facial on a patient",
+      imageAlt:
+        "Gloved therapist running a hydrafacial handpiece across a reclining patient's forehead",
     },
   ],
   // TODO(compliance): copy doc note 4 — the reference's strip is a "Free" pill
@@ -1016,19 +1049,25 @@ export const homeServices = {
 // posts have no equivalent here. /image-gallery/ is the one page that holds the
 // clinic's transformation images, so every card and the button point at it.
 //
-// TODO(assets): the four photographs are vendor artwork on the same terms as
-// assets.heroImage — theme-reference/06-assets/manifest.json tags them
-// "licence": "reference-only". They belong to the Glowix theme author, hold the
-// crop and art direction of the reference tiles only, and must be replaced with
-// Derma Solutions' own photography before launch.
+// TODO(compliance): copy doc note 2, still blocking, and now for the half of it
+// that is harder to satisfy. "Do not use stock or theme demo images as patient
+// results" is settled — the four Glowix procedure shots are gone and these are
+// four of the clinic's own patients. "Use only the clinic's own images with
+// signed patient consent on file" is not: confirm consent for each of the four
+// before launch. These are recognisable faces sitting directly under result
+// claims, which is the strongest form of the exposure the note is about.
 //
-// TODO(compliance): copy doc note 2, and this one is blocking rather than
-// advisory. These are Glowix procedure shots sitting under result-claim titles
-// ("Clearer Skin, Fewer Scars"), which is exactly the "do not use stock or theme
-// demo images as patient results" case the note rules out. Replace with the
-// clinic's own images with signed patient consent on file. The doc's required
-// "Results vary from person to person" line is already the last sentence of
-// `body` below and must stay visible next to the tiles.
+// TODO(content): confirm the four are four different people. `Card Titles/1.png`
+// and `2.png` may be the same man photographed in two sessions, and one patient
+// appearing under two different result claims would undo the point of the band.
+// If they are the same, the clinic needs a fourth face.
+//
+// The pairing of face to claim is the rebuild's, not the clinic's — the shoot
+// delivered the four portraits unlabelled. Have Dr Sandeep confirm each face is
+// under the right treatment before launch.
+//
+// The doc's required "Results vary from person to person" line is the last
+// sentence of `body` below and must stay visible next to the tiles.
 //
 // The alt text deliberately describes only what is in frame. Restating a card's
 // title in its alt would make the photograph itself assert the result.
@@ -1047,22 +1086,22 @@ export const homeCaseStudies = {
     {
       title: "Clearer Skin, Fewer Scars",
       image: "/images/decor/case-studies/case-study-1.jpg",
-      imageAlt: "Clinician in scrubs treating a reclining patient's face at the clinic",
+      imageAlt: "Patient photographed in profile, cheek and jawline in frame",
     },
     {
       title: "Fuller Hair After Transplant",
       image: "/images/decor/case-studies/case-study-2.jpg",
-      imageAlt: "Gloved clinician marking guide lines on a patient's face before a procedure",
+      imageAlt: "Patient photographed head-on, smiling, hairline in frame",
     },
     {
       title: "Even Tone, Less Pigmentation",
       image: "/images/decor/case-studies/case-study-3.jpg",
-      imageAlt: "Dermatologist performing a facial treatment on a reclining patient",
+      imageAlt: "Patient photographed head-on in the treatment chair, looking down",
     },
     {
       title: "Lifted, Smoother Skin",
       image: "/images/decor/case-studies/case-study-4.jpg",
-      imageAlt: "Clinician administering an injectable treatment to a patient's face",
+      imageAlt: "Patient photographed in three-quarter profile, wearing glasses",
     },
   ],
 } as const;

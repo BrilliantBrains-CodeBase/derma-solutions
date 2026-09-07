@@ -13,10 +13,18 @@ import { Eyebrow } from '@/components/Eyebrow'
  *
  * Three departures from the reference, all agreed:
  *
- *  - The photograph is a placeholder. See the TODO on assets.heroImage: it is
- *    the theme vendor's, reference-only, and stands in only for crop and art
- *    direction. assets.clinicPhoto cannot be used — it shows another clinic's
- *    signage on the back wall.
+ *  - The reference's still photograph is a silent looping video of the clinic's
+ *    own: Dr Sandeep examining a patient, 10s at 1440x800, webm then mp4. It
+ *    sits under the same two overlay layers as the photograph did, and the
+ *    <img> beside it is not a fallback for a browser that cannot play video —
+ *    every browser can — but the still served to anyone who has asked for
+ *    reduced motion. Both are in the markup and CSS picks; see the
+ *    prefers-reduced-motion rule in src/styles/index.css. A JS swap would have
+ *    to run after hydration and would flash, because this page is prerendered.
+ *
+ *    assets.heroImage is the video's own first frame, so it is the poster, the
+ *    reduced-motion still and the LCP candidate at once, and the handover from
+ *    poster to first painted frame is invisible.
  *  - "Watch Video" navigates to /video-gallery/ instead of opening the
  *    reference's YouTube lightbox. There is no video ID, and this is a real route.
  *  - The headline animates per word in CSS rather than per character in GSAP
@@ -33,13 +41,39 @@ export function HomeHero({ heading }: { heading: string }) {
   return (
     <section className="px-[20px]">
       <div className="relative mx-auto flex min-h-[560px] max-w-[1400px] items-center overflow-hidden rounded-[20px] md:rounded-[30px] lg:h-[765px]">
+        {/*
+          aria-hidden and empty alt on both: the hero is a backdrop behind the
+          H1 and says nothing the copy does not. A <video> cannot carry alt text
+          in any case, so describing only the still would have left visitors on
+          reduced motion hearing something nobody else does. Hence no
+          assets.heroImageAlt — see the note on assets.heroImage.
+
+          preload="none" keeps the clip off the critical path — the poster is
+          already the LCP paint, and the hero must not compete with it for
+          bandwidth. Autoplay starts the fetch itself once the page is up.
+        */}
+        <video
+          aria-hidden
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="none"
+          poster={assets.heroImage}
+          className="hero-motion absolute inset-0 h-full w-full object-cover"
+        >
+          <source src={assets.heroVideoWebm} type="video/webm" />
+          <source src={assets.heroVideoMp4} type="video/mp4" />
+        </video>
+
         <img
           src={assets.heroImage}
-          alt={assets.heroImageAlt}
+          alt=""
+          aria-hidden
           width={1920}
-          height={1280}
+          height={1068}
           fetchPriority="high"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="hero-still absolute inset-0 h-full w-full object-cover"
         />
 
         {/*
@@ -52,19 +86,29 @@ export function HomeHero({ heading }: { heading: string }) {
 
           Sampled along the panel's midline these stops land close to the
           reference. The residual is photo crop, not overlay: object-cover here
-          and Elementor's background-size there frame the 1920x1280 source
-          differently, so the same x is not the same part of the image.
+          and Elementor's background-size there frame the source differently, so
+          the same x is not the same part of the image.
 
-          The mid stops sit slightly darker than the pure fit. The headline runs
-          to x=750 here — further right than the reference's, because its two
-          lines are longer — and at the fitted values it measured 4.42:1 against
-          white. These carry it back over 5:1.
+          The mid stops sit slightly darker than the pure fit, because the
+          headline runs to x=750 here — further right than the reference's, its
+          two lines being longer — and at the fitted values it measured 4.42:1.
+
+          Re-measured against the footage that replaced the photograph, by
+          hiding the text and sampling the brightest background pixel in each
+          text box at t = 0, 2.5, 5, 7.5 and 9.8s. Worst frame of the five:
+          headline 4.63:1 against the 3:1 large text needs, paragraph 4.82:1
+          against 4.5:1, eyebrow and rating strip both near 10:1. The clip is a
+          slow push-in on one lit scene, so the spread across it is under 0.1.
+
+          The paragraph is the one with little room — 4.82 against 4.5. Re-run
+          that measurement if the footage is ever recut; a brighter grade would
+          take it under before anything else on the panel.
 
           Below lg the gradient has a much higher floor. The reference's ramp
           assumes a 1400px panel; at 390px the headline reaches into the bright
-          part of the photograph and measured only 2.03:1 against white, under
-          WCAG's 3:1 for large text. The mobile stops bottom out at 0.70, which
-          measures ~6:1 while still showing the image.
+          part of the image and measured only 2.03:1 against white, under WCAG's
+          3:1 for large text. The mobile stops bottom out at 0.70, which measures
+          ~6:1 while still showing what is behind them.
         */}
         <div aria-hidden className="absolute inset-0 bg-primary/15 mix-blend-multiply" />
         <div

@@ -36,10 +36,11 @@ import { Eyebrow } from '@/components/Eyebrow'
  *
  *  - The copy is the client's, and the doctor list is the clinic's four, read
  *    off `team` rather than retyped. The demo offers eight invented names.
- *  - The photograph is a placeholder. Copy doc section 11 asks for a real photo
- *    of Dr Sandeep Mahapatra or Dr Sumedha Tirthani, and the portraits already
- *    in public/images/team/ cannot be cropped into this frame — see the TODO on
- *    assets.appointmentImage.
+ *  - The photograph is Dr Sandeep Mahapatra, which is what copy doc section 11
+ *    asks for, but it is not a cut-out and the reference's is. It is clipped to
+ *    an arch inside the backdrop arch instead of standing on it as a figure with
+ *    transparency. The wrapper in the media column below says why, and what to
+ *    delete if a cut-out ever arrives.
  *  - Every field gets a visually-hidden <label>. The reference is
  *    placeholder-only, and a placeholder stops being the accessible name the
  *    moment someone types into the field.
@@ -270,7 +271,7 @@ export function HomeAppointment() {
           {/*
             Media column. Below 1024 it follows the form, so a phone opens on
             the heading rather than on 715px of photograph. No bottom padding,
-            here or on the panel: the cut-out is meant to stand on the panel's
+            here or on the panel: the figure is meant to stand on the panel's
             bottom edge.
           */}
           <div className="order-2 w-full px-[10px] pt-[10px] md:mx-auto md:w-[81%] lg:order-1 lg:mx-0 lg:w-1/2 lg:pr-[60px]">
@@ -305,15 +306,34 @@ export function HomeAppointment() {
                 }
               />
 
-              <img
-                src={assets.appointmentImage}
-                alt={assets.appointmentImageAlt}
-                width={465}
-                height={715}
-                loading="lazy"
-                decoding="async"
-                className="relative block aspect-[465/715] w-full object-cover"
-              />
+              {/*
+                The reference's figure is a transparent cut-out standing on the
+                arch. The clinic's photograph is a studio portrait on a soft grey
+                ground, and nothing in the toolchain segments a subject out of a
+                backdrop — a luminance key would take the white coat with it. So
+                the photograph is clipped to an arch of its own instead, and the
+                pink one behind stays visible as the 57px halo it always was.
+
+                rounded-t-full on a 465x715 box puts the dome's radius at 232.5,
+                which is the same curve the backdrop draws at its own width. The
+                two arches are concentric rather than merely similar, which is
+                what stops this reading as a photo pasted over a shape.
+
+                Revert to a bare <img> if the clinic ever supplies the cut-out:
+                delete this wrapper and nothing else moves. See the note on
+                assets.appointmentImage.
+              */}
+              <div className="relative overflow-hidden rounded-t-full">
+                <img
+                  src={assets.appointmentImage}
+                  alt={assets.appointmentImageAlt}
+                  width={465}
+                  height={715}
+                  loading="lazy"
+                  decoding="async"
+                  className="block aspect-[465/715] w-full object-cover"
+                />
+              </div>
             </div>
           </div>
 

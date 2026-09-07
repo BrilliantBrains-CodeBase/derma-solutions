@@ -12,6 +12,7 @@
     "seo:stubs": "tsx scripts/generate-page-stubs.ts",
     "seo:sitemap": "tsx scripts/generate-sitemap.ts",
     "seo:assets": "tsx scripts/copy-brand-assets.ts",
+    "assets:home": "tsx scripts/import-home-images.ts",
     "seo:verify": "tsx scripts/verify-seo.ts && tsx scripts/verify-links.ts",
     "seo:routes": "tsx scripts/generate-routes.ts",
     "seo:generate": "npm run seo:registry && npm run seo:stubs && npm run seo:routes && npm run seo:assets && npm run seo:icons",

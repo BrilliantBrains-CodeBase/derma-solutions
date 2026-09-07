@@ -21,17 +21,14 @@ import { useCountUp } from '@/hooks/useCountUp'
  *
  *  - Content box x 80-1360, i.e. 1280 inside a 1300 container, and 100px of
  *    padding top and bottom. Same box the rest of the homepage uses.
- *  - The pair row is y 397-900. Pair 1 is x 80-387 + 393-703, pair 2 is
- *    735-1042 + 1048-1358: a 5px seam inside each pair and 31px between them.
- *    The photographs are 308x501 intrinsic and render at 308x504.
- *  - The outer corners fit r=30 and nothing else — at 10px down the corner the
- *    measured inset is 7 against 7.6 predicted for r=30 and 4.5 for r=24, and
- *    at 20px it is 1 against 1.7 and 0.2. The *inner* corners are square: img
- *    1's right edge and img 2's left edge are flush at every depth sampled. So
- *    the radius is per-half and outward-facing, not a clip on the pair.
- *  - "Before" is centred in its half to within half a pixel (glyph box centre
- *    234.0 against an image centre of 233.5), cap height ~21 -> Marcellus 30,
- *    and its baseline is 35px above the image's bottom edge.
+ *  - The image row is y 397-900. The reference splits it into two pairs of
+ *    308x501 halves with a 5px seam inside each pair and 31px between them, and
+ *    rounds only the two outward-facing corners of each half so the seam stays
+ *    square. None of that survives here — see the first departure below — so the
+ *    four images sit two-by-two on the 30px gap the rest of the page uses, at
+ *    r=30 on all four corners, which is the radius the reference's outer corners
+ *    fit anyway. The band is a row taller than the capture as a result; the
+ *    reasoning is on the grid itself below.
  *  - The hairline is at y 981 and runs x 70-1369 — the full 1300 container,
  *    wider than the 1280 the photographs and the tiles sit in. It samples
  *    (250,239,235), which is exactly --color-divider (#CD5F371A) over white, so
@@ -48,18 +45,21 @@ import { useCountUp } from '@/hooks/useCountUp'
  * from the next band in the isolated capture, not a bottom border, and is not
  * reproduced.
  *
- * Six departures from the reference:
+ * Five departures from the reference:
  *
- *  - The four photographs are placeholders, and here that is blocking rather
- *    than advisory: they are the demo's own stock faces under Before/After
- *    labels, which copy doc note 2 rules out outright. See the TODO on
- *    assets.transformBefore1.
- *  - The disclaimer under the pairs has no counterpart in the reference. Copy
- *    doc note 2 requires it to stay visible beside the images.
- *  - "Before" and "After" are figcaptions, not the reference's <h2>s. Four more
- *    h2s reading "Before" under this band's own h2 is a broken outline for no
- *    gain — the same call already made for homeWhyChooseUs.statement and for
- *    "Need Help!" in HomeAbout.
+ *  - The reference's two pairs are four singles, and its Before/After captions
+ *    are gone. The clinic's photographs arrive pre-composed: each file is the
+ *    before shot and the after shot side by side with both words already burned
+ *    into the pixels. So the pair is inside the image rather than built by the
+ *    layout, a caption would print "Before" twice, and the seam, the split
+ *    radius and the caption gradient all have nothing left to act on.
+ *
+ *    This is stronger than what it replaces, not a compromise. The rule the old
+ *    layout existed to enforce — an after shot is never shown without its before
+ *    beside it — was a property of the grid, and one bad breakpoint could have
+ *    broken it. Now it is a property of the file and cannot break.
+ *  - The disclaimer under the images has no counterpart in the reference. Copy
+ *    doc note 2 requires it to stay visible beside them.
  *  - The counter icons are remapped. The reference's fourth is a thumbs-up for
  *    "Classes Conducted", which describes nothing the clinic counts, so
  *    LaserIcon (new artwork) takes the laser tile, FourCirclesIcon reads as the
@@ -73,7 +73,7 @@ import { useCountUp } from '@/hooks/useCountUp'
  *    reference's and not an oversight here.
  *  - The heading animates per word in CSS rather than per character in GSAP
  *    SplitText, as in HomeAbout and for the same reason. See .reveal-word in
- *    src/styles/index.css. The reference also fades both pairs up under
+ *    src/styles/index.css. The reference also fades the images up under
  *    ScrollTrigger; only the heading animates here.
  *  - The counters tween on a shared hook rather than ElementsKit's widget. Its
  *    3500ms duration is dropped for the 2000ms HomeWhatWeDo's badge already
@@ -125,50 +125,27 @@ function Counter({ counter }: { counter: (typeof homeSeeTheDifference.counters)[
 }
 
 /**
- * One half of a pair. `side` decides which two corners round: the reference
- * rounds only the outward-facing pair of each half and leaves the seam square.
+ * One patient's before-and-after, which is one whole file: both halves and both
+ * labels are in the pixels. So this is a bare framed <img> — no caption, no
+ * gradient to carry one, and no per-side radius, because there is no seam in the
+ * layout for a square corner to meet.
  *
- * The gradient under the caption is the one thing in this band that is fitted
- * rather than read. The reference's photographs are already dark along their
- * bottom edge, so the overlay cannot be separated from the image in a capture
- * with no stylesheet; this is the shallowest ramp that keeps the white caption
- * legible over all four.
+ * 5:4 rather than the composites' own ratios, which run from 1.24:1 to 1.27:1
+ * across the four. Pinning the frame is what keeps the row's baselines level;
+ * object-cover takes the 1-2% off the top and bottom, well outside the faces.
  */
-function TransformationImage({
-  image,
-  imageAlt,
-  label,
-  side,
-}: {
-  image: string
-  imageAlt: string
-  label: string
-  side: 'before' | 'after'
-}) {
+function TransformationImage({ image, imageAlt }: { image: string; imageAlt: string }) {
   return (
-    <figure
-      className={`relative overflow-hidden ${
-        side === 'before' ? 'rounded-l-30' : 'rounded-r-30'
-      }`}
-    >
+    <figure className="overflow-hidden rounded-30">
       <img
         src={image}
         alt={imageAlt}
-        width={308}
-        height={501}
+        width={1240}
+        height={992}
         loading="lazy"
         decoding="async"
-        className="aspect-[308/501] w-full object-cover"
+        className="aspect-[5/4] w-full object-cover"
       />
-
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
-      />
-
-      <figcaption className="absolute inset-x-0 bottom-[24px] text-center font-display text-[22px] leading-[30px] text-white sm:text-[26px] lg:text-[30px] lg:leading-[40px]">
-        {label}
-      </figcaption>
     </figure>
   )
 }
@@ -205,32 +182,31 @@ export function HomeSeeTheDifference() {
       </div>
 
       {/*
-        Two pairs side by side above lg, one per row below it. Each pair keeps
-        its own two-up split at every width: a Before with no After beside it
-        would be the one arrangement this band must never render.
+        Two up and two down at lg, on the 30px gap the row already used between
+        its pairs. Each tile is one patient's complete before-and-after, so
+        unlike the layout this replaces there is no arrangement of them that can
+        show an after shot without its before.
+
+        Two columns and not four. Four tiles across the 1280 content box is 288px
+        each, and since every tile already holds two faces that leaves each face
+        about 140px wide — smaller than the reference's 308px halves and too
+        small to read as evidence of anything, which is the band's whole job. At
+        two columns the halves land at ~310px, which is the reference's size
+        almost exactly. The band grows a row taller and that is the trade.
       */}
       <CardCarousel
         label={homeSeeTheDifference.heading}
         ulClassName="mt-[50px] grid gap-[30px] lg:mt-[80px] lg:grid-cols-2"
-        // One pair per view at every width below lg, where the other bands go
-        // to two. The <li> is itself a locked two-up split, so two pairs in a
-        // tablet view would put four faces across 768px; and a pair can never
-        // be halved by a snap stop, which is the rule stated above.
+        // Still one per view on a phone: each tile is itself two faces side by
+        // side, so the two-up the other bands take at sm would put four across
+        // 640px and undo the sizing the desktop grid is arranged to protect.
         slidesClassName="[--slides:1]"
       >
-        {homeSeeTheDifference.pairs.map(pair => (
-          <li key={pair.id} className="grid grid-cols-2 gap-[5px]">
+        {homeSeeTheDifference.transformations.map(transformation => (
+          <li key={transformation.id}>
             <TransformationImage
-              image={pair.before.image}
-              imageAlt={pair.before.imageAlt}
-              label={homeSeeTheDifference.beforeLabel}
-              side="before"
-            />
-            <TransformationImage
-              image={pair.after.image}
-              imageAlt={pair.after.imageAlt}
-              label={homeSeeTheDifference.afterLabel}
-              side="after"
+              image={transformation.image}
+              imageAlt={transformation.imageAlt}
             />
           </li>
         ))}

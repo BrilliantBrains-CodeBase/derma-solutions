@@ -162,6 +162,34 @@
 }
 
 /*
+ * The hero's background footage and the still behind it — see the <video>/<img>
+ * pair in src/sections/HomeHero.tsx. Exactly one of the two is visible, and CSS
+ * decides which, because the page is prerendered and a JS swap after hydration
+ * would flash.
+ *
+ * The blanket rule above cannot cover this one. It collapses animation and
+ * transition durations, and a looping <video> is neither: it would keep playing
+ * under it. This has to remove the element.
+ *
+ * The default is motion, so the still is the element that hides. `display` and
+ * not `opacity` on the video: an invisible video still decodes frames, which is
+ * the battery cost a reduced-motion request is often actually about.
+ */
+.hero-still {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-motion {
+    display: none;
+  }
+
+  .hero-still {
+    display: block;
+  }
+}
+
+/*
  * Base element defaults live in @layer base so a utility class can override
  * them. Unlayered rules beat every layered one in the cascade regardless of
  * specificity, so an unlayered `h2 { color }` would silently win over
