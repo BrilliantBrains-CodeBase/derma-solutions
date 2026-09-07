@@ -112,6 +112,23 @@ export const contact = {
   ctaHref: "/book-appointment/",
 } as const;
 
+/**
+ * The mobile-only sticky action bar (src/layout/MobileActionBar.tsx).
+ *
+ * Labels are one word by design — they sit under 44px icon targets in a
+ * three-up row that has to survive a 360px viewport. The longer, spoken names
+ * are built from `contact` in the component's aria-labels, so the visible copy
+ * staying terse costs nothing to a screen reader.
+ *
+ * Carries no hrefs: all three reuse `contact.telHref`, `contact.ctaHref` and
+ * `contact.whatsappHref`, so the NAP cannot drift from the JSON-LD.
+ */
+export const actionBar = {
+  callLabel: "Call",
+  bookLabel: "Book",
+  whatsappLabel: "WhatsApp",
+} as const;
+
 /* -------------------------------------------------------------------------- */
 /* Location                                                                    */
 /* -------------------------------------------------------------------------- */

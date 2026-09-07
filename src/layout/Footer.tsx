@@ -85,8 +85,13 @@ export function Footer() {
   // The gutter is cream, not the body's white: <PreFooter> above is cream, so a
   // white gutter would put three colours together at the panel's rounded top
   // corners. Carrying the cream through makes it one transition, cream -> card.
+  //
+  // Below lg the gutter also has to clear <MobileActionBar>, which is fixed to
+  // the bottom of the viewport and would otherwise cover the copyright and
+  // legal rows. The clearance extends this existing padding rather than adding
+  // a wrapper, so the cream still runs unbroken to the bottom of the page.
   return (
-    <footer className="bg-secondary px-[20px] pb-[20px]">
+    <footer className="bg-secondary px-[20px] pb-[calc(20px+var(--action-bar-h)+env(safe-area-inset-bottom))] lg:pb-[20px]">
       <div className="relative overflow-hidden rounded-[20px] bg-primary text-white md:rounded-[30px]">
         {/* Vendor line-art, reference-only licence — see the TODO on assets.footerShape. */}
         <FooterDecor />

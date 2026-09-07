@@ -169,6 +169,18 @@
  * panel needs to do.
  */
 @layer base {
+  /*
+   * Height of the mobile action bar's row, excluding the safe-area inset.
+   *
+   * Two files read it: the bar itself (src/layout/MobileActionBar.tsx) and the
+   * footer's bottom clearance, which must reserve exactly this much or the
+   * fixed bar covers the copyright and legal rows. One definition so the two
+   * cannot drift apart.
+   */
+  :root {
+    --action-bar-h: 64px;
+  }
+
   body {
     font-family: var(--font-sans);
     color: var(--color-body);

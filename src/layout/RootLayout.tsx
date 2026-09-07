@@ -3,6 +3,7 @@ import { Head } from 'vite-react-ssg'
 import { Header } from './Header'
 import { PreFooter } from './PreFooter'
 import { Footer } from './Footer'
+import { MobileActionBar } from './MobileActionBar'
 import { assets, seo } from '@/config/site'
 import '@/styles/index.css'
 
@@ -29,6 +30,9 @@ export function RootLayout() {
       <Outlet />
       <PreFooter />
       <Footer />
+      {/* Last in the DOM so the footer's links keep their place in the tab
+          order; it is fixed, so document order does not affect where it paints. */}
+      <MobileActionBar />
     </>
   )
 }
