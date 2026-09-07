@@ -112,14 +112,15 @@ export function Footer() {
           <div className="grid gap-[40px] lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-[60px]">
             {/* Brand */}
             <div>
-              {/* White chip: the only Derma Solutions mark is a white-background
-                  PNG. See the TODO on assets.logoWithBackground. */}
+              {/* White chip: the mark is dark purple and teal, so it needs a
+                  light ground to read on the dark panel. See the TODO on
+                  assets.logo — there is still no white/mono version. */}
               <Link
                 to="/"
                 className="inline-flex rounded-[10px] bg-white p-[10px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
               >
                 <img
-                  src={assets.logoWithBackground}
+                  src={assets.logo}
                   alt={assets.logoAlt}
                   width={159}
                   height={51}

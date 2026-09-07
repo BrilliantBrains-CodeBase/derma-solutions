@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { assets, brand, contact, navigation } from '@/config/site'
 import { ChevronDownIcon, CloseIcon, MenuIcon, PhoneIcon } from '@/components/icons'
@@ -77,6 +77,13 @@ const ctaPill =
   'transition-opacity hover:opacity-90 focus-visible:outline-2 ' +
   'focus-visible:outline-offset-4 focus-visible:outline-white'
 
+/**
+ * How far the page scrolls before the header's shadow is at full strength. Just
+ * under the 110px bar height, so it finishes about as the hero's top edge
+ * reaches the top of the viewport.
+ */
+const FADE_DISTANCE = 96
+
 type HeaderItem = (typeof navigation.header)[number]
 type CtaItem = Extract<HeaderItem, { isCta: true }>
 
@@ -100,7 +107,7 @@ export function Header() {
   const { pathname } = useLocation()
   const [menuOpen, setMenuOpen] = useState(false)
   const [openKey, setOpenKey] = useState<string | null>(null)
-  const [atTop, setAtTop] = useState(true)
+  const headerRef = useRef<HTMLElement>(null)
 
   const closeAll = () => {
     setMenuOpen(false)
@@ -141,15 +148,28 @@ export function Header() {
     return () => { document.body.style.overflow = previous }
   }, [menuOpen])
 
-  // The header stays pinned for the whole page; this only decides whether it is
-  // transparent over the hero or opaque over the content scrolling beneath it.
-  // prefers-reduced-motion is handled globally in src/styles/index.css, which
-  // flattens the transition to 0.01ms.
+  /*
+   * The header stays pinned for the whole page; this only fades its shadow in as
+   * content starts passing underneath.
+   *
+   * It ramps continuously over the first FADE_DISTANCE px rather than flipping a
+   * boolean at a threshold. The threshold version turned the background and
+   * shadow on all at once after ~10px of scroll, which is the pop this replaces
+   * — a CSS transition cannot smooth that out, because the value it is handed
+   * has already jumped from 0 to 1.
+   *
+   * The value goes onto a CSS custom property via the ref rather than into
+   * React state: this runs on every scroll frame, and state would reconcile the
+   * whole header — nav, mega panel and all — 60 times a second to move one
+   * number.
+   */
   useEffect(() => {
     let frame = 0
     const read = () => {
       frame = 0
-      setAtTop(window.scrollY < 10)
+      const progress = Math.min(1, Math.max(0, window.scrollY / FADE_DISTANCE))
+      // Quantised so sub-pixel churn does not repaint for an invisible change.
+      headerRef.current?.style.setProperty('--header-bg', progress.toFixed(3))
     }
     const onScroll = () => { if (!frame) frame = requestAnimationFrame(read) }
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -170,14 +190,27 @@ export function Header() {
    * viewport. Anything added here that animates the header's position has to
    * reckon with that.
    */
-  const shell =
-    'sticky top-0 z-50 px-[20px] transition-[background-color,box-shadow] duration-300 ' +
-    (atTop && !menuOpen
-      ? 'bg-transparent'
-      : 'bg-white shadow-[0_2px_20px_rgba(72,30,11,0.08)]')
-
   return (
-    <header className={shell}>
+    <header ref={headerRef} className="sticky top-0 z-50 bg-white px-[20px]">
+      {/*
+        Only the shadow fades. The bar itself is opaque white the whole time,
+        because at rest it is not over the hero at all — the hero's top edge sits
+        at exactly the 110px header height, with white page behind the bar. A
+        transparent-to-white fade there changes nothing at the top of the page
+        and, mid-fade, shows the hero photograph through a half-opaque bar with
+        the dark nav labels on top of it. Fading the shadow alone gives the same
+        "lifted off the page" cue with nothing to read through.
+
+        Its own layer so it animates on `opacity`, which the compositor handles,
+        rather than the header animating box-shadow itself. Positioned and first
+        in the DOM, so the content wrapper below — which is `relative` — paints
+        over it without needing a z-index.
+      */}
+      <div
+        aria-hidden
+        className="absolute inset-0 shadow-[0_2px_20px_rgba(72,30,11,0.10)]"
+        style={{ opacity: menuOpen ? 1 : 'var(--header-bg, 0)' }}
+      />
       <div className="relative mx-auto flex h-[86px] max-w-[1400px] items-center justify-between gap-[20px] lg:h-[110px]">
         <Link to="/" onClick={closeAll} className={`shrink-0 rounded-[6px] ${focusRing}`}>
           <img

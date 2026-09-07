@@ -202,13 +202,23 @@ export const socialProfiles = [
 // Paths are app-local. The source files are already captured under
 // seo-backup/06-media/files/ — copying them into the public dir is a rebuild task.
 export const assets = {
-  /** Header logo. src: 2024/12/DermaSolutions-Logo.svg */
-  logo: "/images/brand/derma-solutions-logo.svg",
-  // TODO(brand): there is no white/mono mark for use on the dark footer panel.
-  // Until one exists the footer renders this white-background PNG on a small
-  // white chip, which reads as deliberate rather than as a broken transparency.
-  /** Solid-background logo used in footer + schema. src: 2024/12/Derma-Solutions-LOGO-with-bg-12.png */
-  logoWithBackground: "/images/brand/derma-solutions-logo-bg.png",
+  /**
+   * The mark, on a transparent background. Used everywhere.
+   *
+   * Despite the "-bg" filename this PNG is a transparent export (it replaced an
+   * opaque one). That matters for the header, whose own background fades in on
+   * scroll: anything with a baked-in ground shows as a white box the moment the
+   * bar is not fully opaque.
+   *
+   * src: 2024/12/Derma-Solutions-LOGO-with-bg-12.png
+   * TODO(brand): 816x306 and 229KB, for a mark that renders ~136x51. A resized
+   * export would save most of that on every page load.
+   */
+  logo: "/images/brand/derma-solutions-logo-bg.png",
+  // The original SVG upload. NOT for UI: it has an opaque white rectangle baked
+  // into it, so it renders as a white box on any non-white ground.
+  /** src: 2024/12/DermaSolutions-Logo.svg */
+  logoSvgOpaque: "/images/brand/derma-solutions-logo.svg",
   logoAlt: "Derma Solutions Logo",
   // TODO(brand): vendor artwork. theme-reference/06-assets/manifest.json tags it
   // "licence": "reference-only" — it belongs to the Glowix theme author and must
