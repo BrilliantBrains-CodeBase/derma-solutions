@@ -35,6 +35,14 @@ type Entry = {
   width: number
   height: number
   position?: string
+  /**
+   * 'cover' (the default) crops to the slot. 'inside' fits the whole frame and
+   * never upscales — what a cut-out needs, because cropping one would saw a
+   * limb off and the layout is built around the figure's full silhouette.
+   */
+  fit?: 'cover' | 'inside'
+  /** PNG only where there is alpha to keep. Everything else is smaller as JPEG. */
+  format?: 'png'
 }
 
 const IMAGES: Entry[] = [
@@ -72,6 +80,26 @@ const IMAGES: Entry[] = [
   { from: 'WHY CHOOSE US/DR. Sandeep treatment.png', to: 'images/decor/why-choose-1.jpg', width: 528, height: 816 },
   { from: 'About us/Chemical Peels 2.png', to: 'images/decor/why-choose-2.jpg', width: 528, height: 816 },
 
+  /* What We Do. The left slot is the one true cut-out in the set, and the only
+   * entry here that stays PNG: the background is already keyed out, so the band
+   * paints the reference's pale arch behind it and the figure stands on it
+   * exactly as the reference composes it. No crop — 'inside' — because the
+   * layout is built on the whole silhouette.
+   *
+   * TODO(assets): 375x666 is remove.bg's free-tier preview size. The slot
+   * renders 396 CSS px wide, so this is under half the pixels a 2x display
+   * wants and it shows. Re-key the 941x1672 `DR Sandeep 2.png` at full
+   * resolution and this entry needs no other change.
+   *
+   * NOTE: it is still the same coat, pose and backdrop as the `DR Sandeep.png`
+   * the Appointment band uses, so one page carries the portrait twice. Flagged
+   * for the client; swap either slot when a different portrait exists.
+   *
+   * The right slot is a treatment scene, so 'attention' finding the faces is
+   * what we want. */
+  { from: 'What we do/DR Sandeep 2 cutout.png', to: 'images/decor/what-we-do-1.png', width: 375, height: 666, fit: 'inside', format: 'png' },
+  { from: 'What we do/Botox Treatment.png', to: 'images/decor/what-we-do-2.jpg', width: 752, height: 1248 },
+
   /* See the Difference. These arrive pre-composed — both halves and their
    * Before/After labels are already in the file — so the band renders them
    * whole and the only job here is the downscale. 'centre' because a composite
@@ -105,8 +133,9 @@ function write(entry: Entry, encode: (pipeline: Sharp) => Sharp) {
     ok: true as const,
     done: encode(
       sharp(src).resize(entry.width, entry.height, {
-        fit: 'cover',
+        fit: entry.fit ?? 'cover',
         position: entry.position ?? 'attention',
+        withoutEnlargement: entry.fit === 'inside',
       }),
     )
       .toFile(dest)
@@ -118,7 +147,9 @@ const missing: string[] = []
 const pending: Promise<string>[] = []
 
 for (const entry of IMAGES) {
-  const result = write(entry, p => p.jpeg({ quality: 82, mozjpeg: true }))
+  const result = write(entry, p =>
+    entry.format === 'png' ? p.png({ compressionLevel: 9 }) : p.jpeg({ quality: 82, mozjpeg: true }),
+  )
   if (result.ok) pending.push(result.done)
   else missing.push(result.from)
 }

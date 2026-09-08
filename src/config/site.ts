@@ -283,16 +283,31 @@ export const assets = {
   aboutExperienceImageAlt:
     "Clinician brushing a chemical peel solution onto a reclining patient's face",
   /**
-   * What We Do, left column. A cut-out PNG: the pale arch behind the figure is
-   * baked into the file, which is why this one carries no frame, radius or
-   * reveal in the section. src: theme-reference 2025-04-what-we-image-1.png
-   * (392x626)
+   * What We Do, left column. A transparent cut-out, and the one slot on the
+   * homepage that keeps its alpha: the reference bakes its pale arch into the
+   * PNG, and this one is keyed clean, so HomeWhatWeDo paints that arch behind
+   * the figure instead. Nothing clips it — the whole silhouette is the layout.
+   *
+   * TODO(assets): 375x666 is remove.bg's free-tier preview size, under half the
+   * pixels the 396px slot wants on a 2x display. Re-key the 941x1672 original
+   * at full resolution to sharpen it; nothing else has to change.
+   *
+   * TODO(assets): still a near-duplicate of appointmentImage below — same coat,
+   * same folded-arms pose — so one homepage shows the portrait twice, six
+   * sections apart. Swap either slot once a second portrait exists.
+   *
+   * src: What we do/DR Sandeep 2 cutout.png (375x666, keyed from DR Sandeep 2.png)
    */
   whatWeDoImage1: "/images/decor/what-we-do-1.png",
-  whatWeDoImage1Alt: "Patient marked for a body-contouring procedure",
-  /** What We Do, right column. src: theme-reference 2025-04-what-we-image-2.jpg (391x621) */
+  whatWeDoImage1Alt: "Dr Sandeep Mahapatra, dermatologist and plastic surgeon at Derma Solutions",
+  // TODO(compliance): copy doc note 3. The shelf behind the chair carries a
+  // legible "Botox" carton and an "AESTHETIC CARE" label. It is a prescription
+  // brand name on a clinic homepage — the same exposure the note raises about
+  // the Services card. Retouch the shelf or reshoot if the client wants none.
+  /** What We Do, right column. src: What we do/Botox Treatment.png (941x1672) */
   whatWeDoImage2: "/images/decor/what-we-do-2.jpg",
-  whatWeDoImage2Alt: "Clinician smoothing a treatment mask onto a reclining patient's face",
+  whatWeDoImage2Alt:
+    "Dermatologist administering an anti-wrinkle injection to a patient's forehead",
   // Two treatment scenes rather than the two studio portraits the shoot supplies
   // for this band. Its second portrait is the same setup and pose as
   // appointmentImage below, and at two bands apart the pair read as one photo

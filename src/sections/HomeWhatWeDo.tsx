@@ -27,7 +27,7 @@ import { useCountUp } from '@/hooks/useCountUp'
  *    that.
  *
  * Vertical alignment is not uniform. The text column (centre 436) and the right
- * photograph (435.5) sit on the band's centre, but the left cut-out hangs lower
+ * photograph (435.5) sit on the band's centre, but the left figure hangs lower
  * and lands on the content floor, so it takes self-end rather than the row's
  * items-center.
  *
@@ -42,8 +42,9 @@ import { useCountUp } from '@/hooks/useCountUp'
  *
  * Five departures from the reference:
  *
- *  - The photographs are placeholders, on the same terms as the hero's and the
- *    About band's. See the TODO on assets.whatWeDoImage1.
+ *  - The photographs are the clinic's own, not the theme's. The left one also
+ *    repeats the Appointment band's portrait — see the TODO on
+ *    assets.whatWeDoImage1.
  *  - The heading animates per word in CSS rather than per character in GSAP
  *    SplitText, and the right photograph wipes in on a scroll-driven timeline
  *    rather than under ScrollTrigger — as in HomeAbout, and for the same
@@ -52,10 +53,16 @@ import { useCountUp } from '@/hooks/useCountUp'
  *    site.ts.
  *  - "Learn More" points at a live route rather than the demo's /contact-us/,
  *    which 404s here. See the TODO on homeWhatWeDo.cta.
- *  - The left image carries no frame, radius or reveal. It is a cut-out PNG
- *    with its own pale arch baked in, and the reference tags it
- *    `at-animation-image-none at-none` — it is the one photograph in either
- *    band that is deliberately inert.
+ *  - The left arch is painted here rather than baked into the file. The
+ *    reference's PNG carries its own pale arch; the clinic's cut-out is keyed
+ *    to transparency, so the band draws the arch and the figure stands on it —
+ *    same composition, one layer further out. Sampled off screenshot.png the
+ *    arch is #FCF4F1 (--color-secondary), full column width, 80.8% of the
+ *    block's height and bottom-anchored, with rounded-t-full clamping to the
+ *    reference's own 198px semicircular cap on a 396-wide box. The figure
+ *    itself takes no frame, gloss or wipe: the reference tags it
+ *    `at-animation-image-none at-none`, and only one of this band's two
+ *    photographs is meant to move.
  */
 
 /* The band sits on white, so the hero's white ring would be invisible here. */
@@ -104,15 +111,26 @@ export function HomeWhatWeDo() {
           The cut-out. Its pale arch is part of the PNG, so it takes no wrapper:
           no radius to clip, no .shiny-glass surface and no .reveal-wipe.
         */}
-        <img
-          src={assets.whatWeDoImage1}
-          alt={assets.whatWeDoImage1Alt}
-          width={392}
-          height={626}
-          loading="lazy"
-          decoding="async"
-          className="mx-auto w-full max-w-[396px] xl:mx-0 xl:w-[396px] xl:shrink-0 xl:self-end"
-        />
+        <div className="relative mx-auto w-full max-w-[396px] xl:mx-0 xl:w-[396px] xl:shrink-0 xl:self-end">
+          {/*
+            The arch the reference bakes into its own PNG. It stops at 80.8% of
+            the block so the figure's head clears it, exactly as the reference's
+            does — measured there at 530 of 656.
+          */}
+          <div
+            aria-hidden
+            className="absolute inset-x-0 bottom-0 h-[80.8%] rounded-t-full bg-secondary"
+          />
+          <img
+            src={assets.whatWeDoImage1}
+            alt={assets.whatWeDoImage1Alt}
+            width={375}
+            height={666}
+            loading="lazy"
+            decoding="async"
+            className="relative block w-full"
+          />
+        </div>
 
         {/* Text column. */}
         <div className="w-full xl:flex-1">
