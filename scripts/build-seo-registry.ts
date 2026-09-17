@@ -6,8 +6,9 @@
  * backup stays the source of truth and this script is re-run whenever it changes.
  *
  * Emits:
- *   src/seo/registry.generated.ts   92 typed SeoRecords
- *   src/seo/schema/<key>.json       92 byte-verbatim JSON-LD graphs
+ *   src/seo/registry.generated.ts   92 typed SeoRecords, plus scripts/added-pages.ts
+ *   src/seo/schema/<key>.json       92 byte-verbatim JSON-LD graphs, plus one
+ *                                   authored graph per added page
  *
  * Run: npm run seo:registry
  */
@@ -15,6 +16,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { parseCsv } from './csv.ts'
 import { SEO_MAP_CSV, PER_PAGE_DIR, SCHEMA_DIR, SEO_OUT, SCHEMA_OUT, backupKey } from './paths.ts'
+import { ADDED_PAGES, SCHEMA_TEMPLATE_KEY, SITE_URL } from './added-pages.ts'
 
 /* fix-plan A2/A3 — recorded so the decision is not lost, deliberately not acted on. */
 const NOTES: Record<string, string> = {
@@ -44,7 +46,6 @@ const H1_OVERRIDES: Record<string, string> = {
  * Absolute, not root-relative — Facebook/WhatsApp/LinkedIn scrapers fetch
  * og:image out of context and do not reliably resolve a relative path.
  */
-const SITE_URL = 'https://dermasolutions.co.in'
 const OG_IMAGE_FALLBACK = `${SITE_URL}/images/brand/og-default.jpg`
 const OG_IMAGE_W = '1200'
 const OG_IMAGE_H = '630'
@@ -110,6 +111,88 @@ const records = rows.map(r => {
   }
 })
 
+/**
+ * Pages that are not in the capture — see scripts/added-pages.ts. Appended after
+ * the 92 so the captured records keep their order and their bytes.
+ *
+ * Their JSON-LD is authored, not copied: the template page's site-wide entity
+ * nodes are kept as they are, and its three page-specific nodes (the
+ * breadcrumb, the WebPage and its ReadAction) are replaced with this page's.
+ */
+const templateGraph: { '@graph': { '@id'?: string }[] } = JSON.parse(
+  fs.readFileSync(path.join(SCHEMA_DIR, `${SCHEMA_TEMPLATE_KEY}.jsonld`), 'utf8'),
+)
+const templateUrl = `${SITE_URL}/${SCHEMA_TEMPLATE_KEY}/`
+
+for (const page of ADDED_PAGES) {
+  if (records.some(r => r.slug === page.slug)) {
+    throw new Error(`added page "${page.slug}" is already in the capture — remove it from scripts/added-pages.ts`)
+  }
+  const url = `${SITE_URL}/${page.slug}/`
+
+  const graph = {
+    ...templateGraph,
+    '@graph': [
+      ...templateGraph['@graph'].filter(node => !node['@id']?.startsWith(templateUrl)),
+      {
+        '@type': 'BreadcrumbList',
+        name: 'Breadcrumbs',
+        '@id': `${url}#breadcrumblist`,
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+          { '@type': 'ListItem', position: 2, name: page.breadcrumbName },
+        ],
+      },
+      {
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url,
+        inLanguage: 'en',
+        name: page.title,
+        description: page.description,
+        datePublished: page.publishedTime,
+        dateModified: page.publishedTime,
+        isPartOf: { '@id': `${SITE_URL}/#website` },
+        breadcrumb: { '@id': `${url}#breadcrumblist` },
+        potentialAction: { '@id': `${url}#readaction` },
+      },
+      { '@type': 'ReadAction', '@id': `${url}#readaction`, target: url },
+    ],
+  }
+  fs.writeFileSync(path.join(SCHEMA_OUT, `${page.slug}.json`), JSON.stringify(graph))
+
+  records.push({
+    slug: page.slug,
+    key: page.slug,
+    path: `/${page.slug}/`,
+    type: 'page',
+    wpId: null,
+    title: page.title,
+    description: page.description,
+    canonical: url,
+    robots: 'max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+    h1: page.h1,
+    og: {
+      'og:title': page.title,
+      'og:type': 'article',
+      'og:description': page.description,
+      'og:url': url,
+      'og:locale': 'en',
+      'og:site_name': 'Derma Solutions Skin and Hair Clinic',
+      'article:published_time': page.publishedTime,
+      'og:image': OG_IMAGE_FALLBACK,
+      'og:image:width': OG_IMAGE_W,
+      'og:image:height': OG_IMAGE_H,
+      'og:image:alt': page.title,
+    },
+    twitter: { 'twitter:card': 'summary_large_image', 'twitter:image': OG_IMAGE_FALLBACK },
+    publishedTime: page.publishedTime,
+    modifiedTime: page.publishedTime,
+    markdown: null,
+    note: page.note,
+  })
+}
+
 const banner = `/**
  * GENERATED FILE — DO NOT EDIT.
  *
@@ -120,7 +203,9 @@ const banner = `/**
  * To change something, change the backup (or the script) and re-run:
  *   npm run seo:registry
  *
- * Source: seo-backup/07-migration/seo-map.csv (92 URLs, captured 2026-09-02)
+ * Source: seo-backup/07-migration/seo-map.csv (92 URLs, captured 2026-09-02),
+ * plus the authored pages in scripts/added-pages.ts (${ADDED_PAGES.length}) — those alone are
+ * NOT from the capture.
  */
 `
 

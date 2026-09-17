@@ -246,6 +246,14 @@ export const assets = {
   // "licence": "reference-only" in theme-reference/06-assets/manifest.json.
   /** Line-art behind the Services band. src: theme-reference 2025-04-service-bg-shape.svg (1800x1511) */
   serviceShape: "/images/decor/service-bg-shape.svg",
+  // TODO(brand): vendor artwork on the same terms as footerShape above —
+  // "licence": "reference-only" in theme-reference/06-assets/manifest.json.
+  /**
+   * The leaf, sparkle, dot and flower scattered over the brown page-header band
+   * on inner pages (the treatment pages today).
+   * src: theme-reference 2025-04-page-header-bg.svg (1872x427)
+   */
+  pageHeaderShape: "/images/decor/page-header-bg.svg",
   /**
    * The homepage hero, which is footage rather than a photograph: a 10s silent
    * loop of Dr Sandeep examining a patient, shot at the clinic. Both encodes are
@@ -424,7 +432,11 @@ export const assets = {
   },
   /** Site-wide social share fallback. 55 live pages have no og:image today. */
   ogImage: "/images/brand/og-default.jpg",
-  /** src: 2025/04/Derma-Solutions-Clinic-Reception.jpeg */
+  /**
+   * Also the treatment sidebar's Opening Hours card, in place of the
+   * reference's sidebar-cta-bg.jpg, which is vendor stock.
+   * src: 2025/04/Derma-Solutions-Clinic-Reception.jpeg
+   */
   clinicPhoto: "/images/brand/clinic-reception.jpeg",
   clinicPhotoAlt: "Derma Solutions clinic reception",
 } as const;
@@ -618,10 +630,10 @@ export const serviceMenu = [
       { label: "Salmon Sperm PDRN Facial", path: "/salmon-sperm-pdrn-facial-in-bangalore/" },
       { label: "Microdermabrasion Treatment", path: "/microdermabrasion-treatment-in-bangalore/" },
       { label: "Skin Lightening", path: "/skin-lightening-treatment-in-bangalore/" },
-      {
-        label: "Dermato Surgery",
-        path: "/best-dermatologist-in-marathahalli-whitefield-bangalore/",
-      },
+      // Was Dr Sandeep's profile: the live site has no Dermato Surgery page.
+      // This one is authored (scripts/added-pages.ts), per content/Treatment
+      // doc note 4.
+      { label: "Dermato Surgery", path: "/dermato-surgery-in-bangalore/" },
     ],
   },
   {
@@ -1310,6 +1322,29 @@ export const homeLatestBlog = {
     label: "View All Articles",
     href: "/blogs/",
   },
+} as const;
+
+/* -------------------------------------------------------------------------- */
+/* Treatment pages                                                             */
+/* -------------------------------------------------------------------------- */
+
+// The fixed labels of the treatment page template (src/templates/TreatmentPage.tsx).
+// Each page's own copy is generated from content/Treatment/ into
+// src/content/treatments/; these are the strings the content doc lists once
+// under "GLOBAL ELEMENTS" for all 38 pages.
+//
+// The sidebar's hours are `hours.display` / `hours.displayHeading`, not the
+// doc's own wording ("Monday – Sunday : 09:30 AM – 06:00 PM / We Are Open On
+// All Days"): same hours — the doc's note 7 confirms them — and one source, so
+// the sidebar cannot drift from the footer.
+export const treatmentPage = {
+  /** The breadcrumb's middle crumb. Plain text: there is no /services/ page to link to. */
+  breadcrumbSection: "Services",
+  /** Uppercased in CSS, as in the reference. */
+  servicesHeading: "Professional Services",
+  hoursHeading: "Opening Hours:",
+  /** Names the video block's play button and iframe, e.g. "MNRF Treatment at Derma Solutions". */
+  videoTitle: (treatmentName: string) => `${treatmentName} at ${brand.shortName}`,
 } as const;
 
 /* -------------------------------------------------------------------------- */

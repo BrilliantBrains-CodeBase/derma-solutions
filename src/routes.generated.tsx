@@ -1,8 +1,8 @@
 /**
  * GENERATED FILE — DO NOT EDIT. Run `npm run seo:routes`.
  *
- * All 92 live URLs, derived from src/seo/registry.generated.ts:
- *   54 WordPress pages · 37 posts · 1 category archive
+ * All 93 URLs, derived from src/seo/registry.generated.ts:
+ *   55 WordPress pages · 37 posts · 1 category archive
  *
  * Paths are written WITHOUT a trailing slash because that is react-router's
  * form; `dirStyle: 'nested'` in vite.config.ts turns each one back into
@@ -20,7 +20,7 @@ export const routes: RouteRecord[] = [
     children: [
       { index: true, lazy: async () => ({ Component: (await import('./pages/Home')).default }) },
 
-      /* ---- WordPress pages (54) ---------------------------------------------- */
+      /* ---- WordPress pages (55) ---------------------------------------------- */
   { path: 'abdominoplasty-tummy-tuck-treatment-in-bangalore', lazy: async () => ({ Component: (await import('./pages/AbdominoplastyTummyTuckTreatmentInBangalore')).default }) },
   { path: 'acne-scar-treatment-in-bangalore', lazy: async () => ({ Component: (await import('./pages/AcneScarTreatmentInBangalore')).default }) },
   { path: 'best-dermatologist-in-marathahalli-whitefield-bangalore', lazy: async () => ({ Component: (await import('./pages/BestDermatologistInMarathahalliWhitefieldBangalore')).default }) },
@@ -75,6 +75,7 @@ export const routes: RouteRecord[] = [
   { path: 'weight-loss-injections-in-bangalore', lazy: async () => ({ Component: (await import('./pages/WeightLossInjectionsInBangalore')).default }) },
   { path: 'weight-loss-treatment-in-marathahalli', lazy: async () => ({ Component: (await import('./pages/WeightLossTreatmentInMarathahalli')).default }) },
   { path: 'xanthelasma-removal-treatment-in-bangalore', lazy: async () => ({ Component: (await import('./pages/XanthelasmaRemovalTreatmentInBangalore')).default }) },
+  { path: 'dermato-surgery-in-bangalore', lazy: async () => ({ Component: (await import('./pages/DermatoSurgeryInBangalore')).default }) },
 
       /* ---- Blog posts (37) — one shared template ------------------------- */
   { path: 'anti-ageing-treatments-for-men-bengaluru', element: <BlogPost slug="anti-ageing-treatments-for-men-bengaluru" /> },

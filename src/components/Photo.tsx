@@ -18,6 +18,7 @@ export function Photo({
   height,
   radiusClass = 'rounded-30',
   className,
+  priority = false,
 }: {
   src: string
   alt: string
@@ -25,6 +26,12 @@ export function Photo({
   height: number
   radiusClass?: string
   className?: string
+  /**
+   * For a photograph that is above the fold on load, where lazy loading would
+   * delay the page's largest paint. Every homepage photo is below the hero, so
+   * only the treatment pages' featured image sets it.
+   */
+  priority?: boolean
 }) {
   return (
     <div className={`shiny-glass ${radiusClass} ${className ?? ''}`}>
@@ -33,7 +40,8 @@ export function Photo({
         alt={alt}
         width={width}
         height={height}
-        loading="lazy"
+        loading={priority ? 'eager' : 'lazy'}
+        fetchPriority={priority ? 'high' : undefined}
         decoding="async"
         className="reveal-wipe h-full w-full object-cover"
       />

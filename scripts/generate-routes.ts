@@ -1,5 +1,6 @@
 /**
- * Writes src/routes.generated.tsx — the single route table for all 92 URLs.
+ * Writes src/routes.generated.tsx — the single route table for every registry URL
+ * (the 92 captured, plus scripts/added-pages.ts).
  *
  * Generated rather than hand-maintained so a URL can never exist in the SEO
  * registry without a route, or vice versa.
@@ -32,7 +33,7 @@ const lazyRoute = (record: typeof seoRecords[number]) => {
 const out = `/**
  * GENERATED FILE — DO NOT EDIT. Run \`npm run seo:routes\`.
  *
- * All 92 live URLs, derived from src/seo/registry.generated.ts:
+ * All ${seoRecords.length} URLs, derived from src/seo/registry.generated.ts:
  *   ${seoRecords.filter(r => r.type === 'page').length} WordPress pages · ${posts.length} posts · ${seoRecords.filter(r => r.type === 'other').length} category archive
  *
  * Paths are written WITHOUT a trailing slash because that is react-router's
