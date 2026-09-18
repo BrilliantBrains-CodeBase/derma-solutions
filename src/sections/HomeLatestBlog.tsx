@@ -2,6 +2,7 @@ import type { CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import { homeLatestBlog } from '@/config/site'
 import { ArrowDiagonalIcon } from '@/components/icons'
+import { BlogCard } from '@/components/BlogCard'
 import { Eyebrow } from '@/components/Eyebrow'
 import { CardCarousel } from '@/components/CardCarousel'
 
@@ -63,55 +64,13 @@ import { CardCarousel } from '@/components/CardCarousel'
  * HomeCaseStudies made for its <h4>.
  */
 
-/* The band is on white, so the hero's white focus ring would be invisible here. */
+/*
+ * The card itself is src/components/BlogCard.tsx, shared with the blog.
+ *
+ * The band is on white, so the hero's white focus ring would be invisible here.
+ */
 const focusRing =
   'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
-
-function BlogCard({ card }: { card: (typeof homeLatestBlog.cards)[number] }) {
-  return (
-    <Link to={card.path} className={`group block ${focusRing}`}>
-      {/*
-        The radius lives on the wrapper, as it does everywhere else in this
-        rebuild — the reference's <img> computes to radius 0 and is clipped by
-        the frame around it.
-      */}
-      <div className="overflow-hidden rounded-card">
-        <img
-          src={card.image}
-          alt={card.imageAlt}
-          width={1200}
-          height={627}
-          loading="lazy"
-          decoding="async"
-          className="aspect-[1200/627] w-full object-cover"
-        />
-      </div>
-
-      {/*
-        `items-center` is what keeps the disc on the title's optical centre
-        whether it wraps to one line or two — the reference's three titles all
-        wrap to two, these do not agree with each other.
-      */}
-      <div className="mt-[32px] flex items-center justify-between gap-[20px]">
-        <h3 className="font-display text-[22px] leading-[31px] text-primary transition-colors group-hover:text-accent">
-          {card.title}
-        </h3>
-
-        {/*
-          The reference's `elementskit-btn` — a 48px accent disc holding the same
-          15px solid arrow the Services and Case Studies cards use. It is inside
-          the link, so it is not focusable and carries no label of its own.
-        */}
-        <span
-          aria-hidden
-          className="flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-full bg-accent text-white transition-colors group-hover:bg-primary"
-        >
-          <ArrowDiagonalIcon className="h-[15px] w-[15px]" />
-        </span>
-      </div>
-    </Link>
-  )
-}
 
 export function HomeLatestBlog() {
   return (
@@ -158,7 +117,7 @@ export function HomeLatestBlog() {
       >
         {homeLatestBlog.cards.map(card => (
           <li key={card.path}>
-            <BlogCard card={card} />
+            <BlogCard path={card.path} title={card.title} image={card.image} imageAlt={card.imageAlt} />
           </li>
         ))}
       </CardCarousel>

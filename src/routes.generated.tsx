@@ -10,7 +10,6 @@
  */
 import type { RouteRecord } from 'vite-react-ssg'
 import { RootLayout } from './layout/RootLayout'
-import BlogPost from './pages/BlogPost'
 import NotFound from './pages/NotFound'
 
 export const routes: RouteRecord[] = [
@@ -77,44 +76,159 @@ export const routes: RouteRecord[] = [
   { path: 'xanthelasma-removal-treatment-in-bangalore', lazy: async () => ({ Component: (await import('./pages/XanthelasmaRemovalTreatmentInBangalore')).default }) },
   { path: 'dermato-surgery-in-bangalore', lazy: async () => ({ Component: (await import('./pages/DermatoSurgeryInBangalore')).default }) },
 
-      /* ---- Blog posts (37) — one shared template ------------------------- */
-  { path: 'anti-ageing-treatments-for-men-bengaluru', element: <BlogPost slug="anti-ageing-treatments-for-men-bengaluru" /> },
-  { path: 'best-treatments-for-open-pores-and-uneven-skin-texture', element: <BlogPost slug="best-treatments-for-open-pores-and-uneven-skin-texture" /> },
-  { path: 'blog-botox-vs-fillers-difference', element: <BlogPost slug="blog-botox-vs-fillers-difference" /> },
-  { path: 'blog-is-laser-treatment-safe-for-indian-skin', element: <BlogPost slug="blog-is-laser-treatment-safe-for-indian-skin" /> },
-  { path: 'breast-surgery-specialist-evaluation-before-procedure', element: <BlogPost slug="breast-surgery-specialist-evaluation-before-procedure" /> },
-  { path: 'chemical-peels-vs-microneedling-vs-lasers-vs-injectables', element: <BlogPost slug="chemical-peels-vs-microneedling-vs-lasers-vs-injectables" /> },
-  { path: 'choose-right-skin-treatment-dull-skin-pigmentation-acne-scars', element: <BlogPost slug="choose-right-skin-treatment-dull-skin-pigmentation-acne-scars" /> },
-  { path: 'choosing-the-right-skin-and-hair-doctor', element: <BlogPost slug="choosing-the-right-skin-and-hair-doctor" /> },
-  { path: 'coolsculpting-eliminate-stubborn-fat', element: <BlogPost slug="coolsculpting-eliminate-stubborn-fat" /> },
-  { path: 'cryolipolysis-vs-liposuction-bengaluru', element: <BlogPost slug="cryolipolysis-vs-liposuction-bengaluru" /> },
-  { path: 'earlobe-repair-surgery-bengaluru', element: <BlogPost slug="earlobe-repair-surgery-bengaluru" /> },
-  { path: 'gynecomastia-surgery-bengaluru', element: <BlogPost slug="gynecomastia-surgery-bengaluru" /> },
-  { path: 'hifu-a-non-surgical-facelift', element: <BlogPost slug="hifu-a-non-surgical-facelift" /> },
-  { path: 'how-can-you-treat-stubborn-pigmentation-and-achieve-clearer-skin', element: <BlogPost slug="how-can-you-treat-stubborn-pigmentation-and-achieve-clearer-skin" /> },
-  { path: 'how-dermatologists-treat-acne-scars', element: <BlogPost slug="how-dermatologists-treat-acne-scars" /> },
-  { path: 'how-long-do-dermal-fillers-last', element: <BlogPost slug="how-long-do-dermal-fillers-last" /> },
-  { path: 'how-to-prepare-skin-for-wedding', element: <BlogPost slug="how-to-prepare-skin-for-wedding" /> },
-  { path: 'hydrafacial-vs-chemical-peel', element: <BlogPost slug="hydrafacial-vs-chemical-peel" /> },
-  { path: 'laser-toning-for-pigmentation', element: <BlogPost slug="laser-toning-for-pigmentation" /> },
-  { path: 'medical-facial-vs-salon-facial', element: <BlogPost slug="medical-facial-vs-salon-facial" /> },
-  { path: 'mnrf-vs-co2-laser-for-acne-scars', element: <BlogPost slug="mnrf-vs-co2-laser-for-acne-scars" /> },
-  { path: 'pdrn-salmon-dna-facial-benefits', element: <BlogPost slug="pdrn-salmon-dna-facial-benefits" /> },
-  { path: 'phototherapy-for-skin-conditions', element: <BlogPost slug="phototherapy-for-skin-conditions" /> },
-  { path: 'reconstructive-surgery-restoring-form-function-confidence', element: <BlogPost slug="reconstructive-surgery-restoring-form-function-confidence" /> },
-  { path: 'rf-vs-hifu-skin-tightening', element: <BlogPost slug="rf-vs-hifu-skin-tightening" /> },
-  { path: 'rhinoplasty-nose-reshaping-surgery-bangalore', element: <BlogPost slug="rhinoplasty-nose-reshaping-surgery-bangalore" /> },
-  { path: 'skin-boosters-treatment-bengaluru', element: <BlogPost slug="skin-boosters-treatment-bengaluru" /> },
-  { path: 'skin-boosters-vs-dermal-fillers', element: <BlogPost slug="skin-boosters-vs-dermal-fillers" /> },
-  { path: 'thread-lift-vs-fillers-how-to-choose-the-right-treatment', element: <BlogPost slug="thread-lift-vs-fillers-how-to-choose-the-right-treatment" /> },
-  { path: 'vaser-liposuction-complete-guide', element: <BlogPost slug="vaser-liposuction-complete-guide" /> },
-  { path: 'vitiligo-repigmentation-treatment', element: <BlogPost slug="vitiligo-repigmentation-treatment" /> },
-  { path: 'weight-loss-injections-bangalore', element: <BlogPost slug="weight-loss-injections-bangalore" /> },
-  { path: 'what-is-preventive-botox-why-more-people-in-their-20s-and-30s-are-starting-early', element: <BlogPost slug="what-is-preventive-botox-why-more-people-in-their-20s-and-30s-are-starting-early" /> },
-  { path: 'what-to-ask-before-cosmetic-surgery', element: <BlogPost slug="what-to-ask-before-cosmetic-surgery" /> },
-  { path: 'when-should-you-start-anti-ageing-treatments-in-bengaluru', element: <BlogPost slug="when-should-you-start-anti-ageing-treatments-in-bengaluru" /> },
-  { path: 'why-daily-sunscreen-is-your-best-skin-investment', element: <BlogPost slug="why-daily-sunscreen-is-your-best-skin-investment" /> },
-  { path: 'xanthelasma-removal-bengaluru', element: <BlogPost slug="xanthelasma-removal-bengaluru" /> },
+      /* ---- Blog posts (37) — one shared template ---------------------------
+       * Each route loads the template and its own content module
+       * (src/content/blog/posts/<slug>.ts, from `npm run content:blog`), so no
+       * page carries the other posts' bodies.
+       */
+  { path: 'anti-ageing-treatments-for-men-bengaluru', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/anti-ageing-treatments-for-men-bengaluru')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'best-treatments-for-open-pores-and-uneven-skin-texture', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/best-treatments-for-open-pores-and-uneven-skin-texture')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'blog-botox-vs-fillers-difference', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/blog-botox-vs-fillers-difference')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'blog-is-laser-treatment-safe-for-indian-skin', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/blog-is-laser-treatment-safe-for-indian-skin')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'breast-surgery-specialist-evaluation-before-procedure', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/breast-surgery-specialist-evaluation-before-procedure')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'chemical-peels-vs-microneedling-vs-lasers-vs-injectables', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/chemical-peels-vs-microneedling-vs-lasers-vs-injectables')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'choose-right-skin-treatment-dull-skin-pigmentation-acne-scars', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/choose-right-skin-treatment-dull-skin-pigmentation-acne-scars')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'choosing-the-right-skin-and-hair-doctor', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/choosing-the-right-skin-and-hair-doctor')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'coolsculpting-eliminate-stubborn-fat', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/coolsculpting-eliminate-stubborn-fat')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'cryolipolysis-vs-liposuction-bengaluru', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/cryolipolysis-vs-liposuction-bengaluru')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'earlobe-repair-surgery-bengaluru', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/earlobe-repair-surgery-bengaluru')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'gynecomastia-surgery-bengaluru', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/gynecomastia-surgery-bengaluru')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'hifu-a-non-surgical-facelift', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/hifu-a-non-surgical-facelift')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'how-can-you-treat-stubborn-pigmentation-and-achieve-clearer-skin', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/how-can-you-treat-stubborn-pigmentation-and-achieve-clearer-skin')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'how-dermatologists-treat-acne-scars', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/how-dermatologists-treat-acne-scars')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'how-long-do-dermal-fillers-last', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/how-long-do-dermal-fillers-last')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'how-to-prepare-skin-for-wedding', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/how-to-prepare-skin-for-wedding')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'hydrafacial-vs-chemical-peel', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/hydrafacial-vs-chemical-peel')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'laser-toning-for-pigmentation', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/laser-toning-for-pigmentation')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'medical-facial-vs-salon-facial', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/medical-facial-vs-salon-facial')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'mnrf-vs-co2-laser-for-acne-scars', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/mnrf-vs-co2-laser-for-acne-scars')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'pdrn-salmon-dna-facial-benefits', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/pdrn-salmon-dna-facial-benefits')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'phototherapy-for-skin-conditions', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/phototherapy-for-skin-conditions')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'reconstructive-surgery-restoring-form-function-confidence', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/reconstructive-surgery-restoring-form-function-confidence')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'rf-vs-hifu-skin-tightening', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/rf-vs-hifu-skin-tightening')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'rhinoplasty-nose-reshaping-surgery-bangalore', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/rhinoplasty-nose-reshaping-surgery-bangalore')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'skin-boosters-treatment-bengaluru', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/skin-boosters-treatment-bengaluru')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'skin-boosters-vs-dermal-fillers', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/skin-boosters-vs-dermal-fillers')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'thread-lift-vs-fillers-how-to-choose-the-right-treatment', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/thread-lift-vs-fillers-how-to-choose-the-right-treatment')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'vaser-liposuction-complete-guide', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/vaser-liposuction-complete-guide')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'vitiligo-repigmentation-treatment', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/vitiligo-repigmentation-treatment')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'weight-loss-injections-bangalore', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/weight-loss-injections-bangalore')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'what-is-preventive-botox-why-more-people-in-their-20s-and-30s-are-starting-early', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/what-is-preventive-botox-why-more-people-in-their-20s-and-30s-are-starting-early')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'what-to-ask-before-cosmetic-surgery', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/what-to-ask-before-cosmetic-surgery')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'when-should-you-start-anti-ageing-treatments-in-bengaluru', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/when-should-you-start-anti-ageing-treatments-in-bengaluru')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'why-daily-sunscreen-is-your-best-skin-investment', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/why-daily-sunscreen-is-your-best-skin-investment')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'xanthelasma-removal-bengaluru', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/xanthelasma-removal-bengaluru')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
 
       /* ---- Not found -------------------------------------------------------
        * '404' is prerendered so static hosts have a 404.html to serve; the

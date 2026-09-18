@@ -9,9 +9,22 @@ import { useState } from 'react'
  * instead: nothing is requested from YouTube until someone asks for the video,
  * and it then plays in place.
  *
- * Shared by the homepage video band and the treatment pages' video block. The
- * frame's size and shape are the caller's (`className`), because the two differ
- * — a 1400x800 band on the homepage, an 847x380 block in the treatment column.
+ * Shared by the homepage video band, the treatment pages' video block and the
+ * video gallery's grid. The frame's size and shape are the caller's
+ * (`className`), because they differ — a 1400x800 band on the homepage, an
+ * 847x380 block in the treatment column, a ~406x229 tile in the gallery.
+ *
+ * Two props exist for the gallery and are optional everywhere else, so the
+ * homepage and the treatment pages render byte-identically without them:
+ *
+ *  - `ringClass` sizes the play ring. 100px is 12.5% of the homepage's band and
+ *    26% of the treatment block, but 44% of a gallery tile. It is a class-string
+ *    prop rather than a number for the reason radiusClass is one on Photo:
+ *    Tailwind extracts classes by scanning source text and cannot see a value
+ *    assembled at runtime.
+ *  - `playing`/`onPlayingChange` make the facade controllable, so a page holding
+ *    thirty-one of them can keep one playing at a time. Left undefined, the
+ *    facade keeps its own state exactly as before.
  */
 export function VideoFacade({
   youtubeId,
@@ -21,6 +34,9 @@ export function VideoFacade({
   posterWidth,
   posterHeight,
   playLabel = 'Play',
+  ringClass = 'h-[100px] w-[100px] text-[16px] leading-[16px]',
+  playing: controlledPlaying,
+  onPlayingChange,
   className = '',
 }: {
   youtubeId: string
@@ -31,9 +47,17 @@ export function VideoFacade({
   posterWidth: number
   posterHeight: number
   playLabel?: string
+  /** Literal Tailwind classes sizing the play ring. */
+  ringClass?: string
+  /** Lifts the facade's state out to the caller. Omit for the uncontrolled default. */
+  playing?: boolean
+  onPlayingChange?: (playing: boolean) => void
   className?: string
 }) {
-  const [playing, setPlaying] = useState(false)
+  const [uncontrolledPlaying, setUncontrolledPlaying] = useState(false)
+  const playing = controlledPlaying ?? uncontrolledPlaying
+  const setPlaying = (next: boolean) =>
+    onPlayingChange ? onPlayingChange(next) : setUncontrolledPlaying(next)
 
   return (
     <div className={`relative overflow-hidden bg-primary ${className}`}>
@@ -73,7 +97,7 @@ export function VideoFacade({
 
           <span
             aria-hidden
-            className="absolute left-1/2 top-1/2 flex h-[100px] w-[100px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-white bg-black/20 font-sans text-[16px] leading-[16px] font-semibold text-white backdrop-blur-[2px] transition-colors group-hover/play:bg-white group-hover/play:text-primary"
+            className={`absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-white bg-black/20 font-sans font-semibold text-white backdrop-blur-[2px] transition-colors group-hover/play:bg-white group-hover/play:text-primary ${ringClass}`}
           >
             {playLabel}
           </span>

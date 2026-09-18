@@ -491,6 +491,15 @@ export const legal = {
   disclaimer:
     "The information published on this website is generic in nature and the results vary from case to case basis. The contents of the website is not meant to replace an in-person consultation. Please follow the advise of your doctor via in-person consultation. This website will not assume any legal responsibility for the patient's medical condition.",
   disclaimerLabel: "Disclaimer Statement :",
+  /**
+   * The short notice that has to stay visible beside before/after imagery —
+   * copy doc note 2. Distinct from `disclaimer` above, which is the long legal
+   * statement PreFooter carries site-wide on every page.
+   *
+   * Shared by the homepage's transformations band and the image gallery, so the
+   * two cannot drift into saying different things about the same photographs.
+   */
+  resultsVary: "Results vary from person to person.",
   /** Treatment-variability notice from the Service schema's termsOfService. */
   treatmentNotice:
     "Treatment suitability, number of sessions, procedure choice and expected results vary from patient to patient and should be confirmed after consultation with a qualified dermatologist.",
@@ -766,7 +775,7 @@ export const homeSeeTheDifference = {
     { id: "transformation-3", image: assets.transformation3, imageAlt: assets.transformation3Alt },
     { id: "transformation-4", image: assets.transformation4, imageAlt: assets.transformation4Alt },
   ],
-  disclaimer: "Results vary from person to person.",
+  disclaimer: legal.resultsVary,
   // TODO(compliance): copy doc note 1, the same ASCI substantiation caveat that
   // sits on homeAbout.badge, homeWhatWeDo.badgeValue and homeWhyChooseUs.badge —
   // and the sharpest instance of it on the page, because these are volume
@@ -1283,11 +1292,6 @@ export const homeTestimonials = {
 //
 // The alt text describes the artwork rather than restating the card title
 // beside it — the two would otherwise be read out back to back.
-//
-// TODO(content): all three destinations are real prerendered routes, but
-// src/pages/BlogPost.tsx still renders an empty body, so today these cards lead
-// to a page with nothing under its H1. Same for cta.href — src/pages/Blogs.tsx
-// is blank by design until the index is built.
 export const homeLatestBlog = {
   /** Uppercased in CSS, as homeHero's and homeAbout's are. */
   eyebrow: "Latest Blog",

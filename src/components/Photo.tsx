@@ -13,18 +13,35 @@
  */
 export function Photo({
   src,
+  srcSet,
+  sizes,
   alt,
   width,
   height,
   radiusClass = 'rounded-30',
+  fit = 'cover',
   className,
   priority = false,
 }: {
   src: string
+  /**
+   * The gallery is the first caller to ship two renditions of the same
+   * photograph, so these are optional and every existing call site leaves them
+   * undefined. Same two-entry idiom as BlogCard.
+   */
+  srcSet?: string
+  sizes?: string
   alt: string
   width: number
   height: number
   radiusClass?: string
+  /**
+   * 'cover' fills a frame the caller has already given a shape, which is what
+   * every band on this site does. 'natural' lets the photograph keep its own
+   * aspect and the wrapper take its height — the image gallery, where the tiles
+   * are deliberately not cropped to a common frame.
+   */
+  fit?: 'cover' | 'natural'
   className?: string
   /**
    * For a photograph that is above the fold on load, where lazy loading would
@@ -37,13 +54,15 @@ export function Photo({
     <div className={`shiny-glass ${radiusClass} ${className ?? ''}`}>
       <img
         src={src}
+        srcSet={srcSet}
+        sizes={sizes}
         alt={alt}
         width={width}
         height={height}
         loading={priority ? 'eager' : 'lazy'}
         fetchPriority={priority ? 'high' : undefined}
         decoding="async"
-        className="reveal-wipe h-full w-full object-cover"
+        className={`reveal-wipe w-full ${fit === 'natural' ? 'h-auto' : 'h-full object-cover'}`}
       />
     </div>
   )

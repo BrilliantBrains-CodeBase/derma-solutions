@@ -1,6 +1,6 @@
 /**
- * Asserts every internal path referenced by src/config/site.ts resolves to one
- * of the 92 built routes.
+ * Asserts every internal path referenced by src/config/site.ts and the blog
+ * content (src/content/blog/) resolves to one of the 92 built routes.
  *
  * fix-plan.md calls the service pages' ~95 inbound internal links "load-bearing"
  * and lists a nav entry that already 404s on the live site. A typo in the nav is
@@ -8,7 +8,11 @@
  *
  * Run: npm run seo:links
  */
+import fs from 'node:fs'
+import path from 'node:path'
 import { seoRecords } from '../src/seo/registry.generated.ts'
+import { SRC } from './paths.ts'
+import { blogIndex } from '../src/content/blog/index.generated.ts'
 import { navigation, serviceMenu, team, legal, seo } from '../src/config/site.ts'
 
 const known = new Set(seoRecords.map(r => r.path))
@@ -43,12 +47,27 @@ record(legal.privacyPolicyPath, 'legal.privacyPolicyPath')
 record(legal.termsPath, 'legal.termsPath')
 record(seo.contactPath, 'seo.contactPath')
 
+// The blog: every card's destination, each post's related posts and service
+// link, and every root-relative href inside a post body.
+for (const post of blogIndex) {
+  record(post.path, 'blog index')
+  const file = path.join(SRC, 'content', 'blog', 'posts', `${post.slug}.ts`)
+  const source = fs.readFileSync(file, 'utf8')
+  const { default: content } = await import(file)
+  for (const slug of content.relatedSlugs) {
+    const target = blogIndex.find(p => p.slug === slug)
+    record(target?.path ?? `/${slug}/ (unknown post)`, `blog:${post.slug}:related`)
+  }
+  if (content.serviceLink) record(content.serviceLink.path, `blog:${post.slug}:serviceLink`)
+  for (const m of source.matchAll(/href=\\"(\/[^"\\#?]*)/g)) record(m[1], `blog:${post.slug}:body`)
+}
+
 const dangling = [...seen].filter(([p]) => !known.has(p))
 const broken = dangling.filter(([p]) => !(p in KNOWN_DANGLING))
 const expected = dangling.filter(([p]) => p in KNOWN_DANGLING)
 const orphans = seoRecords.filter(r => !seen.has(r.path) && r.type === 'page' && r.path !== '/')
 
-console.log(`internal paths referenced by site.ts: ${seen.size}`)
+console.log(`internal paths referenced by site.ts and the blog: ${seen.size}`)
 console.log(`  resolve to a built route:            ${seen.size - dangling.length}`)
 
 if (expected.length) {

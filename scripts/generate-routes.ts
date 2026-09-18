@@ -30,6 +30,13 @@ const lazyRoute = (record: typeof seoRecords[number]) => {
   return `  { path: '${childPath(record.path)}', lazy: async () => ({ Component: (await import('./pages/${name}')).default }) },`
 }
 
+function postRoute(record: { path: string; slug: string }): string {
+  return `  { path: '${childPath(record.path)}', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/${record.slug}')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },`
+}
+
 const out = `/**
  * GENERATED FILE — DO NOT EDIT. Run \`npm run seo:routes\`.
  *
@@ -42,7 +49,6 @@ const out = `/**
  */
 import type { RouteRecord } from 'vite-react-ssg'
 import { RootLayout } from './layout/RootLayout'
-import BlogPost from './pages/BlogPost'
 import NotFound from './pages/NotFound'
 
 export const routes: RouteRecord[] = [
@@ -55,8 +61,12 @@ export const routes: RouteRecord[] = [
       /* ---- WordPress pages (${stubs.length}) ---------------------------------------------- */
 ${stubs.map(lazyRoute).join('\n')}
 
-      /* ---- Blog posts (${posts.length}) — one shared template ------------------------- */
-${posts.map(r => `  { path: '${childPath(r.path)}', element: <BlogPost slug="${r.slug}" /> },`).join('\n')}
+      /* ---- Blog posts (${posts.length}) — one shared template ---------------------------
+       * Each route loads the template and its own content module
+       * (src/content/blog/posts/<slug>.ts, from \`npm run content:blog\`), so no
+       * page carries the other posts' bodies.
+       */
+${posts.map(postRoute).join('\n')}
 
       /* ---- Not found -------------------------------------------------------
        * '404' is prerendered so static hosts have a 404.html to serve; the
