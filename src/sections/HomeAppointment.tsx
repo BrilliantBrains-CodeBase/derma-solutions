@@ -32,7 +32,20 @@ import { Eyebrow } from '@/components/Eyebrow'
  *    24px radius below 768. The 40 is --radius-field in tokens.css, which was
  *    minted for exactly this and had no other call site until now.
  *
- * Seven departures from the reference:
+ * Shared with the About page, which renders this band verbatim as its B9. The
+ * three changes that doc asks for — phone above email, email optional, and a
+ * WhatsApp consent checkbox the reference has no equivalent for — were applied
+ * HERE rather than in an About-only copy of the form, so the homepage takes
+ * them too. Its rationale ("fewer drop-offs on mobile") is not page-specific.
+ * The heading and button label were deliberately NOT changed to the About doc's
+ * wording; see the open question in that doc's handover notes.
+ *
+ * Eight departures from the reference:
+ *
+ *  - The consent checkbox is not in the reference at all. It is required, its
+ *    value rides in the same values record as every other control, and it is
+ *    POSTed with them — the consent that counts is the one the clinic can
+ *    produce later, which means it has to reach the sheet.
  *
  *  - The copy is the client's, and the doctor list is the clinic's four, read
  *    off `team` rather than retyped. The demo offers eight invented names.
@@ -92,6 +105,7 @@ function isPhone(value: string) {
 const controlNames = [
   ...homeAppointment.fields.map(field => field.name),
   homeAppointment.doctorField.name,
+  homeAppointment.consent.name,
 ]
 
 const emptyValues: Record<string, string> = Object.fromEntries(
@@ -108,7 +122,12 @@ function validate(values: Record<string, string>) {
     const value = values[field.name].trim()
 
     if (!value) {
-      errors[field.name] = messages.required
+      /* `required` is absent on every field but email, and absent means true.
+       * An optional field that IS filled in still has to be valid, which is why
+       * this only skips the empty case. */
+      if (!('required' in field) || field.required !== false) {
+        errors[field.name] = messages.required
+      }
     } else if (field.type === 'email' && !EMAIL_PATTERN.test(value)) {
       errors[field.name] = messages.invalidEmail
     } else if (field.type === 'tel' && !isPhone(value)) {
@@ -118,6 +137,12 @@ function validate(values: Record<string, string>) {
 
   if (!values[homeAppointment.doctorField.name]) {
     errors[homeAppointment.doctorField.name] = messages.required
+  }
+
+  /* Last, so it is the last thing focus falls back to — and its own message,
+   * because "This field is required." reads oddly against a sentence. */
+  if (!values[homeAppointment.consent.name]) {
+    errors[homeAppointment.consent.name] = messages.consentRequired
   }
 
   return errors
@@ -441,11 +466,67 @@ export function HomeAppointment() {
                         {member.displayName}
                       </option>
                     ))}
+                    {/*
+                      The About doc's B9 dropdown ends with this. A visitor with
+                      no preference otherwise has to pick a doctor at random or
+                      abandon the form, and the field is required.
+                    */}
+                    <option value={homeAppointment.doctorField.noPreferenceLabel}>
+                      {homeAppointment.doctorField.noPreferenceLabel}
+                    </option>
                   </select>
 
                   <ChevronDownIcon className="pointer-events-none absolute top-1/2 right-[15px] h-[12px] w-[12px] -translate-y-1/2 text-body" />
                 </div>
               </Field>
+
+              {/*
+                The consent checkbox — new in the About round, and not in the
+                reference form at all. It deliberately does NOT use `Field`:
+                Field renders an sr-only label above its control, and this
+                control's label is the visible sentence beside it.
+
+                The value is carried in the same `values` record as everything
+                else ('yes' or ''), so the existing URLSearchParams POST sends
+                it to the Apps Script untouched. That matters: the consent the
+                clinic may later have to produce is the one in the sheet, not
+                the tick in the browser.
+              */}
+              <div className="md:col-span-2">
+                <label
+                  htmlFor={homeAppointment.consent.id}
+                  className="flex cursor-pointer items-start gap-[12px]"
+                >
+                  <input
+                    id={homeAppointment.consent.id}
+                    name={homeAppointment.consent.name}
+                    type="checkbox"
+                    checked={values[homeAppointment.consent.name] === 'yes'}
+                    onChange={event =>
+                      update(homeAppointment.consent.name, event.target.checked ? 'yes' : '')
+                    }
+                    aria-invalid={Boolean(errors[homeAppointment.consent.name])}
+                    aria-describedby={
+                      errors[homeAppointment.consent.name]
+                        ? `${homeAppointment.consent.id}-error`
+                        : undefined
+                    }
+                    className={`mt-[3px] h-[18px] w-[18px] shrink-0 accent-accent ${focusRing}`}
+                  />
+                  <span className="font-sans text-[14px] leading-[22px] text-body">
+                    {homeAppointment.consent.label}
+                  </span>
+                </label>
+
+                {errors[homeAppointment.consent.name] && (
+                  <p
+                    id={`${homeAppointment.consent.id}-error`}
+                    className="mt-[6px] font-sans text-[14px] leading-[20px] text-error"
+                  >
+                    {errors[homeAppointment.consent.name]}
+                  </p>
+                )}
+              </div>
 
               {/*
                 The reference's .btn-default wipe: a primary fill that grows out

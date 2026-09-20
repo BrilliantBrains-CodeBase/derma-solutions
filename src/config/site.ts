@@ -176,6 +176,13 @@ export const location = {
 // in the JSON-LD and scripts/verify-seo.ts asserts that byte-for-byte.
 // TODO(brand): correct the hours in the source schema, then update `openingHours`
 // here to match `display`. Do not edit one without the other.
+/**
+ * Split out so the About checklist can print the times under its own day
+ * wording without a second copy of them drifting from the footer's.
+ */
+const hoursDays = "Monday to Sunday";
+const hoursTimes = "9:30 AM to 6:00 PM";
+
 export const hours = {
   openingHours: [
     {
@@ -185,7 +192,9 @@ export const hours = {
     },
   ],
   /** What the footer currently prints — does NOT match `openingHours`. */
-  display: "Monday to Sunday: 9:30 AM to 6:00 PM",
+  display: `${hoursDays}: ${hoursTimes}`,
+  /** The times alone, for callers that supply their own day range. */
+  displayTimes: hoursTimes,
   displayHeading: "Open all 7 days",
 } as const;
 
@@ -286,7 +295,12 @@ export const assets = {
   aboutImage2: "/images/decor/about-2.jpg",
   aboutImage2Alt:
     "Surgeon in scrubs working at a microscope during a hair transplant procedure",
-  /** About checklist row. src: About us/Chemical Peels 1.png (1672x941) */
+  // NOTE: no band renders this any more. It sat beside the About checklist
+  // until the 2026-09 revision round asked to "remove the second image and
+  // increase the text content" — see the departures list in
+  // src/sections/HomeAbout.tsx. Kept, with its file, in case the client wants
+  // it back; it is 26 KB.
+  /** Was: About checklist row. src: About us/Chemical Peels 1.png (1672x941) */
   aboutExperienceImage: "/images/decor/about-experience.jpg",
   aboutExperienceImageAlt:
     "Clinician brushing a chemical peel solution onto a reclining patient's face",
@@ -316,6 +330,48 @@ export const assets = {
   whatWeDoImage2: "/images/decor/what-we-do-2.jpg",
   whatWeDoImage2Alt:
     "Dermatologist administering an anti-wrinkle injection to a patient's forehead",
+  // NOTE: nothing renders whatWeDoImage1/2 any more. The What We Do band they
+  // belonged to was replaced by Meet the Dermatologist in the 2026-09 revision
+  // round (content/home-page/DERMA SOLUTIONS — HOMEPAGE COPY.md). They are kept
+  // because whatWeDoImage1 is the only background-removed cut-out of Dr Sandeep
+  // the project has, and the arch composition it stood on is the alternative
+  // the client was offered for the new band — see the header comment in
+  // src/sections/HomeMeetDermatologist.tsx. Delete both, and their files in
+  // public/images/decor/, once that is settled.
+  /**
+   * Meet the Dermatologist, left column. Chosen from the 13 frames in
+   * content/home-page/Doctor's images/ as the only standing one with no
+   * competing brand or poster text in shot.
+   *
+   * src: Meet the Dermatologist/DR Sandeep standing.jpeg (1024x1280)
+   */
+  meetDermatologistImage: "/images/decor/meet-dermatologist.jpg",
+  meetDermatologistImageAlt:
+    "Dr Sandeep Mahapatra standing in a white coat at the Derma Solutions clinic",
+  /**
+   * The two technology banners, each in two renditions — the only homepage
+   * slots that ship a srcset. See the note in scripts/import-home-images.ts for
+   * why these are not single 2x files like the rest of the decor.
+   *
+   * Both carry their heading text baked into the pixels, so the alt strings
+   * quote those words: they exist nowhere else in the markup on a wide screen,
+   * and below lg the band crops them out and the HTML subheading takes over.
+   *
+   * src: Technology Banner/1.png (5000x1094), supplied via Zoho WorkDrive
+   */
+  techBanner1: "/images/decor/tech-banner-1.jpg",
+  techBanner1Small: "/images/decor/tech-banner-1-1400.jpg",
+  techBanner1Alt:
+    'Banner reading "Advanced Technology. Visible Skin Transformation. Precision-led ' +
+    'treatments designed to tighten, lift and rejuvenate your skin.", between a skin ' +
+    "tightening device and a skin analysis system",
+  /** src: Technology Banner/2.png (5000x1094), supplied via Zoho WorkDrive */
+  techBanner2: "/images/decor/tech-banner-2.jpg",
+  techBanner2Small: "/images/decor/tech-banner-2-1400.jpg",
+  techBanner2Alt:
+    'Banner reading "Next-Generation Technology. Expertly Delivered. Advanced laser and ' +
+    'body-contouring solutions for smoother skin, refined contours and targeted concerns.", ' +
+    "beside two laser treatment platforms",
   // Two treatment scenes rather than the two studio portraits the shoot supplies
   // for this band. Its second portrait is the same setup and pose as
   // appointmentImage below, and at two bands apart the pair read as one photo
@@ -338,19 +394,6 @@ export const assets = {
   // above — "licence": "reference-only" in theme-reference/06-assets/manifest.json.
   /** Dot field behind the Testimonials band. src: theme-reference 2025-04-testimonials-bg-shape.png (1800x1041) */
   testimonialsShape: "/images/decor/testimonials-bg-shape.png",
-  // TODO(assets): vendor photography on the same terms as heroImage above, and it
-  // must be replaced with Derma Solutions' own photography before launch.
-  //
-  // Note this is deliberately NOT the reference's 2025-04-testimonial-image.jpg.
-  // That file is a woman posed to camera, and the band sets it directly beside a
-  // named patient's quote, where it reads as that patient's face. This is a
-  // treatment scene instead — nobody in it is being presented as the reviewer.
-  // Same reasoning as 2025-04-author-2.jpg in the Why Choose Us block above. See
-  // the departures list in src/sections/HomeTestimonials.tsx.
-  /** Testimonials band, featured column. src: theme-reference 2025-04-gallery-7.jpg (1200x800) */
-  testimonialImage: "/images/decor/testimonial.jpg",
-  testimonialImageAlt:
-    "Clinician performing a facial treatment on a reclining patient under a clinic lamp",
   // TODO(assets): unlike the decor above this is the clinic's own footage — a
   // frame of the video in homeVideo — so it is the one image on the homepage
   // that needs no licence clearance. It is also the softest: YouTube's frame
@@ -711,7 +754,10 @@ export const navigation = {
     // unchanged. Its "Contact Us" item is deliberately absent — /contact-us/ is
     // one of the two known-dangling paths in scripts/verify-links.ts and 404s
     // today, so putting it in the primary nav would ship a broken link.
-    { label: "About Us", path: team[0].path },
+    // Was team[0].path — the founder's page stood in as "About Us" until the
+    // real page existed. It is still reached from the Doctors dropdown and from
+    // the About page's own team band, so nothing is orphaned by the change.
+    { label: "About Us", path: "/about-us/" },
     { label: "Treatments", groups: serviceMenu },
     {
       label: "Doctors",
@@ -738,7 +784,8 @@ export const navigation = {
   // the KNOWN_DANGLING note in scripts/verify-links.ts); add it once the page exists.
   quickLinks: [
     { label: "Home", path: "/" },
-    { label: "About Us", path: team[0].path },
+    // Repointed from team[0].path with the header's entry — see the note there.
+    { label: "About Us", path: "/about-us/" },
     { label: "Blogs", path: "/blogs/" },
     { label: "Image Gallery", path: "/image-gallery/" },
     { label: "Video Gallery", path: "/video-gallery/" },
@@ -776,23 +823,10 @@ export const homeSeeTheDifference = {
     { id: "transformation-4", image: assets.transformation4, imageAlt: assets.transformation4Alt },
   ],
   disclaimer: legal.resultsVary,
-  // TODO(compliance): copy doc note 1, the same ASCI substantiation caveat that
-  // sits on homeAbout.badge, homeWhatWeDo.badgeValue and homeWhyChooseUs.badge —
-  // and the sharpest instance of it on the page, because these are volume
-  // claims rather than a round number of years. Under ASCI rules all four must
-  // be backed by clinic records if challenged. Confirm every figure with
-  // Dr Sandeep before publishing. The reference's own counters read 25+ / 150K+
-  // / 30+ / 2K+; these are the doc's numbers.
-  //
-  // `value` is what the counter tweens to and `suffix` is printed after it, so
-  // 50000 renders "50,000+". The specialist tile has no suffix: "4+ In-House
-  // Specialists" would be a different, vaguer claim than the doc's "4".
-  counters: [
-    { id: "years", value: 20, suffix: "+", label: "Years of Expertise" },
-    { id: "laser", value: 50000, suffix: "+", label: "Laser Procedures" },
-    { id: "transplants", value: 10000, suffix: "+", label: "Hair Transplants" },
-    { id: "specialists", value: 4, suffix: "", label: "In-House Specialists" },
-  ],
+  // The band shows four of the clinic's transformations; /image-gallery/ is the
+  // page that holds the rest, and is the same destination homeCaseStudies.cta
+  // uses for the same reason.
+  cta: { label: "View All", href: "/image-gallery/" },
 } as const;
 
 /**
@@ -845,14 +879,12 @@ export const homeAppointment = {
       type: "text",
       autoComplete: "family-name",
     },
-    {
-      id: "email",
-      name: "email",
-      label: "Email address",
-      placeholder: "Email Address",
-      type: "email",
-      autoComplete: "email",
-    },
+    // Phone above email, and email optional, since the About round:
+    // content/about-us/Derma_Solutions_Home_Technology_and_About_Us_Content.md,
+    // B9 form note — "Phone moved above email and email made optional — fewer
+    // drop-offs on mobile." Applied here rather than in an About-only copy of
+    // the form, so the homepage takes the same fix. With md:grid-cols-2 the
+    // reorder puts phone in the left cell of row two, which is the doc's order.
     {
       id: "phone",
       name: "phone",
@@ -860,6 +892,18 @@ export const homeAppointment = {
       placeholder: "Phone Number",
       type: "tel",
       autoComplete: "tel",
+    },
+    // The one optional field. `required` is absent everywhere else and defaults
+    // to true in the validator — only this field opts out. An address that IS
+    // typed still has to be a valid one.
+    {
+      id: "email",
+      name: "email",
+      label: "Email address (optional)",
+      placeholder: "Email Address (optional)",
+      type: "email",
+      autoComplete: "email",
+      required: false,
     },
     // The copy doc asks for dd-mm-yyyy. A native date input renders the
     // visitor's own locale format and cannot be told otherwise; the alternative
@@ -880,6 +924,28 @@ export const homeAppointment = {
     name: "choosedoctor",
     label: "Choose doctor",
     placeholder: "Choose Doctor",
+    // The About doc's B9 dropdown ends with a fifth option the reference has
+    // no equivalent for. It is a real drop-off fix — a visitor with no
+    // preference otherwise has to pick a doctor at random or abandon the form —
+    // and costs one <option> after the team.map().
+    noPreferenceLabel: "No preference",
+  },
+  /**
+   * New in the About round — not in the reference form at all.
+   * content/about-us/…About_Us_Content.md, B9: "The consent line enables
+   * WhatsApp follow-ups."
+   *
+   * Held in the same `values` record as every other control ('yes' or ''), so
+   * the existing URLSearchParams POST carries it to the Apps Script with no
+   * change to the submit handler. The consent that matters is the one the
+   * clinic can produce later, which means it has to reach the sheet — not just
+   * gate the button in the browser.
+   */
+  consent: {
+    id: "whatsapp-consent",
+    name: "consent",
+    label:
+      "I agree to be contacted by Derma Solutions on call and WhatsApp about my appointment.",
   },
   submitLabel: "Get Appointment",
   submittingLabel: "Sending...",
@@ -887,6 +953,8 @@ export const homeAppointment = {
     required: "This field is required.",
     invalidEmail: "Enter a valid email address.",
     invalidPhone: "Enter a valid phone number.",
+    /** The consent checkbox. Its own line, because "required" reads oddly beside a sentence. */
+    consentRequired: "Please agree to be contacted so we can confirm your appointment.",
     success:
       "Thank you. Your request has reached the clinic and we will call you back to " +
       "confirm your appointment.",
@@ -925,56 +993,227 @@ export const homeHero = {
   secondary: { label: "Watch Video", path: "/video-gallery/" },
 } as const;
 
+// Homepage trust strip, directly under the hero. New in the 2026-09 revision
+// round — content/home-page/DERMA SOLUTIONS — HOMEPAGE COPY.md, the block the
+// doc heads "Trust Badege". The strings are the doc's, verbatim.
+//
+// Still four tiles, but only the first is the doc's. The client replaced the
+// two worded tiles — "Advanced Care / Skin, Hair & Aesthetic Treatments Under
+// One Roof" and "Innovation / Advanced Technology & Modern Treatment Solutions"
+// — with two volume figures, and gave the pairings explicitly:
+// 15,000+ patients, 60,000+ PRP & GFC, 50,000+ laser.
+//
+// `value` stays a string and nothing here counts up, although every tile is now
+// a number and the original reason not to — that a strip where half the tiles
+// tween and half sit still reads as a bug — no longer applies. It stays static
+// deliberately: homeSeeTheDifference.counters already tweens four figures lower
+// down the same page, and two counting rows on one homepage is noise, not
+// emphasis. Add useCountUp here only if that row goes.
+//
+// TODO(compliance): copy doc note 1, the same ASCI substantiation caveat that
+// sits on homeAbout.badge and homeSeeTheDifference.counters. Every figure here
+// must be backed by clinic records if challenged, and two of the four are new
+// to the site in this round. Confirm all of them with Dr Sandeep before launch.
+//
+// This strip and homeSeeTheDifference.counters are now near-duplicates of each
+// other, and that is the thing to settle before launch rather than any single
+// number:
+//
+//                 this strip                 counter row, lower down
+//     years       35+ (team, combined)       20+ (Dr Sandeep alone)
+//     laser       50,000+ Laser Treatments   50,000+ Laser Procedures
+//     also        15,000+ patients           10,000+ hair transplants
+//                 60,000+ PRP & GFC          4 in-house specialists
+//
+//  - THE LASER FIGURE IS THE SAME CLAIM TWICE, same number, different noun.
+//    One of the two rows should drop it.
+//  - The two years figures disagree and nothing on the page says why. Either
+//    qualify this tile's `body` ("across our specialists" is already implied by
+//    "Combined") or align them.
+//  - The live site carried 60,000+ against PRP, which is what this now says, so
+//    that pairing is back to matching the old site. The original copy doc flags
+//    both it and the 40,000+ peels figure as needing the same records check.
+export const homeTrustBadges = {
+  badges: [
+    {
+      id: "experience",
+      value: "35+",
+      label: "Years",
+      body: "Combined Dermatology & Aesthetic Experience",
+    },
+    {
+      id: "patients",
+      value: "15,000+",
+      label: "",
+      body: "Patients Treated with Personalised Care",
+    },
+    {
+      id: "prp-gfc",
+      value: "60,000+",
+      label: "",
+      body: "PRP & GFC Treatments Performed",
+    },
+    {
+      id: "laser",
+      value: "50,000+",
+      label: "",
+      body: "Laser Treatments Performed",
+    },
+  ],
+} as const;
+
 // Homepage About band. content/home-page/Derma-Solutions-Homepage-Copy-Glowix-
 // Template-2.md, section 03 — the strings are the doc's, verbatim.
 export const homeAbout = {
   /** Uppercased in CSS, as homeHero's is. */
   eyebrow: "About Us",
   heading: "Your journey to radiant, confident skin",
-  body:
-    "Derma Solutions is a skin and hair clinic in Marathahalli, Whitefield, where " +
-    "dermatologists and plastic surgeons treat every concern under one roof.",
+  // Two paragraphs, not one string: the 2026-09 revision round replaced the
+  // single sentence here and asked to "increase the text content" in the same
+  // breath as removing the photo that used to sit beside the checklist.
+  body: [
+    "Derma Solutions is a skin, hair and aesthetic clinic in Marathahalli, " +
+      "Whitefield, Bangalore. We combine expert dermatology with advanced cosmetic " +
+      "and surgical treatments, giving you the right care for every concern.",
+    "Led by Dr Sandeep Mahapatra (MBBS, MD Dermatology), our team focuses on " +
+      "accurate diagnosis, personalised treatment plans and transparent guidance, " +
+      "with no pressure or guesswork.",
+  ],
+  // Four points now, not three. The last one is the only string on the page
+  // that is NOT the copy doc verbatim: the doc writes "Open 7 days | 9:30 AM –
+  // 6:00 PM", and hours.display already owns those times for the footer and the
+  // sidebars. Composing it means the page cannot end up quoting two different
+  // sets of opening hours — which matters here, because `hours` carries a
+  // standing CONFLICT between its schema block and its display string.
   checklist: [
-    "Doctor-Led Diagnosis & Plans",
-    "FDA-Approved Laser Technology",
-    "One Clinic, Every Concern",
+    "Doctor-led diagnosis & personalised plans",
+    "FDA-approved lasers & advanced technology",
+    "Skin, hair & cosmetic care under one roof",
+    `${hours.displayHeading} | ${hours.displayTimes}`,
   ],
   // TODO(compliance): copy doc note 1 — under ASCI substantiation rules a
   // numeric claim must be backed by clinic records. Confirm the figure with
   // Dr Sandeep before launch. The reference reads "15+ Years of Experience";
   // this is the doc's own wording for the same badge.
   badge: "20 Years of Expertise",
-  contactLabel: "Need Help!",
-  /** The doc's target for "More About" — the founder's page, a real route. */
-  cta: { label: "More About", path: team[0].path },
+  contactLabel: "Speak to a specialist:",
+  // Was team[0].path, chosen only because it was a real route at the time. Now
+  // that /about-us/ exists, "Learn More About Us" points at the About page —
+  // which is what the label always said it did.
+  cta: { label: "Learn More About Us", path: "/about-us/" },
 } as const;
 
-// Homepage What We Do band. content/home-page/Derma-Solutions-Homepage-Copy-
-// Glowix-Template-2.md, section 04 — the strings are the doc's, verbatim.
-export const homeWhatWeDo = {
+// Homepage Meet the Dermatologist band. New in the 2026-09 revision round —
+// content/home-page/DERMA SOLUTIONS — HOMEPAGE COPY.md, whose annotation on the
+// old band reads "Change this section from what we do to Meet the
+// Dermatologist." The strings are the doc's, verbatim.
+//
+// It replaces homeWhatWeDo outright. That band's three checklist items
+// ("Restore Firmness and Shape", "Minimise Acne Scars and Pigmentation",
+// "Tailored Treatments for Men") are gone from the homepage with it; nothing
+// else referenced them.
+//
+// `credentials` overlaps team[0] — its `credentials`, `alumniOf` and `awards`
+// carry the same facts. They are not shared deliberately: team[0] is the
+// structured source that src/seo/ reads into the Person JSON-LD, one fact per
+// array entry, while these are the doc's pipe-separated display strings. Edit
+// both when a qualification changes.
+export const homeMeetDermatologist = {
   /** Uppercased in CSS, as homeHero's and homeAbout's are. */
-  eyebrow: "What We Do",
-  heading: "Dermatology, not just beauty",
+  eyebrow: "Meet the Dermatologist",
+  heading: "Meet Dr. Sandeep Mahapatra",
+  subheading: "Dermatology, Aesthetics & Hair Restoration",
   body:
-    "We treat skin, hair and body concerns medically - with diagnosis first, then " +
-    "a plan matched to you.",
-  checklist: [
-    "Restore Firmness and Shape",
-    "Minimise Acne Scars and Pigmentation",
-    "Tailored Treatments for Men",
+    "Dr. Sandeep Mahapatra is a Senior Consultant Dermatologist, Cosmetic Expert " +
+    "and Hair Transplant Surgeon, and the Founder of Derma Solutions. With over two " +
+    "decades of experience, he combines medical dermatology with advanced aesthetic " +
+    "and hair treatments.",
+  credentials: [
+    {
+      label: "Qualification",
+      value: "MBBS – MGM MCH, Jamshedpur | MD Dermatology – RIMS, Ranchi",
+    },
+    {
+      label: "Academic Excellence",
+      value:
+        "MBBS with Honours & Gold Medalist in two subjects | MD Dermatology Gold Medalist",
+    },
+    {
+      label: "Advanced Certifications",
+      value:
+        "Certified DHI Hair Transplant Specialist | Allergan-certified in Botox & Dermal Fillers",
+    },
+    {
+      label: "Expertise",
+      value:
+        "Clinical Dermatology | Cosmetic Dermatology | Hair Restoration | Aesthetic Treatments",
+    },
+    {
+      label: "Experience",
+      value: "20+ years of experience in skin, hair and aesthetic care",
+    },
   ],
-  // TODO(compliance): copy doc note 1, the same ASCI substantiation caveat that
-  // sits on homeAbout.badge. Confirm the figure with Dr Sandeep before launch.
-  // The reference counter reads 25+; this is the doc's own number.
-  badgeValue: 20,
-  badgeSuffix: "+",
-  badgeLabel: "Years of Experience",
-  // The doc gives no target for "Learn More" and the reference points at the
-  // demo's /contact-us/, which 404s here (see KNOWN_DANGLING in
-  // scripts/verify-links.ts). Retargeted to the live medical-dermatology
-  // overview, the closest match to this band's copy.
-  cta: { label: "Learn More", path: "/cosmetic-dermatology-in-bangalore/" },
+  // NOTE: the copy doc gives this band three volume figures — 50,000+ Laser
+  // Hair Removal Treatments, 10,000+ Hair Transplants, 40,000+ Chemical Peels —
+  // and they were built here as a counter row. They are not rendered any more;
+  // the row was removed on the client's instruction after review.
+  //
+  // Two things that resolves, worth knowing before anyone restores them:
+  //
+  //  - The homepage no longer states 10,000 hair transplants twice. That figure
+  //    still appears once, in homeSeeTheDifference.counters, which is now its
+  //    only home. Restoring these three would reintroduce the contradiction
+  //    risk — revise both together if so.
+  //  - The page's sharpest ASCI substantiation exposure drops back to
+  //    homeSeeTheDifference.counters alone. The caveat there is unchanged.
+  /** The doc's own CTA text, pointed at the founder's page as homeAbout's is. */
+  cta: { label: "Meet Dr. Sandeep Mahapatra", path: team[0].path },
 } as const;
+
+// The two technology banners. New in the 2026-09 revision round — the doc
+// supplies each as a full-width image plus a "Short paragraph below the banner"
+// and a "Section Subheading", and the strings are the doc's, verbatim.
+//
+// One array, rendered twice by one section, because the two are the same band
+// with different artwork. `tone` is the ground the artwork sits on, which the
+// section uses to pick the panel's fallback background while the image loads —
+// banner 1 is dark maroon, banner 2 near-white.
+//
+// The doc orders them consecutively, after About and before Meet the
+// Dermatologist. They are split here instead: two 4.57:1 strips stacked read as
+// one broken image. Banner 1 keeps the doc's slot; banner 2 follows Meet the
+// Dermatologist. See the order table in src/pages/Home.tsx.
+//
+// NOTE: the subheadings deliberately do not repeat the words baked into the
+// artwork ("Advanced Technology. Visible Skin Transformation." and
+// "Next-Generation Technology. Expertly Delivered."). Those are carried by
+// assets.techBanner*Alt, and on a wide screen a reader sees both.
+export const homeTechBanners = [
+  {
+    id: "technology",
+    subheading: "Technology Designed Around Your Skin",
+    body:
+      "At Derma Solutions, advanced dermatological technology meets personalised " +
+      "care. From RF skin tightening to HIFU, our treatments are selected based on " +
+      "your skin concerns, goals and individual needs.",
+    image: assets.techBanner1,
+    imageSmall: assets.techBanner1Small,
+    imageAlt: assets.techBanner1Alt,
+    tone: "dark",
+  },
+  {
+    id: "solutions",
+    subheading: "Advanced Solutions. Personalised Results.",
+    body:
+      "Our clinic combines advanced laser platforms and body-contouring technology " +
+      "with dermatologist-supervised treatment. Every procedure is planned with your " +
+      "skin type, treatment area and desired outcome in mind.",
+    image: assets.techBanner2,
+    imageSmall: assets.techBanner2Small,
+    imageAlt: assets.techBanner2Alt,
+    tone: "light",
+  },
+] as const;
 
 // The video band under What We Do. Copy doc section 04: "Use a clinic video
 // from the existing Video Gallery. Do not use stock footage."
@@ -1005,6 +1244,23 @@ export const homeServices = {
   /** Uppercased in CSS, as homeHero's and homeAbout's are. */
   eyebrow: "Services",
   heading: "Explore our full range of skin & hair treatments",
+  /** Names the tab row for a screen reader; the tabs themselves are serviceMenu's groups. */
+  tablistLabel: "Treatment categories",
+  // NOTE: nothing renders `cards` any more. The band now builds its cards from
+  // `serviceMenu` above — all 38 treatments behind the same 5 category tabs the
+  // header's mega-menu uses — so the homepage and the nav cannot disagree about
+  // what sits in which category, and every treatment page is one click from the
+  // homepage instead of six of them being.
+  //
+  // These six are kept because they are not the same thing and cannot be
+  // rebuilt from serviceMenu: they are CATEGORY cards with hand-written doc
+  // copy ("Laser Treatments", not "Laser Hair Removal") and their own
+  // photographs in public/images/decor/services/, which are the only images on
+  // the page shot at the card slot's full 654x436. If the tabs are ever
+  // reverted, or an overview tab is added, this is the copy for it.
+  //
+  // The internal-link hub note below still describes these six paths; the tabs
+  // now carry all 38, which is a superset of them.
   cards: [
     {
       title: "Laser Treatments",
@@ -1107,6 +1363,10 @@ export const homeServices = {
 //
 // The alt text deliberately describes only what is in frame. Restating a card's
 // title in its alt would make the photograph itself assert the result.
+// NOTE: nothing renders this. The Case Studies band was hidden on the client's
+// instruction after review — see the note in src/pages/Home.tsx. The export and
+// src/sections/HomeCaseStudies.tsx are both kept intact so restoring the band
+// is two uncommented lines there and nothing here.
 export const homeCaseStudies = {
   /** Uppercased in CSS, as homeHero's and homeAbout's are. */
   eyebrow: "Case Studies",
@@ -1151,123 +1411,124 @@ export const homeCaseStudies = {
 export const homeWhyChooseUs = {
   /** Uppercased in CSS, as homeHero's and homeAbout's are. */
   eyebrow: "Why Choose Us",
-  heading: "Experience skin and hair care in expert hands",
-  body:
-    "Every plan is built on an in-depth diagnosis, not a fixed menu - matched to " +
-    "your skin, concern and budget.",
-  statement:
-    "Skin, hair, anti-aging and cosmetic surgery are handled in-house by qualified " +
-    "specialists, using FDA-approved lasers and modern technology, with clear " +
-    "communication throughout.",
+  heading: "Why Patients Across Bangalore Choose Derma Solutions",
+  // The 2026-09 revision round replaced this band's two paragraphs with four
+  // titled points. `title` carries the doc's trailing full stop, because the
+  // section sets it inline with `body` and the two run together without it.
+  points: [
+    {
+      title: "Tailored Treatment Plans.",
+      body:
+        "Every skin is unique. We build personalized plans based on an in-depth " +
+        "diagnosis, not a fixed menu.",
+    },
+    {
+      title: "Comprehensive Care Under One Roof.",
+      body:
+        "From common skin conditions to advanced cosmetic and surgical procedures, " +
+        "you are treated by the right specialist without being sent elsewhere.",
+    },
+    {
+      title: "Patient-Centered Approach.",
+      body:
+        "Your comfort, safety and results come first, with clear communication at " +
+        "every step.",
+    },
+    {
+      title: "Modern Medical Technology.",
+      body:
+        "We use the latest FDA-approved lasers and cosmetic technology, including " +
+        "Q-switched ND:YAG and advanced systems for safe, effective outcomes.",
+    },
+  ],
+  // The doc writes this CTA as "Book Your Consultation > Book an Appointment" —
+  // the label it wants, after the one it replaces. contact.ctaHref is the same
+  // substitution homeServices.cta makes; see the TODO there.
+  cta: { label: "Book an Appointment", href: contact.ctaHref },
   contactLabel: "Contact Us:",
   // TODO(compliance): copy doc note 1, the same ASCI substantiation caveat that
   // sits on homeAbout.badge and homeWhatWeDo.badgeValue. Confirm the figure with
   // Dr Sandeep before launch. The reference's badge reads "25YEARS EXPERIENCE";
   // this is the doc's own number, and it carries the space the demo drops.
-  badge: "20 Years Experience",
+  badge: "20+ Years of Expertise",
 } as const;
 
-// Homepage How It Works band. content/home-page/Derma-Solutions-Homepage-Copy-
-// Glowix-Template-2.md, section 08 — the strings are the doc's, verbatim.
-//
-// `number` and `title` are separate fields even though the reference bakes the
-// numbering into one string ("01. Comprehensive Consultation"). The doc writes
-// them apart, and keeping them apart is what lets the section render an <ol>
-// whose numbering is structural rather than only painted on.
-export const homeHowItWorks = {
-  /** Uppercased in CSS, as homeHero's and homeAbout's are. */
-  eyebrow: "How It Works",
-  heading: "Simple steps to visible results",
-  body:
-    "A clear, unhurried process from first consultation to lasting results. We " +
-    "diagnose the root cause, explain your options, treat you personally and follow " +
-    "up until your skin settles.",
-  // TODO(rebuild): the reference links this button at /contact-us/, which 404s
-  // here and is whitelisted in scripts/verify-links.ts. contact.ctaHref is the
-  // same substitution homeServices.cta makes. Repoint it when the page lands.
-  cta: { label: "Contact Us", href: contact.ctaHref },
-  steps: [
-    {
-      number: "01",
-      title: "Consultation & Analysis",
-      body: "We listen to your concern and assess your skin, hair or scalp in detail.",
-    },
-    {
-      number: "02",
-      title: "Accurate Diagnosis",
-      body:
-        "Our specialists identify the root cause behind the symptom, so treatment is " +
-        "targeted.",
-    },
-    {
-      number: "03",
-      title: "Personalised Treatment Plan",
-      body:
-        "You get a plan matched to your skin type, goals and budget, explained clearly.",
-    },
-    {
-      number: "04",
-      title: "Expert Treatment & Follow-Up",
-      body:
-        "A qualified doctor performs your treatment, then guides aftercare so your " +
-        "results last.",
-    },
-  ],
-} as const;
+// The How It Works band is gone. The 2026-09 revision round struck it — the
+// doc's instruction reads "REMOVE HOW IT WORKS SECTION MERGE WITH WHY CHOOSE
+// US" — and its four steps (Consultation & Analysis, Accurate Diagnosis,
+// Personalised Treatment Plan, Expert Treatment & Follow-Up) did not survive
+// into homeWhyChooseUs.points, which is the client's own four-point list. The
+// copy is still in git history and in
+// content/home-page/Derma-Solutions-Homepage-Copy-Glowix-Template-2.md
+// section 08 if it is ever wanted back.
 
 // Homepage Testimonials band. content/home-page/Derma-Solutions-Homepage-Copy-
 // Glowix-Template-2.md, section 09 — the strings are the doc's, verbatim.
 //
-// The doc supplies one featured quote and three small ones. The reference carries
-// four, in a Swiper with arrows, dots, autoplay and loop all disabled — i.e. a
-// static 3-up grid with a fourth slide parked off-screen. Three quotes fill the
-// grid exactly, which is why there is no carousel here. See HomeTestimonials.tsx.
+// The doc supplies one featured quote and three small ones. The band no longer
+// distinguishes them: it is a heading over one carousel, so all four are peers
+// in `cards` and Neha Sharma is simply the first slide. See HomeTestimonials.tsx.
 //
 // `initial` is stored rather than sliced off `name`: "Dr Manoj Waghmare" begins
 // with the honorific, so the letter on his disc is a content decision and not a
 // string trick. It follows whatever the name becomes.
 //
-// TODO(content): the copy doc's own note under section 09 — testimonials 2 and 3
-// were lightly extended to fill the template's card height, so as written they are
-// not verbatim reviews. Either confirm the patients are happy with the wording or
-// replace both with longer reviews pulled from the Google Business Profile. Every
-// quote here should be traceable to a real, attributable review before launch.
+// All four quotes were replaced in the 2026-09 revision round and are that
+// doc's, verbatim. This resolves the previous TODO(content) here: the old
+// testimonials 2 and 3 had been "lightly extended" to fill the card height and
+// so were not verbatim reviews. These are.
+//
+// Two things the swap changed that are worth knowing:
+//
+//  - TODO(content): the doc supplies no `role` for any of the four, and the
+//    layout needs one under each name. The three card roles below are INFERRED
+//    from what each quote describes, not client-supplied. Confirm them, or drop
+//    the field, before launch. Neha Sharma keeps the role the previous copy doc
+//    gave her, and the initial on her disc follows it.
+//  - The outgoing set included a hair transplant patient (Dr Manoj Waghmare);
+//    the new one does not, so the homepage no longer carries social proof for
+//    the hair transplant service — which homeSeeTheDifference.counters claims
+//    10,000 of, one band below. Worth raising with the client.
 export const homeTestimonials = {
   /** Uppercased in CSS, as homeHero's and homeAbout's are. */
   eyebrow: "Testimonials",
   heading: "Life-changing results from our patients",
-  featured: {
-    quote:
-      "Derma Solutions is one of the best skin and hair clinics in Bangalore. The " +
-      "doctor is very humble and calm, and always made me feel comfortable during " +
-      "my skin procedures.",
-    name: "Neha Sharma",
-    role: "Patient, Bangalore",
-  },
   cards: [
     {
       quote:
-        "The only dermatologist I trust with my skin is Dr Sandeep Mahapatra. I have " +
-        "been seeing him for more than ten years and I wouldn't use anyone else.",
-      name: "Priyanka Radhakrishna",
-      role: "Patient",
-      initial: "P",
+        "Dr. Sandeep is humble, calm and made me feel comfortable throughout my skin " +
+        "treatment. I had a great experience and was very happy with the care and " +
+        "treatment.",
+      name: "Neha Sharma",
+      role: "Patient, Bangalore",
+      initial: "N",
     },
     {
       quote:
-        "He is a blessed, experienced and skilled hair transplant surgeon. The care " +
-        "and precision throughout the procedure were exactly what I hoped for.",
-      name: "Dr Manoj Waghmare",
-      role: "Hair Transplant Patient",
-      initial: "M",
+        "I consulted Dr. Sandeep for persistent acne. He examined my skin thoroughly, " +
+        "explained the root cause and gave me an easy-to-follow treatment plan. I saw " +
+        "visible improvement within two weeks.",
+      name: "Girivasan Sankaran",
+      role: "Acne Treatment Patient",
+      initial: "G",
     },
     {
       quote:
-        "Dr Sandeep is very experienced and professional. My injections were " +
-        "absolutely painless and I had no reaction at all afterwards.",
-      name: "Alisha",
-      role: "Patient",
-      initial: "A",
+        "I underwent skin rejuvenation treatment at Derma Solutions. Dr. Sandeep " +
+        "carefully assessed my concerns and created a personalised treatment plan. My " +
+        "skin texture and tone improved noticeably, and I'm very happy with the results.",
+      name: "Raj Chaudry",
+      role: "Skin Rejuvenation Patient",
+      initial: "R",
+    },
+    {
+      quote:
+        "I came to Derma Solutions for injury marks and scars from an old accident. " +
+        "Dr. Sandeep and his team created a treatment plan tailored to my needs. The " +
+        "marks have significantly faded, giving me renewed confidence.",
+      name: "Lalit Kumar Jha",
+      role: "Scar Treatment Patient",
+      initial: "L",
     },
   ],
 } as const;
@@ -1292,10 +1553,24 @@ export const homeTestimonials = {
 //
 // The alt text describes the artwork rather than restating the card title
 // beside it — the two would otherwise be read out back to back.
+// The eyebrow, heading and body below are the 2026-09 revision round's, which
+// retitled the band from "Latest Blog" to "Insights & Resources". The export
+// keeps its old name so the three card paths, the alt strings and everything
+// above stay put under one diff; rename it if the band grows a video rail to
+// match what the new copy promises.
 export const homeLatestBlog = {
   /** Uppercased in CSS, as homeHero's and homeAbout's are. */
-  eyebrow: "Latest Blog",
-  heading: "Our latest insights on skin, hair & aesthetics",
+  eyebrow: "Insights & Resources",
+  heading: "Expert insights for healthier skin, hair & confidence",
+  // New — the band had no body paragraph before this round.
+  //
+  // NOTE: it promises "guides and videos", and this band links three written
+  // posts. The videos are at /video-gallery/, which the hero's secondary button
+  // already points at. Either add a link here or have the client reword.
+  body:
+    "Explore dermatologist-led guides and videos from Dr. Sandeep Mahapatra " +
+    "covering common skin concerns, advanced treatments, hair care and aesthetic " +
+    "dermatology.",
   cards: [
     {
       title: "Medical Facial vs Salon Facial: The Real Difference",
@@ -1329,6 +1604,199 @@ export const homeLatestBlog = {
 } as const;
 
 /* -------------------------------------------------------------------------- */
+/* About Us page                                                               */
+/* -------------------------------------------------------------------------- */
+
+// content/about-us/Derma_Solutions_Home_Technology_and_About_Us_Content.md,
+// Part B — bands B2 through B10. The strings are the doc's, verbatim, except
+// where a comment below says otherwise and why. Rendered by src/sections/about/
+// and composed in src/pages/AboutUs.tsx.
+//
+// The page's B7, B8 and B9 are the homepage's own sections, reused verbatim, so
+// they have no copy here — see the header comment in src/pages/AboutUs.tsx.
+
+// B2 — About Us (Intro). The same band as homeAbout above (theme-reference
+// 04-sections/11-your-journey-to-radiant-confidence), with this page's copy.
+export const aboutIntro = {
+  /** Uppercased in CSS, as homeHero's and homeAbout's are. */
+  eyebrow: "About Us",
+  heading: "Where dermatology comes before beauty",
+  /** An array of one, so this and homeAbout can feed the same component. */
+  body: [
+    "Derma Solutions is a doctor-led skin, hair and aesthetic clinic in Marathahalli, " +
+      "Whitefield — your one point destination for safe, science-backed transformation.",
+  ],
+  checklist: [
+    "MD Dermatologist-Led Care",
+    "Advanced Laser Technology",
+    "Personalised Treatment Plans",
+  ],
+  // TODO(compliance): Part C, "Numeric claims" — under ASCI substantiation rules
+  // a numeric claim must be backed by clinic records. This one also DISAGREES
+  // with homeAbout.badge, which the homepage copy doc sets to "20 Years of
+  // Expertise", and with homeTrustBadges' "35+ Years". Three figures on one
+  // site is the real exposure; settle it once, then make all three read it.
+  badge: "15+ Years of Experience",
+  contactLabel: "Need Help?",
+  // An in-page anchor, not a route: AboutTeam renders id="our-team" further down
+  // this same page. HomeAbout renders a bare <a href> rather than a react-router
+  // <Link> when the target starts with "#", so this gets native scrolling and
+  // works with no JS — which matters on a prerendered page.
+  //
+  // Invisible to scripts/verify-links.ts, which only records paths starting "/".
+  cta: { label: "Meet Our Doctors", path: "#our-team" },
+} as const;
+
+// B3 — Our Approach (Mission & Vision).
+// theme-reference/04-sections/31-transforming-beauty-with-precision-and-care/.
+export const aboutApproach = {
+  eyebrow: "Our Approach",
+  heading: "Science-led care, personalised for your skin",
+  body:
+    "Every treatment at Derma Solutions begins with an in-depth diagnosis, so we treat " +
+    "the root cause of your concern — not just the symptoms.",
+  mission: {
+    title: "Our Mission",
+    body:
+      "To deliver safe, ethical, dermatologist-led care that addresses skin, hair and " +
+      "nail concerns with precision and honesty.",
+  },
+  vision: {
+    title: "Our Vision",
+    body:
+      "To be Bangalore's trusted doctor-led clinic, where honest advice and advanced " +
+      "technology build lasting confidence.",
+  },
+  // Part C, "'24/7 Support' badge": the template's default is replaced with the
+  // clinic's hours, and 24/7 must NOT be published. `value` is composed from
+  // `hours` rather than quoted from the doc, for the same reason
+  // homeAbout.checklist[3] is — `hours` carries a standing CONFLICT between its
+  // schema block and its display string, and this page must not publish a third
+  // variant of the times. That composition is the only non-verbatim string in
+  // this object: the doc writes "9:30 AM – 6:00 PM", hours.displayTimes says
+  // "to".
+  chip: { title: "Open All Days", value: hours.displayTimes },
+} as const;
+
+// B4 — What We Do. theme-reference/04-sections/12-transforming-beauty-confidence/ —
+// the band retired from the homepage in the 2026-09 revision round, restored
+// here with this page's copy. Section: src/sections/about/AboutWhatWeDo.tsx.
+export const aboutWhatWeDo = {
+  eyebrow: "What We Do",
+  heading: "Complete skin, hair & body care",
+  // TODO(compliance): Part C, "Numeric claims" — the 35+ figure is unverified.
+  // It appears twice on this page; aboutFaqs[0].answer is the other. Confirm
+  // once and fix both.
+  body:
+    "From medical dermatology to lasers, anti-ageing, hair restoration and cosmetic " +
+    "surgery, we offer 35+ specialised treatments under one roof.",
+  checklist: [
+    "Medical & Clinical Dermatology",
+    "Laser & Anti-Ageing Treatments",
+    "Hair Transplant & Restoration",
+  ],
+  // The one numeric badge on this page with no compliance TODO: it is the length
+  // of `team`, and the four doctors it counts are rendered a few hundred pixels
+  // below it. Derived rather than typed so it cannot disagree with them.
+  badgeValue: team.length,
+  badgeSuffix: "",
+  badgeLabel: "Specialist Doctors",
+  // The doc gives no target for "Explore Treatments", and this site has no
+  // treatments index — the header's Treatments item is a dropdown of five
+  // groups. Pointed at the clinical-dermatology overview, as the retired
+  // homeWhatWeDo.cta was, and for the same reason: the reference's /contact-us/
+  // 404s here (KNOWN_DANGLING in scripts/verify-links.ts).
+  cta: { label: "Explore Treatments", path: "/cosmetic-dermatology-in-bangalore/" },
+} as const;
+
+// B5 — Our Journey (dark band).
+// theme-reference/04-sections/32-your-journey-to-radiant-confidence-2/.
+export const aboutJourney = {
+  eyebrow: "Our Journey",
+  heading: "Built on trust, led by expertise",
+  checklist: [
+    "Gold Medallist MD Dermatologist",
+    "DHI-Certified Hair Transplant",
+    "Allergan-Certified Injectables",
+    "Senior Plastic Surgery Team",
+  ],
+  features: ["Diagnosis Before Every Treatment", "Honest Advice, Natural Results"],
+  // TODO(compliance): the same figure and the same three-way disagreement as
+  // aboutIntro.badge above. One decision settles both.
+  badge: "15+ Years of Experience",
+  // #appointment, not contact.ctaHref: HomeAppointment renders id="appointment"
+  // on this very page, so this is a target that exists. contact.ctaHref is
+  // /book-appointment/, one of the two KNOWN_DANGLING 404s.
+  cta: { label: "Book Consultation", path: "#appointment" },
+} as const;
+
+// B6 — Our Team.
+// theme-reference/04-sections/33-meet-the-experts-behind-your-transformation/.
+//
+// The four cards are deliberately not written out here: `team` already carries
+// exactly these four doctors, in this order, with the displayName,
+// qualification, role, photo and path the cards render. Same reasoning as the
+// note on homeAppointment's doctor list — a second copy would be free to drift
+// from the doctor pages.
+export const aboutTeamSection = {
+  eyebrow: "Our Team",
+  heading: "Meet the doctors behind your transformation",
+} as const;
+
+// B10 — FAQs. theme-reference/04-sections/20-got-questions-we-ve-got-answers/.
+export const aboutFaqSection = {
+  eyebrow: "Frequently Asked Questions",
+  heading: "Questions? Our doctors have answers",
+} as const;
+
+/**
+ * B10's four questions.
+ *
+ * These are ALSO the source of this page's FAQPage JSON-LD:
+ * scripts/schema-nodes.ts reads this array, so the visible accordion and the
+ * structured data cannot say different things. Edit here, then re-run
+ * `npm run seo:registry`.
+ */
+export const aboutFaqs = [
+  {
+    question: "What treatments does Derma Solutions offer?",
+    // TODO(compliance): Part C, "Numeric claims" — the same unverified 35+
+    // figure as aboutWhatWeDo.body.
+    answer:
+      "We offer 35+ treatments across clinical dermatology, lasers, anti-ageing, " +
+      "cosmetic surgery and hair restoration, all under one roof in Marathahalli.",
+  },
+  {
+    question: "Who will treat me at the clinic?",
+    answer:
+      "Every plan is led by our MD dermatologists, Dr Sandeep Mahapatra and " +
+      "Dr Sumedha Tirthani, with senior plastic surgeons for surgical procedures.",
+  },
+  {
+    question: "Is the technology at Derma Solutions safe?",
+    // TODO(compliance): Part C, "USFDA claims" — BLOCKING before publication.
+    // Clearance documents are required for the Q-switched and CO2 lasers, the
+    // wording must stay "USFDA-cleared" and never "approved", and the claim must
+    // not be extended to Viora, HIFU or Cooltech without certificates.
+    //
+    // This answer goes into the FAQPage graph as well as the visible accordion,
+    // and a structured-data claim is harder to walk back than a paragraph.
+    answer:
+      "We use medical-grade platforms, including USFDA-cleared Q-switched and CO2 " +
+      "lasers, with settings customised by our dermatologists for Indian skin.",
+  },
+  {
+    question: "Where is the clinic and when is it open?",
+    // The address and hours here are prose, and are the doc's verbatim. They
+    // restate `location` and `hours`; check they still agree whenever either of
+    // those changes.
+    answer:
+      "We are on the 1st floor, Scorpio House, near Marathahalli Bridge, and open all " +
+      "days from 9:30 AM to 6:00 PM.",
+  },
+] as const;
+
+/* -------------------------------------------------------------------------- */
 /* Treatment pages                                                             */
 /* -------------------------------------------------------------------------- */
 
@@ -1349,6 +1817,12 @@ export const treatmentPage = {
   hoursHeading: "Opening Hours:",
   /** Names the video block's play button and iframe, e.g. "MNRF Treatment at Derma Solutions". */
   videoTitle: (treatmentName: string) => `${treatmentName} at ${brand.shortName}`,
+  // The before/after slider's corner labels, carried over from the old site's
+  // Breakdance widget (data-before-label / data-after-label). Its
+  // "Results vary from person to person." line is legal.resultsVary, shared
+  // with the homepage band and the image gallery.
+  compareBeforeLabel: "Before",
+  compareAfterLabel: "After",
 } as const;
 
 /* -------------------------------------------------------------------------- */

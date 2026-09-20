@@ -100,6 +100,31 @@ const IMAGES: Entry[] = [
   { from: 'What we do/DR Sandeep 2 cutout.png', to: 'images/decor/what-we-do-1.png', width: 375, height: 666, fit: 'inside', format: 'png' },
   { from: 'What we do/Botox Treatment.png', to: 'images/decor/what-we-do-2.jpg', width: 752, height: 1248 },
 
+  /* Meet the Dermatologist. 1024x1280 is 0.8 and the 376x470 slot is 0.8, so
+   * this is the one portrait in the set that needs no crop at all — position
+   * never applies. Picked out of the 13 supplied frames as the only standing
+   * one with nothing competing in shot: the best-lit frame carries a
+   * "NEO FOLLICLE TRANSPLANT" logo (a different brand) and two others stand
+   * against a poster reading "TUMMY TUCK". */
+  { from: 'Meet the Dermatologist/DR Sandeep standing.jpeg', to: 'images/decor/meet-dermatologist.jpg', width: 752, height: 940 },
+
+  /* Technology banners. The only slots on the page that ship two renditions.
+   * Every other entry here is a single 2x file, which works because none of
+   * them is wider than ~620 CSS px; these run the full 1400 band, and one 2800
+   * file would be a ~300 KB download on a phone that renders it at 335.
+   *
+   * 5000x1094 is 4.570 and both outputs are ~4.56, so the crop is under a
+   * pixel — 'centre' only to keep 'attention' from finding the devices at the
+   * edges and shaving the other side.
+   *
+   * NOTE: both banners carry their heading text baked into the pixels. That is
+   * why assets.techBanner*Alt quotes the words, and why HomeTechBanner crops to
+   * the device below lg rather than scaling 7px type no one can read. */
+  { from: 'Technology Banner/1.png', to: 'images/decor/tech-banner-1.jpg', width: 2800, height: 613, position: 'centre' },
+  { from: 'Technology Banner/1.png', to: 'images/decor/tech-banner-1-1400.jpg', width: 1400, height: 307, position: 'centre' },
+  { from: 'Technology Banner/2.png', to: 'images/decor/tech-banner-2.jpg', width: 2800, height: 613, position: 'centre' },
+  { from: 'Technology Banner/2.png', to: 'images/decor/tech-banner-2-1400.jpg', width: 1400, height: 307, position: 'centre' },
+
   /* See the Difference. These arrive pre-composed — both halves and their
    * Before/After labels are already in the file — so the band renders them
    * whole and the only job here is the downscale. 'centre' because a composite

@@ -107,6 +107,16 @@ export function HomeLatestBlog() {
             </span>
           ))}
         </h2>
+
+        {/*
+          New in the 2026-09 round, which retitled the band to "Insights &
+          Resources". The reference has no paragraph here and neither did this
+          band; 700 rather than the heading's own width keeps it to the two
+          lines the centred block wants.
+        */}
+        <p className="mx-auto mt-[20px] max-w-[700px] font-sans text-[16px] leading-[26px] text-body">
+          {homeLatestBlog.body}
+        </p>
       </div>
 
       {/* Swipeable below lg, the measured 3-up grid from lg. See CardCarousel. */}

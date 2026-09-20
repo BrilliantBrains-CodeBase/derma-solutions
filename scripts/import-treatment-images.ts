@@ -14,6 +14,8 @@
  * not detail, and the browser scales them the rest of the way.
  *
  * Every generated treatment page must have both files, or this exits non-zero.
+ * The eight pages with a `compare` pair get two more, cropped on the same
+ * anchor as each other so the two halves line up under the slider's divider.
  *
  * Run: npm run assets:treatments
  */
@@ -23,6 +25,7 @@ import sharp from 'sharp'
 import { MEDIA_FILES, PUBLIC, SRC } from './paths.ts'
 import {
   treatmentMedia,
+  treatmentComparePath,
   treatmentImagePath,
   treatmentImageSlot,
   treatmentVideoPosterPath,
@@ -90,16 +93,39 @@ for (const slug of slugs) {
   if (!media) continue
   await writeOne(slug, media.image, treatmentImageSlot, treatmentImagePath(slug))
   await writeOne(slug, media.video, treatmentVideoSlot, treatmentVideoPosterPath(slug))
+
+  // A comparison pair is cropped to the same slot as the featured image, and
+  // both halves take the same anchor: 'attention' would find a different
+  // subject in each and the two would not register under the divider.
+  if (media.compare) {
+    const anchor = media.compare.before.position ?? 'centre'
+    for (const side of ['before', 'after'] as const) {
+      const source = { ...media.compare[side], position: anchor }
+      await writeOne(slug, source, treatmentImageSlot, treatmentComparePath(slug, side))
+    }
+  }
 }
 
 // Anything left in the folder that no page references is stale output.
-const expected = new Set(slugs.flatMap(s => [treatmentImagePath(s), treatmentVideoPosterPath(s)].map(p => path.basename(p))))
+const expected = new Set(
+  slugs
+    .flatMap(s => [
+      treatmentImagePath(s),
+      treatmentVideoPosterPath(s),
+      ...(treatmentMedia[s]?.compare
+        ? [treatmentComparePath(s, 'before'), treatmentComparePath(s, 'after')]
+        : []),
+    ])
+    .map(p => path.basename(p)),
+)
 for (const file of fs.readdirSync(outDir)) {
   if (!expected.has(file)) fs.rmSync(path.join(outDir, file))
 }
 
 console.log(`treatment images: ${written} written to public/images/treatments/ (${small} below the slot's 1x width — see the stock flags)`)
-const stock = Object.entries(treatmentMedia).flatMap(([slug, m]) => [m.image, m.video].filter(s => s.stock).map(() => slug))
+const stock = Object.values(treatmentMedia).flatMap(m =>
+  [m.image, m.video, m.compare?.before, m.compare?.after].filter(source => source?.stock),
+)
 console.log(`  ${stock.length} of ${written} are stock/AI stand-ins pending clinic photography (TODO(assets))`)
 
 const problems = [

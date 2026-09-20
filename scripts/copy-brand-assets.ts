@@ -5,6 +5,14 @@
  * Only these — the other ~440 captured images are page content and land with
  * the content. Sources verified against seo-backup/06-media/files/.
  *
+ * WARNING: this OVERWRITES its destinations, and one of them has since been
+ * replaced by hand. public/images/brand/derma-solutions-logo-bg.png in the repo
+ * is a TRANSPARENT re-export; the backup's original is opaque, and restoring it
+ * puts a white box behind the mark whenever the header bar is not fully opaque
+ * — see the note on assets.logo in src/config/site.ts. Because `npm run
+ * seo:generate` runs this script, a routine regeneration silently reverts it.
+ * Check `git status public/images/brand/` after any seo:generate.
+ *
  * Run: npm run seo:assets
  */
 import fs from 'node:fs'

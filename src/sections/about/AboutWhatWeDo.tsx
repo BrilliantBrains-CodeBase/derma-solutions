@@ -1,14 +1,23 @@
-import type { CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
-import { assets, homeWhatWeDo } from '@/config/site'
+import { aboutWhatWeDo, assets } from '@/config/site'
 import { ArrowDiagonalIcon, CheckSquareIcon } from '@/components/icons'
 import { Eyebrow } from '@/components/Eyebrow'
 import { Photo } from '@/components/Photo'
+import { RevealWords } from '@/components/RevealWords'
 import { useCountUp } from '@/hooks/useCountUp'
 
 /**
- * Built to theme-reference/04-sections/12-transforming-beauty-confidence/ — the
- * band the copy doc numbers 04.
+ * B4 — What We Do. Built to
+ * theme-reference/04-sections/12-transforming-beauty-confidence/, the band the
+ * demo's about-us page runs in this slot.
+ *
+ * This band was the homepage's until the 2026-09 revision round replaced it
+ * with Meet the Dermatologist. It is restored here, with the About page's copy
+ * (content/about-us/…About_Us_Content.md, B4) — which is also what gives
+ * assets.whatWeDoImage1/2 a renderer again.
+ *
+ * Everything below this paragraph is the original band's measurement record and
+ * is unchanged, because the geometry it describes is unchanged.
  *
  * That directory's computed.json holds only the outer container, so unlike the
  * hero every measurement here is read off its screenshot.png (1440x872), the
@@ -44,15 +53,19 @@ import { useCountUp } from '@/hooks/useCountUp'
  *
  *  - The photographs are the clinic's own, not the theme's. The left one also
  *    repeats the Appointment band's portrait — see the TODO on
- *    assets.whatWeDoImage1.
+ *    assets.whatWeDoImage1. That repeat is sharper here than it was on the
+ *    homepage: HomeAppointment renders the same figure four bands further down
+ *    THIS page. assets.meetDermatologistImage is the swap if the client wants
+ *    one of the two gone.
  *  - The heading animates per word in CSS rather than per character in GSAP
  *    SplitText, and the right photograph wipes in on a scroll-driven timeline
  *    rather than under ScrollTrigger — as in HomeAbout, and for the same
  *    reason. See .reveal-word and .reveal-wipe in src/styles/index.css.
- *  - The badge counts to 20, not the demo's 25. See the compliance TODO in
- *    site.ts.
- *  - "Learn More" points at a live route rather than the demo's /contact-us/,
- *    which 404s here. See the TODO on homeWhatWeDo.cta.
+ *  - The badge counts to the number of doctors, not the demo's 25 years. It is
+ *    derived from team.length, so it is the one figure on this page that needs
+ *    no compliance TODO — the four it counts are rendered in the next band.
+ *  - "Explore Treatments" points at a live route rather than the demo's
+ *    /contact-us/, which 404s here. See the note on aboutWhatWeDo.cta.
  *  - The left arch is painted here rather than baked into the file. The
  *    reference's PNG carries its own pale arch; the clinic's cut-out is keyed
  *    to transparency, so the band draws the arch and the figure stands on it —
@@ -71,8 +84,8 @@ const focusRing =
 
 /** The reference's `experirnce-box`: an accent stadium overhanging the photo. */
 function ExperienceBadge() {
-  const { value, ref } = useCountUp(homeWhatWeDo.badgeValue, 2000)
-  const label = `${homeWhatWeDo.badgeValue}${homeWhatWeDo.badgeSuffix} ${homeWhatWeDo.badgeLabel}`
+  const { value, ref } = useCountUp(aboutWhatWeDo.badgeValue, 2000)
+  const label = `${aboutWhatWeDo.badgeValue}${aboutWhatWeDo.badgeSuffix} ${aboutWhatWeDo.badgeLabel}`
 
   return (
     // Named once, so a screen reader reads the settled claim rather than a
@@ -88,22 +101,22 @@ function ExperienceBadge() {
         className="font-display text-[28px] leading-[34px] xl:text-[40px] xl:leading-[48px]"
       >
         {value}
-        {homeWhatWeDo.badgeSuffix}
+        {aboutWhatWeDo.badgeSuffix}
       </span>
       <span
         aria-hidden
         className="mt-[6px] px-[10px] font-sans text-[13px] leading-[19px] font-semibold xl:mt-[8px] xl:text-[16px] xl:leading-[24px]"
       >
-        {homeWhatWeDo.badgeLabel}
+        {aboutWhatWeDo.badgeLabel}
       </span>
     </div>
   )
 }
 
-export function HomeWhatWeDo() {
+export function AboutWhatWeDo() {
   return (
     <section
-      aria-labelledby="home-what-we-do-heading"
+      aria-labelledby="about-what-we-do-heading"
       className="mx-auto max-w-[1300px] px-[20px] py-[60px] xl:px-[10px] xl:py-[100px]"
     >
       <div className="flex flex-col gap-[50px] xl:flex-row xl:items-center xl:gap-[42px]">
@@ -134,34 +147,22 @@ export function HomeWhatWeDo() {
 
         {/* Text column. */}
         <div className="w-full xl:flex-1">
-          <Eyebrow className="text-accent">{homeWhatWeDo.eyebrow}</Eyebrow>
+          <Eyebrow className="text-accent">{aboutWhatWeDo.eyebrow}</Eyebrow>
 
           <h2
-            id="home-what-we-do-heading"
+            id="about-what-we-do-heading"
             className="mt-[20px] font-display text-[32px] leading-[40px] text-primary md:text-[40px] md:leading-[48px] xl:text-[48px] xl:leading-[58px]"
           >
-            {homeWhatWeDo.heading.split(' ').map((word, index, words) => (
-              <span
-                // Words can repeat within the heading, so the index is the identity.
-                key={`${word}-${index}`}
-                className="reveal-word"
-                // Not animation-delay: a view() timeline has no clock to delay.
-                // Each word is bound to a slightly later slice of the scroll.
-                style={{ '--i': index } as CSSProperties}
-              >
-                {/* The trailing space belongs to the word's own string — see HomeAbout. */}
-                {index === words.length - 1 ? word : `${word} `}
-              </span>
-            ))}
+            <RevealWords text={aboutWhatWeDo.heading} />
           </h2>
 
           <p className="mt-[26px] max-w-[400px] font-sans text-[16px] leading-[26px] text-body">
-            {homeWhatWeDo.body}
+            {aboutWhatWeDo.body}
           </p>
 
           {/* 16/24 on a 15px gap gives the reference's measured 39px pitch. */}
           <ul className="mt-[46px] flex flex-col gap-[15px]">
-            {homeWhatWeDo.checklist.map(item => (
+            {aboutWhatWeDo.checklist.map(item => (
               <li key={item} className="flex items-center gap-[15px]">
                 <CheckSquareIcon className="h-[17px] w-[17px] shrink-0 text-accent" />
                 <span className="font-sans text-[16px] leading-[24px] text-body">{item}</span>
@@ -171,11 +172,11 @@ export function HomeWhatWeDo() {
 
           {/* The same pill and detached chip the About band's CTA uses. */}
           <Link
-            to={homeWhatWeDo.cta.path}
+            to={aboutWhatWeDo.cta.path}
             className={`group/cta mt-[30px] inline-flex items-center gap-[3px] rounded-pill ${focusRing}`}
           >
             <span className="flex h-[50px] items-center rounded-pill bg-accent px-[30px] font-sans text-[16px] leading-[16px] font-semibold text-white transition-opacity group-hover/cta:opacity-90">
-              {homeWhatWeDo.cta.label}
+              {aboutWhatWeDo.cta.label}
             </span>
             <span className="flex h-[50px] w-[50px] items-center justify-center rounded-full bg-primary text-white transition-colors group-hover/cta:bg-accent">
               <ArrowDiagonalIcon className="h-[15px] w-[15px]" />

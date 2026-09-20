@@ -23,9 +23,11 @@ import { homeVideo } from '@/config/site'
  * What was deliberately NOT used, per the content doc
  * (content/Treatment/Derma-Solutions-All-Treatment-Pages-Content.md):
  *
- *  - Every before/after image (note 8: needs signed consent and a "Results vary"
- *    line on the image). This rules out the live Acne Scar, Dermal Fillers,
- *    Skin Lightening, Laser Toning, GFC and Hair Transplant composites.
+ *  - Before/after composites, as the page's single featured image. Eight pages
+ *    do carry the live site's own before/after PAIRS in a comparison slider —
+ *    see `compare` below and BeforeAfterSlider — but note 8's requirements
+ *    (signed consent, a "Results vary" line on the image) apply there, and the
+ *    line is burned into that frame.
  *  - Darker-vs-lighter imagery on Skin Lightening (Cosmetology note 5).
  *  - The IV Glutathione page's Gemini-generated images (Anti-Ageing note 3), and
  *    the Weight Loss page's ChatGPT-generated images and "Rx Only" vial shot
@@ -76,6 +78,15 @@ export interface TreatmentMedia {
   image: MediaSource
   video: MediaSource
   youtubeId?: string
+  /**
+   * A before/after pair for the first image slot, which the old Derma
+   * Solutions site opened these pages with — see BeforeAfterSlider. Only the
+   * eight pages that carried the widget have one; the rest render `image`.
+   *
+   * Both frames are cropped with the same anchor (the import script forces
+   * 'centre' unless told otherwise) so the two line up under the divider.
+   */
+  compare?: { before: MediaSource; after: MediaSource }
 }
 
 /** The two slots' shapes, measured off theme-reference's service page at 1440: 847x505 and 847x380. */
@@ -84,6 +95,8 @@ export const treatmentVideoSlot = { width: 847, height: 380 } as const
 
 export const treatmentImagePath = (slug: string) => `/images/treatments/${slug}.jpg`
 export const treatmentVideoPosterPath = (slug: string) => `/images/treatments/${slug}-video.jpg`
+export const treatmentComparePath = (slug: string, side: 'before' | 'after') =>
+  `/images/treatments/${slug}-${side}.jpg`
 
 export const treatmentYoutubeId = (slug: string) => treatmentMedia[slug]?.youtubeId ?? homeVideo.youtubeId
 
@@ -92,6 +105,12 @@ export const treatmentMedia: Record<string, TreatmentMedia> = {
   'acne-scar-treatment-in-bangalore': {
     image: { from: 'clinic:SERVICES/Cosmetology 2.png', alt: 'Dermatologist applying a skin treatment to a patient at Derma Solutions' },
     video: { from: 'clinic:SERVICES/Advanced Facials.png', alt: 'Skin treatment session at Derma Solutions' },
+    // The live page opened with this pair in a comparison slider.
+    // TODO(assets): stock/retouched, not consented patient photography — see the header.
+    compare: {
+      before: { from: 'backup:2025/01/Acne-Before-Pic-depo.jpg', alt: 'Cheek with active acne and acne scarring, before treatment', stock: true },
+      after: { from: 'backup:2025/01/acne-after-pic-depo.jpg', alt: 'The same cheek with clearer, smoother skin after treatment', stock: true },
+    },
   },
   'mnrf-treatment-in-bangalore-microneedling-with-radio-frequency': {
     image: { from: 'backup:2025/01/MNRF-Machine-Image.jpg', alt: 'MNRF microneedling radiofrequency machine', position: 'centre' },
@@ -100,6 +119,12 @@ export const treatmentMedia: Record<string, TreatmentMedia> = {
   'best-hydrafacial-treatment-in-marathahalli-whitefield-bangalore': {
     image: { from: 'clinic:SERVICES/Advanced Facials.png', alt: 'HydraFacial-style facial treatment at Derma Solutions' },
     video: { from: 'backup:2024/12/HydraFacial-Treatment-Depo_91808732.jpg', alt: 'HydraFacial handpiece on a patient’s face', stock: true },
+    // The live page opened with this pair in a comparison slider.
+    // TODO(assets): stock/retouched, not consented patient photography — see the header.
+    compare: {
+      before: { from: 'backup:2025/01/Hydrafacial-before-cnv.jpg', alt: 'Dull, congested facial skin before a HydraFacial', stock: true },
+      after: { from: 'backup:2025/01/Hydrafacial-after-cnv.jpg', alt: 'Brighter, hydrated facial skin after a HydraFacial', stock: true },
+    },
   },
   'hollywood-facial-carbon-laser-peel-bangalore': {
     image: { from: 'backup:2025/01/Hollywood-facial-cnv.jpg', alt: 'Carbon laser peel with a carbon mask on the face', stock: true },
@@ -136,10 +161,22 @@ export const treatmentMedia: Record<string, TreatmentMedia> = {
   'laser-hair-removal-in-bangalore': {
     image: { from: 'backup:2024/12/Untitled-design-3.png', alt: 'Laser hair removal on the underarm', stock: true },
     video: { from: 'clinic:SERVICES/Laser treatment.png', alt: 'Laser treatment at Derma Solutions' },
+    // The live page opened with this pair in a comparison slider.
+    // TODO(assets): stock/retouched, not consented patient photography — see the header.
+    compare: {
+      before: { from: 'backup:2024/12/Woman-with-hairs-on-armpits-cnv.jpg', alt: 'Underarm with unwanted hair before laser hair removal', stock: true },
+      after: { from: 'backup:2024/12/Women-with-cleam-armpits-after-Laser-Hair-removal.jpg', alt: 'Smooth underarm after laser hair removal', stock: true },
+    },
   },
   'laser-toning-treatment-in-bangalore': {
     image: { from: 'clinic:SERVICES/Laser treatment.png', alt: 'Laser skin toning treatment at Derma Solutions' },
     video: { from: 'backup:2024/12/Woman-Laser-Skin-Toning.jpg', alt: 'Laser toning handpiece on the face', stock: true },
+    // The live page opened with this pair in a comparison slider.
+    // TODO(assets): stock/retouched, not consented patient photography — see the header.
+    compare: {
+      before: { from: 'backup:2024/12/Woman-Face-Pigmentation-Before.jpg', alt: 'Facial pigmentation and dark spots before laser toning', stock: true },
+      after: { from: 'backup:2024/12/Woman-Face-Pigmentation-After.jpg', alt: 'More even skin tone after laser toning', stock: true },
+    },
   },
   'fractional-co2-laser-skin-resurfacing-in-bangalore': {
     image: { from: 'clinic:WHY CHOOSE US/DR. Sandeep treatment.png', alt: 'Dr Sandeep Mahapatra performing a laser skin treatment' },
@@ -148,16 +185,34 @@ export const treatmentMedia: Record<string, TreatmentMedia> = {
   'mole-removal-treatment-in-bangalore': {
     image: { from: 'backup:2025/01/Doctor-removing-a-mole.jpg', alt: 'Doctor removing a mole', stock: true },
     video: { from: 'backup:2025/01/Mole-Removal-cnv.jpg', alt: 'Mole on the shoulder being examined', stock: true },
+    // The live page opened with this pair in a comparison slider.
+    // TODO(assets): stock/retouched, not consented patient photography — see the header.
+    compare: {
+      before: { from: 'backup:2025/01/Mole-Removal-Before-cnv.jpg', alt: 'Mole on the back being examined before removal', stock: true },
+      after: { from: 'backup:2025/01/Mole-Removal-After-cnv.jpg', alt: 'The same area of the back after mole removal', stock: true },
+    },
   },
   'warts-removal-treatment-in-bangalore': {
     image: { from: 'backup:2025/01/Mole-Removal-cnv.jpg', alt: 'Skin growth being examined before removal', stock: true },
     video: { from: 'backup:2025/01/Doctor-removing-a-mole.jpg', alt: 'Doctor removing a skin growth', stock: true },
+    // The live page opened with this pair in a comparison slider.
+    // TODO(assets): stock/retouched, not consented patient photography — see the header.
+    compare: {
+      before: { from: 'backup:2025/01/Warts-on-face-Before-depo.jpg', alt: 'Raised growth on the jawline before removal', stock: true },
+      after: { from: 'backup:2025/01/Warts-on-face-After-depo.jpg', alt: 'Clear jawline after removal', stock: true },
+    },
   },
 
   /* ---- Anti-Ageing ------------------------------------------------------ */
   'botox-treatment-in-bangalore-whitefield-and-marathahalli': {
     image: { from: 'clinic:SERVICES/Anti aging 1.png', alt: 'Anti-wrinkle injection treatment at Derma Solutions' },
     video: { from: 'backup:2025/01/Woman-Botox-Injection.jpg', alt: 'Anti-wrinkle injection on the forehead', stock: true },
+    // The live page opened with this pair in a comparison slider.
+    // TODO(assets): stock/retouched, not consented patient photography — see the header.
+    compare: {
+      before: { from: 'backup:2025/01/Botox-Before.jpg', alt: 'Fine lines around the mouth and cheek before treatment', stock: true },
+      after: { from: 'backup:2025/01/Botox-After.jpg', alt: 'Smoother skin around the mouth and cheek after treatment', stock: true },
+    },
   },
   'dermal-fillers-treatment-bangalore': {
     // Centre, not 'attention': attention frames the doctor and crops the patient out.
@@ -165,6 +220,12 @@ export const treatmentMedia: Record<string, TreatmentMedia> = {
     // src/config/site.ts — a legible "Botox" carton sits behind the chair.
     image: { from: 'clinic:What we do/Botox Treatment.png', alt: "Dermatologist giving an injectable treatment to a seated patient", position: 'centre' },
     video: { from: 'clinic:SERVICES/Anti aging 1.png', alt: 'Injectable treatment at Derma Solutions' },
+    // The live page opened with this pair in a comparison slider.
+    // TODO(assets): stock/retouched, not consented patient photography — see the header.
+    compare: {
+      before: { from: 'backup:2025/01/Lip-Filler-Comparison-Before.jpg', alt: 'Lips before a dermal filler treatment', stock: true },
+      after: { from: 'backup:2025/01/Lip-Filler-Comparison-After.jpg', alt: 'Fuller, more defined lips after a dermal filler treatment', stock: true },
+    },
   },
   'skin-tightening-treatment-in-marathahalli-whitefield': {
     image: { from: 'backup:2025/01/Woman-Skin-Tightening.jpg', alt: 'Skin tightening device on the face', stock: true },

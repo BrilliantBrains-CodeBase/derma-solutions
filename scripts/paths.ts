@@ -3,6 +3,13 @@ import path from 'node:path'
 
 export const ROOT = fileURLToPath(new URL('..', import.meta.url))
 
+/**
+ * The live origin. Lives here rather than in added-pages.ts because
+ * schema-nodes.ts needs it too, and added-pages.ts imports THAT — keeping it
+ * next to the added pages would put a cycle between the two.
+ */
+export const SITE_URL = 'https://dermasolutions.co.in'
+
 export const BACKUP = path.join(ROOT, 'seo-backup')
 export const THEME = path.join(ROOT, 'theme-reference')
 

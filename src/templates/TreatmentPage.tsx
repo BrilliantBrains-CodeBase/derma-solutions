@@ -1,9 +1,11 @@
+import { BeforeAfterSlider } from '@/components/BeforeAfterSlider'
 import { PageShell } from '@/components/PageShell'
 import { Photo } from '@/components/Photo'
 import { VideoFacade } from '@/components/VideoFacade'
 import { treatmentPage } from '@/config/site'
 import type { TreatmentContent } from '@/content/treatment'
 import {
+  treatmentComparePath,
   treatmentImagePath,
   treatmentImageSlot,
   treatmentMedia,
@@ -23,7 +25,8 @@ import { TreatmentFaq } from '@/sections/treatment/TreatmentFaq'
  * fillers), shared by all 38 pages under the header's Treatments menu.
  *
  * Section order is the content doc's template table, slot for slot:
- * 01 header · 02 sidebar · 03 featured image · 04 intro · 05 feature block ·
+ * 01 header · 02 sidebar · 03 featured image (a before/after slider on the
+ * eight pages that had one) · 04 intro · 05 feature block ·
  * 06 video · 07 why-choose block · 08 FAQ. Its 09 (newsletter band) and 10
  * (footer) are the site-wide <Footer> and <PreFooter>, which already carry the
  * appointment CTA in the newsletter's place and the disclaimer the doc asks
@@ -52,14 +55,33 @@ export function TreatmentPage({ slug, content }: { slug: string; content: Treatm
     <PageShell slug={slug} hero={h1 => <TreatmentPageHeader h1={h1} name={content.name} />}>
       <div className="mx-auto grid max-w-[1300px] gap-[60px] px-[20px] py-[60px] lg:grid-cols-[320px_minmax(0,1fr)] lg:gap-[40px] lg:py-[100px] xl:grid-cols-[383px_minmax(0,1fr)] xl:gap-[50px] xl:px-[10px]">
         <div className="min-w-0">
-          <Photo
-            src={treatmentImagePath(slug)}
-            alt={media.image.alt}
-            width={treatmentImageSlot.width}
-            height={treatmentImageSlot.height}
-            className="aspect-[847/505] w-full"
-            priority
-          />
+          {/*
+            Slot 03. The eight pages the old site opened with a before/after
+            comparison keep that widget here; every other page shows its single
+            featured photograph, as the Glowix reference does.
+          */}
+          {media.compare ? (
+            <BeforeAfterSlider
+              before={treatmentComparePath(slug, 'before')}
+              beforeAlt={media.compare.before.alt}
+              after={treatmentComparePath(slug, 'after')}
+              afterAlt={media.compare.after.alt}
+              width={treatmentImageSlot.width}
+              height={treatmentImageSlot.height}
+              beforeLabel={treatmentPage.compareBeforeLabel}
+              afterLabel={treatmentPage.compareAfterLabel}
+              className="aspect-[847/505] w-full rounded-30"
+            />
+          ) : (
+            <Photo
+              src={treatmentImagePath(slug)}
+              alt={media.image.alt}
+              width={treatmentImageSlot.width}
+              height={treatmentImageSlot.height}
+              className="aspect-[847/505] w-full"
+              priority
+            />
+          )}
 
           <div className="mt-[30px] flex flex-col gap-[20px]">
             {content.intro.map(paragraph => (

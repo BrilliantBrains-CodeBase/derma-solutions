@@ -157,6 +157,9 @@ for (const page of ADDED_PAGES) {
         potentialAction: { '@id': `${url}#readaction` },
       },
       { '@type': 'ReadAction', '@id': `${url}#readaction`, target: url },
+      // Nodes this page publishes itself — an FAQPage, a Physician the site has
+      // no node for. See the field's doc comment in scripts/added-pages.ts.
+      ...(page.extraNodes?.(url) ?? []),
     ],
   }
   fs.writeFileSync(path.join(SCHEMA_OUT, `${page.slug}.json`), JSON.stringify(graph))

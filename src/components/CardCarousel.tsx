@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
+import { ChevronDownIcon } from '@/components/icons'
 
 /**
  * The mobile and tablet carousel the homepage's card bands share.
@@ -83,12 +84,35 @@ const trackClasses = [
   'max-lg:[&>li]:w-[calc((100%_-_40px_-_(var(--slides)_-_1)_*_30px)_/_var(--slides))]',
 ].join(' ')
 
+/*
+ * The same track with the `max-lg:` prefixes taken off, for `alwaysCarousel`.
+ *
+ * It is a second literal rather than a prefix assembled from a prop for the
+ * reason the header gives about the width calc: Tailwind extracts classes by
+ * scanning source text, so neither half of `max-lg:` can be interpolated. The
+ * two constants have to be kept in step by hand — if you change a value above,
+ * change it here.
+ *
+ * A caller that opts in keeps `gap-[30px]` in its own ulClassName, because the
+ * width calc still assumes it, and drops `grid-cols-*`: `flex` overrides the
+ * grid at every width, which leaves any column count inert.
+ */
+const trackClassesAlways = [
+  'flex',
+  'snap-x snap-mandatory overflow-x-auto scroll-smooth',
+  '[scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+  'py-[8px] -my-[8px]',
+  '[&>li]:flex-none [&>li]:snap-start',
+  '[&>li]:w-[calc((100%_-_40px_-_(var(--slides)_-_1)_*_30px)_/_var(--slides))]',
+].join(' ')
+
 export function CardCarousel({
   label,
   ulClassName,
   slidesClassName,
   className = '',
   tone = 'light',
+  alwaysCarousel = false,
   children,
 }: {
   /** Names the track for a screen reader, e.g. "Our services". */
@@ -106,6 +130,23 @@ export function CardCarousel({
   className?: string
   /** `dark` for the bg-primary Testimonials band, where accent dots vanish. */
   tone?: 'light' | 'dark'
+  /**
+   * Carousel at every width instead of handing the row back to the caller's
+   * grid at lg, plus prev/next buttons beside the dots.
+   *
+   * Opt-in, and false everywhere but HomeServices. The five other bands are
+   * pixel-fitted against theme-reference/ screenshots and this component's
+   * header is explicit that nothing here may move them; a default that changed
+   * desktop would move all five at once.
+   *
+   * It is for a band whose card count is too high to read as a grid —
+   * Services runs up to ten cards in a tab, which is four desktop rows.
+   *
+   * Autoplay stays mobile-only either way. A band that advances itself under
+   * the cursor while someone is reading ten treatment names is worse than one
+   * that waits.
+   */
+  alwaysCarousel?: boolean
   children: ReactNode
 }) {
   const trackRef = useRef<HTMLUListElement>(null)
@@ -282,22 +323,49 @@ export function CardCarousel({
       ? 'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white'
       : 'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
 
+  /*
+   * The prev/next discs. Only for `alwaysCarousel`, and only from lg within it:
+   * below that the track is swiped, where a pair of buttons is redundant and
+   * costs the dot row the width it needs — Services runs ten dots in its
+   * largest tab, against six in the bands that were here first.
+   */
+  const stepButton =
+    `hidden h-[46px] w-[46px] shrink-0 items-center justify-center rounded-full border border-divider lg:flex ` +
+    `bg-white text-primary transition-colors hover:border-accent hover:bg-accent hover:text-white ` +
+    `disabled:pointer-events-none disabled:opacity-35 ${focusRing}`
+
   return (
     <div className={className}>
       <ul
         ref={trackRef}
         aria-label={label}
-        className={`${ulClassName} ${trackClasses} ${slidesClassName}`}
+        className={`${ulClassName} ${
+          alwaysCarousel ? trackClassesAlways : trackClasses
+        } ${slidesClassName}`}
       >
         {children}
       </ul>
 
       {pages > 1 && (
         <div
-          className="mt-[24px] flex items-center justify-center gap-[10px] lg:hidden"
+          className={`mt-[24px] flex items-center justify-center gap-[10px] ${
+            alwaysCarousel ? '' : 'lg:hidden'
+          }`}
           role="group"
           aria-label={`${label} pagination`}
         >
+          {alwaysCarousel && (
+            <button
+              type="button"
+              className={`mr-[10px] ${stepButton}`}
+              aria-label="Previous slide"
+              disabled={active === 0}
+              onClick={() => scrollToPage(active - 1)}
+            >
+              <ChevronDownIcon className="h-[14px] w-[14px] rotate-90" />
+            </button>
+          )}
+
           {Array.from({ length: pages }, (_, index) => (
             <button
               key={index}
@@ -328,6 +396,18 @@ export function CardCarousel({
               />
             </button>
           ))}
+
+          {alwaysCarousel && (
+            <button
+              type="button"
+              className={`ml-[10px] ${stepButton}`}
+              aria-label="Next slide"
+              disabled={active >= pages - 1}
+              onClick={() => scrollToPage(active + 1)}
+            >
+              <ChevronDownIcon className="h-[14px] w-[14px] -rotate-90" />
+            </button>
+          )}
         </div>
       )}
     </div>

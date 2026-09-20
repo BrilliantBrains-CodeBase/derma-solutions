@@ -1,9 +1,10 @@
-import type { CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import { assets, contact, homeAbout } from '@/config/site'
 import { ArrowDiagonalIcon, CheckSquareIcon, CloverIcon, PhoneIcon } from '@/components/icons'
 import { Eyebrow } from '@/components/Eyebrow'
 import { Photo } from '@/components/Photo'
+import { RevealWords } from '@/components/RevealWords'
+import { YearsBadge } from '@/components/YearsBadge'
 
 /**
  * Built to theme-reference/04-sections/11-your-journey-to-radiant-confidence/ —
@@ -20,20 +21,30 @@ import { Photo } from '@/components/Photo'
  * and below that the composition scales as one piece instead of needing a
  * second layout for narrow screens.
  *
- * Four departures from the reference:
+ * Five departures from the reference:
  *
+ *  - THE CHECKLIST ROW HAS NO PHOTOGRAPH. The reference sets a 300x179 frame
+ *    beside the checks, and this band did too until the 2026-09 revision round:
+ *    "Remove the second image and increase the text content." Read as that one
+ *    rather than the collage's lower-left frame, because it is the only image
+ *    here competing with text for the column, and the instruction's second half
+ *    only makes sense of it. The copy that replaced it is two paragraphs and a
+ *    fourth check. assets.aboutExperienceImage and its file are kept — see the
+ *    note there.
  *  - The photographs are placeholders, on the same terms as the hero's. See the
- *    TODO on assets.aboutImage1: all three are the theme vendor's, tagged
- *    "reference-only" in 06-assets/manifest.json, and stand in only for crop.
+ *    TODO on assets.aboutImage1: both remaining ones are the theme vendor's,
+ *    tagged "reference-only" in 06-assets/manifest.json, and stand in only for
+ *    crop.
  *  - The badge reads "20 Years of Expertise" (the copy doc) rather than the
  *    demo's "15+ Years of Experience". See the compliance TODO in site.ts.
  *  - The heading animates per word in CSS rather than per character in GSAP
  *    SplitText, and the three photographs wipe in on a scroll-driven timeline
  *    rather than under ScrollTrigger — see .reveal-word and .reveal-wipe in
  *    src/styles/index.css.
- *  - "Need Help!" is a <p>, not the reference's <h3>. It labels a phone number,
- *    not a section, and as a heading it would put a stray h3 in the page's
- *    outline under an h2 that does not own it.
+ *  - The contact card's label — "Speak to a specialist:" since the 2026-09
+ *    round, "Need Help!" before it — is a <p>, not the reference's <h3>. It
+ *    labels a phone number, not a section, and as a heading it would put a
+ *    stray h3 in the page's outline under an h2 that does not own it.
  */
 
 /* The band sits on white, so the hero's white ring would be invisible here. */
@@ -41,66 +52,41 @@ const focusRing =
   'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
 
 /**
- * The reference's `text-path` widget — a ring of type around the year badge.
- *
- * Its captured markup carries Elementor's generic circle.svg path at r=125 in a
- * 250.5 viewBox, but Elementor then rescales that path inside the widget, so
- * reproducing the numbers verbatim throws the type outside the badge. These are
- * measured off the reference screenshot instead: the white glyphs occupy a ring
- * from r=54 to r=67 inside an 80px-radius badge, which puts the baseline at
- * r=54 and makes the cap height 13px — Marcellus at ~18.5px. The path is
- * therefore authored directly in badge pixels, clockwise from the leftmost
- * point, which is where the reference's first character starts.
- *
- * textLength + lengthAdjust="spacing" makes the two repeats close the circle
- * exactly. The reference tunes the same fit with a fixed 1.74px letter-spacing,
- * which only works for the label it was measured on — and this label is already
- * a different length, and carries a TODO to change again once the years figure
- * is confirmed.
+ * The band takes its copy rather than reading homeAbout directly, because the
+ * About page's B2 is this same reference section with different strings — one
+ * paragraph, three checks, a "Need Help?" label and an in-page CTA. Both
+ * defaults are the homepage's, so `<HomeAbout />` is unchanged.
  */
-function YearsBadge({ label }: { label: string }) {
-  const RADIUS = 54
+export function HomeAbout({
+  copy = homeAbout,
+  headingId = 'home-about-heading',
+}: {
+  copy?: typeof homeAbout | typeof import('@/config/site').aboutIntro
+  headingId?: string
+} = {}) {
+  /**
+   * The About page anchors this CTA at its own team band (#our-team) rather than
+   * pointing at a route. A react-router <Link> to a hash pushes a history entry
+   * and re-renders without scrolling; a bare <a> gets native scroll and focus
+   * behaviour and works with no JS, which matters on a prerendered page.
+   */
+  const ctaIsAnchor = copy.cta.path.startsWith('#')
 
-  return (
-    <div
-      aria-hidden
-      className="absolute left-[50%] top-[62.689%] z-20 flex aspect-square w-[26.667%] items-center justify-center rounded-full bg-primary"
-    >
-      <svg
-        className="absolute inset-0 h-full w-full"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 160 160"
-        focusable="false"
-      >
-        <path
-          id="home-about-badge-path"
-          fill="none"
-          d={`M${80 - RADIUS},80a${RADIUS},${RADIUS} 0 1 1 ${RADIUS},${RADIUS}a${RADIUS},${RADIUS} 0 0 1 -${RADIUS},-${RADIUS}`}
-        />
-        <text className="fill-white font-display" fontSize="18.5">
-          <textPath
-            href="#home-about-badge-path"
-            startOffset="0"
-            textLength={2 * Math.PI * RADIUS}
-            lengthAdjust="spacing"
-          >
-            {`${label} * ${label} * `}
-          </textPath>
-        </text>
-      </svg>
-
-      {/* The reference's about-text-path-icon.svg: a 70px accent disc, 40px mark. */}
-      <span className="relative flex aspect-square w-[43.75%] items-center justify-center rounded-full bg-accent">
-        <CloverIcon className="w-[57.14%] text-white" />
+  const ctaClassName = `group/cta inline-flex shrink-0 items-center gap-[3px] rounded-pill ${focusRing}`
+  const ctaChildren = (
+    <>
+      <span className="flex h-[50px] items-center rounded-pill bg-accent px-[30px] font-sans text-[16px] leading-[16px] font-semibold text-white transition-opacity group-hover/cta:opacity-90">
+        {copy.cta.label}
       </span>
-    </div>
+      <span className="flex h-[48px] w-[48px] items-center justify-center rounded-full bg-primary text-white transition-colors group-hover/cta:bg-accent">
+        <ArrowDiagonalIcon className="h-[15px] w-[15px]" />
+      </span>
+    </>
   )
-}
 
-export function HomeAbout() {
   return (
     <section
-      aria-labelledby="home-about-heading"
+      aria-labelledby={headingId}
       className="mx-auto max-w-[1300px] px-[20px] py-[60px] lg:px-[10px] lg:py-[100px]"
     >
       {/*
@@ -141,13 +127,20 @@ export function HomeAbout() {
             className="absolute left-0 top-[23.866%] z-10 h-[76.134%] w-[60%] rounded-30"
           />
 
-          {/* Above the lower-left frame, overhanging its right edge by 101px. */}
-          <YearsBadge label={homeAbout.badge} />
+          {/*
+            Above the lower-left frame, overhanging its right edge by 101px.
+            The className carries the colours as well as the placement — see the
+            note in YearsBadge, whose ring type is fill-current.
+          */}
+          <YearsBadge
+            label={copy.badge}
+            className="absolute left-[50%] top-[62.689%] z-20 flex aspect-square w-[26.667%] items-center justify-center rounded-full bg-primary text-white"
+          />
         </div>
 
         {/* Text column. */}
         <div className="w-full min-w-0 lg:w-[49.219%] lg:shrink-0">
-          <Eyebrow className="text-accent">{homeAbout.eyebrow}</Eyebrow>
+          <Eyebrow className="text-accent">{copy.eyebrow}</Eyebrow>
 
           {/*
             The gaps down this column (8 / 22 / 38 / 40) are the ones that put
@@ -157,51 +150,36 @@ export function HomeAbout() {
             render is the point, so these are measured, not rounded.
           */}
           <h2
-            id="home-about-heading"
+            id={headingId}
             className="mt-[8px] max-w-[520px] font-display text-[32px] leading-[40px] text-primary md:text-[40px] md:leading-[48px] lg:text-[48px] lg:leading-[58px]"
           >
-            {homeAbout.heading.split(' ').map((word, index, words) => (
-              <span
-                // Words can repeat within the heading, so the index is the identity.
-                key={`${word}-${index}`}
-                className="reveal-word"
-                // Not animation-delay: a view() timeline has no clock to delay.
-                // Each word is bound to a slightly later slice of the scroll.
-                style={{ '--i': index } as CSSProperties}
-              >
-                {/*
-                  The trailing space belongs to the word's own string, as it does
-                  in the hero: React serialises a space-only JSX sibling as
-                  &nbsp;, which would leave the rendered heading subtly different
-                  from the copy doc's string.
-                */}
-                {index === words.length - 1 ? word : `${word} `}
-              </span>
-            ))}
+            <RevealWords text={copy.heading} />
           </h2>
 
-          <p className="mt-[22px] max-w-[610px] font-sans text-[16px] leading-[26px] text-body">
-            {homeAbout.body}
-          </p>
-
-          <div className="mt-[38px] flex flex-col gap-[30px] sm:flex-row sm:items-center sm:justify-between">
-            <ul className="flex flex-col gap-[15px]">
-              {homeAbout.checklist.map(item => (
-                <li key={item} className="flex items-center gap-[15px]">
-                  <CheckSquareIcon className="h-[17px] w-[17px] shrink-0 text-accent" />
-                  <span className="font-sans text-[16px] leading-[24px] text-body">{item}</span>
-                </li>
-              ))}
-            </ul>
-
-            <Photo
-              src={assets.aboutExperienceImage}
-              alt={assets.aboutExperienceImageAlt}
-              width={302}
-              height={180}
-              className="h-[179px] w-full max-w-[300px] shrink-0 rounded-30"
-            />
+          {/*
+            Two paragraphs since the 2026-09 round, and no max-width on them:
+            the photograph that used to hold this column to 610 is gone, so the
+            copy takes the column. (The About page's B2 passes one.)
+          */}
+          <div className="mt-[22px] flex flex-col gap-[16px]">
+            {copy.body.map(paragraph => (
+              <p
+                key={paragraph}
+                className="font-sans text-[16px] leading-[26px] text-body"
+              >
+                {paragraph}
+              </p>
+            ))}
           </div>
+
+          <ul className="mt-[38px] flex flex-col gap-[15px]">
+            {copy.checklist.map(item => (
+              <li key={item} className="flex items-center gap-[15px]">
+                <CheckSquareIcon className="h-[17px] w-[17px] shrink-0 text-accent" />
+                <span className="font-sans text-[16px] leading-[24px] text-body">{item}</span>
+              </li>
+            ))}
+          </ul>
 
           {/*
             The reference paints this surface on the container, not on the card
@@ -218,7 +196,7 @@ export function HomeAbout() {
               </span>
               <span className="block">
                 <span className="block font-sans text-[16px] leading-[26px] text-body">
-                  {homeAbout.contactLabel}
+                  {copy.contactLabel}
                 </span>
                 <span className="block font-display text-[20px] leading-[24px] text-primary">
                   {contact.phoneDisplay}
@@ -227,17 +205,15 @@ export function HomeAbout() {
             </a>
 
             {/* The reference's button: a pill with a detached dark arrow chip. */}
-            <Link
-              to={homeAbout.cta.path}
-              className={`group/cta inline-flex shrink-0 items-center gap-[3px] rounded-pill ${focusRing}`}
-            >
-              <span className="flex h-[50px] items-center rounded-pill bg-accent px-[30px] font-sans text-[16px] leading-[16px] font-semibold text-white transition-opacity group-hover/cta:opacity-90">
-                {homeAbout.cta.label}
-              </span>
-              <span className="flex h-[48px] w-[48px] items-center justify-center rounded-full bg-primary text-white transition-colors group-hover/cta:bg-accent">
-                <ArrowDiagonalIcon className="h-[15px] w-[15px]" />
-              </span>
-            </Link>
+            {ctaIsAnchor ? (
+              <a href={copy.cta.path} className={ctaClassName}>
+                {ctaChildren}
+              </a>
+            ) : (
+              <Link to={copy.cta.path} className={ctaClassName}>
+                {ctaChildren}
+              </Link>
+            )}
           </div>
         </div>
       </div>

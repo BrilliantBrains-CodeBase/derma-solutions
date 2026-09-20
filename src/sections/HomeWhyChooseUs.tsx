@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react'
 import { assets, contact, founder, homeWhyChooseUs } from '@/config/site'
-import { PhoneIcon } from '@/components/icons'
+import { ArrowDiagonalIcon, CheckSquareIcon, PhoneIcon } from '@/components/icons'
 import { Eyebrow } from '@/components/Eyebrow'
 import { Photo } from '@/components/Photo'
 
@@ -42,21 +42,28 @@ import { Photo } from '@/components/Photo'
  *    not tucked inside it: the avatar is x 737-787 and the 36px disc x 769-804.
  *    Hence the -18px pull rather than a negative inset.
  *
- * Seven departures from the reference:
+ * Eight departures from the reference:
  *
+ *  - THE TEXT COLUMN IS A FOUR-POINT LIST, not the reference's two paragraphs,
+ *    and it carries a CTA the reference has no room for. Both come from the
+ *    2026-09 revision round, which also struck the How It Works band that used
+ *    to follow this one — "REMOVE HOW IT WORKS SECTION MERGE WITH WHY CHOOSE
+ *    US". Its four process steps did not come with it; the client's list is its
+ *    own. See the note where homeHowItWorks used to sit in site.ts.
  *  - Both photographs are placeholders, on the same terms as the hero's and the
  *    About band's. See the TODO on assets.whyChooseImage1.
- *  - The vertical badge reads "20 Years Experience", not the demo's
- *    "25YEARS EXPERIENCE" — the copy doc's number, and it carries the space the
- *    demo drops. See the compliance TODO in site.ts.
+ *  - The vertical badge reads "20+ Years of Expertise", not the demo's
+ *    "25YEARS EXPERIENCE" — the copy doc's number and wording. See the
+ *    compliance TODO in site.ts.
  *  - The heading animates per word in CSS rather than per character in GSAP
  *    SplitText, and the photographs wipe in on a scroll-driven timeline rather
  *    than under ScrollTrigger — as in HomeAbout, and for the same reason. See
  *    .reveal-word and .reveal-wipe in src/styles/index.css.
- *  - The second paragraph is a <p>, not the reference's <h3>. It is a statement
- *    about the clinic, not a section, and as a heading it would put a stray h3
- *    in the page's outline under an h2 that does not own it — the same call
- *    already made for "Need Help!" in HomeAbout.
+ *  - Nothing in the text column is an <h3>, although the reference sets its
+ *    second paragraph as one. These are statements about the clinic, not
+ *    sections, and as headings they would put stray h3s in the page's outline
+ *    under an h2 that does not own them — the same call already made for the
+ *    contact label in HomeAbout.
  *  - The contact row's portrait is founder.photo, not the reference's
  *    2025-04-author-2.jpg. That file is the theme vendor's stock headshot, and
  *    an anonymous stock face beside the clinic's own phone number reads as a
@@ -184,14 +191,37 @@ export function HomeWhyChooseUs() {
               ))}
             </h2>
 
-            <p className="mt-[26px] font-sans text-[16px] leading-[26px] text-body">
-              {homeWhyChooseUs.body}
-            </p>
+            {/*
+              Four titled points since the 2026-09 round, in place of the
+              reference's two paragraphs. `title` and `body` run inline rather
+              than stacking: each title is a fragment ending in a full stop and
+              the sentence after it completes the thought, so breaking the line
+              between them would read as two half-sentences.
+            */}
+            <ul className="mt-[26px] flex flex-col gap-[20px]">
+              {homeWhyChooseUs.points.map(point => (
+                <li key={point.title} className="flex gap-[15px]">
+                  <CheckSquareIcon className="mt-[5px] h-[17px] w-[17px] shrink-0 text-accent" />
+                  <p className="font-sans text-[16px] leading-[26px] text-body">
+                    <strong className="font-semibold text-primary">{point.title}</strong>{' '}
+                    {point.body}
+                  </p>
+                </li>
+              ))}
+            </ul>
 
-            {/* The reference's second statement: Marcellus 22/31 on the heading colour. */}
-            <p className="mt-[48px] font-display text-[20px] leading-[29px] text-primary lg:text-[22px] lg:leading-[31px]">
-              {homeWhyChooseUs.statement}
-            </p>
+            {/* The same pill and detached chip the About band's CTA uses. */}
+            <a
+              href={homeWhyChooseUs.cta.href}
+              className={`group/cta mt-[38px] inline-flex items-center gap-[3px] rounded-pill ${focusRing}`}
+            >
+              <span className="flex h-[50px] items-center rounded-pill bg-accent px-[30px] font-sans text-[16px] leading-[16px] font-semibold text-white transition-opacity group-hover/cta:opacity-90">
+                {homeWhyChooseUs.cta.label}
+              </span>
+              <span className="flex h-[50px] w-[50px] items-center justify-center rounded-full bg-primary text-white transition-colors group-hover/cta:bg-accent">
+                <ArrowDiagonalIcon className="h-[15px] w-[15px]" />
+              </span>
+            </a>
 
             {/* Decoration inside a section, so a div and not an <hr>. */}
             <div className="mt-[43px] h-px bg-divider" />

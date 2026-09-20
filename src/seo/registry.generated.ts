@@ -9,7 +9,7 @@
  *   npm run seo:registry
  *
  * Source: seo-backup/07-migration/seo-map.csv (92 URLs, captured 2026-09-02),
- * plus the authored pages in scripts/added-pages.ts (1) — those alone are
+ * plus the authored pages in scripts/added-pages.ts (2) — those alone are
  * NOT from the capture.
  */
 
@@ -3325,6 +3325,39 @@ export const seoRecords: SeoRecord[] = [
     "modifiedTime": "2026-09-17T00:00:00+05:30",
     "markdown": null,
     "note": "New page, not in the live capture (content/Treatment doc note 4). Needs a doctor review before publishing."
+  },
+  {
+    "slug": "about-us",
+    "key": "about-us",
+    "path": "/about-us/",
+    "type": "page",
+    "wpId": null,
+    "title": "About Derma Solutions | Skin & Hair Clinic, Marathahalli",
+    "description": "Meet the MD dermatologists and plastic surgeons behind Derma Solutions, a doctor-led skin, hair and aesthetic clinic in Marathahalli, Whitefield, Bangalore.",
+    "canonical": "https://dermasolutions.co.in/about-us/",
+    "robots": "max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "h1": "About Us",
+    "og": {
+      "og:title": "About Derma Solutions | Skin & Hair Clinic, Marathahalli",
+      "og:type": "article",
+      "og:description": "Meet the MD dermatologists and plastic surgeons behind Derma Solutions, a doctor-led skin, hair and aesthetic clinic in Marathahalli, Whitefield, Bangalore.",
+      "og:url": "https://dermasolutions.co.in/about-us/",
+      "og:locale": "en",
+      "og:site_name": "Derma Solutions Skin and Hair Clinic",
+      "article:published_time": "2026-09-20T00:00:00+05:30",
+      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image:width": "1200",
+      "og:image:height": "630",
+      "og:image:alt": "About Derma Solutions | Skin & Hair Clinic, Marathahalli"
+    },
+    "twitter": {
+      "twitter:card": "summary_large_image",
+      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+    },
+    "publishedTime": "2026-09-20T00:00:00+05:30",
+    "modifiedTime": "2026-09-20T00:00:00+05:30",
+    "markdown": null,
+    "note": "New page, not in the live capture. Built from content/about-us/…About_Us_Content.md Part B; Part C checks outstanding."
   }
 ]
 

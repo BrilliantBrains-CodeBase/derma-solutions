@@ -1,9 +1,9 @@
 import type { CSSProperties } from 'react'
+import { Link } from 'react-router-dom'
 import { homeSeeTheDifference } from '@/config/site'
-import { FourCirclesIcon, LaserIcon, PersonCircleIcon, VennIcon } from '@/components/icons'
+import { ArrowDiagonalIcon } from '@/components/icons'
 import { Eyebrow } from '@/components/Eyebrow'
 import { CardCarousel } from '@/components/CardCarousel'
-import { useCountUp } from '@/hooks/useCountUp'
 
 /**
  * Built to theme-reference/04-sections/14-our-real-patient-transformation-
@@ -29,16 +29,10 @@ import { useCountUp } from '@/hooks/useCountUp'
  *    r=30 on all four corners, which is the radius the reference's outer corners
  *    fit anyway. The band is a row taller than the capture as a result; the
  *    reasoning is on the grid itself below.
- *  - The hairline is at y 981 and runs x 70-1369 — the full 1300 container,
- *    wider than the 1280 the photographs and the tiles sit in. It samples
- *    (250,239,235), which is exactly --color-divider (#CD5F371A) over white, so
- *    it is the token and not a one-off tint. Same for the tile separators.
- *  - The counter row is four 320px tiles at boundaries 80/399/719/1039/1359.
- *    Their separators are 1px at x 399, 719 and 1039 but only y 1062-1127 tall
- *    — they are the tiles' own left borders, not full-height rules, which is
- *    why they are on the <li> and not on the row.
- *  - Icons sample (105,97,93) = --color-body and the numbers (72,30,11) =
- *    --color-primary. Icon ink is 48px wide with 22px to the text beside it.
+ *
+ * The reference's hairline at y 981 and the four-tile counter row beneath it
+ * are not built — see the departures below — so the measurements for them are
+ * not reproduced here. They are in this file's history if the row comes back.
  *
  * The 1px line at the screenshot's last row (y 1238, x 60-1396) is wider than
  * any box in this section and falls outside its own bottom padding. It is bleed
@@ -60,69 +54,28 @@ import { useCountUp } from '@/hooks/useCountUp'
  *    broken it. Now it is a property of the file and cannot break.
  *  - The disclaimer under the images has no counterpart in the reference. Copy
  *    doc note 2 requires it to stay visible beside them.
- *  - The counter icons are remapped. The reference's fourth is a thumbs-up for
- *    "Classes Conducted", which describes nothing the clinic counts, so
- *    LaserIcon (new artwork) takes the laser tile, FourCirclesIcon reads as the
- *    graft grid on the transplant tile, and PersonCircleIcon — the demo's
- *    "Satisfied Clients" mark — goes to the specialists. VennIcon stays on
- *    years of expertise, where the reference puts it.
- *
- *    Two of those are the How It Works band's step marks over again, which is
- *    deliberate: the demo draws its counter tiles 1 and 3 with byte-identical
- *    paths to its steps 03 and 02, so the repetition on one page is the
- *    reference's and not an oversight here.
+ *  - No counter row, and no hairline above it. The reference closes the band
+ *    with four tweened figures (25+ / 150K+ / 30+ / 2K+); the client asked for
+ *    them gone. This also retires the sharpest ASCI exposure on the page — the
+ *    doc's 50,000+ laser procedures and 10,000+ hair transplants were volume
+ *    claims needing clinic records to substantiate if challenged, and the
+ *    remaining "20+ years" claims elsewhere on the page are far easier to back.
+ *    HomeTrustBadges' docblock cites this row as its reason for staying static
+ *    and for skipping icons; that reasoning is now stale, not wrong, and the
+ *    band is unchanged.
+ *  - A "View All" button in the row's place, pointing at /image-gallery/. The
+ *    band shows four transformations and the reference offers no way to the
+ *    rest; this is the pill-and-detached-chip button HomeCaseStudies uses, to
+ *    the same destination.
  *  - The heading animates per word in CSS rather than per character in GSAP
  *    SplitText, as in HomeAbout and for the same reason. See .reveal-word in
  *    src/styles/index.css. The reference also fades the images up under
  *    ScrollTrigger; only the heading animates here.
- *  - The counters tween on a shared hook rather than ElementsKit's widget. Its
- *    3500ms duration is dropped for the 2000ms HomeWhatWeDo's badge already
- *    uses, so the page has one counter speed and not two.
  */
 
-/**
- * The reference's counters, in the reference's own left-icon layout.
- *
- * Named once and read once: role="img" with the settled claim as its label, and
- * everything inside aria-hidden, so a screen reader is not handed a ticking
- * digit. This is ExperienceBadge's pattern in HomeWhatWeDo, unchanged.
- *
- * toLocaleString is what stops 50,000 from changing digit width mid-tween, and
- * the locale is pinned rather than left to the visitor's: vite-react-ssg
- * prerenders this on the build machine, and an unpinned locale could group the
- * digits differently there than in the browser that hydrates it.
- */
-const counterIcons = {
-  years: VennIcon,
-  laser: LaserIcon,
-  transplants: FourCirclesIcon,
-  specialists: PersonCircleIcon,
-} as const
-
-function Counter({ counter }: { counter: (typeof homeSeeTheDifference.counters)[number] }) {
-  const { value, ref } = useCountUp(counter.value, 2000)
-  const Icon = counterIcons[counter.id]
-
-  return (
-    <li
-      role="img"
-      aria-label={`${counter.value.toLocaleString('en-IN')}${counter.suffix} ${counter.label}`}
-      className="flex items-start gap-[22px] lg:border-l lg:border-divider lg:pl-[26px] lg:first:border-l-0 lg:first:pl-0"
-    >
-      <Icon className="h-[48px] w-[48px] shrink-0 text-body" />
-
-      <div aria-hidden className="min-w-0">
-        <p className="font-display text-[26px] leading-[34px] text-primary lg:text-[30px] lg:leading-[40px]">
-          <span ref={ref}>{value.toLocaleString('en-IN')}</span>
-          {counter.suffix}
-        </p>
-        <p className="mt-[4px] font-sans text-[15px] leading-[24px] text-body lg:text-[16px] lg:leading-[26px]">
-          {counter.label}
-        </p>
-      </div>
-    </li>
-  )
-}
+/* The band sits on white, so the hero's white ring would be invisible here. */
+const focusRing =
+  'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
 
 /**
  * One patient's before-and-after, which is one whole file: both halves and both
@@ -217,19 +170,25 @@ export function HomeSeeTheDifference() {
       </p>
 
       {/*
-        The reference leaves 81px between the photographs and the hairline and
-        81px again between the hairline and the tiles. The disclaimer is fitted
-        inside the first of those rather than added on top of it (20 + 24 + 36 =
-        80), which keeps the reference's rhythm and puts the line where the copy
-        doc wants it — reading as attached to the images, not floating between
-        two blocks. The padding below the rule is fitted from the tiles' ink,
-        since the capture records no box for them.
+        Where the reference's hairline and counter row were. The reference
+        leaves 81px from the photographs to that rule; the disclaimer is fitted
+        inside it (20 + 24 + 36 = 80), so the button picks up the same 36 and the
+        band keeps the rhythm it was measured to.
       */}
-      <ul className="mt-[36px] grid grid-cols-1 gap-[36px] border-t border-divider pt-[50px] sm:grid-cols-2 lg:grid-cols-4 lg:gap-[0px] lg:pt-[80px]">
-        {homeSeeTheDifference.counters.map(counter => (
-          <Counter key={counter.id} counter={counter} />
-        ))}
-      </ul>
+      <div className="mt-[36px] flex justify-center">
+        {/* The same pill and detached dark chip the Case Studies band's CTA uses. */}
+        <Link
+          to={homeSeeTheDifference.cta.href}
+          className={`group/cta inline-flex items-center gap-[3px] rounded-pill ${focusRing}`}
+        >
+          <span className="flex h-[50px] items-center rounded-pill bg-accent px-[30px] font-sans text-[16px] leading-[16px] font-semibold text-white transition-opacity group-hover/cta:opacity-90">
+            {homeSeeTheDifference.cta.label}
+          </span>
+          <span className="flex h-[48px] w-[48px] items-center justify-center rounded-full bg-primary text-white transition-colors group-hover/cta:bg-accent">
+            <ArrowDiagonalIcon className="h-[15px] w-[15px]" />
+          </span>
+        </Link>
+      </div>
     </section>
   )
 }
