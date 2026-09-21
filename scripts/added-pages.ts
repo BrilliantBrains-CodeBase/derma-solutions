@@ -14,7 +14,7 @@
  * Consumed by scripts/build-seo-registry.ts.
  */
 
-import { aboutUsExtraNodes } from './schema-nodes.ts'
+import { aboutUsExtraNodes, ourDoctorsExtraNodes } from './schema-nodes.ts'
 
 /** Re-exported so this file stays the one place a new page is described. */
 export { SITE_URL } from './paths.ts'
@@ -92,5 +92,23 @@ export const ADDED_PAGES: AddedPage[] = [
     note:
       'New page, not in the live capture. Built from content/about-us/…About_Us_Content.md Part B; Part C checks outstanding.',
     extraNodes: aboutUsExtraNodes,
+  },
+  {
+    // content/doctor-page/Derma-Solutions-Doctors-About-Page-Content.md, Part
+    // A — the SEO title, meta description and H1 are the doc's, verbatim. A new
+    // parent for the four doctor profiles, whose URLs stay unchanged (doc
+    // note 1). The page's own breadcrumb runs Home / About / Our Doctors; the
+    // minted BreadcrumbList has two levels, as every added page's does.
+    slug: 'our-doctors',
+    title:
+      'Our Doctors | Dermatologists & Plastic Surgeons in Marathahalli, Whitefield – Derma Solutions',
+    description:
+      'Meet the doctors at Derma Solutions, Marathahalli, Whitefield, Bangalore: MD dermatologists Dr. Sandeep Mahapatra and Dr. Sumedha Tirthani, and plastic surgeons Dr. Thyagaraj and Dr. Chandhana Vishal N.',
+    h1: 'Our Doctors',
+    breadcrumbName: 'Our Doctors',
+    publishedTime: '2026-09-21T00:00:00+05:30',
+    note:
+      'New page, not in the live capture. Built from content/doctor-page/ Part A; the doc\'s "check before live" notes 2 and 6 are outstanding.',
+    extraNodes: ourDoctorsExtraNodes,
   },
 ]

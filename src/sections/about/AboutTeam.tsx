@@ -61,17 +61,14 @@ const socialLinks = [
  * card — and the doc's cards carry the short title. The founder's prefix is the
  * doc's card 1.
  *
- * The equality check is not defensive tidying: team[2].qualification is
- * "Senior Plastic Surgeon", which is a ROLE and not a degree, so without it his
- * card prints "Senior Plastic Surgeon · Senior Plastic Surgeon". Collapsing to
- * the single string is also exactly what the doc's card 3 shows.
+ * The equality check guards a qualification that is really a role: until the
+ * doctor pages supplied his degrees, team[2].qualification was "Senior Plastic
+ * Surgeon", and his card printed that twice. It now holds his degrees, so the
+ * check no longer fires for anyone, but it stays cheap insurance.
  *
  * TODO(content): Part C asks the clinic to confirm Dr Sumedha's designation
  * (team[1].jobTitles[0] says "Consultant Dermatologist", the doc's card says
- * "Dermatologist"), and team[2].qualification should hold his actual
- * qualification once someone has it — the same string also feeds the header's
- * Doctors dropdown and his Physician schema, which currently emits no
- * hasCredential for him.
+ * "Dermatologist").
  */
 function cardTitle(member: (typeof team)[number]) {
   const title = member.isFounder ? `Founder & ${member.jobTitles[0]}` : member.jobTitles[0]

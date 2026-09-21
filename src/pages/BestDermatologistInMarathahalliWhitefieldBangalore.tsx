@@ -1,15 +1,16 @@
-import { PageShell } from '@/components/PageShell'
+import { DoctorPage } from '@/templates/DoctorPage'
+import { sandeepMahapatraPage } from '@/content/doctors/sandeep-mahapatra'
 
 /**
  * /best-dermatologist-in-marathahalli-whitefield-bangalore/
  *
- * Blank by design. Captured copy for this page: seo-backup/02-markdown/best-dermatologist-in-marathahalli-whitefield-bangalore.md
+ * Live-site copy as captured: seo-backup/02-markdown/best-dermatologist-in-marathahalli-whitefield-bangalore.md
  * Screenshots: seo-backup/05-screenshots/{desktop,mobile}/best-dermatologist-in-marathahalli-whitefield-bangalore.png
+ *
+ * Built on the shared doctor template. Copy: src/content/doctors/sandeep-mahapatra.ts, from
+ * content/doctor-page/Derma-Solutions-Doctors-About-Page-Content.md, Part B1.
+ * The SEO head, H1 and JSON-LD stay the live capture's.
  */
 export default function BestDermatologistInMarathahalliWhitefieldBangalore() {
-  return (
-    <PageShell slug="best-dermatologist-in-marathahalli-whitefield-bangalore">
-      {/* content goes here */}
-    </PageShell>
-  )
+  return <DoctorPage slug="best-dermatologist-in-marathahalli-whitefield-bangalore" content={sandeepMahapatraPage} />
 }

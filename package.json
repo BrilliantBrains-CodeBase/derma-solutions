@@ -14,6 +14,7 @@
     "seo:assets": "tsx scripts/copy-brand-assets.ts",
     "assets:home": "tsx scripts/import-home-images.ts",
     "assets:appointment": "tsx scripts/import-appointment-doctor.ts",
+    "assets:doctors": "tsx scripts/import-doctor-images.ts",
     "assets:treatments": "tsx scripts/import-treatment-images.ts",
     "content:treatments": "tsx scripts/extract-treatment-content.ts",
     "seo:verify": "tsx scripts/verify-seo.ts && tsx scripts/verify-links.ts",

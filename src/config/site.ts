@@ -478,6 +478,16 @@ export const assets = {
    */
   clinicPhoto: "/images/brand/clinic-reception.jpeg",
   clinicPhotoAlt: "Derma Solutions clinic reception",
+  /**
+   * Doctor profile pages, B1.6 and B3.5 of content/doctor-page/. Written by
+   * scripts/import-doctor-images.ts (npm run assets:doctors).
+   * src: 2025/01/Dr-Sandeep-Mahapatra-4.jpg
+   */
+  doctorSandeepProcedure: "/images/team/dr-sandeep-mahapatra-procedure.jpg",
+  doctorSandeepProcedureAlt: "Dr. Sandeep Mahapatra performing a dermatology procedure",
+  /** src: 2025/01/Thyagaraj_photo1.jpg */
+  doctorThyagarajConsult: "/images/team/dr-thyagaraj-consult.jpg",
+  doctorThyagarajConsultAlt: "Dr. Thyagaraj, senior plastic surgeon at Derma Solutions",
 } as const;
 
 /* -------------------------------------------------------------------------- */
@@ -619,13 +629,17 @@ export const team = [
     path: "/dr-sumedha-tirthani-dermatologist/",
     /** src: 2025/05/Dr-Sumedha-Tirthani-375-375.png */
     photo: "/images/team/dr-sumedha-tirthani.png",
-    bio: "Board-certified, gold medalist dermatologist with advanced expertise in clinical, cosmetic, and laser dermatology.",
+    // "Board-certified" dropped: a US term with no Indian equivalent
+    // (content/doctor-page/ note 8).
+    bio: "Gold medalist dermatologist with advanced expertise in clinical, cosmetic, and laser dermatology.",
   },
   {
     id: "thyagaraj",
     name: "Dr. Thyagaraj",
     displayName: "Dr Thyagaraj",
-    qualification: "Senior Plastic Surgeon",
+    // Was "Senior Plastic Surgeon", a role standing in for a degree. The degrees
+    // are content/doctor-page/ A4's Qualification row.
+    qualification: "MBBS, MS (General Surgery), MCh (Plastic Surgery)",
     role: "Senior Plastic Surgeon",
     jobTitles: ["Senior Plastic Surgeon"],
     isFounder: false,
@@ -757,6 +771,9 @@ export const navigation = {
     { label: "Treatments", groups: serviceMenu },
     {
       label: "Doctors",
+      // The label itself links to the index page; the chevron beside it opens
+      // the dropdown. See the items branch in src/layout/Header.tsx.
+      path: "/our-doctors/",
       items: team.map((d) => ({
         label: d.displayName,
         sublabel: d.qualification,

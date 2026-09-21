@@ -78,10 +78,9 @@ function physician(member: (typeof team)[number], pageUrl: string): Node {
     ? { '@id': `${SITE_URL}/#dermatology` }
     : 'PlasticSurgery'
 
-  // `qualification` is a degree list for three of the four. team[2]'s is
-  // "Senior Plastic Surgeon" — a ROLE, not a credential — so he gets none.
-  // See the note in site.ts: the same string is rendered as his card's
-  // qualification line and feeds the header's Doctors dropdown.
+  // `qualification` is a degree list for all four. The test stays so a role
+  // written into that field (team[2]'s once was "Senior Plastic Surgeon")
+  // emits no credential rather than a false one.
   if (/MBBS|MD|MCh/i.test(member.qualification)) {
     node.hasCredential = member.qualification
       .split(',')
@@ -126,4 +125,16 @@ export function aboutUsExtraNodes(url: string): Node[] {
     },
     ...team.slice(1).map(member => physician(member, url)),
   ]
+}
+
+/**
+ * /our-doctors/ — a Physician node for each doctor profiled on the page who
+ * does not already have one in the cloned template graph. Dr Sandeep (team[0])
+ * is absent for the same reason as on /about-us/.
+ *
+ * Each node's `subjectOf` is this page; `mainEntityOfPage` stays the doctor's
+ * own profile, which is the page that is about them.
+ */
+export function ourDoctorsExtraNodes(url: string): Node[] {
+  return team.slice(1).map(member => physician(member, url))
 }

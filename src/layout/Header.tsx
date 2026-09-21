@@ -322,28 +322,63 @@ export function Header() {
                 )
               }
 
-              /* --- About / Gallery: the reference's plain dropdown -------- */
+              /* --- Doctors / Gallery: the reference's plain dropdown ------ */
               if ('items' in item) {
                 const id = panelId(item.label)
                 const open = openKey === item.label
-                const active = item.items.some(entry => samePath(entry.path, pathname))
+                const indexPath = 'path' in item ? item.path : undefined
+                const active =
+                  (indexPath !== undefined && samePath(indexPath, pathname)) ||
+                  item.items.some(entry => samePath(entry.path, pathname))
+                const chevron = (
+                  <ChevronDownIcon
+                    className={`h-[10px] w-[10px] shrink-0 transition-transform duration-200 lg:group-hover:rotate-180 ${open ? 'rotate-180' : ''}`}
+                  />
+                )
                 return (
                   <li
                     key={item.label}
                     className="group border-b border-divider last:border-b-0 lg:relative lg:flex lg:h-[110px] lg:items-center lg:border-b-0"
                   >
-                    <button
-                      type="button"
-                      aria-expanded={open}
-                      aria-controls={id}
-                      onClick={() => setOpenKey(open ? null : item.label)}
-                      className={`${topLevel} ${active ? 'text-accent' : 'text-primary'}`}
-                    >
-                      {item.label}
-                      <ChevronDownIcon
-                        className={`h-[10px] w-[10px] shrink-0 transition-transform duration-200 lg:group-hover:rotate-180 ${open ? 'rotate-180' : ''}`}
-                      />
-                    </button>
+                    {/*
+                      An item with its own index page (Doctors → /our-doctors/)
+                      splits in two: the label is a link, and the chevron beside
+                      it is the toggle. One control cannot be both — a button
+                      that navigates, or a link that sometimes does not.
+                    */}
+                    {indexPath !== undefined ? (
+                      <div className="flex items-center justify-between lg:gap-[6px]">
+                        <Link
+                          to={indexPath}
+                          onClick={closeAll}
+                          aria-current={samePath(indexPath, pathname) ? 'page' : undefined}
+                          className={`${topLevel} ${active ? 'text-accent' : 'text-primary'}`}
+                        >
+                          {item.label}
+                        </Link>
+                        <button
+                          type="button"
+                          aria-expanded={open}
+                          aria-controls={id}
+                          aria-label={`${item.label} menu`}
+                          onClick={() => setOpenKey(open ? null : item.label)}
+                          className={`flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-[6px] transition-colors hover:text-accent lg:h-[24px] lg:w-[16px] ${focusRing} ${active ? 'text-accent' : 'text-primary'}`}
+                        >
+                          {chevron}
+                        </button>
+                      </div>
+                    ) : (
+                      <button
+                        type="button"
+                        aria-expanded={open}
+                        aria-controls={id}
+                        onClick={() => setOpenKey(open ? null : item.label)}
+                        className={`${topLevel} ${active ? 'text-accent' : 'text-primary'}`}
+                      >
+                        {item.label}
+                        {chevron}
+                      </button>
+                    )}
 
                     <div id={id} data-open={open} className={`${dropdownShell} lg:left-0`}>
                       <div className="max-lg:min-h-0 max-lg:overflow-hidden">

@@ -9,7 +9,7 @@
  *   npm run seo:registry
  *
  * Source: seo-backup/07-migration/seo-map.csv (92 URLs, captured 2026-09-02),
- * plus the authored pages in scripts/added-pages.ts (2) — those alone are
+ * plus the authored pages in scripts/added-pages.ts (3) — those alone are
  * NOT from the capture.
  */
 
@@ -3358,6 +3358,39 @@ export const seoRecords: SeoRecord[] = [
     "modifiedTime": "2026-09-20T00:00:00+05:30",
     "markdown": null,
     "note": "New page, not in the live capture. Built from content/about-us/…About_Us_Content.md Part B; Part C checks outstanding."
+  },
+  {
+    "slug": "our-doctors",
+    "key": "our-doctors",
+    "path": "/our-doctors/",
+    "type": "page",
+    "wpId": null,
+    "title": "Our Doctors | Dermatologists & Plastic Surgeons in Marathahalli, Whitefield – Derma Solutions",
+    "description": "Meet the doctors at Derma Solutions, Marathahalli, Whitefield, Bangalore: MD dermatologists Dr. Sandeep Mahapatra and Dr. Sumedha Tirthani, and plastic surgeons Dr. Thyagaraj and Dr. Chandhana Vishal N.",
+    "canonical": "https://dermasolutions.co.in/our-doctors/",
+    "robots": "max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "h1": "Our Doctors",
+    "og": {
+      "og:title": "Our Doctors | Dermatologists & Plastic Surgeons in Marathahalli, Whitefield – Derma Solutions",
+      "og:type": "article",
+      "og:description": "Meet the doctors at Derma Solutions, Marathahalli, Whitefield, Bangalore: MD dermatologists Dr. Sandeep Mahapatra and Dr. Sumedha Tirthani, and plastic surgeons Dr. Thyagaraj and Dr. Chandhana Vishal N.",
+      "og:url": "https://dermasolutions.co.in/our-doctors/",
+      "og:locale": "en",
+      "og:site_name": "Derma Solutions Skin and Hair Clinic",
+      "article:published_time": "2026-09-21T00:00:00+05:30",
+      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image:width": "1200",
+      "og:image:height": "630",
+      "og:image:alt": "Our Doctors | Dermatologists & Plastic Surgeons in Marathahalli, Whitefield – Derma Solutions"
+    },
+    "twitter": {
+      "twitter:card": "summary_large_image",
+      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+    },
+    "publishedTime": "2026-09-21T00:00:00+05:30",
+    "modifiedTime": "2026-09-21T00:00:00+05:30",
+    "markdown": null,
+    "note": "New page, not in the live capture. Built from content/doctor-page/ Part A; the doc's \"check before live\" notes 2 and 6 are outstanding."
   }
 ]
 

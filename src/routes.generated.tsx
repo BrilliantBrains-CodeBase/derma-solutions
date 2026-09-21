@@ -1,8 +1,8 @@
 /**
  * GENERATED FILE — DO NOT EDIT. Run `npm run seo:routes`.
  *
- * All 94 URLs, derived from src/seo/registry.generated.ts:
- *   56 WordPress pages · 37 posts · 1 category archive
+ * All 95 URLs, derived from src/seo/registry.generated.ts:
+ *   57 WordPress pages · 37 posts · 1 category archive
  *
  * Paths are written WITHOUT a trailing slash because that is react-router's
  * form; `dirStyle: 'nested'` in vite.config.ts turns each one back into
@@ -19,7 +19,7 @@ export const routes: RouteRecord[] = [
     children: [
       { index: true, lazy: async () => ({ Component: (await import('./pages/Home')).default }) },
 
-      /* ---- WordPress pages (56) ---------------------------------------------- */
+      /* ---- WordPress pages (57) ---------------------------------------------- */
   { path: 'abdominoplasty-tummy-tuck-treatment-in-bangalore', lazy: async () => ({ Component: (await import('./pages/AbdominoplastyTummyTuckTreatmentInBangalore')).default }) },
   { path: 'acne-scar-treatment-in-bangalore', lazy: async () => ({ Component: (await import('./pages/AcneScarTreatmentInBangalore')).default }) },
   { path: 'best-dermatologist-in-marathahalli-whitefield-bangalore', lazy: async () => ({ Component: (await import('./pages/BestDermatologistInMarathahalliWhitefieldBangalore')).default }) },
@@ -76,6 +76,7 @@ export const routes: RouteRecord[] = [
   { path: 'xanthelasma-removal-treatment-in-bangalore', lazy: async () => ({ Component: (await import('./pages/XanthelasmaRemovalTreatmentInBangalore')).default }) },
   { path: 'dermato-surgery-in-bangalore', lazy: async () => ({ Component: (await import('./pages/DermatoSurgeryInBangalore')).default }) },
   { path: 'about-us', lazy: async () => ({ Component: (await import('./pages/AboutUs')).default }) },
+  { path: 'our-doctors', lazy: async () => ({ Component: (await import('./pages/OurDoctors')).default }) },
 
       /* ---- Blog posts (37) — one shared template ---------------------------
        * Each route loads the template and its own content module
