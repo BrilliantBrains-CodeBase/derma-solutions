@@ -105,7 +105,13 @@ let bannersWritten = 0
 let sidebarsWritten = 0
 let small = 0
 
-async function writeOne(slug: string, source: MediaSource, slot: { width: number; height: number }, url: string) {
+async function writeOne(
+  slug: string,
+  source: MediaSource,
+  slot: { width: number; height: number },
+  url: string,
+  mirror = false,
+) {
   const file = resolveSource(source.from)
   if (!fs.existsSync(file)) { missing.push(`${slug}: ${source.from}`); return }
 
@@ -115,6 +121,7 @@ async function writeOne(slug: string, source: MediaSource, slot: { width: number
 
   await sharp(file)
     .resize(size.width, size.height, { fit: 'cover', position: source.position ?? 'attention' })
+    .flop(mirror) // A horizontal mirror, for a comparison pair whose subject faces the wrong way.
     .flatten({ background: '#FFFFFF' }) // PNG sources may carry alpha; JPEG has none.
     .jpeg({ quality: 82, mozjpeg: true })
     .toFile(path.join(PUBLIC, url))
@@ -167,7 +174,7 @@ for (const slug of slugs) {
     const anchor = media.compare.before.position ?? 'centre'
     for (const side of ['before', 'after'] as const) {
       const source = { ...media.compare[side], position: anchor }
-      await writeOne(slug, source, treatmentImageSlot, treatmentComparePath(slug, side))
+      await writeOne(slug, source, treatmentImageSlot, treatmentComparePath(slug, side), media.compare.mirror)
     }
   }
 

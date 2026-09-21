@@ -85,8 +85,13 @@ export interface TreatmentMedia {
    *
    * Both frames are cropped with the same anchor (the import script forces
    * 'centre' unless told otherwise) so the two line up under the divider.
+   *
+   * `mirror` flips both frames horizontally. The slider reads left-to-right —
+   * before on the left, after on the right — so a pair whose subject sits on
+   * the right of the photo puts the untreated skin under the "After" label and
+   * reads backwards. Flipping both keeps them registered with each other.
    */
-  compare?: { before: MediaSource; after: MediaSource }
+  compare?: { before: MediaSource; after: MediaSource; mirror?: true }
 }
 
 /** The two slots' shapes, measured off theme-reference's service page at 1440: 847x505 and 847x380. */
@@ -329,6 +334,9 @@ export const treatmentMedia: Record<string, TreatmentMedia> = {
     compare: {
       before: { from: 'backup:2025/01/Mole-Removal-Before-cnv.jpg', alt: 'Mole on the back being examined before removal', stock: true },
       after: { from: 'backup:2025/01/Mole-Removal-After-cnv.jpg', alt: 'The same area of the back after mole removal', stock: true },
+      // The mole and the examining hand sit on the right of the source photo,
+      // under the "After" label; mirrored, they land on the "Before" side.
+      mirror: true,
     },
   },
   'warts-removal-treatment-in-bangalore': {
