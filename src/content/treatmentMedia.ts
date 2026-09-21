@@ -1,5 +1,3 @@
-import { homeVideo } from '@/config/site'
-
 /**
  * The featured photograph and video poster for each treatment page, keyed by
  * the page's registry slug.
@@ -38,11 +36,25 @@ import { homeVideo } from '@/config/site'
  * clinic shoots these treatments; the `stock` flag marks them. Replace them and
  * re-run `npm run assets:treatments`.
  *
- * TODO(content): no live treatment page embeds a video, and the video gallery
- * capture carries no titles to match against, so every page plays the
- * homepage's clinic video for now. Each page's generated content module
- * (src/content/treatments/<slug>.ts) records the video the doc asks for; set
- * `youtubeId` here once the clinic confirms it.
+ * Videos: `youtubeId` is the clinic's own YouTube video for the treatment.
+ * Where the old page embedded one (seo-backup/01-raw-html, a lazy-loaded
+ * i.ytimg.com thumbnail rather than an iframe), that video is used; where it
+ * embedded several, the one most on-topic. Otherwise the pick is by title from
+ * the videos the old blog posts and video gallery embedded — every ID in the
+ * capture was resolved to its title through YouTube's oEmbed endpoint. Each
+ * entry names its source and the video's title.
+ *
+ * TODO(content): eleven pages have no on-topic video anywhere in the capture
+ * and fall back to treatmentFallbackYoutubeId below — the plastic surgery
+ * pages (abdominoplasty, breast, liposuction, rhinoplasty), the IV and weight
+ * loss pages, and microdermabrasion, phototherapy, PDRN and hair analysis. Ask
+ * the clinic for a video for each. Each page's generated content module
+ * (src/content/treatments/<slug>.ts) records the video the doc asks for.
+ *
+ * TODO(compliance): YouTube shows a video's own title once it plays, and many
+ * of these say "Best …" — the word the content doc removed from the copy for
+ * ASCI. The skin boosters video's title also names a booster brand (doc note
+ * 6). Retitling is the clinic's to do on YouTube.
  *
  * Review flags carried from the doc's "CHECK BEFORE THIS GOES LIVE" notes —
  * none of these block the build, all of them block publishing:
@@ -110,7 +122,15 @@ export const treatmentBannerPath = (slug: string) => `/images/treatments/${slug}
 export const treatmentBannerSmallPath = (slug: string) => `/images/treatments/${slug}-banner-847.webp`
 export const treatmentBannerMobilePath = (slug: string) => `/images/treatments/${slug}-banner-mobile.webp`
 
-export const treatmentYoutubeId = (slug: string) => treatmentMedia[slug]?.youtubeId ?? homeVideo.youtubeId
+/**
+ * For a page with no on-topic video: the clinic's general introduction, "Best
+ * Dermatologist | skin treatment clinic | Skin Specialist Doctor | Hair
+ * Dermatologist". Not homeVideo — that is a Botox explainer, which is what every
+ * treatment page used to play.
+ */
+export const treatmentFallbackYoutubeId = 'XgQew-xeljQ'
+
+export const treatmentYoutubeId = (slug: string) => treatmentMedia[slug]?.youtubeId ?? treatmentFallbackYoutubeId
 
 /**
  * One client-supplied banner per treatment page. The explicit slug-to-file map
@@ -249,6 +269,8 @@ export const treatmentMedia: Record<string, TreatmentMedia> = {
   'acne-scar-treatment-in-bangalore': {
     image: { from: 'clinic:SERVICES/Cosmetology 2.png', alt: 'Dermatologist applying a skin treatment to a patient at Derma Solutions' },
     video: { from: 'clinic:SERVICES/Advanced Facials.png', alt: 'Skin treatment session at Derma Solutions' },
+    // old page: “Laser Scar Removal Treatment | CO2 laser Treatment | Acne Scar Removal in Bangalore | Derma Solution”
+    youtubeId: 'kWTfcLZn9P4',
     // The live page opened with this pair in a comparison slider.
     // TODO(assets): stock/retouched, not consented patient photography — see the header.
     compare: {
@@ -259,10 +281,14 @@ export const treatmentMedia: Record<string, TreatmentMedia> = {
   'mnrf-treatment-in-bangalore-microneedling-with-radio-frequency': {
     image: { from: 'backup:2025/01/MNRF-Machine-Image.jpg', alt: 'MNRF microneedling radiofrequency machine', position: 'centre' },
     video: { from: 'clinic:SERVICES/Anti aging 1.png', alt: 'Skin rejuvenation treatment at Derma Solutions' },
+    // old page, first of two: “MNRF skin treatment in Bangalore | mnrf treatment before and after | laser dark spot removal | #mnrf”
+    youtubeId: 'eSZSi7NtSW8',
   },
   'best-hydrafacial-treatment-in-marathahalli-whitefield-bangalore': {
     image: { from: 'clinic:SERVICES/Advanced Facials.png', alt: 'HydraFacial-style facial treatment at Derma Solutions' },
     video: { from: 'backup:2024/12/HydraFacial-Treatment-Depo_91808732.jpg', alt: 'HydraFacial handpiece on a patient’s face', stock: true },
+    // old page: “How does HydraFacial treatment work? | HydraFacial Treatment #hydrafacial #hydrafacialtreatment”
+    youtubeId: 'j9Ho9ZwBLf8',
     // The live page opened with this pair in a comparison slider.
     // TODO(assets): stock/retouched, not consented patient photography — see the header.
     compare: {
@@ -273,14 +299,20 @@ export const treatmentMedia: Record<string, TreatmentMedia> = {
   'hollywood-facial-carbon-laser-peel-bangalore': {
     image: { from: 'backup:2025/01/Hollywood-facial-cnv.jpg', alt: 'Carbon laser peel with a carbon mask on the face', stock: true },
     video: { from: 'clinic:SERVICES/Laser treatment.png', alt: 'Laser skin treatment at Derma Solutions' },
+    // old dermatologist profile page: “Different Laser Treatment Solutions | Laser Treatment for skin issues | Derma Solutions”
+    youtubeId: 'QNnPTqgcS0o',
   },
   'chemical-peel-treatment-in-bangalore': {
     image: { from: 'clinic:About us/Chemical Peels 1.png', alt: 'Dermatologist applying a chemical peel at Derma Solutions' },
     video: { from: 'backup:2025/01/Woman-Chemical-Peel.jpg', alt: 'Chemical peel being brushed onto the face', stock: true },
+    // old page: “Chemical Peel for Skin Rejuvenation | Chemical Peel For Pigmentation | Derma Solutions #chemicalpeel”
+    youtubeId: '0-oeVYW83SU',
   },
   'skin-boosters-treatment-in-bangalore': {
     image: { from: 'backup:2025/12/Skin-Boosters-Treatment.png', alt: 'Skin booster micro-injection treatment', stock: true },
     video: { from: 'backup:2025/12/Derma-SKin-Booster-Injection.png', alt: 'Skin booster injection on the cheek', stock: true },
+    // skin boosters blog post: “Skin Boosters: Behind the scenes of a Profhilo Treatment! Derma Solutions clinic, Bengaluru #bts”
+    youtubeId: 'wKYTN2d3SFk',
   },
   'salmon-sperm-pdrn-facial-in-bangalore': {
     image: { from: 'clinic:SERVICES/Anti aging 1.png', alt: 'Regenerative facial treatment at Derma Solutions' },
@@ -294,17 +326,23 @@ export const treatmentMedia: Record<string, TreatmentMedia> = {
     // The doc's brief: "Dermatologist assessing pigmentation."
     image: { from: 'backup:2025/12/Indian-Woman-with-Dermatologist.png', alt: 'Dermatologist consulting a patient about pigmentation', stock: true },
     video: { from: 'clinic:SERVICES/Laser treatment.png', alt: 'Laser toning treatment at Derma Solutions' },
+    // old laser toning page; the old skin lightening page reused the chemical peel video: “Laser Pigmentation treatment Bangalore | laser treatment for dark spots | laser dark spot removal”
+    youtubeId: 'ozYrnBvtUc0',
   },
   'dermato-surgery-in-bangalore': {
     // The doc's brief names this photograph.
     image: { from: 'backup:2025/01/Dr-Sandeep-Mahapatra-4.jpg', alt: 'Dr Sandeep Mahapatra at Derma Solutions' },
     video: { from: 'clinic:WHY CHOOSE US/DR. Sandeep treatment.png', alt: 'Dr Sandeep Mahapatra performing a laser treatment on a patient' },
+    // old mole removal page; the doc points at Dr Sandeep's procedure videos: “Wart & Mole Removal | Laser Mole Removal | Mole Removal Treatment | Mole Removal Result #moleremove”
+    youtubeId: 'DDrS93QmNls',
   },
 
   /* ---- Laser ------------------------------------------------------------ */
   'laser-hair-removal-in-bangalore': {
     image: { from: 'backup:2024/12/Untitled-design-3.png', alt: 'Laser hair removal on the underarm', stock: true },
     video: { from: 'clinic:SERVICES/Laser treatment.png', alt: 'Laser treatment at Derma Solutions' },
+    // video gallery: “Laser Hair Removal in Bangalore India | Full body laser hair removal | Laser hair removal clinic”
+    youtubeId: 'J2XKGSEzVus',
     // The live page opened with this pair in a comparison slider.
     // TODO(assets): stock/retouched, not consented patient photography — see the header.
     compare: {
@@ -315,6 +353,8 @@ export const treatmentMedia: Record<string, TreatmentMedia> = {
   'laser-toning-treatment-in-bangalore': {
     image: { from: 'clinic:SERVICES/Laser treatment.png', alt: 'Laser skin toning treatment at Derma Solutions' },
     video: { from: 'backup:2024/12/Woman-Laser-Skin-Toning.jpg', alt: 'Laser toning handpiece on the face', stock: true },
+    // old page, first of two: “Secret To Flawless Skin? | ND YAG Q-Switch Laser Toning | Laser Treatment | Facial Laser Toning”
+    youtubeId: 'ydpUy17jW4g',
     // The live page opened with this pair in a comparison slider.
     // TODO(assets): stock/retouched, not consented patient photography — see the header.
     compare: {
@@ -325,10 +365,14 @@ export const treatmentMedia: Record<string, TreatmentMedia> = {
   'fractional-co2-laser-skin-resurfacing-in-bangalore': {
     image: { from: 'clinic:WHY CHOOSE US/DR. Sandeep treatment.png', alt: 'Dr Sandeep Mahapatra performing a laser skin treatment' },
     video: { from: 'backup:2025/01/Skin-Tightening-1.jpg', alt: 'Woman examining her skin in a mirror', stock: true },
+    // video gallery: “Fractional CO2 Laser”
+    youtubeId: 'iiKLDPslOm8',
   },
   'mole-removal-treatment-in-bangalore': {
     image: { from: 'backup:2025/01/Doctor-removing-a-mole.jpg', alt: 'Doctor removing a mole', stock: true },
     video: { from: 'backup:2025/01/Mole-Removal-cnv.jpg', alt: 'Mole on the shoulder being examined', stock: true },
+    // old page: “Wart & Mole Removal | Laser Mole Removal | Mole Removal Treatment | Mole Removal Result #moleremove”
+    youtubeId: 'DDrS93QmNls',
     // The live page opened with this pair in a comparison slider.
     // TODO(assets): stock/retouched, not consented patient photography — see the header.
     compare: {
@@ -342,6 +386,8 @@ export const treatmentMedia: Record<string, TreatmentMedia> = {
   'warts-removal-treatment-in-bangalore': {
     image: { from: 'backup:2025/01/Mole-Removal-cnv.jpg', alt: 'Skin growth being examined before removal', stock: true },
     video: { from: 'backup:2025/01/Doctor-removing-a-mole.jpg', alt: 'Doctor removing a skin growth', stock: true },
+    // old page; same video as mole removal: “Wart & Mole Removal | Laser Mole Removal | Mole Removal Treatment | Mole Removal Result #moleremove”
+    youtubeId: 'DDrS93QmNls',
     // The live page opened with this pair in a comparison slider.
     // TODO(assets): stock/retouched, not consented patient photography — see the header.
     compare: {
@@ -354,6 +400,8 @@ export const treatmentMedia: Record<string, TreatmentMedia> = {
   'botox-treatment-in-bangalore-whitefield-and-marathahalli': {
     image: { from: 'clinic:SERVICES/Anti aging 1.png', alt: 'Anti-wrinkle injection treatment at Derma Solutions' },
     video: { from: 'backup:2025/01/Woman-Botox-Injection.jpg', alt: 'Anti-wrinkle injection on the forehead', stock: true },
+    // old page: “Fillers and Botox Treatment I Botox treatment procedure by Dr. Sandeep Mahapatra I #botox  #fillers”
+    youtubeId: 'Rch8b7ks0Zc',
     // The live page opened with this pair in a comparison slider.
     // TODO(assets): stock/retouched, not consented patient photography — see the header.
     compare: {
@@ -367,6 +415,8 @@ export const treatmentMedia: Record<string, TreatmentMedia> = {
     // src/config/site.ts — a legible "Botox" carton sits behind the chair.
     image: { from: 'clinic:What we do/Botox Treatment.png', alt: "Dermatologist giving an injectable treatment to a seated patient", position: 'centre' },
     video: { from: 'clinic:SERVICES/Anti aging 1.png', alt: 'Injectable treatment at Derma Solutions' },
+    // old page, first of three: “Dermal Fillers For Smile Lines Correction in Bangalore | Cheek Fillers Treatment in Bangalore”
+    youtubeId: 'Y6xGP08PbYY',
     // The live page opened with this pair in a comparison slider.
     // TODO(assets): stock/retouched, not consented patient photography — see the header.
     compare: {
@@ -377,18 +427,26 @@ export const treatmentMedia: Record<string, TreatmentMedia> = {
   'skin-tightening-treatment-in-marathahalli-whitefield': {
     image: { from: 'backup:2025/01/Woman-Skin-Tightening.jpg', alt: 'Skin tightening device on the face', stock: true },
     video: { from: 'backup:2025/01/Skin-Tightening-1.jpg', alt: 'Woman examining her skin in a mirror', stock: true },
+    // RF vs HIFU blog post: “Non-Surgical Skin Tightening Treatment in Bangalore | RF Skin Tightening at Derma Solutions clinic.”
+    youtubeId: 'WOEm3BAVFzY',
   },
   'radio-frequency-skin-tightening-treatment': {
     image: { from: 'backup:2025/01/Woman-Face-RF-Skin-Firming.jpg', alt: 'Radiofrequency skin tightening handpiece on the face', stock: true },
     video: { from: 'backup:2025/01/Woman-After-RF-Sking-Tightening.jpg', alt: 'Woman with firm, radiant skin', stock: true },
+    // old page: “Radio Frequency (RF) Skin Tightening | Skin Tightening Treatment #skintransformation #skintightening”
+    youtubeId: 'Y3pCtJgiKkY',
   },
   'hifu-treatment-in-bangalore': {
     image: { from: 'backup:2025/01/Woman-HIFU-Treatment.jpg', alt: 'HIFU treatment along the jawline', stock: true },
     video: { from: 'backup:2025/01/Indian-Woman-Face-close-up.jpg', alt: 'Close-up of a woman with smooth skin', stock: true },
+    // old page: “HIFU for Skin tightening Treatment | Skin Tightening Treatment | High-Intensity Focused Ultrasound”
+    youtubeId: 'WZ48GdTXiC4',
   },
   'thread-lifts': {
     image: { from: 'backup:2025/01/Woman-Thread-Lift-Marking.jpg', alt: 'Face marked for a thread lift', stock: true },
     video: { from: 'backup:2025/01/Woman-Thread-Lift-Candidate.jpg', alt: 'Smiling woman touching her jawline', stock: true },
+    // old page; its thread-lift-only video of the two: “Thread Lifts | Thread Lift Procedure Before After  #skincare #dermatology #beautytransformation”
+    youtubeId: 'n2aDtT8Remw',
   },
   'iv-glutathione-treatment-in-bangalore': {
     // Not the page's Gemini images — see the header. These two are still
@@ -411,14 +469,20 @@ export const treatmentMedia: Record<string, TreatmentMedia> = {
   'xanthelasma-removal-treatment-in-bangalore': {
     image: { from: 'backup:2025/01/Xanthelasma-depo.jpg', alt: 'Xanthelasma deposits on the eyelids', stock: true },
     video: { from: 'public:images/decor/home-video-poster.jpg', alt: 'Derma Solutions clinic' },
+    // xanthelasma blog post: “Xanthelasma Removal Treatment | Cholesterol Deposits Around Eyes | Derma Solutions Bangalore”
+    youtubeId: 'vq6DInm8Y0U',
   },
   'cryolipolysis-coolsculpting-in-bangalore': {
     image: { from: 'backup:2025/01/Cryolipolysis-depo.jpg', alt: 'Cryolipolysis applicator on the abdomen', stock: true },
     video: { from: 'backup:2025/01/Cool-Sculpting.jpg', alt: 'Fat-freezing treatment on the waist', stock: true },
+    // old page: “Complete Body Contouring Process | Cavitation, Fat Freezing, Cryolipo & RF Skin Tightening.”
+    youtubeId: '9dEZEwr8ilo',
   },
   'ear-lobe-repair-surgery-in-bangalore': {
     image: { from: 'backup:2026/04/Torn-earlobe-close-up-with-gentle-touch.png', alt: 'Close-up of a torn earlobe', stock: true },
     video: { from: 'backup:2026/04/Elegant-smile-and-sparkling-earring.png', alt: 'Smiling woman wearing an earring', stock: true },
+    // old page: “Ear Lobe Repair Surgery at Derma Solutions Clinic Bangalore | Expert Lobuloplasty by Dr. Sandeep”
+    youtubeId: 'v4ktwfZh0Mw',
   },
   'abdominoplasty-tummy-tuck-treatment-in-bangalore': {
     image: { from: 'backup:2025/01/Woman-tummy-measuring-tape.jpg', alt: 'Woman measuring her waist', stock: true },
@@ -431,6 +495,8 @@ export const treatmentMedia: Record<string, TreatmentMedia> = {
   'vitiligo-laser-treatment-in-bangalore': {
     image: { from: 'backup:2025/01/Indian-Woma-with-Vitiligo.jpg', alt: 'Woman with vitiligo patches on her arms', stock: true },
     video: { from: 'backup:2025/01/Indian-Woman-Vitiligo-patches-on-Hand.jpg', alt: 'Vitiligo patches on the hands', stock: true },
+    // old page, first of two: “Vitiligo Surgery | Melanocyte Transplantation Surgery | #vitiligotreatment #vitiligo”
+    youtubeId: 'WeQX5aObgoI',
   },
   'breast-surgeries-in-bangalore': {
     image: { from: 'backup:2025/01/Indian-Woman-Checking-her-breast.jpg', alt: 'Woman considering breast surgery', stock: true },
@@ -447,20 +513,28 @@ export const treatmentMedia: Record<string, TreatmentMedia> = {
   'gynecomastia-surgery-in-bangalore': {
     image: { from: 'backup:2025/01/Gynecomastia-marking-depo.jpg', alt: 'Chest marked before gynecomastia surgery', stock: true },
     video: { from: 'backup:2025/01/Surgeons-in-OT.jpg', alt: 'Surgeons in the operating theatre', stock: true },
+    // gynecomastia blog post: “Treatment of Gynecomastia | Causes, Treatment Options & Surgery Explained |Derma Solutions Bangalore”
+    youtubeId: 'mkPlOw7_zCY',
   },
 
   /* ---- Hair ------------------------------------------------------------- */
   'hair-transplant-in-bangalore-marathahalli-whitefield': {
     image: { from: 'clinic:SERVICES/Hair Restoration.png', alt: 'Hair transplant surgeon marking the hairline at Derma Solutions' },
     video: { from: 'clinic:About us/Hair Transplant.png', alt: 'Hair transplant procedure under magnification at Derma Solutions' },
+    // old page; Neo Follicle channel: “Hair Transplant Result | Beard Transplant Result | Best Hair Transplant | MMAfighter Shebin Ibrahim”
+    youtubeId: 'c5SZ2NPYFCQ',
   },
   'gfc-hair-treatment-in-bangalore': {
     image: { from: 'backup:2025/01/GFC-Hair-Treatment-injection.jpg', alt: 'GFC injection into the scalp', stock: true },
     video: { from: 'backup:2025/01/Hair-Loss-in-a-Man.jpg', alt: 'Thinning hair on the crown', stock: true },
+    // old page; Neo Follicle channel: “GFC for Hair Loss Treatment | Growth Factor Concentrate Therapy | GFC Procedures and Benefits | #gfc”
+    youtubeId: 'sOVfxaZKPsM',
   },
   'best-hair-loss-treatment-in-bangalore': {
     image: { from: 'backup:2025/01/Man-Looking-for-Hair-Loss-Treatment.jpg', alt: 'Man concerned about hair loss', stock: true },
     video: { from: 'backup:2025/01/Laser-Therapy-for-Scalp.jpg', alt: 'Low-level laser therapy device on the scalp', stock: true },
+    // old GFC page; Neo Follicle channel: “GFC for Hair Loss Treatment | Growth Factor Concentrate Therapy | GFC Procedures and Benefits | #gfc”
+    youtubeId: 'sOVfxaZKPsM',
   },
   'hair-analysis-in-bangalore': {
     image: { from: 'backup:2025/01/Hair-Analysis-depo-1.jpg', alt: 'Trichoscope examining the scalp', stock: true },
