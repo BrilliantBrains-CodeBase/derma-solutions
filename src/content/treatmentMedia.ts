@@ -92,13 +92,152 @@ export interface TreatmentMedia {
 /** The two slots' shapes, measured off theme-reference's service page at 1440: 847x505 and 847x380. */
 export const treatmentImageSlot = { width: 847, height: 505 } as const
 export const treatmentVideoSlot = { width: 847, height: 380 } as const
+/** The supplied WorkDrive artwork is 5294x1763 (almost exactly 3:1). */
+export const treatmentBannerSlot = { width: 847, height: 282 } as const
+/** Centre panel only, so the banner's baked-in message stays readable on phones. */
+export const treatmentBannerMobileSlot = { width: 1440, height: 1440 } as const
 
 export const treatmentImagePath = (slug: string) => `/images/treatments/${slug}.jpg`
 export const treatmentVideoPosterPath = (slug: string) => `/images/treatments/${slug}-video.jpg`
 export const treatmentComparePath = (slug: string, side: 'before' | 'after') =>
   `/images/treatments/${slug}-${side}.jpg`
+export const treatmentBannerPath = (slug: string) => `/images/treatments/${slug}-banner.webp`
+export const treatmentBannerSmallPath = (slug: string) => `/images/treatments/${slug}-banner-847.webp`
+export const treatmentBannerMobilePath = (slug: string) => `/images/treatments/${slug}-banner-mobile.webp`
 
 export const treatmentYoutubeId = (slug: string) => treatmentMedia[slug]?.youtubeId ?? homeVideo.youtubeId
+
+/**
+ * One client-supplied banner per treatment page. The explicit slug-to-file map
+ * keeps similarly named routes (Skin Tightening / RF / HIFU, for example) from
+ * relying on fuzzy filename matching. scripts/import-treatment-images.ts
+ * verifies this table against every generated treatment content module.
+ */
+export const treatmentBannerSources: Record<string, string> = {
+  'acne-scar-treatment-in-bangalore': 'Acne Scar Treatment.png',
+  'mnrf-treatment-in-bangalore-microneedling-with-radio-frequency': 'MNRF Treatment.png',
+  'best-hydrafacial-treatment-in-marathahalli-whitefield-bangalore': 'HydraFacial Treatment.png',
+  'hollywood-facial-carbon-laser-peel-bangalore': 'Hollywood Facial.png',
+  'chemical-peel-treatment-in-bangalore': 'Chemical Peels.png',
+  'skin-boosters-treatment-in-bangalore': 'Skin Boosters.png',
+  'salmon-sperm-pdrn-facial-in-bangalore': 'Salmon Sperm PDRN Facial.png',
+  'microdermabrasion-treatment-in-bangalore': 'Microdermabrasion Treatment.png',
+  'skin-lightening-treatment-in-bangalore': 'Skin Lightening.png',
+  'dermato-surgery-in-bangalore': 'Dermato Surgery.png',
+  'laser-hair-removal-in-bangalore': 'Laser Hair Removal.png',
+  'laser-toning-treatment-in-bangalore': 'Laser Skin Toning.png',
+  'fractional-co2-laser-skin-resurfacing-in-bangalore': 'CO2 Fractional Laser.png',
+  'mole-removal-treatment-in-bangalore': 'Mole Removal.png',
+  'warts-removal-treatment-in-bangalore': 'Wart Removal.png',
+  'botox-treatment-in-bangalore-whitefield-and-marathahalli': 'Botox.png',
+  'dermal-fillers-treatment-bangalore': 'Dermal Fillers Treatment.png',
+  'skin-tightening-treatment-in-marathahalli-whitefield': 'Skin Tightening.png',
+  'radio-frequency-skin-tightening-treatment': 'Radio Frequency Treatment.png',
+  'hifu-treatment-in-bangalore': 'HIFU Treatment.png',
+  'thread-lifts': 'Thread Lifts.png',
+  'iv-glutathione-treatment-in-bangalore': 'IV Glutathione Treatment.png',
+  'nad-iv-drips-treatment-in-bangalore': 'NAD IV Drips.png',
+  'weight-loss-injections-in-bangalore': 'Weight _ Fat Loss Injections.png',
+  'xanthelasma-removal-treatment-in-bangalore': 'Xanthelasma Removal.png',
+  'cryolipolysis-coolsculpting-in-bangalore': 'Cryolipolysis - CoolSculpting.png',
+  'ear-lobe-repair-surgery-in-bangalore': 'Ear Lobe Repair Surgery.png',
+  'abdominoplasty-tummy-tuck-treatment-in-bangalore': 'Abdominoplasty (Tummy Tuck).png',
+  'rhinoplasty-surgery-in-bangalore': 'Rhinoplasty Surgery.png',
+  'vitiligo-laser-treatment-in-bangalore': 'Vitiligo Treatment.png',
+  'breast-surgeries-in-bangalore': 'Breast Surgeries.png',
+  'phototherapy-treatment-in-bangalore': 'Phototherapy Treatment.png',
+  'liposuction-treatment-in-bangalore': 'Liposuction.png',
+  'gynecomastia-surgery-in-bangalore': 'Gynecomastia Surgery.png',
+  'hair-transplant-in-bangalore-marathahalli-whitefield': 'Hair Transplant.png',
+  'gfc-hair-treatment-in-bangalore': 'GFC Hair Treatment.png',
+  'best-hair-loss-treatment-in-bangalore': 'Hair loss.png',
+  'hair-analysis-in-bangalore': 'Hair Analysis.png',
+}
+
+/**
+ * Portrait artwork supplied for the opening-hours card in the treatment
+ * sidebar. WorkDrive-6 does not contain an exact image for every one of the 38
+ * pages, so the unmatched pages deliberately reuse the closest relevant
+ * supplied treatment rather than falling back to the old reception photo.
+ */
+export interface TreatmentSidebarMedia {
+  from: string
+  alt: string
+}
+
+export const treatmentSidebarImageSlot = { width: 766, height: 936 } as const
+export const treatmentSidebarImagePath = (slug: string) =>
+  `/images/treatments/${slug}-sidebar.webp`
+
+const sidebarAssets = {
+  acne: { from: 'Acne Scar Treatment.png', alt: 'Microneedling treatment on a patient’s cheek' },
+  botox: { from: 'Botox.png', alt: 'Injectable facial treatment on a patient’s cheek' },
+  co2: { from: 'CO2 Fractional Laser.png', alt: 'Fractional laser treatment on a patient’s cheek' },
+  chemicalPeel: { from: 'Chemical Peels.png', alt: 'Chemical peel being applied to a patient’s face' },
+  cryolipolysis: { from: 'Cryolipolysis - CoolSculpting.png', alt: 'Body-contouring applicator on a patient’s abdomen' },
+  dermatoSurgery: { from: 'Dermato Surgery.png', alt: 'Clinician assessing a patient’s cheek before a procedure' },
+  dermatoSurgeryAlt: { from: 'Dermato Surgery (2).png', alt: 'Clinician preparing a patient for a minor skin procedure' },
+  gfc: { from: 'GFC Hair Treatment.png', alt: 'Growth-factor treatment being administered to the scalp' },
+  hairTransplant: { from: 'Hair Transplant.png', alt: 'Hair restoration procedure performed under magnification' },
+  hollywoodFacial: { from: 'Hollywood Facial.png', alt: 'Carbon mask being applied during a Hollywood facial' },
+  hydrafacial: { from: 'HydraFacial Treatment.png', alt: 'HydraFacial handpiece being used on a patient’s face' },
+  laserHairRemoval: { from: 'Laser Hair Removal.png', alt: 'Laser hair removal treatment on a patient’s underarm' },
+  laserToning: { from: 'Laser Skin Toning.png', alt: 'Laser toning treatment on a patient’s cheek' },
+  laser: { from: 'Laser Treatment.png', alt: 'Laser treatment being performed on a patient’s face' },
+  mnrf: { from: 'MNRF Treatment.png', alt: 'Microneedling radiofrequency treatment on a patient’s cheek' },
+  microdermabrasion: { from: 'Microdermabrasion Treatment.png', alt: 'Microdermabrasion treatment on a patient’s face' },
+  mole: { from: 'Mole Removal.png', alt: 'Clinician treating small facial moles' },
+  radioFrequency: { from: 'Radio Frequency Treatment.png', alt: 'Radiofrequency skin treatment on a patient’s cheek' },
+  rhinoplasty: { from: 'Rhinoplasty Surgery.png', alt: 'Clinician assessing a patient’s nose' },
+  salmonPdrn: { from: 'Salmon Sperm PDRN Facial.png', alt: 'PDRN facial treatment on a patient’s cheek' },
+  skinBoosters: { from: 'Skin Boosters.png', alt: 'Skin booster treatment being applied to a patient’s face' },
+  skinLightening: { from: 'Skin Lightening.png', alt: 'Skin-brightening treatment on a patient’s face' },
+  skinTightening: { from: 'Skin Tightening.png', alt: 'Skin-tightening treatment along a patient’s jawline' },
+  wart: { from: 'Wart Removal.png', alt: 'Clinician treating a small facial skin growth' },
+  weightLoss: { from: 'Weight  Fat Loss Injections.png', alt: 'Patient measuring her waist during a medically supervised weight-loss program' },
+  xanthelasma: { from: 'Xanthelasma Removal.png', alt: 'Clinician treating the area below a patient’s eye' },
+} satisfies Record<string, TreatmentSidebarMedia>
+
+export const treatmentSidebarMedia: Record<string, TreatmentSidebarMedia> = {
+  'acne-scar-treatment-in-bangalore': sidebarAssets.acne,
+  'mnrf-treatment-in-bangalore-microneedling-with-radio-frequency': sidebarAssets.mnrf,
+  'best-hydrafacial-treatment-in-marathahalli-whitefield-bangalore': sidebarAssets.hydrafacial,
+  'hollywood-facial-carbon-laser-peel-bangalore': sidebarAssets.hollywoodFacial,
+  'chemical-peel-treatment-in-bangalore': sidebarAssets.chemicalPeel,
+  'skin-boosters-treatment-in-bangalore': sidebarAssets.skinBoosters,
+  'salmon-sperm-pdrn-facial-in-bangalore': sidebarAssets.salmonPdrn,
+  'microdermabrasion-treatment-in-bangalore': sidebarAssets.microdermabrasion,
+  'skin-lightening-treatment-in-bangalore': sidebarAssets.skinLightening,
+  'dermato-surgery-in-bangalore': sidebarAssets.dermatoSurgery,
+  'laser-hair-removal-in-bangalore': sidebarAssets.laserHairRemoval,
+  'laser-toning-treatment-in-bangalore': sidebarAssets.laserToning,
+  'fractional-co2-laser-skin-resurfacing-in-bangalore': sidebarAssets.co2,
+  'mole-removal-treatment-in-bangalore': sidebarAssets.mole,
+  'warts-removal-treatment-in-bangalore': sidebarAssets.wart,
+  'botox-treatment-in-bangalore-whitefield-and-marathahalli': sidebarAssets.botox,
+  'dermal-fillers-treatment-bangalore': sidebarAssets.botox,
+  'skin-tightening-treatment-in-marathahalli-whitefield': sidebarAssets.skinTightening,
+  'radio-frequency-skin-tightening-treatment': sidebarAssets.radioFrequency,
+  'hifu-treatment-in-bangalore': sidebarAssets.skinTightening,
+  'thread-lifts': sidebarAssets.dermatoSurgeryAlt,
+  'iv-glutathione-treatment-in-bangalore': sidebarAssets.weightLoss,
+  'nad-iv-drips-treatment-in-bangalore': sidebarAssets.weightLoss,
+  'weight-loss-injections-in-bangalore': sidebarAssets.weightLoss,
+  'xanthelasma-removal-treatment-in-bangalore': sidebarAssets.xanthelasma,
+  'cryolipolysis-coolsculpting-in-bangalore': sidebarAssets.cryolipolysis,
+  'ear-lobe-repair-surgery-in-bangalore': sidebarAssets.dermatoSurgeryAlt,
+  'abdominoplasty-tummy-tuck-treatment-in-bangalore': sidebarAssets.cryolipolysis,
+  'rhinoplasty-surgery-in-bangalore': sidebarAssets.rhinoplasty,
+  'vitiligo-laser-treatment-in-bangalore': sidebarAssets.laser,
+  'breast-surgeries-in-bangalore': sidebarAssets.dermatoSurgeryAlt,
+  'phototherapy-treatment-in-bangalore': sidebarAssets.laser,
+  'liposuction-treatment-in-bangalore': sidebarAssets.cryolipolysis,
+  'gynecomastia-surgery-in-bangalore': sidebarAssets.dermatoSurgeryAlt,
+  'hair-transplant-in-bangalore-marathahalli-whitefield': sidebarAssets.hairTransplant,
+  'gfc-hair-treatment-in-bangalore': sidebarAssets.gfc,
+  'best-hair-loss-treatment-in-bangalore': sidebarAssets.gfc,
+  'hair-analysis-in-bangalore': sidebarAssets.hairTransplant,
+}
 
 export const treatmentMedia: Record<string, TreatmentMedia> = {
   /* ---- Cosmetology ------------------------------------------------------ */

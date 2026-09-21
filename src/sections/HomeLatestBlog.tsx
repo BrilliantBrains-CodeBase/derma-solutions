@@ -1,10 +1,14 @@
+import { useState } from 'react'
 import type { CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
-import { homeLatestBlog } from '@/config/site'
+import { homeLatestBlog, homeVideo } from '@/config/site'
 import { ArrowDiagonalIcon } from '@/components/icons'
 import { BlogCard } from '@/components/BlogCard'
 import { Eyebrow } from '@/components/Eyebrow'
 import { CardCarousel } from '@/components/CardCarousel'
+import { VideoFacade } from '@/components/VideoFacade'
+import { homeVideosPosterPath, homeVideosPosterSlot } from '@/content/homeVideos'
+import { homeVideos } from '@/content/homeVideos.generated'
 
 /**
  * Built to theme-reference/04-sections/19-our-latest-insights-on-plastic-
@@ -58,10 +62,19 @@ import { CardCarousel } from '@/components/CardCarousel'
  *    homepage's only route into the blog — dead-ends at three posts.
  *  - The card titles are the copy doc's shortened forms, not the posts' own
  *    H1s. See the note on homeLatestBlog in site.ts.
+ *  - A second rail, "Latest Videos", sits under the blog cards' own CTA — the
+ *    fix for the body paragraph's long-standing "guides and videos" promising
+ *    more than three written posts. Its three videos are the channel's newest
+ *    (src/content/homeVideos.generated.ts), refreshed by
+ *    `npm run content:videos`; see scripts/fetch-latest-videos.ts for why that
+ *    is a build-time fetch rather than one running in the browser.
  *
  * The card title is the reference's <h2> demoted to <h3>. Three more h2s under
  * this band's own h2 is a broken outline for no gain — the same call
- * HomeCaseStudies made for its <h4>.
+ * HomeCaseStudies made for its <h4>. The video rail's own "Latest Videos"
+ * heading is a fourth h3 for the same reason, and each video's title is
+ * therefore an h4 beneath it, as VideoGallery.tsx's grid titles are beneath
+ * that page's own h2.
  */
 
 /*
@@ -73,6 +86,14 @@ const focusRing =
   'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
 
 export function HomeLatestBlog() {
+  /*
+    One video plays at a time, the same reason VideoGallery.tsx's grid gives:
+    the facade autoplays with sound, so a second click with no visible stop on
+    the first would leave two soundtracks running. null keeps every tile a
+    static poster in the prerendered HTML.
+  */
+  const [openVideoId, setOpenVideoId] = useState<string | null>(null)
+
   return (
     <section
       aria-labelledby="home-latest-blog-heading"
@@ -146,6 +167,68 @@ export function HomeLatestBlog() {
           </span>
         </Link>
       </div>
+
+      {/*
+        The video rail. Guarded on length rather than assumed non-empty: a
+        first run with no network yet (see scripts/fetch-latest-videos.ts)
+        writes no generated file, and the band should still render its blog
+        half rather than crash.
+      */}
+      {homeVideos.length > 0 && (
+        <div className="mt-[80px] lg:mt-[100px]">
+          <h3 className="text-center font-display text-[28px] leading-[36px] text-primary md:text-[32px] md:leading-[40px]">
+            {homeLatestBlog.videosHeading}
+          </h3>
+
+          {/* Same swipeable-below-lg, 3-up-from-lg track as the blog cards above. */}
+          <CardCarousel
+            label={homeLatestBlog.videosHeading}
+            ulClassName="mt-[40px] grid gap-[30px] sm:grid-cols-2 lg:mt-[50px] lg:grid-cols-3"
+            slidesClassName="[--slides:1] sm:[--slides:2]"
+          >
+            {homeVideos.map(video => (
+              <li key={video.id}>
+                <VideoFacade
+                  youtubeId={video.id}
+                  title={video.title}
+                  poster={homeVideosPosterPath(video.id)}
+                  // The title renders as a heading right below the tile, so
+                  // describing the poster again here would just repeat it to a
+                  // screen reader — the same call VideoGallery.tsx's grid makes.
+                  posterAlt=""
+                  posterWidth={homeVideosPosterSlot.width}
+                  posterHeight={homeVideosPosterSlot.height}
+                  playLabel={homeVideo.playLabel}
+                  // 64px is the same proportion VideoGallery.tsx's grid strikes
+                  // on a same-sized tile.
+                  ringClass="h-[64px] w-[64px] text-[13px] leading-[13px]"
+                  playing={openVideoId === video.id}
+                  onPlayingChange={playing => setOpenVideoId(playing ? video.id : null)}
+                  className="aspect-video w-full rounded-card"
+                />
+
+                <h4 className="mt-[18px] font-display text-[18px] leading-[26px] text-primary md:text-[20px] md:leading-[28px]">
+                  {video.title}
+                </h4>
+              </li>
+            ))}
+          </CardCarousel>
+
+          <div className="mt-[40px] flex justify-center lg:mt-[50px]">
+            <Link
+              to={homeLatestBlog.videosCta.href}
+              className={`group/cta inline-flex items-center gap-[3px] rounded-pill ${focusRing}`}
+            >
+              <span className="flex h-[50px] items-center rounded-pill bg-accent px-[30px] font-sans text-[16px] leading-[16px] font-semibold text-white transition-opacity group-hover/cta:opacity-90">
+                {homeLatestBlog.videosCta.label}
+              </span>
+              <span className="flex h-[48px] w-[48px] items-center justify-center rounded-full bg-primary text-white transition-colors group-hover/cta:bg-accent">
+                <ArrowDiagonalIcon className="h-[15px] w-[15px]" />
+              </span>
+            </Link>
+          </div>
+        </div>
+      )}
     </section>
   )
 }

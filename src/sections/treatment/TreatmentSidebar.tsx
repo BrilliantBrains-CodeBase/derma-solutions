@@ -3,6 +3,11 @@ import { serviceMenu, treatmentPage } from '@/config/site'
 import { ArrowUpRightIcon } from '@/components/icons'
 import { SidebarHoursCard } from '@/components/SidebarHoursCard'
 import { stickySidebar, useSidebarHeight } from '@/components/stickySidebar'
+import {
+  treatmentSidebarImagePath,
+  treatmentSidebarImageSlot,
+  treatmentSidebarMedia,
+} from '@/content/treatmentMedia'
 
 /**
  * Built to theme-reference/04-sections/10-professional-services/ and
@@ -28,9 +33,11 @@ import { stickySidebar, useSidebarHeight } from '@/components/stickySidebar'
 const focusRing =
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent'
 
-export function TreatmentSidebar({ path }: { path: string }) {
+export function TreatmentSidebar({ path, slug }: { path: string; slug: string }) {
   const group = serviceMenu.find(g => g.items.some(item => item.path === path))
   if (!group) throw new Error(`${path} is not in any serviceMenu group — src/config/site.ts`)
+  const sidebarMedia = treatmentSidebarMedia[slug]
+  if (!sidebarMedia) throw new Error(`No treatment sidebar image for "${slug}"`)
 
   const ref = useSidebarHeight<HTMLElement>()
 
@@ -67,7 +74,14 @@ export function TreatmentSidebar({ path }: { path: string }) {
         </ul>
       </nav>
 
-      <SidebarHoursCard />
+      <SidebarHoursCard
+        image={{
+          src: treatmentSidebarImagePath(slug),
+          alt: sidebarMedia.alt,
+          width: treatmentSidebarImageSlot.width,
+          height: treatmentSidebarImageSlot.height,
+        }}
+      />
     </aside>
   )
 }

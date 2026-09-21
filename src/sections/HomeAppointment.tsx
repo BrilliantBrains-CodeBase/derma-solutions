@@ -50,10 +50,9 @@ import { Eyebrow } from '@/components/Eyebrow'
  *  - The copy is the client's, and the doctor list is the clinic's four, read
  *    off `team` rather than retyped. The demo offers eight invented names.
  *  - The photograph is Dr Sandeep Mahapatra, which is what copy doc section 11
- *    asks for, but it is not a cut-out and the reference's is. It is clipped to
- *    an arch inside the backdrop arch instead of standing on it as a figure with
- *    transparency. The wrapper in the media column below says why, and what to
- *    delete if a cut-out ever arrives.
+ *    asks for. It is the clinic's own shot rather than the reference's stock
+ *    figure, keyed to transparency by scripts/import-appointment-doctor.ts so
+ *    it stands on the arch the way the reference's cut-out does.
  *  - Every field gets a visually-hidden <label>. The reference is
  *    placeholder-only, and a placeholder stops being the accessible name the
  *    moment someone types into the field.
@@ -332,33 +331,22 @@ export function HomeAppointment() {
               />
 
               {/*
-                The reference's figure is a transparent cut-out standing on the
-                arch. The clinic's photograph is a studio portrait on a soft grey
-                ground, and nothing in the toolchain segments a subject out of a
-                backdrop — a luminance key would take the white coat with it. So
-                the photograph is clipped to an arch of its own instead, and the
-                pink one behind stays visible as the 57px halo it always was.
-
-                rounded-t-full on a 465x715 box puts the dome's radius at 232.5,
-                which is the same curve the backdrop draws at its own width. The
-                two arches are concentric rather than merely similar, which is
-                what stops this reading as a photo pasted over a shape.
-
-                Revert to a bare <img> if the clinic ever supplies the cut-out:
-                delete this wrapper and nothing else moves. See the note on
-                assets.appointmentImage.
+                A transparent cut-out standing on the arch, as the reference's
+                figure does. It was clipped to an arch of its own for as long as
+                the only photograph available was a studio portrait on a grey
+                ground; scripts/import-appointment-doctor.ts keys the backdrop
+                out of the clinic's own shot, so the wrapper that did the
+                clipping is gone and the figure stands free again.
               */}
-              <div className="relative overflow-hidden rounded-t-full">
-                <img
-                  src={assets.appointmentImage}
-                  alt={assets.appointmentImageAlt}
-                  width={465}
-                  height={715}
-                  loading="lazy"
-                  decoding="async"
-                  className="block aspect-[465/715] w-full object-cover"
-                />
-              </div>
+              <img
+                src={assets.appointmentImage}
+                alt={assets.appointmentImageAlt}
+                width={465}
+                height={715}
+                loading="lazy"
+                decoding="async"
+                className="relative block aspect-[465/715] w-full object-cover"
+              />
             </div>
           </div>
 

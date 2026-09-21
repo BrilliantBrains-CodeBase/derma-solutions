@@ -14,19 +14,40 @@ import { OpenHoursIcon } from '@/components/icons'
  *
  * Departures from the reference:
  *
- *  - The photograph is the clinic's own reception (assets.clinicPhoto), not the
- *    theme's stock sidebar-cta-bg.jpg.
+ *  - The blog uses the clinic's own reception (assets.clinicPhoto), not the
+ *    theme's stock sidebar-cta-bg.jpg. Treatment pages pass their own relevant
+ *    portrait artwork from WorkDrive-6.
  *  - Below lg the card gives up its portrait ratio: at full mobile width a
  *    383:468 photo is most of a screen of nothing but a reception desk.
  */
-export function SidebarHoursCard({ action }: { action?: ReactNode }) {
+interface SidebarCardImage {
+  src: string
+  alt: string
+  width: number
+  height: number
+}
+
+const defaultImage: SidebarCardImage = {
+  src: assets.clinicPhoto,
+  alt: assets.clinicPhotoAlt,
+  width: 1600,
+  height: 1200,
+}
+
+export function SidebarHoursCard({
+  action,
+  image = defaultImage,
+}: {
+  action?: ReactNode
+  image?: SidebarCardImage
+}) {
   return (
     <div className="relative min-h-[300px] overflow-hidden rounded-card lg:min-h-0 lg:aspect-[383/468]">
       <img
-        src={assets.clinicPhoto}
-        alt={assets.clinicPhotoAlt}
-        width={1600}
-        height={1200}
+        src={image.src}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
         loading="lazy"
         decoding="async"
         className="absolute inset-0 h-full w-full object-cover"

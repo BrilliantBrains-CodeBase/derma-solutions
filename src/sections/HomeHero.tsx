@@ -13,18 +13,11 @@ import { Eyebrow } from '@/components/Eyebrow'
  *
  * Three departures from the reference, all agreed:
  *
- *  - The reference's still photograph is a silent looping video of the clinic's
- *    own: Dr Sandeep examining a patient, 10s at 1440x800, webm then mp4. It
- *    sits under the same two overlay layers as the photograph did, and the
- *    <img> beside it is not a fallback for a browser that cannot play video —
- *    every browser can — but the still served to anyone who has asked for
- *    reduced motion. Both are in the markup and CSS picks; see the
- *    prefers-reduced-motion rule in src/styles/index.css. A JS swap would have
- *    to run after hydration and would flash, because this page is prerendered.
- *
- *    assets.heroImage is the video's own first frame, so it is the poster, the
- *    reduced-motion still and the LCP candidate at once, and the handover from
- *    poster to first painted frame is invisible.
+ *  - The photograph is the clinic's own rather than the reference's: a
+ *    HydraFacial in progress. This slot briefly held a silent looping video and
+ *    has been put back to a still, so there is no <video>, no poster, no
+ *    reduced-motion swap and no second encode — one <img> for everyone. The
+ *    clip and its two encodes are still in public/video/ if it returns.
  *  - "Watch Video" navigates to /video-gallery/ instead of opening the
  *    reference's YouTube lightbox. There is no video ID, and this is a real route.
  *  - The headline animates per word in CSS rather than per character in GSAP
@@ -42,38 +35,22 @@ export function HomeHero({ heading }: { heading: string }) {
     <section className="px-[20px]">
       <div className="relative mx-auto flex min-h-[560px] max-w-[1400px] items-center overflow-hidden rounded-[20px] md:rounded-[30px] lg:h-[765px]">
         {/*
-          aria-hidden and empty alt on both: the hero is a backdrop behind the
-          H1 and says nothing the copy does not. A <video> cannot carry alt text
-          in any case, so describing only the still would have left visitors on
-          reduced motion hearing something nobody else does. Hence no
-          assets.heroImageAlt — see the note on assets.heroImage.
+          The LCP element, so fetchPriority high and no lazy loading: it is the
+          largest thing above the fold and the browser should not discover it
+          late.
 
-          preload="none" keeps the clip off the critical path — the poster is
-          already the LCP paint, and the hero must not compete with it for
-          bandwidth. Autoplay starts the fetch itself once the page is up.
+          It carries real alt text again. While this slot was footage there was
+          none, because a <video> cannot take alt and describing only the
+          reduced-motion still would have told those visitors something nobody
+          else heard. With one <img> for everyone that asymmetry is gone.
         */}
-        <video
-          aria-hidden
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="none"
-          poster={assets.heroImage}
-          className="hero-motion absolute inset-0 h-full w-full object-cover"
-        >
-          <source src={assets.heroVideoWebm} type="video/webm" />
-          <source src={assets.heroVideoMp4} type="video/mp4" />
-        </video>
-
         <img
           src={assets.heroImage}
-          alt=""
-          aria-hidden
-          width={1920}
-          height={1068}
+          alt={assets.heroImageAlt}
+          width={1672}
+          height={914}
           fetchPriority="high"
-          className="hero-still absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover"
         />
 
         {/*
@@ -93,16 +70,17 @@ export function HomeHero({ heading }: { heading: string }) {
           headline runs to x=750 here — further right than the reference's, its
           two lines being longer — and at the fitted values it measured 4.42:1.
 
-          Re-measured against the footage that replaced the photograph, by
-          hiding the text and sampling the brightest background pixel in each
-          text box at t = 0, 2.5, 5, 7.5 and 9.8s. Worst frame of the five:
-          headline 4.63:1 against the 3:1 large text needs, paragraph 4.82:1
-          against 4.5:1, eyebrow and rating strip both near 10:1. The clip is a
-          slow push-in on one lit scene, so the spread across it is under 0.1.
+          Re-measured against the HydraFacial still that replaced the footage,
+          by hiding the text and sampling the brightest background pixel inside
+          each text box. At 1440: eyebrow 5.99:1, headline 4.21:1 against the
+          3:1 large text needs, paragraph 6.15:1 against 4.5:1, rating strip
+          7.42:1. At 390 everything is above 9.8:1.
 
-          The paragraph is the one with little room — 4.82 against 4.5. Re-run
-          that measurement if the footage is ever recut; a brighter grade would
-          take it under before anything else on the panel.
+          The headline is the tightest of the four, and it is the one with the
+          most slack — 60px type only needs 3:1. The paragraph, which had 0.32
+          to spare against the old footage, now has 1.65. Re-run this if the
+          photograph is ever replaced: the towel occupying the left third is
+          the brightest thing any of this text crosses.
 
           Below lg the gradient has a much higher floor. The reference's ramp
           assumes a 1400px panel; at 390px the headline reaches into the bright

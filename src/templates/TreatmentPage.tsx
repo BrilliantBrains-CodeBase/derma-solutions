@@ -6,6 +6,10 @@ import { treatmentPage } from '@/config/site'
 import type { TreatmentContent } from '@/content/treatment'
 import {
   treatmentComparePath,
+  treatmentBannerPath,
+  treatmentBannerMobilePath,
+  treatmentBannerSmallPath,
+  treatmentBannerSlot,
   treatmentImagePath,
   treatmentImageSlot,
   treatmentMedia,
@@ -26,7 +30,7 @@ import { TreatmentFaq } from '@/sections/treatment/TreatmentFaq'
  *
  * Section order is the content doc's template table, slot for slot:
  * 01 header · 02 sidebar · 03 featured image (a before/after slider on the
- * eight pages that had one) · 04 intro · 05 feature block ·
+ * eight pages that had one) · 04 intro · client treatment banner · 05 feature block ·
  * 06 video · 07 why-choose block · 08 FAQ. Its 09 (newsletter band) and 10
  * (footer) are the site-wide <Footer> and <PreFooter>, which already carry the
  * appointment CTA in the newsletter's place and the disclaimer the doc asks
@@ -91,6 +95,29 @@ export function TreatmentPage({ slug, content }: { slug: string; content: Treatm
             ))}
           </div>
 
+          {/*
+            The client supplied one treatment-specific 3:1 banner for every
+            page. It sits at the editorial break between the introduction and
+            the detailed benefits, where its technology message supports the
+            copy without interrupting a heading-and-body section.
+          */}
+          <div className="mt-[40px] overflow-hidden rounded-30 bg-secondary">
+            <picture>
+              <source media="(max-width: 767px)" srcSet={treatmentBannerMobilePath(slug)} />
+              <img
+                src={treatmentBannerPath(slug)}
+                srcSet={`${treatmentBannerSmallPath(slug)} 847w, ${treatmentBannerPath(slug)} 1694w`}
+                sizes="(min-width: 1280px) 847px, (min-width: 1024px) calc(100vw - 420px), calc(100vw - 40px)"
+                alt={`${content.name} treatment technology and care information`}
+                width={treatmentBannerSlot.width}
+                height={treatmentBannerSlot.height}
+                loading="lazy"
+                decoding="async"
+                className="aspect-square w-full object-cover object-center md:aspect-[847/282]"
+              />
+            </picture>
+          </div>
+
           <TreatmentFeature block={content.feature} id="treatment-feature-heading" />
 
           <VideoFacade
@@ -110,7 +137,7 @@ export function TreatmentPage({ slug, content }: { slug: string; content: Treatm
         </div>
 
         <div className="lg:order-first">
-          <TreatmentSidebar path={record.path} />
+          <TreatmentSidebar path={record.path} slug={slug} />
         </div>
       </div>
     </PageShell>

@@ -46,6 +46,13 @@ type Entry = {
 }
 
 const IMAGES: Entry[] = [
+  /* Hero. The one entry whose output is not 2x its slot: the source is
+   * 1672x941 and the band renders 1400x765, so 2x would upscale and buy bytes
+   * rather than detail. Native size, cropped only from 1.777 to the band's
+   * 1.830 — 27px off the height, which 'attention' takes from the top, away
+   * from the device and the hands at the lower edge. */
+  { from: 'Hero/Hero HydraFacial.png', to: 'images/decor/home-hero.jpg', width: 1672, height: 914 },
+
   /* Services. 1536x1024 is exactly the 3:2 the cards render, so these are a
    * straight downscale with no crop decision to get wrong. */
   { from: 'SERVICES/Laser treatment.png', to: 'images/decor/services/service-1.jpg', width: 654, height: 436 },
@@ -134,17 +141,12 @@ const IMAGES: Entry[] = [
   { from: 'Before & After/3.png', to: 'images/decor/transformations/transformation-3.jpg', width: 1240, height: 992, position: 'centre' },
   { from: 'Before & After/4.png', to: 'images/decor/transformations/transformation-4.jpg', width: 1240, height: 992, position: 'centre' },
 
-  /* Appointment, and the one slot that changed extension. The reference's
-   * appointment-image.png is a transparent cut-out standing on an arch the
-   * section paints; this is a studio shot on a soft grey ground, and nothing
-   * available here does subject segmentation — a luminance key would take the
-   * white coat along with the backdrop. HomeAppointment clips it to the arch
-   * instead, so there is no alpha to preserve and PNG only bought 1.7 MB
-   * against JPEG's 56.
-   *
-   * 941x1672 into the 465x715 frame, anchored 'top': 'attention' centres on the
-   * face and cuts off the folded arms the composition is built around. */
-  { from: 'WHY CHOOSE US/DR Sandeep.png', to: 'images/decor/appointment-image.jpg', width: 930, height: 1430, position: 'top' },
+  /* Appointment is deliberately absent. That band needs a figure with
+   * transparency rather than a crop — it stands on an arch the section paints —
+   * so it is keyed out of a different source by its own script. See
+   * scripts/import-appointment-doctor.ts, run by npm run assets:appointment.
+   * The 'WHY CHOOSE US/DR Sandeep.png' composite that used to fill the slot
+   * from here could not be keyed and is no longer used anywhere. */
 ]
 
 function write(entry: Entry, encode: (pipeline: Sharp) => Sharp) {

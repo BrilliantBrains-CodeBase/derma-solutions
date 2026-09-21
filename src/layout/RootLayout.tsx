@@ -1,4 +1,5 @@
-import { Outlet } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
 import { Head } from 'vite-react-ssg'
 import { Header } from './Header'
 import { PreFooter } from './PreFooter'
@@ -7,10 +8,27 @@ import { MobileActionBar } from './MobileActionBar'
 import { assets, seo } from '@/config/site'
 import '@/styles/index.css'
 
+/**
+ * Client-side routing keeps the current document and therefore its scroll
+ * position. Reset it whenever the page path changes so a link opened near the
+ * footer does not place the visitor near the footer of the destination page.
+ * Hash-only navigation is unaffected because the pathname does not change.
+ */
+function RouteScrollReset() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }, [pathname])
+
+  return null
+}
+
 /** Wraps all 92 routes. Only site-wide <head> defaults live here — per-page tags come from <Seo>. */
 export function RootLayout() {
   return (
     <>
+      <RouteScrollReset />
       <Head>
         {/* viewport and charset live in index.html — not repeated here */}
         <meta property="og:site_name" content={seo.ogSiteName} />

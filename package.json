@@ -13,6 +13,7 @@
     "seo:sitemap": "tsx scripts/generate-sitemap.ts",
     "seo:assets": "tsx scripts/copy-brand-assets.ts",
     "assets:home": "tsx scripts/import-home-images.ts",
+    "assets:appointment": "tsx scripts/import-appointment-doctor.ts",
     "assets:treatments": "tsx scripts/import-treatment-images.ts",
     "content:treatments": "tsx scripts/extract-treatment-content.ts",
     "seo:verify": "tsx scripts/verify-seo.ts && tsx scripts/verify-links.ts",
@@ -22,6 +23,7 @@
     "seo:links": "tsx scripts/verify-links.ts",
     "content:blog": "tsx scripts/extract-blog-content.ts",
     "content:gallery": "tsx scripts/fetch-video-gallery.ts",
+    "content:videos": "tsx scripts/fetch-latest-videos.ts",
     "assets:blog": "tsx scripts/import-blog-images.ts",
     "assets:gallery": "tsx scripts/import-gallery-images.ts"
   },

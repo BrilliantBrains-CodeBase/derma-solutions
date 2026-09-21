@@ -264,29 +264,19 @@ export const assets = {
    */
   pageHeaderShape: "/images/decor/page-header-bg.svg",
   /**
-   * The homepage hero, which is footage rather than a photograph: a 10s silent
-   * loop of Dr Sandeep examining a patient, shot at the clinic. Both encodes are
-   * the same source at 1440x800 — webm first, mp4 as the fallback.
+   * The homepage hero, and the page's LCP element.
    *
-   * heroImage is the first frame of that clip, so it is simultaneously the
-   * video's poster, the still served under prefers-reduced-motion, and the LCP
-   * candidate. Cutting it from the video rather than shooting it separately is
-   * what stops the poster-to-playback handover from being visible. Re-cut it
-   * with scripts/import-home-images.ts if the footage is ever recut.
-   */
-  heroVideoWebm: "/video/home-hero.webm",
-  heroVideoMp4: "/video/home-hero.mp4",
-  /**
-   * Hero poster and reduced-motion still. First frame of heroVideoMp4
-   * (1920x1068).
+   * This slot held a 10s silent loop of Dr Sandeep examining a patient for one
+   * round; it is a still again. The clip and both its encodes are still in
+   * public/video/ — nothing here points at them, so they ship only if that
+   * decision is reversed.
    *
-   * No heroImageAlt beside it, unlike every other image in this map. The hero
-   * is a backdrop behind the H1: the <video> cannot carry alt text at all, so
-   * describing only the still would have left reduced-motion visitors hearing
-   * something nobody else does. Both are marked decorative in HomeHero.tsx
-   * instead, and the headline and paragraph over them carry the meaning.
+   * src: Hero/Hero HydraFacial.png (1672x941), cropped to the band's 1.830 by
+   * scripts/import-home-images.ts.
    */
   heroImage: "/images/decor/home-hero.jpg",
+  heroImageAlt:
+    "A patient receiving a HydraFacial treatment, a clinician guiding the handpiece across her cheek",
   /** About stack, upper-right. src: About us/Botox.png (1122x1402) */
   aboutImage1: "/images/decor/about-1.jpg",
   aboutImage1Alt:
@@ -446,19 +436,25 @@ export const assets = {
   transformation4Alt:
     "A fourth patient's hairline and forehead before and after treatment, the two shots side by side and labelled",
   // The photo copy doc section 11 asks for — "a real photo of Dr Sandeep
-  // Mahapatra or Dr Sumedha Tirthani" — rather than the placeholder that stood
-  // in for it.
+  // Mahapatra or Dr Sumedha Tirthani" — and a transparent cut-out, which is
+  // what the band's composition needs: the figure stands on the pink arch the
+  // section paints rather than sitting in a frame.
   //
-  // It is NOT the transparent cut-out the reference's appointment-image.png is,
-  // and the section changed to suit: this is a studio portrait on a soft grey
-  // ground, nothing in the toolchain does subject segmentation, and a luminance
-  // key would take the white coat along with the backdrop. HomeAppointment.tsx
-  // clips it to the arch it used to draw behind the cut-out instead. If the
-  // clinic can supply a cut-out to transparency later, that section's comment
-  // says what to revert.
-  /** Appointment band, media column. src: WHY CHOOSE US/DR Sandeep.png (941x1672) */
-  appointmentImage: "/images/decor/appointment-image.jpg",
-  appointmentImageAlt: "Dr Sandeep Mahapatra in a white coat, arms folded",
+  // It replaces the retouched studio composite that stood here before. That one
+  // could not be keyed — a soft grey ground against a white coat gives a
+  // luminance key nothing to separate — so the section clipped it to an arch
+  // instead. This is an unretouched clinic shot on a flat teal backdrop, which
+  // a chroma key handles cleanly; scripts/import-appointment-doctor.ts holds
+  // the key and the placement, and re-running it regenerates this file.
+  //
+  // TODO(assets): 693px of subject against a 465px slot is 1.49x, short of the
+  // 2x the rest of public/images/decor/ sits at, because 1024x1280 is all the
+  // source holds. A re-shoot or a full-resolution original sharpens it; nothing
+  // else has to change.
+  /** Appointment band, media column. src: content/home-page/Doctor's images/WhatsApp Image 2026-09-07 at 12.07.39 PM (2).jpeg (1024x1280) */
+  appointmentImage: "/images/decor/appointment-image.png",
+  appointmentImageAlt:
+    "Dr Sandeep Mahapatra in a white coat, one hand resting on his hip",
   // TODO(brand): vendor artwork on the same terms as footerShape, serviceShape
   // and testimonialsShape above — "licence": "reference-only" in
   // theme-reference/06-assets/manifest.json.
@@ -1556,17 +1552,17 @@ export const homeTestimonials = {
 // The eyebrow, heading and body below are the 2026-09 revision round's, which
 // retitled the band from "Latest Blog" to "Insights & Resources". The export
 // keeps its old name so the three card paths, the alt strings and everything
-// above stay put under one diff; rename it if the band grows a video rail to
-// match what the new copy promises.
+// above stay put under one diff.
+//
+// The band now has the video rail its body paragraph always promised: a
+// "Latest Videos" rail under the blog cards, sourced from the channel's three
+// newest videos (src/content/homeVideos.generated.ts, kept current with
+// `npm run content:videos` — see scripts/fetch-latest-videos.ts).
 export const homeLatestBlog = {
   /** Uppercased in CSS, as homeHero's and homeAbout's are. */
   eyebrow: "Insights & Resources",
   heading: "Expert insights for healthier skin, hair & confidence",
   // New — the band had no body paragraph before this round.
-  //
-  // NOTE: it promises "guides and videos", and this band links three written
-  // posts. The videos are at /video-gallery/, which the hero's secondary button
-  // already points at. Either add a link here or have the client reword.
   body:
     "Explore dermatologist-led guides and videos from Dr. Sandeep Mahapatra " +
     "covering common skin concerns, advanced treatments, hair care and aesthetic " +
@@ -1600,6 +1596,13 @@ export const homeLatestBlog = {
   cta: {
     label: "View All Articles",
     href: "/blogs/",
+  },
+  // The video rail's own sub-heading and CTA, styled a size down from the
+  // band's own h2 — see HomeLatestBlog.tsx.
+  videosHeading: "Latest Videos",
+  videosCta: {
+    label: "Watch More Videos",
+    href: "/video-gallery/",
   },
 } as const;
 
