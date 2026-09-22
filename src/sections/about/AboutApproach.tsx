@@ -28,8 +28,8 @@ import { RevealWords } from '@/components/RevealWords'
  *    6:00 PM). Do not publish 24/7." The reference's chip is a tel: link with a
  *    phone-and-arrow mark; this one carries no phone number, so it is a plain
  *    <div> with the site's opening-hours mark and needs no focus ring.
- *  - The photographs are repeats. See the TODOs below: this page has no
- *    photography of its own, and every frame on it appears somewhere else.
+ *  - The supporting photograph repeats the homepage's Why Choose Us band. The
+ *    primary frame uses photography supplied specifically for this section.
  */
 export function AboutApproach() {
   return (
@@ -110,12 +110,11 @@ export function AboutApproach() {
               photograph.
             */}
             <div className="relative aspect-[524/650] w-full">
-              {/* TODO(content): repeats the homepage's Why Choose Us band. */}
               <Photo
-                src={assets.whyChooseImage1}
-                alt={assets.whyChooseImage1Alt}
-                width={528}
-                height={816}
+                src={assets.aboutApproachImage}
+                alt={assets.aboutApproachImageAlt}
+                width={1122}
+                height={1402}
                 className="absolute inset-0 h-full w-full rounded-30"
               />
 

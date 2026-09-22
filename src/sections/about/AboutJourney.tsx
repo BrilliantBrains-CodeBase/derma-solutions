@@ -49,21 +49,21 @@ export function AboutJourney() {
         <div className="flex flex-col gap-[50px] lg:flex-row lg:items-center lg:gap-[4.688%]">
           {/* Media column — 630 of the 1280 content box. */}
           <div className="relative mx-auto aspect-[630/615] w-full max-w-[630px] shrink-0 lg:mx-0 lg:w-[49.219%]">
-            {/* Upper-left frame, 300x261. TODO(content): repeats the homepage's About band. */}
+            {/* Upper-left frame, 300x261. */}
             <Photo
-              src={assets.aboutImage1}
-              alt={assets.aboutImage1Alt}
-              width={358}
-              height={450}
+              src={assets.aboutJourneyImage1}
+              alt={assets.aboutJourneyImage1Alt}
+              width={1402}
+              height={1122}
               className="absolute left-0 top-0 h-[42.439%] w-[47.619%] rounded-30"
             />
 
-            {/* Upper-right frame, 300x261, 30px to its right. TODO(content): repeats the homepage's About band. */}
+            {/* Upper-right frame, 300x261, 30px to its right. */}
             <Photo
-              src={assets.aboutImage2}
-              alt={assets.aboutImage2Alt}
-              width={360}
-              height={450}
+              src={assets.aboutJourneyImage2}
+              alt={assets.aboutJourneyImage2Alt}
+              width={1402}
+              height={1122}
               className="absolute left-[52.381%] top-0 h-[42.439%] w-[47.619%] rounded-30"
             />
 

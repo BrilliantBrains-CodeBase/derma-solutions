@@ -51,12 +51,8 @@ import { useCountUp } from '@/hooks/useCountUp'
  *
  * Five departures from the reference:
  *
- *  - The photographs are the clinic's own, not the theme's. The left one also
- *    repeats the Appointment band's portrait — see the TODO on
- *    assets.whatWeDoImage1. That repeat is sharper here than it was on the
- *    homepage: HomeAppointment renders the same figure four bands further down
- *    THIS page. assets.meetDermatologistImage is the swap if the client wants
- *    one of the two gone.
+ *  - The photographs are the clinic's own, not the theme's. The left one is a
+ *    real consultation-room portrait from the clinic's doctor photography.
  *  - The heading animates per word in CSS rather than per character in GSAP
  *    SplitText, and the right photograph wipes in on a scroll-driven timeline
  *    rather than under ScrollTrigger — as in HomeAbout, and for the same
@@ -66,16 +62,8 @@ import { useCountUp } from '@/hooks/useCountUp'
  *    no compliance TODO — the four it counts are rendered in the next band.
  *  - "Explore Treatments" points at a live route rather than the demo's
  *    /contact-us/, which 404s here. See the note on aboutWhatWeDo.cta.
- *  - The left arch is painted here rather than baked into the file. The
- *    reference's PNG carries its own pale arch; the clinic's cut-out is keyed
- *    to transparency, so the band draws the arch and the figure stands on it —
- *    same composition, one layer further out. Sampled off screenshot.png the
- *    arch is #FCF4F1 (--color-secondary), full column width, 80.8% of the
- *    block's height and bottom-anchored, with rounded-t-full clamping to the
- *    reference's own 198px semicircular cap on a 396-wide box. The figure
- *    itself takes no frame, gloss or wipe: the reference tags it
- *    `at-animation-image-none at-none`, and only one of this band's two
- *    photographs is meant to move.
+ *  - The left photograph uses the reference's tall arch silhouette as its
+ *    clipping shape, with the clinic portrait filling that frame.
  */
 
 /* The band sits on white, so the hero's white ring would be invisible here. */
@@ -120,28 +108,15 @@ export function AboutWhatWeDo() {
       className="mx-auto max-w-[1300px] px-[20px] py-[60px] xl:px-[10px] xl:py-[100px]"
     >
       <div className="flex flex-col gap-[50px] xl:flex-row xl:items-center xl:gap-[42px]">
-        {/*
-          The cut-out. Its pale arch is part of the PNG, so it takes no wrapper:
-          no radius to clip, no .shiny-glass surface and no .reveal-wipe.
-        */}
+        {/* Real clinic portrait in the reference's tall arch silhouette. */}
         <div className="relative mx-auto w-full max-w-[396px] xl:mx-0 xl:w-[396px] xl:shrink-0 xl:self-end">
-          {/*
-            The arch the reference bakes into its own PNG. It stops at 80.8% of
-            the block so the figure's head clears it, exactly as the reference's
-            does — measured there at 530 of 656.
-          */}
-          <div
-            aria-hidden
-            className="absolute inset-x-0 bottom-0 h-[80.8%] rounded-t-full bg-secondary"
-          />
-          <img
+          <Photo
             src={assets.whatWeDoImage1}
             alt={assets.whatWeDoImage1Alt}
-            width={375}
-            height={666}
-            loading="lazy"
-            decoding="async"
-            className="relative block w-full"
+            width={760}
+            height={1280}
+            radiusClass="rounded-t-full rounded-b-[30px]"
+            className="aspect-[396/666] w-full"
           />
         </div>
 

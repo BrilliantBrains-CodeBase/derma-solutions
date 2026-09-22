@@ -294,24 +294,24 @@ export const assets = {
   aboutExperienceImage: "/images/decor/about-experience.jpg",
   aboutExperienceImageAlt:
     "Clinician brushing a chemical peel solution onto a reclining patient's face",
+  /** Our Journey, upper-left. src: ChatGPT Image Sep 21, 2026, 02_17_16 PM.png (1402x1122) */
+  aboutJourneyImage1: "/images/decor/about-journey-1.webp",
+  aboutJourneyImage1Alt:
+    "Clinician performing an advanced skin treatment on a reclining patient wearing protective eye shields",
+  /** Our Journey, upper-right. src: ChatGPT Image Sep 21, 2026, 01_10_08 PM.png (1402x1122) */
+  aboutJourneyImage2: "/images/decor/about-journey-2.webp",
+  aboutJourneyImage2Alt:
+    "Clinician in burgundy scrubs administering a facial injectable treatment to a reclining patient",
   /**
-   * What We Do, left column. A transparent cut-out, and the one slot on the
-   * homepage that keeps its alpha: the reference bakes its pale arch into the
-   * PNG, and this one is keyed clean, so HomeWhatWeDo paints that arch behind
-   * the figure instead. Nothing clips it — the whole silhouette is the layout.
+   * What We Do, left column. A real consultation-room portrait supplied with
+   * the clinic's doctor photography.
    *
-   * TODO(assets): 375x666 is remove.bg's free-tier preview size, under half the
-   * pixels the 396px slot wants on a 2x display. Re-key the 941x1672 original
-   * at full resolution to sharpen it; nothing else has to change.
-   *
-   * TODO(assets): still a near-duplicate of appointmentImage below — same coat,
-   * same folded-arms pose — so one homepage shows the portrait twice, six
-   * sections apart. Swap either slot once a second portrait exists.
-   *
-   * src: What we do/DR Sandeep 2 cutout.png (375x666, keyed from DR Sandeep 2.png)
+   * src: content/home-page/Doctor's images/WhatsApp Image 2026-09-07 at
+   * 12.07.39 PM.jpeg (1024x1280)
    */
-  whatWeDoImage1: "/images/decor/what-we-do-1.png",
-  whatWeDoImage1Alt: "Dr Sandeep Mahapatra, dermatologist and plastic surgeon at Derma Solutions",
+  whatWeDoImage1: "/images/decor/about-what-we-do-doctor.webp",
+  whatWeDoImage1Alt:
+    "Dr Sandeep Mahapatra seated in a consultation room at Derma Solutions",
   // TODO(compliance): copy doc note 3. The shelf behind the chair carries a
   // legible "Botox" carton and an "AESTHETIC CARE" label. It is a prescription
   // brand name on a clinic homepage — the same exposure the note raises about
@@ -320,14 +320,6 @@ export const assets = {
   whatWeDoImage2: "/images/decor/what-we-do-2.jpg",
   whatWeDoImage2Alt:
     "Dermatologist administering an anti-wrinkle injection to a patient's forehead",
-  // NOTE: nothing renders whatWeDoImage1/2 any more. The What We Do band they
-  // belonged to was replaced by Meet the Dermatologist in the 2026-09 revision
-  // round (content/home-page/DERMA SOLUTIONS — HOMEPAGE COPY.md). They are kept
-  // because whatWeDoImage1 is the only background-removed cut-out of Dr Sandeep
-  // the project has, and the arch composition it stood on is the alternative
-  // the client was offered for the new band — see the header comment in
-  // src/sections/HomeMeetDermatologist.tsx. Delete both, and their files in
-  // public/images/decor/, once that is settled.
   /**
    * Meet the Dermatologist, left column. Chosen from the 13 frames in
    * content/home-page/Doctor's images/ as the only standing one with no
@@ -380,6 +372,10 @@ export const assets = {
   whyChooseImage2: "/images/decor/why-choose-2.jpg",
   whyChooseImage2Alt:
     "Clinician brushing a chemical peel solution onto a reclining patient's face",
+  /** Our Approach, primary frame. src: ChatGPT Image Sep 21, 2026, 12_19_23 PM.png (1122x1402) */
+  aboutApproachImage: "/images/decor/about-approach.webp",
+  aboutApproachImageAlt:
+    "Advanced skin treatment equipment inside the Derma Solutions clinic",
   // TODO(brand): vendor artwork on the same terms as footerShape and serviceShape
   // above — "licence": "reference-only" in theme-reference/06-assets/manifest.json.
   /** Dot field behind the Testimonials band. src: theme-reference 2025-04-testimonials-bg-shape.png (1800x1041) */
@@ -556,7 +552,7 @@ export const legal = {
   copyrightSince: 2024,
   privacyPolicyPath: "/privacy-policy/",
   termsPath: "/terms-of-use/",
-  credit: { label: "HappiMed", url: "https://happimed.com/" },
+  credit: { label: "Brilliant Brains", url: "https://brilliantbrains.ai/" },
   creditPrefix: "Website Designed & Maintained By",
 } as const;
 
