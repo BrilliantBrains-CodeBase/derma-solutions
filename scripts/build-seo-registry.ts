@@ -17,6 +17,7 @@ import path from 'node:path'
 import { parseCsv } from './csv.ts'
 import { SEO_MAP_CSV, PER_PAGE_DIR, SCHEMA_DIR, SEO_OUT, SCHEMA_OUT, backupKey } from './paths.ts'
 import { ADDED_PAGES, SCHEMA_TEMPLATE_KEY, SITE_URL } from './added-pages.ts'
+import { H1_OVERRIDES, TITLE_OVERRIDES } from './seo-overrides.ts'
 
 /* fix-plan A2/A3 — recorded so the decision is not lost, deliberately not acted on. */
 const NOTES: Record<string, string> = {
@@ -24,21 +25,6 @@ const NOTES: Record<string, string> = {
     'retire-410 (fix-plan A3) — indexable 292-word junk page. Not acted on: needs GSC confirmation.',
   'iv-glutathione-treatment':
     'duplicate-of:iv-glutathione-treatment-in-bangalore (fix-plan A2) — 301 candidate. Not acted on: confirm direction against GSC first.',
-}
-
-/**
- * Deliberate H1 rewrites, keyed by slug.
- *
- * Everything else in this file reproduces the capture; these do not, so each one
- * is listed here rather than applied silently. An override is a copy decision
- * signed off by the client, and it trades a live, ranking H1 for a new one —
- * only add to this map when that trade has actually been made.
- *
- * Sourced from content/home-page/Derma-Solutions-Homepage-Copy-Glowix-Template-2.md.
- */
-const H1_OVERRIDES: Record<string, string> = {
-  // Was: "Trusted Skin & Hair Clinic in Bangalore for Radiant Results."
-  'derma-solutions-home': 'Trusted Skin & Hair Clinic in Bangalore',
 }
 
 /**
@@ -74,21 +60,33 @@ const records = rows.map(r => {
   JSON.parse(jsonldRaw)
   fs.writeFileSync(path.join(SCHEMA_OUT, `${key}.json`), jsonldRaw)
 
+  // A deliberate rewrite, or the capture's own title. See seo-overrides.ts.
+  const title = TITLE_OVERRIDES[r.slug] ?? r.title
+
   const og: Record<string, string> = { ...(perPage.og ?? {}) }
   const twitter: Record<string, string> = { ...(perPage.twitter ?? {}) }
+
+  // og:title and twitter:title are the same string to a share card as <title>
+  // is to a SERP, so an overridden title carries to both rather than leaving a
+  // page whose tab and its WhatsApp preview disagree.
+  if (TITLE_OVERRIDES[r.slug]) {
+    if (og['og:title']) og['og:title'] = title
+    if (twitter['twitter:title']) twitter['twitter:title'] = title
+  }
 
   // A4 — ADD og:image where absent. Never overwrite one the live site already sets.
   if (!og['og:image']) {
     og['og:image'] = OG_IMAGE_FALLBACK
     og['og:image:width'] = OG_IMAGE_W
     og['og:image:height'] = OG_IMAGE_H
-    og['og:image:alt'] = r.title
+    og['og:image:alt'] = title
   }
   if (!twitter['twitter:image']) twitter['twitter:image'] = og['og:image']
 
   // A5 — exactly one H1. The 5 multi-H1 pages keep only the first; the extras
   // become H2s when content lands. The captured heading TEXT is never edited
-  // here; the only way it changes is an explicit entry in H1_OVERRIDES above.
+  // here; the only way it changes is an explicit entry in H1_OVERRIDES
+  // (scripts/seo-overrides.ts).
   const h1 = H1_OVERRIDES[r.slug] ?? perPage.h1?.[0] ?? r.h1 ?? r.title
 
   return {
@@ -97,7 +95,7 @@ const records = rows.map(r => {
     path: urlPath,
     type: (r.type || 'page') as 'page' | 'post' | 'other',
     wpId: r.wp_id ? Number(r.wp_id) : null,
-    title: r.title,
+    title,
     description: r.meta_description,
     canonical: r.canonical,
     robots: r.robots,

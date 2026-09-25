@@ -78,8 +78,8 @@ function ColumnHeading({ children }: { children: React.ReactNode }) {
 }
 
 const linkStyle =
-  'rounded-[4px] transition-colors hover:text-accent focus-visible:outline-2 ' +
-  'focus-visible:outline-offset-4 focus-visible:outline-accent'
+  'rounded-[4px] transition-colors hover:text-accent-light focus-visible:outline-2 ' +
+  'focus-visible:outline-offset-4 focus-visible:outline-accent-light'
 
 export function Footer() {
   // The gutter is cream, not the body's white: <PreFooter> above is cream, so a
@@ -122,7 +122,7 @@ export function Footer() {
                   assets.logo — there is still no white/mono version. */}
               <Link
                 to="/"
-                className="inline-flex rounded-[10px] bg-white p-[10px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                className="inline-flex rounded-[10px] bg-white p-[10px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-light"
               >
                 <img
                   src={assets.logo}
@@ -147,7 +147,7 @@ export function Footer() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`${brand.shortName} on ${profile.name}`}
-                        className="flex h-[34px] w-[34px] items-center justify-center rounded-full border border-divider-dark text-white transition-colors hover:border-accent hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                        className="flex h-[34px] w-[34px] items-center justify-center rounded-full border border-divider-dark text-white transition-colors hover:border-accent-light hover:bg-accent-light hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-light"
                       >
                         {Icon ? <Icon className="h-[15px] w-[15px]" /> : profile.name}
                       </a>
@@ -194,7 +194,7 @@ export function Footer() {
                     href={contact.telHref}
                     className={`mt-[18px] flex items-start gap-[12px] font-sans text-[16px] leading-[26px] text-white/85 ${linkStyle}`}
                   >
-                    <PhoneIcon className="mt-[5px] h-[16px] w-[16px] shrink-0 text-accent" />
+                    <PhoneIcon className="mt-[5px] h-[16px] w-[16px] shrink-0 text-accent-light" />
                     <span className="whitespace-nowrap">{contact.phoneDisplay}</span>
                   </a>
 
@@ -204,7 +204,7 @@ export function Footer() {
                       href={`mailto:${contact.email}`}
                       className={`mt-[18px] flex items-start gap-[12px] font-sans text-[16px] leading-[26px] text-white/85 [overflow-wrap:anywhere] ${linkStyle}`}
                     >
-                      <MailIcon className="mt-[5px] h-[16px] w-[16px] shrink-0 text-accent" />
+                      <MailIcon className="mt-[5px] h-[16px] w-[16px] shrink-0 text-accent-light" />
                       {contact.email}
                     </a>
                   </div>
@@ -213,7 +213,7 @@ export function Footer() {
                 <div className="md:border-l md:border-divider-dark md:pl-[30px]">
                   <ColumnHeading>Address:</ColumnHeading>
                   <address className="mt-[18px] flex items-start gap-[12px] font-sans text-[16px] leading-[26px] text-white/85 not-italic">
-                    <MapPinIcon className="mt-[5px] h-[16px] w-[16px] shrink-0 text-accent" />
+                    <MapPinIcon className="mt-[5px] h-[16px] w-[16px] shrink-0 text-accent-light" />
                     <span>
                       {location.addressDisplayLines.map(line => (
                         <span key={line} className="block">{line}</span>

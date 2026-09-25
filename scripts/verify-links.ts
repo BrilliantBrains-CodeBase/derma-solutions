@@ -11,8 +11,9 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { seoRecords } from '../src/seo/registry.generated.ts'
-import { SRC } from './paths.ts'
+import { PUBLIC, SRC } from './paths.ts'
 import { blogIndex } from '../src/content/blog/index.generated.ts'
+import { mediaItems } from '../src/content/media.ts'
 import { navigation, serviceMenu, team, legal, seo } from '../src/config/site.ts'
 
 const known = new Set(seoRecords.map(r => r.path))
@@ -25,13 +26,14 @@ const known = new Set(seoRecords.map(r => r.path))
 const KNOWN_DANGLING: Record<string, string> = {
   '/contact-us/':
     'Pre-existing on the live site. The Service schema sets serviceUrl to /contact-us/, which is not one of the 92 URLs — it 404s today. Already flagged as TODO(rebuild) in src/config/site.ts. Fix by building the page, NOT by editing the schema (it ships byte-verbatim).',
-  '/book-appointment/':
-    'The header CTA target (contact.ctaHref). Not one of the 92 captured URLs — the page is planned, not built. Remove this entry once it exists.',
 }
 const seen = new Map<string, string>() // path -> where it came from
 const record = (p: string, where: string) => { if (!seen.has(p)) seen.set(p, where) }
 
-for (const group of serviceMenu) for (const item of group.items) record(item.path, `serviceMenu:${group.group}`)
+for (const group of serviceMenu) {
+  if ('path' in group) record(group.path, `serviceMenu:${group.group}`)
+  for (const item of group.items) record(item.path, `serviceMenu:${group.group}`)
+}
 for (const item of navigation.header) {
   if ('path' in item) record(item.path, 'navigation.header')
   // The CTA carries `href`, not `path`, because it may be a tel:/mailto: link.
@@ -62,6 +64,44 @@ for (const post of blogIndex) {
   for (const m of source.matchAll(/href=\\"(\/[^"\\#?]*)/g)) record(m[1], `blog:${post.slug}:body`)
 }
 
+/**
+ * The press coverage (src/content/media.ts) is hand-authored and points off-site,
+ * so none of the checks above reach it. What can be checked without the network
+ * is checked here: the shape of every entry, and that the scans it names exist.
+ */
+const mediaProblems: string[] = []
+const mediaIds = new Set<string>()
+
+for (const item of mediaItems) {
+  const where = `media:${item.id}`
+  if (mediaIds.has(item.id)) mediaProblems.push(`${where}: duplicate id`)
+  mediaIds.add(item.id)
+
+  if (Number.isNaN(Date.parse(item.date))) mediaProblems.push(`${where}: unparseable date "${item.date}"`)
+
+  const links = [...(item.url ? [item.url] : []), ...(item.alsoIn ?? []).map(o => o.url)]
+  if (!links.length && !item.snapshot) mediaProblems.push(`${where}: neither a url nor a snapshot`)
+
+  for (const url of links) {
+    if (!url.startsWith('https://')) mediaProblems.push(`${where}: ${url} is not an absolute https URL`)
+    // A press mention that points back here is a mis-paste, not coverage.
+    if (/dermasolutions\.co\.in/.test(url)) mediaProblems.push(`${where}: ${url} points at this site`)
+  }
+
+  for (const file of item.snapshot ? [item.snapshot.src, item.snapshot.thumb] : []) {
+    if (!fs.existsSync(path.join(PUBLIC, file.replace(/^\//, '')))) {
+      mediaProblems.push(`${where}: ${file} is not in public/ — run npm run assets:media`)
+    }
+  }
+}
+
+console.log(`\npress coverage entries: ${mediaItems.length}`)
+console.log(`  outbound links:                      ${mediaItems.reduce((n, i) => n + (i.url ? 1 : 0) + (i.alsoIn?.length ?? 0), 0)}`)
+if (mediaProblems.length) {
+  console.error(`\nBROKEN — src/content/media.ts:`)
+  for (const m of mediaProblems) console.error(`  ${m}`)
+}
+
 const dangling = [...seen].filter(([p]) => !known.has(p))
 const broken = dangling.filter(([p]) => !(p in KNOWN_DANGLING))
 const expected = dangling.filter(([p]) => p in KNOWN_DANGLING)
@@ -85,4 +125,4 @@ if (orphans.length) {
   for (const o of orphans) console.log(`  ${o.path}`)
 }
 
-process.exit(broken.length ? 1 : 0)
+process.exit(broken.length || mediaProblems.length ? 1 : 0)

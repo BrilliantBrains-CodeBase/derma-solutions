@@ -1,5 +1,6 @@
 import type { BlogBlock } from '@/content/blog'
 import { VideoFacade } from '@/components/VideoFacade'
+import { videoPosterPath, videoPosterSlot } from '@/content/videoPosters'
 
 /**
  * A post's body, block by block, in the Glowix single-post type
@@ -149,12 +150,13 @@ function Block({ block }: { block: BlogBlock }) {
         <VideoFacade
           youtubeId={block.youtubeId}
           title={block.title}
-          // YouTube's own still. The 4:3 hqdefault letterboxes a 16:9 video, and
-          // object-cover in the 16:9 frame trims the bars back off.
-          poster={`https://i.ytimg.com/vi/${block.youtubeId}/hqdefault.jpg`}
+          // The video's own still, self-hosted rather than hotlinked from
+          // i.ytimg.com and at the full 16:9 frame — see
+          // src/content/videoPosters.ts.
+          poster={videoPosterPath(block.youtubeId)}
           posterAlt=""
-          posterWidth={480}
-          posterHeight={360}
+          posterWidth={videoPosterSlot.width}
+          posterHeight={videoPosterSlot.height}
           className="mt-[40px] aspect-video w-full rounded-card"
         />
       )

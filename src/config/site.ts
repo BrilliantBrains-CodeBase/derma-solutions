@@ -106,9 +106,7 @@ export const contact = {
   ctaLabel: "Book An Appointment",
   /** Copy doc section 01 — the header button. */
   ctaLabelHeader: "Make An Appointment",
-  // TODO(rebuild): the page is not built yet, so this 404s today. Whitelisted in
-  // scripts/verify-links.ts — remove that entry when the page lands. Same
-  // situation as /contact-us/, which the Service schema already points at.
+  /** src/pages/BookAppointment.tsx. */
   ctaHref: "/book-appointment/",
 } as const;
 
@@ -396,41 +394,55 @@ export const assets = {
   // TODO(compliance): still BLOCKING, but for a different reason than before.
   // Copy doc note 2 is "Use only the clinic's own images with signed patient
   // consent on file. Do not use stock or theme demo images as patient results."
-  // The second half is now satisfied — these are the clinic's own four patients,
-  // not the Glowix demo's stock faces. The first half is not: confirm signed
-  // consent is on file for each of the four before launch. Photographs of
-  // identifiable patients under result claims are the one thing on this page
-  // that cannot ship on an assumption.
+  // The second half is now satisfied — these are the clinic's own patients, not
+  // the Glowix demo's stock faces. The first half is not: confirm signed consent
+  // is on file for each of the four before launch. Photographs of patients under
+  // result claims are the one thing on this page that cannot ship on an
+  // assumption.
   //
-  // Unlike every other image on the homepage these arrive pre-composed: each
-  // file is the before shot and the after shot side by side with the words
-  // "Before" and "After" already burned in, which is why the band renders them
-  // whole and draws no captions of its own. See HomeSeeTheDifference.tsx.
+  // These four are the clinic's delivered set, the same files the image gallery
+  // shows — see src/content/galleryMedia.ts, which carries the full compliance
+  // note for all ten. Sharing one set is deliberate: the homepage teases
+  // /image-gallery/, and two separately-sourced sets of the same treatments
+  // would drift.
   //
-  // Transformations 3 and 4 carry clinic signage on the back wall reading
-  // "FOLLICLE TRANSPLANT". Confirm that is Derma Solutions' own room before
-  // launch — another clinic's branding under these claims would be worse than
-  // no photograph.
+  // They replace the earlier `Before & After/1-4.png` from the shoot folder,
+  // which were unmasked and carried no labels of their own. Every file here is
+  // eye-barred and carries "BEFORE" and "AFTER" burned into the frame, which is
+  // why the band renders them whole and draws no captions — see
+  // HomeSeeTheDifference.tsx.
+  //
+  // Which four, of the ten: the three with no third-party clinic signage in shot
+  // plus the one whose signage is least prominent. Six of the ten carry the
+  // "FOLLICLE TRANSPLANT" board or a second board behind the patient, and a
+  // seventh shows an "IUI ROOM" door plate; none of those three are on this
+  // page. Swapping one is a one-line change here and in
+  // scripts/import-home-images.ts.
+  //
+  // TODO(compliance): transformation4 still carries a partial sign behind the
+  // patient in its BEFORE half. Confirm that board is Derma Solutions' own room
+  // before launch — another clinic's branding under these claims would be worse
+  // than no photograph.
   //
   // As in homeCaseStudies, the alt text deliberately describes only what is in
   // frame. Naming an improvement in an alt would make the photograph itself
   // assert the result.
-  /** src: Before & After/1.png (1402x1122) */
+  /** src: content/gallery/1.png (2195x2195) */
   transformation1: "/images/decor/transformations/transformation-1.jpg",
   transformation1Alt:
-    "A patient's face photographed before and after treatment, the two shots side by side and labelled",
-  /** src: Before & After/2.png (1317x1040) */
+    "A woman with freckled skin and a dark headband photographed front-on twice, the two shots side by side and labelled Before and After",
+  /** src: content/gallery/5.png (2195x2195) */
   transformation2: "/images/decor/transformations/transformation-2.jpg",
   transformation2Alt:
-    "A second patient's cheek in profile before and after treatment, the two shots side by side and labelled",
-  /** src: Before & After/3.png (1346x1068) */
+    "A woman photographed front-on twice against a dark studio backdrop, the two shots side by side and labelled Before and After",
+  /** src: content/gallery/6.png (2195x2195) */
   transformation3: "/images/decor/transformations/transformation-3.jpg",
   transformation3Alt:
-    "A third patient's hairline before and after treatment, the two shots side by side and labelled",
-  /** src: Before & After/4.png (1324x1032) */
+    "A man in a surgical cap and gown photographed front-on twice, the two shots side by side and labelled Before and After",
+  /** src: content/gallery/8.png (2195x2195) */
   transformation4: "/images/decor/transformations/transformation-4.jpg",
   transformation4Alt:
-    "A fourth patient's hairline and forehead before and after treatment, the two shots side by side and labelled",
+    "A woman in a yellow dupatta photographed front-on twice, the two shots side by side and labelled Before and After",
   // The photo copy doc section 11 asks for — "a real photo of Dr Sandeep
   // Mahapatra or Dr Sumedha Tirthani" — and a transparent cut-out, which is
   // what the band's composition needs: the figure stands on the pink arch the
@@ -672,6 +684,8 @@ export const founder = team[0];
 export const serviceMenu = [
   {
     group: "Cosmetology",
+    // The group heading links to the live site's cosmetic dermatology overview.
+    path: "/cosmetic-dermatology-in-bangalore/",
     items: [
       { label: "Acne Scar Treatment", path: "/acne-scar-treatment-in-bangalore/" },
       {
@@ -702,6 +716,9 @@ export const serviceMenu = [
       { label: "CO2 Fractional Laser", path: "/fractional-co2-laser-skin-resurfacing-in-bangalore/" },
       { label: "Mole Removal", path: "/mole-removal-treatment-in-bangalore/" },
       { label: "Wart Removal", path: "/warts-removal-treatment-in-bangalore/" },
+      // Content-template page (src/templates/ContentPage.tsx): no treatment
+      // media, so the homepage services carousel skips it.
+      { label: "Laser Tattoo Removal", path: "/laser-tattoo-removal-in-bangalore/" },
     ],
   },
   {
@@ -722,10 +739,16 @@ export const serviceMenu = [
       { label: "IV Glutathione Treatment", path: "/iv-glutathione-treatment-in-bangalore/" },
       { label: "NAD IV Drips", path: "/nad-iv-drips-treatment-in-bangalore/" },
       { label: "Weight / Fat Loss Injections", path: "/weight-loss-injections-in-bangalore/" },
+      // Content-template pages, beside the injections as the other non-surgical
+      // weight options. No treatment media: the homepage carousel skips them.
+      { label: "Weight Loss Treatment", path: "/weight-loss-treatment-in-marathahalli/" },
+      { label: "Inch Reduction", path: "/inch-reduction-treatment-in-bangalore/" },
     ],
   },
   {
     group: "Cosmetic Surgeries",
+    // The group heading links to the live site's cosmetic plastic surgery overview.
+    path: "/cosmetic-plastic-surgery-in-marathahalli/",
     items: [
       { label: "Xanthelasma Removal", path: "/xanthelasma-removal-treatment-in-bangalore/" },
       { label: "Cryolipolysis - CoolSculpting", path: "/cryolipolysis-coolsculpting-in-bangalore/" },
@@ -758,7 +781,7 @@ export const navigation = {
     { label: "Home", path: "/" },
     // Labels follow the copy doc's section 01; the routes behind them are
     // unchanged. Its "Contact Us" item is deliberately absent — /contact-us/ is
-    // one of the two known-dangling paths in scripts/verify-links.ts and 404s
+    // the one known-dangling path in scripts/verify-links.ts and 404s
     // today, so putting it in the primary nav would ship a broken link.
     // Was team[0].path — the founder's page stood in as "About Us" until the
     // real page existed. It is still reached from the Doctors dropdown and from
@@ -783,7 +806,16 @@ export const navigation = {
         { label: "Video Gallery", path: "/video-gallery/" },
       ],
     },
-    { label: "Blog", path: "/blogs/" },
+    {
+      // As with Doctors: the label links to the articles, the chevron opens the
+      // two halves of the section. See the items branch in src/layout/Header.tsx.
+      label: "Blogs & Media",
+      path: "/blogs/",
+      items: [
+        { label: "Blogs", path: "/blogs/" },
+        { label: "Media Coverage", path: "/media/" },
+      ],
+    },
     // The header's accent pill. The phone number beside it is rendered straight
     // from `contact`, not from here, so this entry is the booking CTA alone.
     { label: contact.ctaLabelHeader, href: contact.ctaHref, isCta: true },
@@ -796,6 +828,7 @@ export const navigation = {
     // Repointed from team[0].path with the header's entry — see the note there.
     { label: "About Us", path: "/about-us/" },
     { label: "Blogs", path: "/blogs/" },
+    { label: "Media Coverage", path: "/media/" },
     { label: "Image Gallery", path: "/image-gallery/" },
     { label: "Video Gallery", path: "/video-gallery/" },
   ],
@@ -976,6 +1009,23 @@ export const homeAppointment = {
       "Online booking is not live yet. Please call the clinic on " +
       `${contact.phoneDisplay} to book your consultation.`,
   },
+} as const;
+
+/**
+ * /book-appointment/ — src/sections/appointment/BookAppointment.tsx, built to
+ * theme-reference/04-sections/34-make-an-appointment/.
+ *
+ * TODO(content): there is no copy doc for this page. The eyebrow, heading and
+ * box titles are the reference's own wording; the form copy is
+ * `homeAppointment`'s, reused unchanged, and the phone and hours are read from
+ * `contact` and `hours` rather than restated.
+ */
+export const bookAppointment = {
+  /** Uppercased in CSS, as homeAppointment's is. */
+  eyebrow: "Appointment",
+  heading: "Make an appointment",
+  servicesTitle: "Customer Services",
+  hoursTitle: "Opening Hours",
 } as const;
 
 /* -------------------------------------------------------------------------- */
@@ -1333,8 +1383,8 @@ export const homeServices = {
   // pill is deliberately absent. Restore both together, or neither.
   //
   // The reference links this at /contact-us/, which 404s here and is already
-  // flagged in scripts/verify-links.ts. contact.ctaHref is the whitelisted
-  // equivalent the hero and header CTAs use.
+  // flagged in scripts/verify-links.ts. contact.ctaHref is the booking page
+  // the hero and header CTAs use.
   cta: {
     text: "Not sure which treatment is right for you?",
     label: "Book a Consultation",
@@ -1741,8 +1791,8 @@ export const aboutJourney = {
   // aboutIntro.badge above. One decision settles both.
   badge: "15+ Years of Experience",
   // #appointment, not contact.ctaHref: HomeAppointment renders id="appointment"
-  // on this very page, so this is a target that exists. contact.ctaHref is
-  // /book-appointment/, one of the two KNOWN_DANGLING 404s.
+  // on this very page, so the same form is a scroll away rather than a page
+  // load away at /book-appointment/.
   cta: { label: "Book Consultation", path: "#appointment" },
 } as const;
 

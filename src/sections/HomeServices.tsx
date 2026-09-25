@@ -280,7 +280,12 @@ export function HomeServices() {
                 ulClassName="mt-[40px] flex gap-[30px] lg:mt-[50px]"
                 slidesClassName="[--slides:1] sm:[--slides:2] lg:[--slides:3]"
               >
-                {group.items.map(item => (
+                {/*
+                  Only items with treatment media: serviceMenu also lists the
+                  content-template pages (e.g. Laser Tattoo Removal), which have
+                  no photograph to put on a card.
+                */}
+                {group.items.filter(item => treatmentMedia[slugOf(item.path)]).map(item => (
                   // The <li> stretches to the track's height and the card fills
                   // it, which is what gives `mt-auto` on the photo a box to push
                   // against — so the photos stay aligned across a row.

@@ -35,8 +35,8 @@ import { Photo } from '@/components/Photo'
  *
  * Two things worth knowing about the numbers:
  *
- *  - The hairline under the paragraphs measures rgb(247,229,222), which is
- *    exactly --color-divider (#CD5F371A) composited over the cream band. It is
+ *  - The hairline under the paragraphs measures rgb(236,227,221), which is
+ *    exactly --color-divider (#8B5E451A) composited over the cream band. It is
  *    the token, not a one-off tint.
  *  - The accent disc in the contact row is centred on the avatar's right edge,
  *    not tucked inside it: the avatar is x 737-787 and the 36px disc x 769-804.

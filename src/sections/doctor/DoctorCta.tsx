@@ -11,8 +11,9 @@ import { assets } from '@/config/site'
  * Departures from the reference:
  *
  *  1. No booking form. The reference band is the appointment form; the doc
- *     asks for a heading and a call button only, and /book-appointment/ is not
- *     built yet (see the KNOWN_DANGLING note in scripts/verify-links.ts).
+ *     asks for a heading and a call button only. (This was also chosen while
+ *     /book-appointment/ did not exist; it does now, so a second "Book" button
+ *     pointing there is an option if the client wants one.)
  *  2. The phone number prints in the site's display format (contact.phoneDisplay)
  *     rather than the doc's "+91-97412 23217", so it matches the header.
  *  3. It keeps the white page's bottom padding under it: PreFooter's cream

@@ -56,7 +56,7 @@ export function PageHeader({ h1, children }: { h1: string; children?: ReactNode 
 }
 
 const crumbLink =
-  'transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'
+  'transition-colors hover:text-accent-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'
 
 /**
  * The reference's breadcrumb under the page title: Sora 16, white, "/"

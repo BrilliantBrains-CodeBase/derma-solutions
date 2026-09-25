@@ -9,7 +9,7 @@
  *   npm run seo:registry
  *
  * Source: seo-backup/07-migration/seo-map.csv (92 URLs, captured 2026-09-02),
- * plus the authored pages in scripts/added-pages.ts (3) — those alone are
+ * plus the authored pages in scripts/added-pages.ts (5) — those alone are
  * NOT from the capture.
  */
 
@@ -400,13 +400,13 @@ export const seoRecords: SeoRecord[] = [
     "path": "/blogs/",
     "type": "page",
     "wpId": 2270,
-    "title": "Blogs – Derma Solutions Skin and Hair Clinic",
+    "title": "Blogs & Media – Derma Solutions Skin and Hair Clinic",
     "description": "Blogs Medical Facial vs Salon Facial: What’s the Real Difference? Walk into any salon today, and you’ll find an extensive menu of facials promising",
     "canonical": "https://dermasolutions.co.in/blogs/",
     "robots": "max-image-preview:large, max-snippet:-1, max-video-preview:-1",
-    "h1": "Blogs",
+    "h1": "Blogs & Media",
     "og": {
-      "og:title": "Blogs – Derma Solutions Skin and Hair Clinic",
+      "og:title": "Blogs & Media – Derma Solutions Skin and Hair Clinic",
       "og:type": "article",
       "og:description": "Blogs Medical Facial vs Salon Facial: What’s the Real Difference? Walk into any salon today, and you’ll find an extensive menu of facials promising",
       "og:url": "https://dermasolutions.co.in/blogs/",
@@ -418,7 +418,7 @@ export const seoRecords: SeoRecord[] = [
       "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
-      "og:image:alt": "Blogs – Derma Solutions Skin and Hair Clinic"
+      "og:image:alt": "Blogs & Media – Derma Solutions Skin and Hair Clinic"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
@@ -3366,14 +3366,14 @@ export const seoRecords: SeoRecord[] = [
     "type": "page",
     "wpId": null,
     "title": "Our Doctors | Dermatologists & Plastic Surgeons in Marathahalli, Whitefield – Derma Solutions",
-    "description": "Meet the doctors at Derma Solutions, Marathahalli, Whitefield, Bangalore: MD dermatologists Dr. Sandeep Mahapatra and Dr. Sumedha Tirthani, and plastic surgeons Dr. Thyagaraj and Dr. Chandhana Vishal N.",
+    "description": "Meet the doctors at Derma Solutions, Marathahalli, Whitefield, Bangalore: MD dermatologists Dr. Sandeep Mahapatra and Dr. Sumedha Tirthani, and senior plastic surgeon Dr. Thyagaraj.",
     "canonical": "https://dermasolutions.co.in/our-doctors/",
     "robots": "max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     "h1": "Our Doctors",
     "og": {
       "og:title": "Our Doctors | Dermatologists & Plastic Surgeons in Marathahalli, Whitefield – Derma Solutions",
       "og:type": "article",
-      "og:description": "Meet the doctors at Derma Solutions, Marathahalli, Whitefield, Bangalore: MD dermatologists Dr. Sandeep Mahapatra and Dr. Sumedha Tirthani, and plastic surgeons Dr. Thyagaraj and Dr. Chandhana Vishal N.",
+      "og:description": "Meet the doctors at Derma Solutions, Marathahalli, Whitefield, Bangalore: MD dermatologists Dr. Sandeep Mahapatra and Dr. Sumedha Tirthani, and senior plastic surgeon Dr. Thyagaraj.",
       "og:url": "https://dermasolutions.co.in/our-doctors/",
       "og:locale": "en",
       "og:site_name": "Derma Solutions Skin and Hair Clinic",
@@ -3391,6 +3391,72 @@ export const seoRecords: SeoRecord[] = [
     "modifiedTime": "2026-09-21T00:00:00+05:30",
     "markdown": null,
     "note": "New page, not in the live capture. Built from content/doctor-page/ Part A; the doc's \"check before live\" notes 2 and 6 are outstanding."
+  },
+  {
+    "slug": "book-appointment",
+    "key": "book-appointment",
+    "path": "/book-appointment/",
+    "type": "page",
+    "wpId": null,
+    "title": "Book an Appointment | Dermatologist in Marathahalli, Whitefield – Derma Solutions",
+    "description": "Book a consultation with the dermatologists and plastic surgeons at Derma Solutions, Marathahalli, Whitefield, Bangalore. Choose your doctor and preferred date, or call the clinic.",
+    "canonical": "https://dermasolutions.co.in/book-appointment/",
+    "robots": "max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "h1": "Book Appointment",
+    "og": {
+      "og:title": "Book an Appointment | Dermatologist in Marathahalli, Whitefield – Derma Solutions",
+      "og:type": "article",
+      "og:description": "Book a consultation with the dermatologists and plastic surgeons at Derma Solutions, Marathahalli, Whitefield, Bangalore. Choose your doctor and preferred date, or call the clinic.",
+      "og:url": "https://dermasolutions.co.in/book-appointment/",
+      "og:locale": "en",
+      "og:site_name": "Derma Solutions Skin and Hair Clinic",
+      "article:published_time": "2026-09-25T00:00:00+05:30",
+      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image:width": "1200",
+      "og:image:height": "630",
+      "og:image:alt": "Book an Appointment | Dermatologist in Marathahalli, Whitefield – Derma Solutions"
+    },
+    "twitter": {
+      "twitter:card": "summary_large_image",
+      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+    },
+    "publishedTime": "2026-09-25T00:00:00+05:30",
+    "modifiedTime": "2026-09-25T00:00:00+05:30",
+    "markdown": null,
+    "note": "New page, not in the live capture. The CTA target (contact.ctaHref). No copy doc — SEO and headings are authored and need client sign-off."
+  },
+  {
+    "slug": "media",
+    "key": "media",
+    "path": "/media/",
+    "type": "page",
+    "wpId": null,
+    "title": "Media Coverage | Dr. Sandeep Mahapatra in the Press – Derma Solutions",
+    "description": "Press coverage featuring Dr. Sandeep Mahapatra of Derma Solutions, Bangalore — expert commentary, interviews and authored articles in Femina, News18, OnlyMyHealth, TheHealthSite, Happiest Health and more.",
+    "canonical": "https://dermasolutions.co.in/media/",
+    "robots": "max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "h1": "Media Coverage",
+    "og": {
+      "og:title": "Media Coverage | Dr. Sandeep Mahapatra in the Press – Derma Solutions",
+      "og:type": "article",
+      "og:description": "Press coverage featuring Dr. Sandeep Mahapatra of Derma Solutions, Bangalore — expert commentary, interviews and authored articles in Femina, News18, OnlyMyHealth, TheHealthSite, Happiest Health and more.",
+      "og:url": "https://dermasolutions.co.in/media/",
+      "og:locale": "en",
+      "og:site_name": "Derma Solutions Skin and Hair Clinic",
+      "article:published_time": "2026-09-25T00:00:00+05:30",
+      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image:width": "1200",
+      "og:image:height": "630",
+      "og:image:alt": "Media Coverage | Dr. Sandeep Mahapatra in the Press – Derma Solutions"
+    },
+    "twitter": {
+      "twitter:card": "summary_large_image",
+      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+    },
+    "publishedTime": "2026-09-25T00:00:00+05:30",
+    "modifiedTime": "2026-09-25T00:00:00+05:30",
+    "markdown": null,
+    "note": "New page, not in the live capture. Content is the PR agency's coverage report (May–August 2026); SEO copy is authored and needs client sign-off."
   }
 ]
 

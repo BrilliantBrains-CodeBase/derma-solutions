@@ -15,7 +15,7 @@ export default function Blogs() {
       slug="blogs"
       hero={h1 => (
         <PageHeader h1={h1}>
-          <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Blogs' }]} />
+          <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Blogs & Media' }]} />
         </PageHeader>
       )}
     >

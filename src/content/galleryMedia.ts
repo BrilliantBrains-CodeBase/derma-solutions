@@ -22,48 +22,39 @@
  * scripts/blog-source.ts and src/content/blog/index.generated.ts already keep.
  *
  * ---------------------------------------------------------------------------
- * TODO(compliance): BLOCKING. Every photograph below is an identifiable patient
- * under a result claim, which is the exact category treatmentMedia.ts excluded
- * from all 38 treatment pages pending signed consent, and which carries the
- * same unresolved note as assets.transformation1 on the homepage. Under DISHA
- * and ASCI norms these need written patient consent on file before launch.
- * Nothing here blocks the build; all of it blocks publishing.
+ * TODO(compliance): BLOCKING. Every photograph below is a patient under a
+ * result claim, which is the category treatmentMedia.ts excluded from all 38
+ * treatment pages pending signed consent, and which carries the same unresolved
+ * note as assets.transformation1 on the homepage. Under DISHA and ASCI norms
+ * these need written patient consent on file before launch. Nothing here blocks
+ * the build; all of it blocks publishing.
  *
- * Four further problems found by reading the files themselves, which the
- * existing TODOs do not cover:
+ * This set replaced the fourteen files pulled from the live site's WordPress
+ * uploads, and closes most of what was wrong with them. It is a produced set:
+ * uniform 2195x2195, one house BEFORE/AFTER label in the brand brown, and —
+ * unlike the old set, where only two of fourteen were masked — an eye bar on
+ * every face. Gone with it: the "Dr. Akhila" watermark that credited another
+ * practitioner, a "Shot on OnePlus" watermark, an "immediately after" label
+ * showing injectable swelling rather than a settled result, and a "permanent
+ * makeup" case advertising a service absent from the clinic's own menu.
  *
- *  1. Third-party clinic branding. case-09 carries "FOLLICLE TRANSPLANT /
- *     BANGALORE / BHUBANESWAR" fully legible on the back wall; case-19,
- *     case-22, case-14 and case-screenshot-2023 carry partial versions of the
- *     same board, and case-02 a different one. site.ts already flags this exact
- *     signage on homepage transformations 3 and 4. The schema's Physician
- *     `sameAs` does list neofollicletransplant.com, so this is plausibly
- *     Dr Sandeep's other brand rather than a competitor's room — but plausibly
- *     is not sign-off, and Bhubaneswar is not this clinic's address.
- *  2. case-21 shows a door plate reading "IUI ROOM" — a fertility-clinic room,
+ * Two things did NOT come out in the reprocessing, both visible in the frames:
+ *
+ *  1. Third-party clinic branding, in six of the ten. case-07 and case-09 carry
+ *     the "FOLLICLE TRANSPLANT" board legibly; case-02, case-03, case-08 and
+ *     case-10 carry partial versions of that or of a second board. site.ts
+ *     already flags exactly this signage on homepage transformations 3 and 4.
+ *     The schema's Physician `sameAs` does list neofollicletransplant.com, so
+ *     this is plausibly Dr Sandeep's other brand rather than a competitor's
+ *     room — but plausibly is not sign-off.
+ *  2. case-04 still shows the "IUI ROOM" door plate — a fertility-clinic room,
  *     i.e. a third-party facility and an unrelated medical context appearing
- *     underneath dermatology result claims.
- *  3. case-04 carries a "Dr. Akhila" script watermark across both halves:
- *     another practitioner's branding on a page whose copy credits
- *     Dr Sandeep Mahapatra. This is an attribution error rather than a
- *     judgement call, so it ships `hold`-ed — see `hold` below.
- *  4. case-02 carries a "Shot on OnePlus / powered by Dual Camera" watermark.
+ *     underneath dermatology result claims. It is the same patient the old set
+ *     carried as case-21, recropped but not reframed.
  *
- * And two copy-level flags:
- *
- *  - case-02 and case-04 are labelled "immediately after", which for injectables
- *    shows swelling rather than a settled outcome and is arguably misleading
- *    under ASCI.
- *  - case-11 has "Botox" burned into the pixels — the trademark sign-off
- *    treatmentMedia.ts already lists as outstanding — and case-10 advertises
- *    "permanent makeup", which is not on the clinic's service menu at all
- *    (src/config/site.ts, serviceMenu). Confirm the clinic offers it before
- *    showing it.
- *
- * De-identification is inconsistent across the set: case-02 and case-13 carry
- * eye bars, the other twelve are fully identifiable at full resolution. That
- * inconsistency is itself a signal that some of these were treated as needing
- * masking and others were not.
+ * One lesser flag: case-03 and case-10 look like the same patient in the same
+ * gown against the same wall. If they are one case shown twice, that is the
+ * clinic's call to make, not this file's.
  * ---------------------------------------------------------------------------
  */
 
@@ -73,7 +64,11 @@ export interface GalleryPhoto {
    * order, so reordering the array never renames a file on disk.
    */
   id: string
-  /** `backup:<path under seo-backup/06-media/files>` — the only root this page uses. */
+  /**
+   * `gallery:<file>` — the clinic's delivered set under content/gallery/.
+   * `backup:<path under seo-backup/06-media/files>` still resolves, for a
+   * photograph that has to come back from the live site's own uploads.
+   */
   from: string
   /**
    * Describes what is in frame and nothing else. Never asserts an improvement:
@@ -131,102 +126,85 @@ export const galleryPhotoPath = (id: string) => `/images/image-gallery/${id}.jpg
 export const galleryPhotoSmallPath = (id: string) => `/images/image-gallery/${id}-640.jpg`
 export const galleryPosterPath = (id: string) => `/images/video-gallery/${id}.jpg`
 
-/** The live page's running order, top-left to bottom-right. */
+/**
+ * The clinic's own set, in the order it was delivered.
+ *
+ * Every one is side by side with BEFORE and AFTER burned into the frame, so
+ * `labelled` is true throughout and PhotoGallery draws no orienting caption on
+ * any of them — printing "Before" twice is what that caption exists to avoid.
+ * `pair` is still recorded per row so that a future unlabelled addition gets
+ * the right caption without anyone having to rediscover which way it reads.
+ */
 export const galleryPhotos: GalleryPhoto[] = [
   {
-    id: 'case-18',
-    from: 'backup:2025/01/case_studies_18.jpg',
-    alt: "A woman photographed front-on twice against a dark studio backdrop, the two shots side by side",
-    pair: 'side-by-side',
-  },
-  {
-    id: 'case-19',
-    from: 'backup:2025/01/case_studies_19.jpeg',
-    alt: "A woman's face and hairline photographed twice in the clinic, the two shots side by side",
-    pair: 'side-by-side',
-  },
-  {
-    id: 'case-21',
-    from: 'backup:2025/01/case_studies_21.jpeg',
-    alt: "A woman photographed front-on twice in a clinic corridor, the two shots side by side",
-    pair: 'side-by-side',
-  },
-  {
-    id: 'case-22',
-    from: 'backup:2025/01/case_studies_22.jpeg',
-    alt: "A woman photographed front-on twice, the two shots side by side",
-    pair: 'side-by-side',
-  },
-  {
-    id: 'case-botox',
-    from: 'backup:2025/01/botox-before-after.jpeg',
-    alt: "A man in a surgical cap and gown photographed front-on twice, the two shots side by side",
-    pair: 'side-by-side',
-  },
-  {
-    id: 'case-screenshot-2023',
-    // 480x366 — the one landscape tile, and the only source below the ~407px
-    // slot's 2x width, so it renders a little softer than its neighbours. Its
-    // BEFORE/AFTER lettering runs across the bottom 15%, which is exactly what
-    // the old square crop had to be padded around and now simply stays in frame.
-    from: 'backup:2025/01/Screenshot-2023-08-08-152633.jpg',
-    alt: "A man's face photographed twice and labelled Before and After, the two shots side by side",
+    id: 'case-01',
+    from: 'gallery:1.png',
+    alt: "A woman with freckled skin and a dark headband photographed front-on twice, the two shots side by side and labelled Before and After",
     pair: 'side-by-side',
     labelled: true,
   },
   {
     id: 'case-02',
-    from: 'backup:2025/01/case_studies_2.jpg',
-    alt: "A woman's face photographed twice with her eyes masked, labelled before and immediately after, the two shots side by side",
+    from: 'gallery:2.png',
+    alt: "A woman photographed front-on twice showing her face and neck, the two shots side by side and labelled Before and After",
+    pair: 'side-by-side',
+    labelled: true,
+  },
+  {
+    id: 'case-03',
+    from: 'gallery:3.png',
+    alt: "A woman with auburn hair in a blue clinic gown photographed front-on twice, the two shots side by side and labelled Before and After",
     pair: 'side-by-side',
     labelled: true,
   },
   {
     id: 'case-04',
-    // 1103x1280, the one portrait source, stacked with its "before" label in the
-    // top 8%.
-    from: 'backup:2025/01/case_studies_4.jpg',
-    alt: "Close-up of a woman's mouth photographed twice, labelled before and immediately after, one shot above the other",
-    pair: 'stacked',
+    from: 'gallery:4.png',
+    alt: "A woman photographed front-on twice in a clinic corridor, the two shots side by side and labelled Before and After",
+    pair: 'side-by-side',
     labelled: true,
-    hold: 'TODO(compliance): carries a "Dr. Akhila" script watermark across both halves — another practitioner\'s branding on a page crediting Dr Sandeep Mahapatra. Clear the attribution or replace the file, then delete this line.',
+  },
+  {
+    id: 'case-05',
+    from: 'gallery:5.png',
+    alt: "A woman photographed front-on twice against a dark studio backdrop, the two shots side by side and labelled Before and After",
+    pair: 'side-by-side',
+    labelled: true,
+  },
+  {
+    id: 'case-06',
+    from: 'gallery:6.png',
+    alt: "A man in a surgical cap and gown photographed front-on twice, the two shots side by side and labelled Before and After",
+    pair: 'side-by-side',
+    labelled: true,
+  },
+  {
+    id: 'case-07',
+    from: 'gallery:7.png',
+    alt: "A woman photographed front-on twice showing her forehead and hairline, the two shots side by side and labelled Before and After",
+    pair: 'side-by-side',
+    labelled: true,
+  },
+  {
+    id: 'case-08',
+    from: 'gallery:8.png',
+    alt: "A woman in a yellow dupatta photographed front-on twice, the two shots side by side and labelled Before and After",
+    pair: 'side-by-side',
+    labelled: true,
   },
   {
     id: 'case-09',
-    from: 'backup:2025/01/case_studies_9-scaled-1.jpg',
-    alt: "Close-up of a woman's eyes above a second shot of her full face, both inside a circular frame",
-    pair: 'stacked',
-  },
-  {
-    id: 'case-10',
-    from: 'backup:2025/01/case_studies_10.jpg',
-    alt: "Close-up of a woman's eyebrows photographed twice and labelled before and after, one shot above the other",
-    pair: 'stacked',
+    from: 'gallery:9.png',
+    alt: "A man photographed front-on twice showing his forehead and hairline, the two shots side by side and labelled Before and After",
+    pair: 'side-by-side',
     labelled: true,
   },
   {
-    id: 'case-11',
-    from: 'backup:2025/01/case_studies_11-scaled-1.jpg',
-    alt: "Close-up of the skin beside a man's eye photographed twice, one shot above the other",
-    pair: 'stacked',
-  },
-  {
-    id: 'case-12',
-    from: 'backup:2025/01/case_studies_12.jpg',
-    alt: "A woman in a surgical headband photographed front-on twice, the two shots side by side",
+    id: 'case-10',
+    from: 'gallery:10.png',
+    alt: "A woman in a blue clinic gown photographed front-on twice against a clinic wall, the two shots side by side and labelled Before and After",
     pair: 'side-by-side',
-  },
-  {
-    id: 'case-13',
-    from: 'backup:2025/01/case_studies_13-scaled-1.jpg',
-    alt: "A woman's face photographed twice with her eyes masked, the two shots side by side",
-    pair: 'side-by-side',
-  },
-  {
-    id: 'case-14',
-    from: 'backup:2025/01/case_studies_14-scaled-1.jpg',
-    alt: "A woman's face and neck photographed front-on twice, the two shots side by side",
-    pair: 'side-by-side',
+    labelled: true,
   },
 ]
 

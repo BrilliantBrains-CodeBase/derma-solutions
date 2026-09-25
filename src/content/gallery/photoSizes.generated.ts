@@ -15,44 +15,44 @@
  * src/content/galleryMedia.ts.
  */
 export const photoSizes: Record<string, { width: number; height: number; smallWidth: number }> = {
-  "case-18": {
+  "case-01": {
     "width": 820,
     "height": 820,
     "smallWidth": 640
-  },
-  "case-19": {
-    "width": 820,
-    "height": 820,
-    "smallWidth": 640
-  },
-  "case-21": {
-    "width": 820,
-    "height": 820,
-    "smallWidth": 640
-  },
-  "case-22": {
-    "width": 820,
-    "height": 820,
-    "smallWidth": 640
-  },
-  "case-botox": {
-    "width": 820,
-    "height": 820,
-    "smallWidth": 640
-  },
-  "case-screenshot-2023": {
-    "width": 480,
-    "height": 366,
-    "smallWidth": 480
   },
   "case-02": {
     "width": 820,
-    "height": 805,
+    "height": 820,
+    "smallWidth": 640
+  },
+  "case-03": {
+    "width": 820,
+    "height": 820,
     "smallWidth": 640
   },
   "case-04": {
     "width": 820,
-    "height": 952,
+    "height": 820,
+    "smallWidth": 640
+  },
+  "case-05": {
+    "width": 820,
+    "height": 820,
+    "smallWidth": 640
+  },
+  "case-06": {
+    "width": 820,
+    "height": 820,
+    "smallWidth": 640
+  },
+  "case-07": {
+    "width": 820,
+    "height": 820,
+    "smallWidth": 640
+  },
+  "case-08": {
+    "width": 820,
+    "height": 820,
     "smallWidth": 640
   },
   "case-09": {
@@ -61,26 +61,6 @@ export const photoSizes: Record<string, { width: number; height: number; smallWi
     "smallWidth": 640
   },
   "case-10": {
-    "width": 820,
-    "height": 820,
-    "smallWidth": 640
-  },
-  "case-11": {
-    "width": 820,
-    "height": 820,
-    "smallWidth": 640
-  },
-  "case-12": {
-    "width": 820,
-    "height": 820,
-    "smallWidth": 640
-  },
-  "case-13": {
-    "width": 820,
-    "height": 820,
-    "smallWidth": 640
-  },
-  "case-14": {
     "width": 820,
     "height": 820,
     "smallWidth": 640

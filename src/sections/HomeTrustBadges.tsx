@@ -64,7 +64,8 @@ export function HomeTrustBadges() {
             // is what keeps the rules from doubling where tiles meet.
             className="flex flex-col items-center bg-secondary px-[24px] py-[36px] text-center lg:py-[44px]"
           >
-            <p className="font-display text-[28px] leading-[34px] text-primary lg:text-[36px] lg:leading-[44px]">
+            {/* Marcellus ships only 400, so this bold is browser-synthesised. */}
+            <p className="font-display text-[28px] leading-[34px] font-bold text-primary lg:text-[36px] lg:leading-[44px]">
               {badge.value}
               {badge.label && (
                 <>

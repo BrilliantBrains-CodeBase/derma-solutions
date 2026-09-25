@@ -8,6 +8,9 @@
  * (src/content/galleryMedia.ts), so the file on disk and the words describing it
  * cannot drift. Offline and deterministic — nothing here touches the network.
  *
+ * The sources are the clinic's own delivered set under content/gallery/ — ten
+ * 2195x2195 PNGs, each already composed as a labelled before-and-after pair.
+ *
  * Two renditions per photograph, as the blog script does:
  *  - <id>.jpg      up to 820 wide, the tile at 2x
  *  - <id>-640.jpg  up to 640 wide, what a phone and the sm grid actually pull
@@ -33,7 +36,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import sharp from 'sharp'
-import { MEDIA_FILES, PUBLIC, SRC } from './paths.ts'
+import { MEDIA_FILES, PUBLIC, ROOT, SRC } from './paths.ts'
 import {
   galleryPhotoPath,
   galleryPhotoSmall,
@@ -42,12 +45,30 @@ import {
   galleryPhotos,
 } from '../src/content/galleryMedia.ts'
 
-/** The gallery draws entirely on the live site's own uploads. */
+/**
+ * `gallery:` is the clinic's delivered set, which lives in the repo under
+ * content/gallery/ rather than in seo-backup — it did not come from the live
+ * site. GALLERY_IMAGES overrides the folder, the way HOME_IMAGES does for
+ * import-home-images.ts, so a redelivery under a different name does not need a
+ * code change.
+ *
+ * `backup:` is kept for a photograph that has to come back from the live site's
+ * own WordPress uploads.
+ */
+const GALLERY_ROOT = process.env.GALLERY_IMAGES ?? path.join(ROOT, 'content', 'gallery', 'Zoho WorkDrive-7')
+
+const SOURCE_ROOTS: Record<string, string> = {
+  gallery: GALLERY_ROOT,
+  backup: MEDIA_FILES,
+}
+
 function resolveSource(from: string): string {
   const [root, ...rest] = from.split(':')
-  const rel = rest.join(':')
-  if (root !== 'backup') throw new Error(`Unsupported source root "${root}" in "${from}" — the gallery uses backup: only`)
-  return path.join(MEDIA_FILES, rel)
+  const base = SOURCE_ROOTS[root]
+  if (!base) {
+    throw new Error(`Unsupported source root "${root}" in "${from}" — expected one of ${Object.keys(SOURCE_ROOTS).join(', ')}`)
+  }
+  return path.join(base, rest.join(':'))
 }
 
 const outDir = path.join(PUBLIC, 'images', 'image-gallery')
@@ -141,6 +162,9 @@ if (held.length) {
 
 if (missing.length) {
   console.error(`\n${missing.length} source(s) not found:\n  ${missing.join('\n  ')}`)
-  console.error(`\n  backup: sources resolve against ${MEDIA_FILES}`)
+  for (const [name, base] of Object.entries(SOURCE_ROOTS)) {
+    console.error(`  ${name}: resolves against ${base}`)
+  }
+  console.error(`  set GALLERY_IMAGES to point at the clinic's folder if it moved.`)
   process.exit(1)
 }

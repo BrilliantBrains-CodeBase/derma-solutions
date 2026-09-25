@@ -40,17 +40,12 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { parse } from 'node-html-parser'
-import sharp from 'sharp'
 import { PUBLIC, SRC } from './paths.ts'
 import { homeVideosChannelId, homeVideosCount, homeVideosPosterPath, homeVideosPosterSlot } from '../src/content/homeVideos.ts'
+import { fetchPoster, writePoster } from './youtube-poster.ts'
 
 const OUT_FILE = path.join(SRC, 'content', 'homeVideos.generated.ts')
 const posterDir = path.join(PUBLIC, 'images', 'home-videos')
-
-/** Largest first. A maxres frame is 1280x720; the others are 4:3 with letterbox bars. */
-const POSTER_SOURCES = ['maxresdefault', 'sddefault', 'hqdefault'] as const
-/** Below this, what came back is YouTube's grey placeholder rather than a frame. */
-const MIN_POSTER_WIDTH = 240
 
 fs.mkdirSync(posterDir, { recursive: true })
 
@@ -80,40 +75,6 @@ async function fetchFeed(): Promise<FeedEntry[] | null> {
   return entries
 }
 
-/** Returns the decoded frame, or null when every rendition is missing or a placeholder. */
-async function fetchPoster(id: string): Promise<Buffer | null> {
-  for (const source of POSTER_SOURCES) {
-    const response = await fetch(`https://i.ytimg.com/vi/${id}/${source}.jpg`)
-    if (!response.ok) continue
-    const buffer = Buffer.from(await response.arrayBuffer())
-    const meta = await sharp(buffer).metadata()
-    if ((meta.width ?? 0) < MIN_POSTER_WIDTH) continue
-    return buffer
-  }
-  return null
-}
-
-async function writePoster(id: string, buffer: Buffer) {
-  const meta = await sharp(buffer).metadata()
-  const srcW = meta.width!
-  const srcH = meta.height!
-  // Centre-crop to 16:9 first, exactly as fetch-video-gallery.ts does.
-  const cropW = Math.min(srcW, Math.round((srcH * 16) / 9))
-  const cropH = Math.round((cropW * 9) / 16)
-  const width = Math.min(homeVideosPosterSlot.width, cropW)
-
-  await sharp(buffer)
-    .extract({
-      left: Math.floor((srcW - cropW) / 2),
-      top: Math.floor((srcH - cropH) / 2),
-      width: cropW,
-      height: cropH,
-    })
-    .resize(width, Math.round((width * 9) / 16))
-    .jpeg({ quality: 80, mozjpeg: true })
-    .toFile(path.join(PUBLIC, homeVideosPosterPath(id)))
-}
-
 const feed = await fetchFeed()
 if (!feed) {
   if (fs.existsSync(OUT_FILE)) {
@@ -133,7 +94,7 @@ for (const entry of feed) {
     skipped.push(entry.id)
     continue
   }
-  await writePoster(entry.id, poster)
+  await writePoster(poster.buffer, homeVideosPosterSlot.width, path.join(PUBLIC, homeVideosPosterPath(entry.id)))
   picked.push(entry)
 }
 

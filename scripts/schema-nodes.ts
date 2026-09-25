@@ -128,13 +128,30 @@ export function aboutUsExtraNodes(url: string): Node[] {
 }
 
 /**
+ * The doctors /our-doctors/ actually shows a profile block for, in page order.
+ *
+ * It mirrors `ourDoctorsPage.doctors` in src/content/doctor.ts, which is the
+ * page itself. It is repeated here rather than imported because that module
+ * imports through the `@/` alias, which tsx does not resolve for scripts —
+ * keep the two in step by hand, and see the note on the removed A5 block.
+ *
+ * Dr Chandhana is absent: her block was removed from the page on 2026-09-25,
+ * so a node claiming this page profiles her would describe something that is
+ * not there. Her own page still carries her.
+ */
+const OUR_DOCTORS_PROFILED = ['sandeep-mahapatra', 'sumedha-tirthani', 'thyagaraj']
+
+/**
  * /our-doctors/ — a Physician node for each doctor profiled on the page who
- * does not already have one in the cloned template graph. Dr Sandeep (team[0])
- * is absent for the same reason as on /about-us/.
+ * does not already have one in the cloned template graph. Dr Sandeep is in that
+ * list but is skipped here for the same reason as on /about-us/: his node is
+ * cloned in, and re-declaring an @id would emit it twice in one graph.
  *
  * Each node's `subjectOf` is this page; `mainEntityOfPage` stays the doctor's
  * own profile, which is the page that is about them.
  */
 export function ourDoctorsExtraNodes(url: string): Node[] {
-  return team.slice(1).map(member => physician(member, url))
+  return team
+    .filter(member => member.id !== team[0].id && OUR_DOCTORS_PROFILED.includes(member.id))
+    .map(member => physician(member, url))
 }

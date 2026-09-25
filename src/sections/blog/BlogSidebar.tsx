@@ -19,8 +19,9 @@ import { BlogTocPanel } from '@/sections/blog/BlogToc'
  *     position. From lg only: the phone keeps the collapsible list above the
  *     article.
  *  2. The opening-hours card, shared with the treatment sidebar, with a call
- *     button added. It dials (contact.telHref) as the footer's CTA does, rather
- *     than pointing at /book-appointment/, which is not a built route yet.
+ *     button added. It dials (contact.telHref) as the footer's CTA does.
+ *     (Chosen while /book-appointment/ was unbuilt; it exists now, so the
+ *     button could point there instead if that is preferred.)
  *  3. Recent Articles — the five newest posts, on the services card's rows.
  *
  * How the column is arranged, and why it is not the treatment sidebar's sticky:

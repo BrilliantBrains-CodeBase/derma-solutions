@@ -94,12 +94,25 @@ const samePath = (a: string, b: string) => a.replace(/\/+$/, '') === b.replace(/
 
 const panelId = (label: string) => `nav-panel-${label.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`
 
-/** The reference's group label: Marcellus over an accent@10% hairline. */
-function GroupHeading({ children }: { children: React.ReactNode }) {
+const groupHeading =
+  'mb-[8px] border-b border-divider px-[16px] pb-[10px] font-display text-[18px] leading-[24px] text-primary lg:px-[10px]'
+
+/**
+ * The reference's group label: Marcellus over an accent@10% hairline. A group
+ * with an overview page (serviceMenu's optional `path`) links its label there.
+ */
+function GroupHeading({ children, path, onClick }: { children: React.ReactNode; path?: string; onClick?: () => void }) {
+  if (!path) return <p className={groupHeading}>{children}</p>
   return (
-    <p className="mb-[8px] border-b border-divider px-[16px] pb-[10px] font-display text-[18px] leading-[24px] text-primary lg:px-[10px]">
+    <NavLink
+      to={path}
+      onClick={onClick}
+      className={({ isActive }) =>
+        `block rounded-t-[10px] transition-colors hover:text-accent ${groupHeading} ${focusRing} ${isActive ? 'text-accent' : ''}`
+      }
+    >
       {children}
-    </p>
+    </NavLink>
   )
 }
 
@@ -269,8 +282,10 @@ export function Header() {
               if ('groups' in item) {
                 const id = panelId(item.label)
                 const open = openKey === item.label
-                const active = item.groups.some(group =>
-                  group.items.some(entry => samePath(entry.path, pathname)),
+                const active = item.groups.some(
+                  group =>
+                    ('path' in group && samePath(group.path, pathname)) ||
+                    group.items.some(entry => samePath(entry.path, pathname)),
                 )
                 return (
                   <li
@@ -297,7 +312,9 @@ export function Header() {
                         >
                           {item.groups.map(group => (
                             <div key={group.group}>
-                              <GroupHeading>{group.group}</GroupHeading>
+                              <GroupHeading path={'path' in group ? group.path : undefined} onClick={closeAll}>
+                                {group.group}
+                              </GroupHeading>
                               <ul className="max-lg:pb-[10px]">
                                 {group.items.map(entry => (
                                   <li key={entry.path}>

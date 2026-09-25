@@ -12,6 +12,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { parseCsv } from './csv.ts'
 import { SEO_MAP_CSV, SCHEMA_DIR, DIST, backupKey } from './paths.ts'
+import { TITLE_OVERRIDES } from './seo-overrides.ts'
 
 if (!fs.existsSync(DIST)) throw new Error('dist/ not found — run `npm run build` first')
 
@@ -34,6 +35,7 @@ const rows = parseCsv(fs.readFileSync(SEO_MAP_CSV, 'utf8'))
 console.log(`Verifying ${rows.length} URLs against the live-site capture…\n`)
 
 let ogImageAdded = 0
+const titlesOverridden: string[] = []
 
 for (const row of rows) {
   const urlPath = new URL(row.url).pathname
@@ -43,8 +45,13 @@ for (const row of rows) {
   const html = fs.readFileSync(file, 'utf8')
 
   /* ---- frozen signals: must match the capture exactly -------------------- */
+  // A slug in TITLE_OVERRIDES is checked just as strictly, against the new
+  // string instead of the captured one. See scripts/seo-overrides.ts.
+  const wantTitle = TITLE_OVERRIDES[row.slug] ?? row.title
+  if (TITLE_OVERRIDES[row.slug]) titlesOverridden.push(`${row.url}\n      was: ${row.title}\n      now: ${wantTitle}`)
+
   const title = decode(html.match(/<title[^>]*>([\s\S]*?)<\/title>/)?.[1] ?? '')
-  if (title !== row.title) fail(row.url, `title\n      want: ${row.title}\n      got:  ${title}`)
+  if (title !== wantTitle) fail(row.url, `title\n      want: ${wantTitle}\n      got:  ${title}`)
 
   const description = meta(html, 'name', 'description')
   if (description !== row.meta_description)
@@ -93,8 +100,14 @@ if (failures.length) {
   process.exit(1)
 }
 
-console.log(`PASS — ${rows.length}/${rows.length} URLs reproduce the capture exactly.`)
-console.log('  title, meta description, canonical, robots, twitter:card  identical')
+if (titlesOverridden.length) {
+  console.log(`Deliberate title rewrites (${titlesOverridden.length}) — seo-overrides.ts:`)
+  for (const t of titlesOverridden) console.log(`  ${t}\n`)
+}
+
+const exact = rows.length - titlesOverridden.length
+console.log(`PASS — ${exact}/${rows.length} URLs reproduce the capture exactly.`)
+console.log('  title, meta description, canonical, robots, twitter:card  identical (titles: see above)')
 console.log('  JSON-LD                                                   byte-identical')
 console.log('  <h1>                                                      exactly one per page (fix-plan A5)')
 console.log(`  og:image                                                  added to ${ogImageAdded} pages that had none (fix-plan A4)`)

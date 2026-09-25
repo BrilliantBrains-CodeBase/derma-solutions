@@ -16,9 +16,20 @@ import fs from 'node:fs'
 import path from 'node:path'
 import sharp from 'sharp'
 import type { Sharp } from 'sharp'
-import { PUBLIC } from './paths.ts'
+import { PUBLIC, ROOT } from './paths.ts'
 
 const SOURCE_ROOT = process.env.HOME_IMAGES ?? '/Users/d1/Downloads/Website/Home Page'
+
+/**
+ * The See-the-Difference band is the one group here whose sources live in the
+ * repo rather than in the shoot folder: it now shares the clinic's delivered
+ * before/after set with the image gallery, so the homepage teaser and the page
+ * it teases cannot show different-looking composites of the same treatment.
+ * Same folder and same override as scripts/import-gallery-images.ts.
+ */
+const GALLERY_ROOT = process.env.GALLERY_IMAGES ?? path.join(ROOT, 'content', 'gallery', 'Zoho WorkDrive-7')
+
+const SOURCE_ROOTS = { home: SOURCE_ROOT, gallery: GALLERY_ROOT } as const
 
 /**
  * `width`/`height` are the output pixels, not the CSS box: every entry is 2x the
@@ -31,6 +42,8 @@ const SOURCE_ROOT = process.env.HOME_IMAGES ?? '/Users/d1/Downloads/Website/Home
  */
 type Entry = {
   from: string
+  /** Which root `from` resolves against. Defaults to the shoot folder. */
+  root?: keyof typeof SOURCE_ROOTS
   to: string
   width: number
   height: number
@@ -134,12 +147,29 @@ const IMAGES: Entry[] = [
 
   /* See the Difference. These arrive pre-composed — both halves and their
    * Before/After labels are already in the file — so the band renders them
-   * whole and the only job here is the downscale. 'centre' because a composite
-   * has two faces and 'attention' would favour one of them. */
-  { from: 'Before & After/1.png', to: 'images/decor/transformations/transformation-1.jpg', width: 1240, height: 992, position: 'centre' },
-  { from: 'Before & After/2.png', to: 'images/decor/transformations/transformation-2.jpg', width: 1240, height: 992, position: 'centre' },
-  { from: 'Before & After/3.png', to: 'images/decor/transformations/transformation-3.jpg', width: 1240, height: 992, position: 'centre' },
-  { from: 'Before & After/4.png', to: 'images/decor/transformations/transformation-4.jpg', width: 1240, height: 992, position: 'centre' },
+   * whole and the only job here is the downscale.
+   *
+   * Four of the clinic's delivered ten, the same files the image gallery shows
+   * (content/gallery/), so the teaser and the gallery are one set rather than
+   * two that can drift apart. They replace the earlier `Before & After/1-4.png`
+   * from the shoot folder, which were unmasked and carried no labels of their
+   * own.
+   *
+   * Square, 1250 for the band's 625px slot at 2x. The source is 1:1 and the
+   * frame is now 1:1 too (see TransformationImage), so there is no crop at all:
+   * the old 5:4 frame would have taken 220px off the top and bottom of a square
+   * source, and these files carry their BEFORE/AFTER labels along the bottom
+   * edge. 'centre' is kept as a belt-and-braces guard — with no crop to make it
+   * cannot matter, but it stops 'attention' becoming the default if the slot
+   * ever changes shape again.
+   *
+   * Which four: the three in the set with no third-party clinic signage in
+   * shot (1, 5, 6) plus the one whose signage is least prominent (8). See the
+   * TODO(compliance) on assets.transformation1 in src/config/site.ts. */
+  { from: '1.png', root: 'gallery', to: 'images/decor/transformations/transformation-1.jpg', width: 1250, height: 1250, position: 'centre' },
+  { from: '5.png', root: 'gallery', to: 'images/decor/transformations/transformation-2.jpg', width: 1250, height: 1250, position: 'centre' },
+  { from: '6.png', root: 'gallery', to: 'images/decor/transformations/transformation-3.jpg', width: 1250, height: 1250, position: 'centre' },
+  { from: '8.png', root: 'gallery', to: 'images/decor/transformations/transformation-4.jpg', width: 1250, height: 1250, position: 'centre' },
 
   /* Appointment is deliberately absent. That band needs a figure with
    * transparency rather than a crop — it stands on an arch the section paints —
@@ -150,8 +180,9 @@ const IMAGES: Entry[] = [
 ]
 
 function write(entry: Entry, encode: (pipeline: Sharp) => Sharp) {
-  const src = path.join(SOURCE_ROOT, entry.from)
-  if (!fs.existsSync(src)) return { ok: false as const, from: entry.from }
+  const root = SOURCE_ROOTS[entry.root ?? 'home']
+  const src = path.join(root, entry.from)
+  if (!fs.existsSync(src)) return { ok: false as const, from: `${entry.root ?? 'home'}:${entry.from}` }
 
   const dest = path.join(PUBLIC, entry.to)
   fs.mkdirSync(path.dirname(dest), { recursive: true })
@@ -186,6 +217,7 @@ for (const line of written) console.log(`  ${line}`)
 console.log(`home images: ${written.length} written into public/`)
 
 if (missing.length) {
-  console.warn(`\nMISSING from ${SOURCE_ROOT}:\n  ${missing.join('\n  ')}`)
+  console.warn(`\nMISSING:\n  ${missing.join('\n  ')}`)
+  for (const [name, base] of Object.entries(SOURCE_ROOTS)) console.warn(`  ${name}: ${base}`)
   process.exitCode = 1
 }

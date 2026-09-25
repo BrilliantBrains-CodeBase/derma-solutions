@@ -41,8 +41,6 @@ import {
   treatmentSidebarImagePath,
   treatmentSidebarImageSlot,
   treatmentSidebarMedia,
-  treatmentVideoPosterPath,
-  treatmentVideoSlot,
   type MediaSource,
 } from '../src/content/treatmentMedia.ts'
 
@@ -165,7 +163,6 @@ for (const slug of slugs) {
   const media = treatmentMedia[slug]
   if (!media) continue
   await writeOne(slug, media.image, treatmentImageSlot, treatmentImagePath(slug))
-  await writeOne(slug, media.video, treatmentVideoSlot, treatmentVideoPosterPath(slug))
 
   // A comparison pair is cropped to the same slot as the featured image, and
   // both halves take the same anchor: 'attention' would find a different
@@ -198,7 +195,6 @@ const expected = new Set(
   slugs
     .flatMap(s => [
       treatmentImagePath(s),
-      treatmentVideoPosterPath(s),
       ...(treatmentMedia[s]?.compare
         ? [treatmentComparePath(s, 'before'), treatmentComparePath(s, 'after')]
         : []),
@@ -217,7 +213,7 @@ console.log(`treatment images: ${written} written to public/images/treatments/ (
 console.log(`treatment banners: ${bannersWritten} responsive files written (${bannersWritten / 3} pages)`)
 console.log(`treatment sidebars: ${sidebarsWritten} files written`)
 const stock = Object.values(treatmentMedia).flatMap(m =>
-  [m.image, m.video, m.compare?.before, m.compare?.after].filter(source => source?.stock),
+  [m.image, m.compare?.before, m.compare?.after].filter(source => source?.stock),
 )
 console.log(`  ${stock.length} of ${written} are stock/AI stand-ins pending clinic photography (TODO(assets))`)
 

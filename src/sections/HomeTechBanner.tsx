@@ -13,8 +13,8 @@ import { homeTechBanners } from '@/config/site'
  * broken image.
  *
  * There is no theme-reference behind this band either. It borrows the
- * full-bleed panel construction every other rounded band on the page uses —
- * 1400 wide inside a 20px gutter, radius 30 — and sets the subheading and
+ * rounded panel construction every other band on the page uses — radius 30
+ * — but runs to 1880 wide rather than 1400, and sets the subheading and
  * paragraph centred beneath it, which is how Services and Latest Blog head
  * their own centred bands.
  *
@@ -48,7 +48,7 @@ import { homeTechBanners } from '@/config/site'
  *
  * The artwork is also the one slot on the homepage that ships a srcset. Every
  * other decor file is a single 2x rendition, which works because none is wider
- * than ~620 CSS px; this one runs the full 1400, and a lone 2800 file would be
+ * than ~620 CSS px; this one runs up to 1880, and a lone 2800 file would be
  * a ~120 KB download for a phone rendering it at 335. See the note in
  * scripts/import-home-images.ts.
  *
@@ -77,13 +77,16 @@ export function HomeTechBanner({
   return (
     <section
       aria-labelledby={headingId}
-      className="mx-auto max-w-[1440px] px-[20px] py-[60px] lg:py-[80px]"
+      className="mx-auto max-w-[1920px] px-[12px] py-[60px] md:px-[20px] lg:py-[80px]"
     >
+      {/* Wider than the page's 1400 bands, and a tighter gutter on phones: the
+          devices are pixels in the artwork, so the only way to show them
+          larger is a larger strip. */}
       <div className={`overflow-hidden rounded-30 ${toneClass[banner.tone]}`}>
         <img
           src={banner.image}
           srcSet={`${banner.imageSmall} 1400w, ${banner.image} 2800w`}
-          sizes="(min-width: 1440px) 1400px, 100vw"
+          sizes="(min-width: 1920px) 1880px, 100vw"
           alt={banner.imageAlt}
           width={2800}
           height={613}

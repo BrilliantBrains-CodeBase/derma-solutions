@@ -34,7 +34,7 @@ import { YearsBadge } from '@/components/YearsBadge'
  *    call HomeAbout documents for its contact-card label — and the opposite of
  *    AboutApproach's Mission/Vision, which do have body copy and stay <h3>.
  *  - The CTA points at #appointment, an in-page target that exists, rather than
- *    the reference's /contact-us/ — one of the two KNOWN_DANGLING 404s in
+ *    the reference's /contact-us/ — the one KNOWN_DANGLING 404 in
  *    scripts/verify-links.ts. See the note on aboutJourney.cta.
  */
 

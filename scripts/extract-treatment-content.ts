@@ -31,6 +31,21 @@ const OUT_DIR = path.join(SRC, 'content', 'treatments')
 const EXPECTED_PAGES = 38
 
 /**
+ * Pages the client has rewritten since the master doc, as their own documents.
+ *
+ * A revision doc is the page as it should read, not the master doc's
+ * slot-by-slot table: an H1, a breadcrumb list, then the body in order —
+ * intro paragraphs, the feature H2 with its paragraph and three bullets, the
+ * video paragraphs, the why-choose H2 with its paragraphs and three bullets,
+ * and the FAQ. parseRevision below reads that shape and replaces the master
+ * doc's copy for the page; everything else about the page is unchanged, and
+ * the master doc stays the source for the other 37.
+ */
+const REVISIONS: Record<string, string> = {
+  'iv-glutathione-treatment-in-bangalore': 'content/Treatment/DERMA SOLUTIONS — HOMEPAGE COPY-2.md',
+}
+
+/**
  * Markdown to plain text. The doc is a Google Docs export: punctuation is
  * backslash-escaped (`\!`, `\+`, `\.`), emphasis is `**`, and editorial
  * asides such as ` *(see note 5\)*` trail some lines.
@@ -175,6 +190,117 @@ const parsed: Parsed[] = pages.map(page => {
   }
 })
 
+/* ---- revised pages ------------------------------------------------------- */
+
+type Revision = Pick<TreatmentContent, 'name' | 'intro' | 'feature' | 'videoBody' | 'why' | 'faqHeading' | 'faqs'>
+
+/**
+ * A revision doc (see REVISIONS). Its sections are H2s and its icon boxes are
+ * bullets — `* **Title**` followed by an indented line of copy — so the shape
+ * is read from the order of things rather than from slot numbers.
+ */
+function parseRevision(file: string, slug: string): Revision | null {
+  const lines = fs.readFileSync(path.join(ROOT, file), 'utf8').split('\n').map(l => l.trimEnd())
+
+  const breadcrumb = lines.filter(l => /^\d+\.\s/.test(l)).map(l => clean(l.replace(/^\d+\.\s*/, '')))
+  const name = breadcrumb[breadcrumb.length - 1] ?? ''
+  if (breadcrumb.length !== 3 || !name) problems.push(`${slug} revision: breadcrumb is not "Home / Services / <name>"`)
+
+  /** The body, split on H2s: everything before the first one is the intro. */
+  const sections: { heading: string; lines: string[] }[] = [{ heading: '', lines: [] }]
+  for (const line of lines) {
+    if (/^#{1,3} /.test(line) && !/^## /.test(line)) continue // the H1 and the FAQ questions' H3s
+    if (/^## /.test(line)) { sections.push({ heading: clean(line.replace(/^##\s*/, '')), lines: [] }); continue }
+    if (line.trim()) sections[sections.length - 1].lines.push(line)
+  }
+
+  /** `* **Title**` then an indented line of copy. */
+  function items(sectionLines: string[]) {
+    const found: { title: string; text: string }[] = []
+    for (let i = 0; i < sectionLines.length; i++) {
+      const bullet = sectionLines[i].match(/^\*\s+\*\*(.+?)\*\*\s*$/)
+      if (!bullet) continue
+      found.push({ title: clean(bullet[1]), text: clean(sectionLines[i + 1] ?? '') })
+    }
+    return found
+  }
+
+  /** Paragraphs are the lines that are neither a bullet nor a bullet's copy. */
+  function prose(sectionLines: string[]) {
+    const out: { text: string; afterBullet: boolean }[] = []
+    let seenBullet = false
+    for (let i = 0; i < sectionLines.length; i++) {
+      const line = sectionLines[i]
+      if (/^\*\s+\*\*/.test(line)) { seenBullet = true; i++; continue } // the bullet and its copy
+      if (/^\s/.test(line)) continue
+      out.push({ text: clean(line), afterBullet: seenBullet })
+    }
+    return out
+  }
+
+  const [introSection, featureSection, whySection, faqSection] = sections
+  if (sections.length !== 4) { problems.push(`${slug} revision: ${sections.length} sections, expected intro + 2 blocks + FAQ`); return null }
+
+  const intro = introSection.lines.filter(l => !/^\d+\.\s/.test(l)).map(clean)
+  if (intro.length !== 2) problems.push(`${slug} revision: intro has ${intro.length} paragraphs, expected 2`)
+
+  const featureProse = prose(featureSection.lines)
+  const featureItems = items(featureSection.lines)
+  const whyProse = prose(whySection.lines)
+  const whyItems = items(whySection.lines)
+  for (const [label, found] of [['feature', featureItems], ['why', whyItems]] as const) {
+    if (found.length !== 3) problems.push(`${slug} revision: ${label} has ${found.length} items, expected 3`)
+    if (found.some(i => !i.title || !i.text)) problems.push(`${slug} revision: ${label} has an empty item`)
+  }
+
+  // The paragraphs after the feature block's bullets are the video block's —
+  // slot 06 in the master doc, which a revision doc does not label.
+  const featureBody = featureProse.filter(p => !p.afterBullet).map(p => p.text)
+  const videoBody = featureProse.filter(p => p.afterBullet).map(p => p.text)
+  const whyBody = whyProse.filter(p => !p.afterBullet).map(p => p.text)
+  for (const [label, body] of [['feature', featureBody], ['video', videoBody], ['why', whyBody]] as const) {
+    if (!body.length) problems.push(`${slug} revision: ${label} block has no paragraph`)
+  }
+  if (whyProse.some(p => p.afterBullet)) problems.push(`${slug} revision: copy after the why block's bullets has nowhere to go`)
+
+  const faqs: TreatmentFaq[] = []
+  const questions = lines.filter(l => /^### /.test(l) && /\?\*\*\s*$/.test(l))
+  for (const q of questions) {
+    const i = lines.indexOf(q)
+    const answer = lines.slice(i + 1).find(l => l.trim())
+    faqs.push({ question: clean(q.replace(/^###\s*/, '').replace(/^\*\*\d+\\?\.\s*/, '**')), answer: clean(answer ?? '') })
+  }
+  if (faqs.length !== 4) problems.push(`${slug} revision: ${faqs.length} FAQs, expected 4`)
+  if (faqs.some(f => !f.question || !f.answer)) problems.push(`${slug} revision: an FAQ is missing its question or answer`)
+  // Every line under the FAQ heading is an answer — the questions are H3s, which
+  // the section split drops. Anything else there would be copy with nowhere to go.
+  if (faqSection.lines.length !== faqs.length) {
+    problems.push(`${slug} revision: ${faqSection.lines.length} lines under the FAQ heading for ${faqs.length} answers`)
+  }
+
+  const one = (body: string[]) => (body.length === 1 ? body[0] : body)
+  return {
+    name,
+    intro: [intro[0] ?? '', intro[1] ?? ''] as const,
+    feature: { heading: featureSection.heading, body: one(featureBody), items: featureItems as unknown as TreatmentBlock['items'] },
+    videoBody: one(videoBody),
+    why: { heading: whySection.heading, body: one(whyBody), items: whyItems as unknown as TreatmentBlock['items'] },
+    faqHeading: faqSection.heading,
+    faqs,
+  }
+}
+
+const revised = new Map<string, string>()
+for (const [slug, file] of Object.entries(REVISIONS)) {
+  const page = parsed.find(p => p.slug === slug)
+  if (!page) { problems.push(`revision for ${slug}, which is not a page in the master doc`); continue }
+  const revision = parseRevision(file, slug)
+  if (!revision) continue
+  if (revision.name !== page.name) problems.push(`${slug} revision: breadcrumb name "${revision.name}" differs from the master doc's "${page.name}"`)
+  Object.assign(page, revision)
+  revised.set(slug, file)
+}
+
 if (parsed.length !== EXPECTED_PAGES) problems.push(`found ${parsed.length} pages, expected ${EXPECTED_PAGES}`)
 
 const seen = new Set<string>()
@@ -183,11 +309,13 @@ for (const page of parsed) {
   seen.add(page.path)
 }
 
-// An authored page's SEO lives in scripts/added-pages.ts; it must still say
-// what the doc says.
+// An authored page's SEO lives in scripts/added-pages.ts; where this doc is
+// where that page's copy comes from, the two must still agree. The other added
+// pages (About Us, Our Doctors, Book Appointment) are not treatments and have
+// their own docs, so they are not this script's to check.
 for (const added of ADDED_PAGES) {
   const page = parsed.find(p => p.slug === added.slug)
-  if (!page) { problems.push(`added page ${added.slug} is not in the doc`); continue }
+  if (!page) continue
   if (page.seoTitle !== added.title) problems.push(`${added.slug}: added-pages.ts title differs from the doc`)
   if (page.seoDescription !== added.description) problems.push(`${added.slug}: added-pages.ts description differs from the doc`)
 }
@@ -222,7 +350,7 @@ for (const page of parsed) {
  * GENERATED FILE — DO NOT EDIT. Run \`npm run content:treatments\`.
  *
  * ${page.path}
- * Source: content/Treatment/Derma-Solutions-All-Treatment-Pages-Content.md
+ * Source: ${comment(revised.get(page.slug) ?? 'content/Treatment/Derma-Solutions-All-Treatment-Pages-Content.md')}
  *
  * The doc's image brief:  ${comment(page.imageBrief)}
  * The doc's video brief:  ${comment(page.videoBrief)}
@@ -237,4 +365,4 @@ export default content
   )
 }
 
-console.log(`treatment content: ${parsed.length} pages -> src/content/treatments/`)
+console.log(`treatment content: ${parsed.length} pages -> src/content/treatments/ (${revised.size} from a revision doc)`)

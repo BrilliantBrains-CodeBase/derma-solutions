@@ -66,6 +66,7 @@ ${services.join('\n')}
 ## Other
 
 - [Blog](${seo.canonicalBase}/blogs/)
+- [Media Coverage](${seo.canonicalBase}/media/)
 - [Image gallery](${seo.canonicalBase}/image-gallery/)
 - [Video gallery](${seo.canonicalBase}/video-gallery/)
 - [Privacy policy](${seo.canonicalBase}/privacy-policy/)

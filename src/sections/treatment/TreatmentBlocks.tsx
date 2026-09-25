@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react'
-import type { TreatmentBlock } from '@/content/treatment'
+import { paragraphs, type TreatmentBlock } from '@/content/treatment'
 import { FourCirclesIcon, LayersIcon, VennIcon } from '@/components/icons'
 import { RevealWords } from '@/components/RevealWords'
 
@@ -41,7 +41,11 @@ export function TreatmentFeature({ block, id }: { block: TreatmentBlock; id: str
       <h2 id={id} className={treatmentH2}>
         <RevealWords text={block.heading} />
       </h2>
-      <p className={`mt-[20px] ${treatmentBody}`}>{block.body}</p>
+      {paragraphs(block.body).map(paragraph => (
+        <p key={paragraph.slice(0, 32)} className={`mt-[20px] ${treatmentBody}`}>
+          {paragraph}
+        </p>
+      ))}
 
       <ul className="mt-[40px] grid gap-[20px] sm:grid-cols-3 xl:gap-[30px]">
         {block.items.map((item, index) => (
@@ -64,7 +68,11 @@ export function TreatmentWhy({ block, id }: { block: TreatmentBlock; id: string 
       <h2 id={id} className={treatmentH2}>
         <RevealWords text={block.heading} />
       </h2>
-      <p className={`mt-[20px] ${treatmentBody}`}>{block.body}</p>
+      {paragraphs(block.body).map(paragraph => (
+        <p key={paragraph.slice(0, 32)} className={`mt-[20px] ${treatmentBody}`}>
+          {paragraph}
+        </p>
+      ))}
 
       <ul className="mt-[40px] flex flex-col gap-[30px]">
         {block.items.map((item, index) => (

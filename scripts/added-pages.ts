@@ -102,13 +102,56 @@ export const ADDED_PAGES: AddedPage[] = [
     slug: 'our-doctors',
     title:
       'Our Doctors | Dermatologists & Plastic Surgeons in Marathahalli, Whitefield – Derma Solutions',
+    // The doc's description also named Dr. Chandhana Vishal N. Her block was
+    // removed from this page on 2026-09-25, and a description should describe
+    // the page it is on, so she is out of it too. Put her back in both places
+    // together if the block returns.
     description:
-      'Meet the doctors at Derma Solutions, Marathahalli, Whitefield, Bangalore: MD dermatologists Dr. Sandeep Mahapatra and Dr. Sumedha Tirthani, and plastic surgeons Dr. Thyagaraj and Dr. Chandhana Vishal N.',
+      'Meet the doctors at Derma Solutions, Marathahalli, Whitefield, Bangalore: MD dermatologists Dr. Sandeep Mahapatra and Dr. Sumedha Tirthani, and senior plastic surgeon Dr. Thyagaraj.',
     h1: 'Our Doctors',
     breadcrumbName: 'Our Doctors',
     publishedTime: '2026-09-21T00:00:00+05:30',
     note:
       'New page, not in the live capture. Built from content/doctor-page/ Part A; the doc\'s "check before live" notes 2 and 6 are outstanding.',
     extraNodes: ourDoctorsExtraNodes,
+  },
+  {
+    // The target of every "Make An Appointment" / "Book" CTA (contact.ctaHref).
+    // Layout: theme-reference/08-pages/page-section-map.json "book-appointment".
+    //
+    // TODO(content): there is no copy doc for this page — the title,
+    // description, H1 and breadcrumb are authored, not the client's. No
+    // extraNodes: the FAQ band repeats /about-us/'s questions, whose FAQPage
+    // node already ships with that page, and one FAQPage per set of answers is
+    // the rule.
+    slug: 'book-appointment',
+    title: 'Book an Appointment | Dermatologist in Marathahalli, Whitefield – Derma Solutions',
+    description:
+      'Book a consultation with the dermatologists and plastic surgeons at Derma Solutions, Marathahalli, Whitefield, Bangalore. Choose your doctor and preferred date, or call the clinic.',
+    h1: 'Book Appointment',
+    breadcrumbName: 'Book Appointment',
+    publishedTime: '2026-09-25T00:00:00+05:30',
+    note:
+      'New page, not in the live capture. The CTA target (contact.ctaHref). No copy doc — SEO and headings are authored and need client sign-off.',
+  },
+  {
+    // The clinic's press coverage — the "Media" half of the Blogs & Media
+    // section. Its content is src/content/media.ts, a list of outbound links
+    // rather than pages this site hosts.
+    //
+    // No extraNodes: the template graph's BreadcrumbList and WebPage are the
+    // right description of a link index, and a page of press mentions has no
+    // rich result to earn by inventing markup for them.
+    //
+    // TODO(content): title, description and H1 are authored, not the client's.
+    slug: 'media',
+    title: 'Media Coverage | Dr. Sandeep Mahapatra in the Press – Derma Solutions',
+    description:
+      'Press coverage featuring Dr. Sandeep Mahapatra of Derma Solutions, Bangalore — expert commentary, interviews and authored articles in Femina, News18, OnlyMyHealth, TheHealthSite, Happiest Health and more.',
+    h1: 'Media Coverage',
+    breadcrumbName: 'Media Coverage',
+    publishedTime: '2026-09-25T00:00:00+05:30',
+    note:
+      'New page, not in the live capture. Content is the PR agency\'s coverage report (May–August 2026); SEO copy is authored and needs client sign-off.',
   },
 ]

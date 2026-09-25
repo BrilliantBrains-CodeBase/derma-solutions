@@ -28,18 +28,13 @@
  */
 import fs from 'node:fs'
 import path from 'node:path'
-import sharp from 'sharp'
 import { PUBLIC, SRC } from './paths.ts'
 import { galleryPosterPath, galleryPosterSlot, galleryVideos } from '../src/content/galleryMedia.ts'
+import { fetchPoster, POSTER_SOURCES, writePoster } from './youtube-poster.ts'
 
 const OUT_DIR = path.join(SRC, 'content', 'gallery')
 const OUT_FILE = path.join(OUT_DIR, 'videoTitles.generated.ts')
 const posterDir = path.join(PUBLIC, 'images', 'video-gallery')
-
-/** Largest first. A maxres frame is 1280x720; the others are 4:3 with letterbox bars. */
-const POSTER_SOURCES = ['maxresdefault', 'sddefault', 'hqdefault'] as const
-/** Below this, what came back is YouTube's grey placeholder rather than a frame. */
-const MIN_POSTER_WIDTH = 240
 
 fs.mkdirSync(OUT_DIR, { recursive: true })
 fs.mkdirSync(posterDir, { recursive: true })
@@ -61,20 +56,6 @@ async function fetchTitle(id: string): Promise<string | null> {
   return typeof body.title === 'string' && body.title.trim() ? body.title.trim() : null
 }
 
-/** Returns the decoded frame, or null when every rendition is missing or a placeholder. */
-async function fetchPoster(id: string): Promise<{ buffer: Buffer; source: string } | null> {
-  for (const source of POSTER_SOURCES) {
-    const response = await fetch(`https://i.ytimg.com/vi/${id}/${source}.jpg`)
-    if (!response.ok) continue
-    const buffer = Buffer.from(await response.arrayBuffer())
-    const meta = await sharp(buffer).metadata()
-    if ((meta.width ?? 0) < MIN_POSTER_WIDTH) continue
-    if (source !== POSTER_SOURCES[0]) fellBack.push(`${id} (${source})`)
-    return { buffer, source }
-  }
-  return null
-}
-
 for (const video of galleryVideos) {
   const title = await fetchTitle(video.id)
   if (title) {
@@ -86,25 +67,8 @@ for (const video of galleryVideos) {
 
   const poster = await fetchPoster(video.id)
   if (poster) {
-    const meta = await sharp(poster.buffer).metadata()
-    const srcW = meta.width!
-    const srcH = meta.height!
-    // Centre-crop to 16:9 first. On a 4:3 rendition this removes the letterbox
-    // bars exactly; on maxres there is nothing to remove. Never upscale.
-    const cropW = Math.min(srcW, Math.round((srcH * 16) / 9))
-    const cropH = Math.round((cropW * 9) / 16)
-    const width = Math.min(galleryPosterSlot.width, cropW)
-
-    await sharp(poster.buffer)
-      .extract({
-        left: Math.floor((srcW - cropW) / 2),
-        top: Math.floor((srcH - cropH) / 2),
-        width: cropW,
-        height: cropH,
-      })
-      .resize(width, Math.round((width * 9) / 16))
-      .jpeg({ quality: 80, mozjpeg: true })
-      .toFile(path.join(PUBLIC, galleryPosterPath(video.id)))
+    if (poster.source !== POSTER_SOURCES[0]) fellBack.push(`${video.id} (${poster.source})`)
+    await writePoster(poster.buffer, galleryPosterSlot.width, path.join(PUBLIC, galleryPosterPath(video.id)))
   }
 }
 

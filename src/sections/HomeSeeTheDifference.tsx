@@ -27,8 +27,9 @@ import { CardCarousel } from '@/components/CardCarousel'
  *    square. None of that survives here — see the first departure below — so the
  *    four images sit two-by-two on the 30px gap the rest of the page uses, at
  *    r=30 on all four corners, which is the radius the reference's outer corners
- *    fit anyway. The band is a row taller than the capture as a result; the
- *    reasoning is on the grid itself below.
+ *    fit anyway. The band is a row taller than the capture as a result, and
+ *    taller again since the tiles became square to match the clinic's files;
+ *    the reasoning is on TransformationImage and on the grid below.
  *
  * The reference's hairline at y 981 and the four-tile counter row beneath it
  * are not built — see the departures below — so the measurements for them are
@@ -83,9 +84,16 @@ const focusRing =
  * gradient to carry one, and no per-side radius, because there is no seam in the
  * layout for a square corner to meet.
  *
- * 5:4 rather than the composites' own ratios, which run from 1.24:1 to 1.27:1
- * across the four. Pinning the frame is what keeps the row's baselines level;
- * object-cover takes the 1-2% off the top and bottom, well outside the faces.
+ * Square, because the files are. The four are now the clinic's delivered set,
+ * shared with the image gallery (src/content/galleryMedia.ts), and every one is
+ * a 1:1 composite with its BEFORE/AFTER label along the bottom edge.
+ *
+ * The frame used to be 5:4, pinned so the row's baselines stayed level while
+ * object-cover took 1-2% off composites that were already about 1.25:1. Against
+ * a square source that same frame would crop 220px off the top and bottom —
+ * straight through the labels. Matching the frame to the file removes the crop
+ * entirely, so there is nothing left to anchor wrongly, and the band agrees with
+ * the gallery it links to. The row grows a little taller and that is the trade.
  */
 function TransformationImage({ image, imageAlt }: { image: string; imageAlt: string }) {
   return (
@@ -93,11 +101,11 @@ function TransformationImage({ image, imageAlt }: { image: string; imageAlt: str
       <img
         src={image}
         alt={imageAlt}
-        width={1240}
-        height={992}
+        width={1250}
+        height={1250}
         loading="lazy"
         decoding="async"
-        className="aspect-[5/4] w-full object-cover"
+        className="aspect-square w-full object-cover"
       />
     </figure>
   )

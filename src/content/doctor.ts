@@ -279,26 +279,13 @@ export const ourDoctorsPage = {
         ],
       },
     },
-    {
-      id: 'chandhana-vishal-n',
-      tone: 'cream',
-      block: {
-        eyebrow: 'Plastic, Reconstructive & Aesthetic Surgeon',
-        heading: 'Dr. Chandhana Vishal N',
-        body: 'Dr. Chandhana Vishal N is a highly qualified plastic, reconstructive and aesthetic surgeon with an MCh in Plastic Surgery and international fellowship training in aesthetic surgery from Madrid, Spain. From reconstructive surgeries to confidence-boosting cosmetic enhancements, she brings skill, compassion and innovation to every treatment at Derma Solutions.',
-        rows: [
-          {
-            label: 'Qualification:',
-            value:
-              'MBBS, MCh (Plastic Surgery), International Fellowship in Aesthetic Surgery (Madrid)',
-          },
-          { label: 'Experience:', value: TO_CONFIRM },
-          { label: 'Position:', value: 'Plastic, Reconstructive & Aesthetic Surgeon' },
-          phoneRow,
-          emailRow,
-        ],
-      },
-    },
+    // A5, Dr. Chandhana Vishal N, is deliberately absent: removed from this page
+    // on the client's instruction, 2026-09-25. Everything else about her stays —
+    // her profile page at /dr-chandhana-vishal-n-plastic-surgeon/, the header's
+    // Doctors dropdown and the About page's team band. To put the block back,
+    // copy A5 out of content/doctor-page/…Doctors-About-Page-Content.md and add
+    // it here with tone 'cream'; also restore her id in OUR_DOCTORS_PROFILED in
+    // scripts/schema-nodes.ts so the page's JSON-LD matches what it shows.
   ] satisfies readonly { id: TeamId; tone: Tone; block: ProfileBlock }[],
 
   /** A6 — Why Choose Our Doctors. */

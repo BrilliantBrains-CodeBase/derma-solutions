@@ -29,10 +29,8 @@ import { CalendarCheckIcon, PhoneIcon, WhatsAppIcon } from '@/components/icons'
  *    padding. Changing the height here without the footer clips the copyright
  *    and legal rows behind the bar.
  *
- * TODO(rebuild): Book points at contact.ctaHref (/book-appointment/), which
- * 404s today — the same dangling target the header pill and the hero already
- * use, whitelisted in scripts/verify-links.ts. Pointing all three at one place
- * means the page landing fixes them together.
+ * Book points at contact.ctaHref (/book-appointment/) — the same target the
+ * header pill and the hero use, so all three move together if it ever changes.
  */
 
 const focusRing =
@@ -87,7 +85,7 @@ export function MobileActionBar() {
           aria-label={contact.ctaLabel}
           className={`flex h-full flex-col items-center justify-end pb-[10px] ${focusRing} rounded-[10px]`}
         >
-          <span className="-mt-[26px] flex h-[62px] w-[62px] shrink-0 items-center justify-center rounded-full bg-accent text-white shadow-[0_6px_18px_rgba(205,95,55,0.40)] ring-[6px] ring-white transition-opacity hover:opacity-90">
+          <span className="-mt-[26px] flex h-[62px] w-[62px] shrink-0 items-center justify-center rounded-full bg-accent text-white shadow-[0_6px_18px_rgba(139,94,69,0.40)] ring-[6px] ring-white transition-opacity hover:opacity-90">
             <CalendarCheckIcon className="h-[24px] w-[24px]" />
           </span>
           <span className={`mt-[4px] text-accent ${label}`}>{actionBar.bookLabel}</span>

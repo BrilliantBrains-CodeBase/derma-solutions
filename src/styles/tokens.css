@@ -8,12 +8,13 @@
 @theme {
   /* -- colour ------------------------------------------------------------ */
   --color-primary:      #481E0B;   /* deep brown  - headings, dark sections  */
-  --color-secondary:    #FCF4F1;   /* cream       - alternating section bg   */
-  --color-accent:       #CD5F37;   /* terracotta  - CTAs, eyebrows, icons    */
+  --color-secondary:    #F7F2EE;   /* cream       - alternating section bg   */
+  --color-accent:       #8B5E45;   /* mocha       - CTAs, eyebrows, icons    */
+  --color-accent-light: #C9A58C;   /* light mocha - accent on dark sections  */
   --color-body:         #69615D;   /* warm grey   - paragraph text           */
   --color-white:        #FFFFFF;
   --color-black:        #000000;
-  --color-divider:      #CD5F371A; /* accent @10% - hairlines on light       */
+  --color-divider:      #8B5E451A; /* accent @10% - hairlines on light       */
   --color-divider-dark: #FFFFFF1A; /* white  @10% - hairlines on dark        */
   /* Form feedback. The theme's own values, from style.css:
    * .wpcf7-not-valid-tip and .wpcf7-form.sent .wpcf7-response-output. */

@@ -21,8 +21,8 @@ export interface TreatmentContent {
   intro: readonly [string, string]
   /** Slot 05 — H2, paragraph and three icon boxes. */
   feature: TreatmentBlock
-  /** Slot 06 — the paragraph under the video. */
-  videoBody: string
+  /** Slot 06 — the paragraph, or paragraphs, under the video. */
+  videoBody: Prose
   /** Slot 07 — H2, paragraph and three feature items. */
   why: TreatmentBlock
   /** Slot 08. */
@@ -32,9 +32,24 @@ export interface TreatmentContent {
 
 export interface TreatmentBlock {
   heading: string
-  body: string
+  body: Prose
   items: readonly [TreatmentItem, TreatmentItem, TreatmentItem]
 }
+
+/**
+ * One paragraph, or several.
+ *
+ * The master copy doc gives every block a single paragraph. A page revised
+ * since — see the REVISIONS map in scripts/extract-treatment-content.ts — can
+ * run to two, so the type takes either and `paragraphs()` normalises it. A
+ * plain string stays a string in the generated files, so the pages that were
+ * not revised are byte-identical to before.
+ */
+export type Prose = string | readonly string[]
+
+/** Always-an-array view of a `Prose` value, for rendering. */
+export const paragraphs = (prose: Prose): readonly string[] =>
+  typeof prose === 'string' ? [prose] : prose
 
 export interface TreatmentItem {
   title: string

@@ -15,7 +15,7 @@ export default function CategoryUncategorized() {
       slug="category__uncategorized"
       hero={h1 => (
         <PageHeader h1={h1}>
-          <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Blogs', href: '/blogs/' }, { label: 'Uncategorized' }]} />
+          <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Blogs & Media', href: '/blogs/' }, { label: 'Uncategorized' }]} />
         </PageHeader>
       )}
     >

@@ -1,15 +1,15 @@
-import { PageShell } from '@/components/PageShell'
+import { ContentPage } from '@/templates/ContentPage'
+import content from '@/content/pages/cosmetic-dermatology-in-bangalore'
 
 /**
  * /cosmetic-dermatology-in-bangalore/
  *
- * Blank by design. Captured copy for this page: seo-backup/02-markdown/cosmetic-dermatology-in-bangalore.md
+ * Live-site copy as captured: seo-backup/02-markdown/cosmetic-dermatology-in-bangalore.md
  * Screenshots: seo-backup/05-screenshots/{desktop,mobile}/cosmetic-dermatology-in-bangalore.png
+ *
+ * Built on the shared content template. Copy: src/content/pages/cosmetic-dermatology-in-bangalore.ts,
+ * hand-ported from the capture above.
  */
 export default function CosmeticDermatologyInBangalore() {
-  return (
-    <PageShell slug="cosmetic-dermatology-in-bangalore">
-      {/* content goes here */}
-    </PageShell>
-  )
+  return <ContentPage slug="cosmetic-dermatology-in-bangalore" content={content} />
 }

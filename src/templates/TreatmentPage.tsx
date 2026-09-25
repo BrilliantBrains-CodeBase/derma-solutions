@@ -3,7 +3,7 @@ import { PageShell } from '@/components/PageShell'
 import { Photo } from '@/components/Photo'
 import { VideoFacade } from '@/components/VideoFacade'
 import { treatmentPage } from '@/config/site'
-import type { TreatmentContent } from '@/content/treatment'
+import { paragraphs, type TreatmentContent } from '@/content/treatment'
 import {
   treatmentComparePath,
   treatmentBannerPath,
@@ -13,10 +13,9 @@ import {
   treatmentImagePath,
   treatmentImageSlot,
   treatmentMedia,
-  treatmentVideoPosterPath,
-  treatmentVideoSlot,
   treatmentYoutubeId,
 } from '@/content/treatmentMedia'
+import { videoPosterPath, videoPosterSlot } from '@/content/videoPosters'
 import { getSeo } from '@/seo/registry.generated'
 import { TreatmentPageHeader } from '@/sections/treatment/TreatmentPageHeader'
 import { TreatmentSidebar } from '@/sections/treatment/TreatmentSidebar'
@@ -120,16 +119,28 @@ export function TreatmentPage({ slug, content }: { slug: string; content: Treatm
 
           <TreatmentFeature block={content.feature} id="treatment-feature-heading" />
 
+          {/*
+            Slot 06. The poster is the video's own thumbnail (see
+            src/content/videoPosters.ts), so the frame is 16:9 rather than the
+            reference's 847x380 letterbox — cropping a thumbnail into that band
+            cuts the title text this channel puts along the top and bottom.
+            posterAlt is empty because the play button's own aria-label names
+            the video, as it does in the gallery.
+          */}
           <VideoFacade
             youtubeId={treatmentYoutubeId(slug)}
             title={treatmentPage.videoTitle(content.name)}
-            poster={treatmentVideoPosterPath(slug)}
-            posterAlt={media.video.alt}
-            posterWidth={treatmentVideoSlot.width}
-            posterHeight={treatmentVideoSlot.height}
-            className="mt-[40px] aspect-[847/380] w-full rounded-30"
+            poster={videoPosterPath(treatmentYoutubeId(slug))}
+            posterAlt=""
+            posterWidth={videoPosterSlot.width}
+            posterHeight={videoPosterSlot.height}
+            className="mt-[40px] aspect-video w-full rounded-30"
           />
-          <p className={`mt-[30px] ${treatmentBody}`}>{content.videoBody}</p>
+          {paragraphs(content.videoBody).map(paragraph => (
+            <p key={paragraph.slice(0, 32)} className={`mt-[30px] ${treatmentBody}`}>
+              {paragraph}
+            </p>
+          ))}
 
           <TreatmentWhy block={content.why} id="treatment-why-heading" />
 

@@ -16,12 +16,12 @@ import { photoSizes } from '@/content/gallery/photoSizes.generated'
  * seo-backup/05-screenshots/desktop/image-gallery.png for the running order.
  *
  * Three columns, and the tiles are not cropped to a common frame: each keeps its
- * source's own aspect. Twelve of the fourteen sources are square within 2%, so
- * the rows still read as even — only case-screenshot-2023 (480x366) is visibly
- * shorter than its neighbours, and case-04 (portrait) is held back from the page
- * entirely. Not cropping is what keeps the labels burned into the edges of
- * several of these files — case-screenshot-2023's BEFORE/AFTER runs across its
- * bottom 15% — inside the frame instead of under the crop line.
+ * source's own aspect. The clinic's set is ten uniform 2195x2195 squares, so
+ * today every tile is square and the rows are even. Not cropping still matters:
+ * each file carries its BEFORE/AFTER label along its bottom edge, which is
+ * exactly what a crop to a fixed frame would take off, and it means a
+ * differently-shaped photograph can be added later without anyone having to
+ * reason about a frame.
  *
  * The cost, stated plainly because the alternative was argued here before and
  * this replaces it: a tile is ~407px at lg, so each half of a pair is ~200px
@@ -37,14 +37,16 @@ import { photoSizes } from '@/content/gallery/photoSizes.generated'
  *    pages; these are photographs with nowhere to go. BlogGrid.tsx sets the
  *    precedent for the rest — a full index is a plain grid at every width, not a
  *    swipe track, so CardCarousel is deliberately not used here.
- *  - A figcaption saying which half is which, on the ten files that do not
- *    already say so in their own pixels.
+ *  - A figcaption saying which half is which, for any file that does not
+ *    already say so in its own pixels.
  *
- * That last one is the opposite of the call HomeSeeTheDifference makes, and for
- * the same reason. Its four composites carry "Before" and "After" burned in, so
- * drawing a caption would print the word twice. Only four of these fourteen do;
- * the other ten are two photographs with nothing telling a reader which came
- * first. `labelled` marks the four, and the caption renders for the rest.
+ * That caption renders on nothing at the moment: every photograph in the
+ * clinic's set carries BEFORE and AFTER burned in, so all ten are `labelled`
+ * and all ten suppress it. It is kept rather than deleted because the set it
+ * replaced was the other way round — ten of those fourteen said nothing about
+ * which shot came first — and because drawing it unconditionally would print
+ * "Before" twice, which is the same call HomeSeeTheDifference.tsx makes about
+ * its own composites.
  *
  * The <img> dimensions come from photoSizes.generated.ts — what sharp actually
  * wrote — so the browser reserves each tile's real box before the pixels land.
