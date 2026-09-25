@@ -81,6 +81,11 @@ const linkStyle =
   'rounded-[4px] transition-colors hover:text-accent-light focus-visible:outline-2 ' +
   'focus-visible:outline-offset-4 focus-visible:outline-accent-light'
 
+/** The address's Google links: already accent-coloured, so they hover to white. */
+const directionLinkStyle =
+  'rounded-[4px] underline underline-offset-4 transition-colors hover:text-white focus-visible:outline-2 ' +
+  'focus-visible:outline-offset-4 focus-visible:outline-accent-light'
+
 export function Footer() {
   // The gutter is cream, not the body's white: <PreFooter> above is cream, so a
   // white gutter would put three colours together at the panel's rounded top
@@ -117,9 +122,9 @@ export function Footer() {
           <div className="grid gap-[40px] lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-[60px]">
             {/* Brand */}
             <div>
-              {/* White chip: the mark is dark purple and teal, so it needs a
-                  light ground to read on the dark panel. See the TODO on
-                  assets.logo — there is still no white/mono version. */}
+              {/* White chip: the mark is dark brown, so it needs a light
+                  ground to read on the dark panel. There is still no
+                  white/mono version of assets.logo. */}
               <Link
                 to="/"
                 className="inline-flex rounded-[10px] bg-white p-[10px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-light"
@@ -127,7 +132,7 @@ export function Footer() {
                 <img
                   src={assets.logo}
                   alt={assets.logoAlt}
-                  width={159}
+                  width={126}
                   height={51}
                   className="h-[51px] w-auto"
                 />
@@ -220,6 +225,17 @@ export function Footer() {
                       ))}
                     </span>
                   </address>
+                  <p className="mt-[14px] flex flex-wrap gap-x-[18px] gap-y-[6px] pl-[28px] font-sans text-[14px] leading-[24px] font-semibold text-accent-light">
+                    <a href={location.google.directionsUrl} target="_blank" rel="noopener noreferrer" className={directionLinkStyle}>
+                      Get Directions
+                    </a>
+                    {/* Null until GOOGLE_PLACE_ID is filled in, in src/config/site.ts. */}
+                    {location.google.reviewUrl && (
+                      <a href={location.google.reviewUrl} target="_blank" rel="noopener noreferrer" className={directionLinkStyle}>
+                        Review Us on Google
+                      </a>
+                    )}
+                  </p>
                 </div>
               </div>
             </div>

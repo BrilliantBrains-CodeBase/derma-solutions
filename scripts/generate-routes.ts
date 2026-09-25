@@ -68,6 +68,13 @@ ${stubs.map(lazyRoute).join('\n')}
        */
 ${posts.map(postRoute).join('\n')}
 
+      /* ---- Thank you -------------------------------------------------------
+       * AppointmentForm's success redirect. Hand-added rather than in the SEO
+       * registry, like the 404: prerendered, but noindex (its own <Head>) and
+       * never in the sitemap. See src/pages/ThankYou.tsx.
+       */
+      { path: 'thank-you', lazy: async () => ({ Component: (await import('./pages/ThankYou')).default }) },
+
       /* ---- Not found -------------------------------------------------------
        * '404' is prerendered so static hosts have a 404.html to serve; the
        * post-build step moves it to dist/404.html. The catch-all handles

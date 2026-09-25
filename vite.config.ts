@@ -6,12 +6,15 @@ import fs from 'node:fs'
 import path from 'node:path'
 
 const SCHEMA_DIR = fileURLToPath(new URL('./src/seo/schema', import.meta.url))
+/** Authored nodes beside the capture — scripts/build-schema-extra.ts. Optional per page. */
+const SCHEMA_EXTRA_DIR = fileURLToPath(new URL('./src/seo/schema-extra', import.meta.url))
 
 /**
  * Route pathname -> schema filename stem, built from the generated registry so
  * the two can never drift. Read lazily: the registry is itself generated.
  */
 let injected = 0
+let injectedExtra = 0
 let schemaKeys: Map<string, string> | undefined
 function schemaKeyByRoute(): Map<string, string> {
   if (schemaKeys) return schemaKeys
@@ -65,8 +68,16 @@ export default defineConfig({
 
       injected++
       const raw = fs.readFileSync(path.join(SCHEMA_DIR, `${key}.json`), 'utf8').trim()
-      const tag = `<script type="application/ld+json">${raw}</script>`
-      return renderedHTML.replace('</head>', `${tag}</head>`)
+      let tags = `<script type="application/ld+json">${raw}</script>`
+
+      // The authored block goes second, as its own script, so the captured one
+      // stays first and byte-identical — scripts/verify-seo.ts reads the first.
+      const extra = path.join(SCHEMA_EXTRA_DIR, `${key}.json`)
+      if (fs.existsSync(extra)) {
+        injectedExtra++
+        tags += `<script type="application/ld+json">${fs.readFileSync(extra, 'utf8').trim()}</script>`
+      }
+      return renderedHTML.replace('</head>', `${tags}</head>`)
     },
 
     /** A page built without its schema is the failure this whole setup exists to prevent. */
@@ -76,6 +87,7 @@ export default defineConfig({
         throw new Error(`JSON-LD injected into ${injected} pages, expected ${expected}. A route is missing its schema.`)
       }
       console.log(`\n[json-ld] injected ${injected} graphs byte-verbatim from src/seo/schema/`)
+      console.log(`[json-ld] injected ${injectedExtra} authored graphs from src/seo/schema-extra/`)
     },
   },
 })

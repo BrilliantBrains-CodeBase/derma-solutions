@@ -32,6 +32,20 @@ const SITE_URL = "https://dermasolutions.co.in";
 /** E.164, the only form safe for `tel:` hrefs and schema. */
 const PHONE_E164 = "+919741223217";
 
+/** The clinic's pin, as the live schema's GeoCoordinates give it. */
+const GEO = { latitude: 12.956707, longitude: 77.707275 } as const;
+const LAT_LNG = `${GEO.latitude},${GEO.longitude}`;
+
+/**
+ * The clinic's Google place ID. TODO(brand): null because the share.google
+ * shortlink only resolves to a Search results page without a real browser, so
+ * the ID could not be read from it. Copy it from the Business Profile dashboard
+ * or https://developers.google.com/maps/documentation/places/web-service/place-id
+ * and paste it here. Until then, everything that needs it is null and skipped:
+ * the footer's review link and the authored schema's `sameAs` / `hasMap`.
+ */
+const GOOGLE_PLACE_ID: string | null = null;
+
 /* -------------------------------------------------------------------------- */
 /* Brand identity                                                              */
 /* -------------------------------------------------------------------------- */
@@ -153,8 +167,36 @@ export const location = {
     "opposite Purva Apartments,",
     "Bengaluru, Karnataka 560037",
   ],
-  geo: { latitude: 12.956707, longitude: 77.707275 },
+  geo: GEO,
+  /**
+   * The live schema's `hasMap`. Kept for that reason only: it resolves to a
+   * Google Search results page, not to the Maps listing, so nothing new should
+   * link to it — use `google` below.
+   */
   mapUrl: "https://share.google/SO018gWSkHgepLkdC",
+  /**
+   * Google Maps / Business Profile links, in Google's documented Maps URL
+   * formats (developers.google.com/maps/documentation/urls), which need no API
+   * key. Directions and the embed work from `geo` alone; the other two wait on
+   * GOOGLE_PLACE_ID.
+   */
+  google: {
+    placeId: GOOGLE_PLACE_ID,
+    /** Turn-by-turn directions to the pin. */
+    directionsUrl:
+      `https://www.google.com/maps/dir/?api=1&destination=${LAT_LNG}` +
+      (GOOGLE_PLACE_ID ? `&destination_place_id=${GOOGLE_PLACE_ID}` : ""),
+    /** The Maps listing itself — for schema `hasMap` / `sameAs`. */
+    placeUrl: GOOGLE_PLACE_ID
+      ? `https://www.google.com/maps/search/?api=1&query=${LAT_LNG}&query_place_id=${GOOGLE_PLACE_ID}`
+      : null,
+    /** Opens the "write a review" dialog on the Business Profile. */
+    reviewUrl: GOOGLE_PLACE_ID
+      ? `https://search.google.com/local/writereview?placeid=${GOOGLE_PLACE_ID}`
+      : null,
+    /** Keyless iframe src, centred on the pin. */
+    embedUrl: `https://maps.google.com/maps?q=${LAT_LNG}&z=17&output=embed`,
+  },
   landmarks: ["Near Marathahalli Bridge", "Opposite Purva Apartments"],
   /** schema.org areaServed */
   areaServed: ["Bangalore", "Marathahalli", "Whitefield"],
@@ -164,22 +206,18 @@ export const location = {
 /* Opening hours                                                               */
 /* -------------------------------------------------------------------------- */
 
-// CONFLICT — narrowed, but still needs a fix before launch.
-//   The live JSON-LD says Mon + Wed–Sun, 10:00–20:00 — Tuesday is absent entirely.
-//   The homepage's visible footer says Monday to Sunday, 09:30–18:00.
-//   The client's copy doc (content/home-page/, section 13) independently states
-//   "Monday to Sunday: 9:30 AM to 6:00 PM / Open all 7 days", which corroborates
-//   the visible hours and makes the SCHEMA the wrong one.
-// `openingHours` below still encodes the schema because it ships byte-verbatim
-// in the JSON-LD and scripts/verify-seo.ts asserts that byte-for-byte.
-// TODO(brand): correct the hours in the source schema, then update `openingHours`
-// here to match `display`. Do not edit one without the other.
+// Settled 2026-09-25: the JSON-LD's hours are the clinic's real ones — Monday
+// and Wednesday to Sunday, 10:00–20:00, closed Tuesday. The live footer and the
+// client's copy doc ("Monday to Sunday: 9:30 AM to 6:00 PM / Open all 7 days")
+// were the ones out of date, so every visible string below now follows
+// `openingHours`, which ships byte-verbatim in the JSON-LD.
+// Keep the Google Business Profile's hours set to the same.
 /**
  * Split out so the About checklist can print the times under its own day
  * wording without a second copy of them drifting from the footer's.
  */
-const hoursDays = "Monday to Sunday";
-const hoursTimes = "9:30 AM to 6:00 PM";
+const hoursDays = "Monday, Wednesday to Sunday";
+const hoursTimes = "10:00 AM to 8:00 PM";
 
 export const hours = {
   openingHours: [
@@ -189,11 +227,13 @@ export const hours = {
       closes: "20:00",
     },
   ],
-  /** What the footer currently prints — does NOT match `openingHours`. */
+  /** Matches `openingHours`. */
   display: `${hoursDays}: ${hoursTimes}`,
   /** The times alone, for callers that supply their own day range. */
   displayTimes: hoursTimes,
-  displayHeading: "Open all 7 days",
+  displayHeading: "Closed on Tuesdays",
+  /** One line, for checklists and chips. */
+  displayShort: "Mon, Wed–Sun | 10 AM – 8 PM",
 } as const;
 
 /* -------------------------------------------------------------------------- */
@@ -229,18 +269,18 @@ export const assets = {
   /**
    * The mark, on a transparent background. Used everywhere.
    *
-   * Despite the "-bg" filename this PNG is a transparent export (it replaced an
-   * opaque one). That matters for the header, whose own background fades in on
-   * scroll: anything with a baked-in ground shows as a white box the moment the
-   * bar is not fully opaque.
+   * It must stay transparent: the header's own background fades in on scroll,
+   * so anything with a baked-in ground shows as a white box the moment the bar
+   * is not fully opaque.
    *
-   * src: 2024/12/Derma-Solutions-LOGO-with-bg-12.png
-   * TODO(brand): 816x306 and 229KB, for a mark that renders ~136x51. A resized
-   * export would save most of that on every page load.
+   * src: content/home-page/Logo.png (2026-09 brown rebrand). That upload is
+   * opaque white, so this is a cropped, colour-to-alpha export at 3x the ~51px
+   * render height. derma-solutions-logo-master.png is the full-res transparent
+   * crop, used by scripts/generate-icons.ts for the og:image.
    */
-  logo: "/images/brand/derma-solutions-logo-bg.png",
-  // The original SVG upload. NOT for UI: it has an opaque white rectangle baked
-  // into it, so it renders as a white box on any non-white ground.
+  logo: "/images/brand/derma-solutions-logo.png",
+  // The original SVG upload — the OLD purple/teal mark, superseded by the
+  // rebrand above. NOT for UI: it also has an opaque white rectangle baked in.
   /** src: 2024/12/DermaSolutions-Logo.svg */
   logoSvgOpaque: "/images/brand/derma-solutions-logo.svg",
   logoAlt: "Derma Solutions Logo",
@@ -334,10 +374,10 @@ export const assets = {
    * why these are not single 2x files like the rest of the decor.
    *
    * Both carry their heading text baked into the pixels, so the alt strings
-   * quote those words: they exist nowhere else in the markup on a wide screen,
-   * and below lg the band crops them out and the HTML subheading takes over.
+   * quote those words: they exist nowhere else in the markup. The band shows
+   * the whole artwork at every width, so on a phone the baked type is small.
    *
-   * src: Technology Banner/1.png (5000x1094), supplied via Zoho WorkDrive
+   * src: Technology Banner/3-3.png (5000x1562), re-supplied 2026-09
    */
   techBanner1: "/images/decor/tech-banner-1.jpg",
   techBanner1Small: "/images/decor/tech-banner-1-1400.jpg",
@@ -345,7 +385,7 @@ export const assets = {
     'Banner reading "Advanced Technology. Visible Skin Transformation. Precision-led ' +
     'treatments designed to tighten, lift and rejuvenate your skin.", between a skin ' +
     "tightening device and a skin analysis system",
-  /** src: Technology Banner/2.png (5000x1094), supplied via Zoho WorkDrive */
+  /** src: Technology Banner/4-2.png (5000x1562), re-supplied 2026-09 */
   techBanner2: "/images/decor/tech-banner-2.jpg",
   techBanner2Small: "/images/decor/tech-banner-2-1400.jpg",
   techBanner2Alt:
@@ -533,9 +573,8 @@ export const seo = {
   robots: "max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   sitemapUrl: `${SITE_URL}/sitemap.xml`,
   searchActionTarget: `${SITE_URL}/?s={search_term_string}`,
-  // TODO(rebuild): the live Service schema points its serviceUrl at /contact-us/,
-  // which is not one of the 92 live URLs — it 404s. Either build the page or
-  // repoint the schema.
+  // The live Service schema's serviceUrl. Not one of the 92 captured URLs — it
+  // 404'd on the live site — so the page is authored: src/pages/ContactUs.tsx.
   contactPath: "/contact-us/",
 } as const;
 
@@ -831,6 +870,7 @@ export const navigation = {
     { label: "Media Coverage", path: "/media/" },
     { label: "Image Gallery", path: "/image-gallery/" },
     { label: "Video Gallery", path: "/video-gallery/" },
+    { label: "Contact Us", path: seo.contactPath },
   ],
   footer: [
     { label: "Privacy Policy", path: legal.privacyPolicyPath },
@@ -885,17 +925,19 @@ export const homeAppointment = {
   /** Uppercased in CSS, as homeHero's and homeAbout's are. */
   eyebrow: "Appointment",
   heading: "Schedule your consultation today!",
-  // TODO(rebuild): the Google Apps Script web-app URL. Empty means "not wired
-  // yet", and while it is empty a valid submission renders unconfiguredMessage
-  // rather than successMessage — see the submit handler in HomeAppointment.tsx
-  // for why it must never claim a booking it did not take.
+  // The Google Apps Script web app — apps-script/Code.gs, deployed as described
+  // in apps-script/README.md. Updating the script means "Manage deployments →
+  // New version", which keeps this URL; a new deployment would change it. If it
+  // is ever emptied, a valid submission renders messages.unconfigured rather
+  // than redirecting to /thank-you/ — see the submit handler in
+  // AppointmentForm.tsx for why it must never claim a booking it did not take.
   //
-  // Paste the /exec URL of the deployed script here. The section POSTs the six
-  // fields below as application/x-www-form-urlencoded, keyed by `name`, so
-  // doPost(e) reads them off e.parameter. No env var: this repo has no .env
-  // file and no import.meta.env convention, and tracking.gtmId sits here the
-  // same way.
-  endpoint: "",
+  // The form POSTs the fields below as application/x-www-form-urlencoded,
+  // keyed by `name`, so doPost(e) reads them off e.parameter. No env var: this
+  // repo has no .env file and no import.meta.env convention, and
+  // tracking.gtmId sits here the same way.
+  endpoint:
+    "https://script.google.com/macros/s/AKfycbzn1q08pN-WPYPls57-nhdKD-obu6imk_B862Vks2BlkpVhBGvRlbOKUbrvj8HoNQZa/exec",
   /**
    * The reference labels these with placeholders alone. `label` is the
    * accessible name the visually-hidden <label> carries — a placeholder stops
@@ -997,14 +1039,11 @@ export const homeAppointment = {
     invalidPhone: "Enter a valid phone number.",
     /** The consent checkbox. Its own line, because "required" reads oddly beside a sentence. */
     consentRequired: "Please agree to be contacted so we can confirm your appointment.",
-    success:
-      "Thank you. Your request has reached the clinic and we will call you back to " +
-      "confirm your appointment.",
     error:
       "Something went wrong and your request was not sent. Please call the clinic on " +
       `${contact.phoneDisplay}.`,
-    // Shown in place of `success` while `endpoint` is empty. Deliberately not a
-    // thank-you: nothing has been received by anyone.
+    // Shown in place of the /thank-you/ redirect while `endpoint` is empty.
+    // Deliberately not a thank-you: nothing has been received by anyone.
     unconfigured:
       "Online booking is not live yet. Please call the clinic on " +
       `${contact.phoneDisplay} to book your consultation.`,
@@ -1028,6 +1067,45 @@ export const bookAppointment = {
   hoursTitle: "Opening Hours",
 } as const;
 
+/**
+ * /thank-you/ — src/pages/ThankYou.tsx, where AppointmentForm lands after a
+ * successful submit. noindex and not in the sitemap.
+ *
+ * TODO(content): authored, not the client's. The steps promise a call and a
+ * WhatsApp confirmation — check both match what the front desk actually does.
+ */
+export const thankYou = {
+  title: `Thank You | ${brand.shortName}`,
+  h1: "Thank You",
+  eyebrow: "Request received",
+  heading: "We've received your appointment request",
+  lead:
+    "Our team will call you during clinic hours to confirm your date and doctor. " +
+    "There's nothing more you need to do right now.",
+  stepsTitle: "What happens next",
+  steps: [
+    {
+      title: "We call you",
+      text: `Our front desk calls from ${contact.phoneDisplay} to confirm your slot.`,
+    },
+    {
+      title: "Confirmation on WhatsApp",
+      text: "You get the date, time and doctor on WhatsApp, so it's there when you need it.",
+    },
+    {
+      title: "Visit the clinic",
+      text: "Come to our Marathahalli clinic on the day. Please arrive ten minutes early.",
+    },
+  ],
+  helpTitle: "Need it sooner?",
+  helpText: "Call or WhatsApp us and we'll book you in straight away.",
+  callLabel: "Call the clinic",
+  whatsappLabel: "WhatsApp us",
+  homeLabel: "Back to home",
+  addressTitle: "Clinic address",
+  hoursTitle: "Opening Hours",
+} as const;
+
 /* -------------------------------------------------------------------------- */
 /* Footer call-to-action                                                       */
 /* -------------------------------------------------------------------------- */
@@ -1040,7 +1118,7 @@ export const homeHero = {
   body:
     "Expert dermatology, laser, anti-aging and hair transplant care in Marathahalli, " +
     "Whitefield. Doctor-led plans built around your skin, your goals and honest advice - " +
-    "open all 7 days.",
+    "open six days a week.",
   // The copy doc asks for a Google rating strip, then rules out hardcoding a
   // figure (compliance note 5) — an uncurrent rating is the risk. This is the
   // doc's own fallback wording. Swap in a live rating when one is wired up.
@@ -1140,15 +1218,13 @@ export const homeAbout = {
   ],
   // Four points now, not three. The last one is the only string on the page
   // that is NOT the copy doc verbatim: the doc writes "Open 7 days | 9:30 AM –
-  // 6:00 PM", and hours.display already owns those times for the footer and the
-  // sidebars. Composing it means the page cannot end up quoting two different
-  // sets of opening hours — which matters here, because `hours` carries a
-  // standing CONFLICT between its schema block and its display string.
+  // 6:00 PM", which were not the clinic's hours (see `hours`). Composing it
+  // means the page cannot quote a different set of hours from the footer.
   checklist: [
     "Doctor-led diagnosis & personalised plans",
     "FDA-approved lasers & advanced technology",
     "Skin, hair & cosmetic care under one roof",
-    `${hours.displayHeading} | ${hours.displayTimes}`,
+    hours.displayShort,
   ],
   // TODO(compliance): copy doc note 1 — under ASCI substantiation rules a
   // numeric claim must be backed by clinic records. Confirm the figure with
@@ -1239,7 +1315,7 @@ export const homeMeetDermatologist = {
 // banner 1 is dark maroon, banner 2 near-white.
 //
 // The doc orders them consecutively, after About and before Meet the
-// Dermatologist. They are split here instead: two 4.57:1 strips stacked read as
+// Dermatologist. They are split here instead: two 3.2:1 strips stacked read as
 // one broken image. Banner 1 keeps the doc's slot; banner 2 follows Meet the
 // Dermatologist. See the order table in src/pages/Home.tsx.
 //
@@ -1736,12 +1812,10 @@ export const aboutApproach = {
   // Part C, "'24/7 Support' badge": the template's default is replaced with the
   // clinic's hours, and 24/7 must NOT be published. `value` is composed from
   // `hours` rather than quoted from the doc, for the same reason
-  // homeAbout.checklist[3] is — `hours` carries a standing CONFLICT between its
-  // schema block and its display string, and this page must not publish a third
-  // variant of the times. That composition is the only non-verbatim string in
-  // this object: the doc writes "9:30 AM – 6:00 PM", hours.displayTimes says
-  // "to".
-  chip: { title: "Open All Days", value: hours.displayTimes },
+  // homeAbout.checklist[3] is: the doc's "9:30 AM – 6:00 PM, all days" was not
+  // the clinic's schedule (see `hours`), and this page must not publish a
+  // second variant of the times.
+  chip: { title: "Open 6 Days a Week", value: hours.displayTimes },
 } as const;
 
 // B4 — What We Do. theme-reference/04-sections/12-transforming-beauty-confidence/ —
@@ -1853,12 +1927,12 @@ export const aboutFaqs = [
   },
   {
     question: "Where is the clinic and when is it open?",
-    // The address and hours here are prose, and are the doc's verbatim. They
-    // restate `location` and `hours`; check they still agree whenever either of
-    // those changes.
+    // The address is the doc's verbatim; the hours were rewritten on 2026-09-25
+    // to the schema's (see `hours`). Both restate `location` and `hours` in
+    // prose; check they still agree whenever either of those changes.
     answer:
-      "We are on the 1st floor, Scorpio House, near Marathahalli Bridge, and open all " +
-      "days from 9:30 AM to 6:00 PM.",
+      "We are on the 1st floor, Scorpio House, near Marathahalli Bridge, and open Monday " +
+      "and Wednesday to Sunday from 10:00 AM to 8:00 PM. We are closed on Tuesdays.",
   },
 ] as const;
 
@@ -1873,8 +1947,8 @@ export const aboutFaqs = [
 //
 // The sidebar's hours are `hours.display` / `hours.displayHeading`, not the
 // doc's own wording ("Monday – Sunday : 09:30 AM – 06:00 PM / We Are Open On
-// All Days"): same hours — the doc's note 7 confirms them — and one source, so
-// the sidebar cannot drift from the footer.
+// All Days"), which was out of date (see `hours`). One source, so the sidebar
+// cannot drift from the footer.
 export const treatmentPage = {
   /** The breadcrumb's middle crumb. Plain text: there is no /services/ page to link to. */
   breadcrumbSection: "Services",

@@ -155,3 +155,24 @@ export function ourDoctorsExtraNodes(url: string): Node[] {
     .filter(member => member.id !== team[0].id && OUR_DOCTORS_PROFILED.includes(member.id))
     .map(member => physician(member, url))
 }
+
+/**
+ * /contact-us/ — says what the page is. The minted WebPage stays as it is; this
+ * names the page as the clinic's contact page and points at the clinic node the
+ * template graph carries, whose NAP, geo and hours are the page's content.
+ */
+export function contactUsExtraNodes(url: string): Node[] {
+  return [
+    {
+      '@type': 'ContactPage',
+      '@id': `${url}#contactpage`,
+      url,
+      name: 'Contact Derma Solutions Skin & Hair Clinic',
+      inLanguage: 'en',
+      isPartOf: { '@id': `${SITE_URL}/#website` },
+      mainEntityOfPage: { '@id': `${url}#webpage` },
+      about: CLINIC,
+      mainEntity: CLINIC,
+    },
+  ]
+}

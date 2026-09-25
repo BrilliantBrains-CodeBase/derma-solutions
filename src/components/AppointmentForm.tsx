@@ -1,7 +1,10 @@
 import { useRef, useState } from 'react'
 import type { FormEvent, ReactNode } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { homeAppointment, team } from '@/config/site'
 import { ChevronDownIcon } from '@/components/icons'
+import { getAttribution } from '@/lib/attribution'
+import { LEAD_FLAG } from '@/lib/dataLayer'
 
 /**
  * The appointment form, shared by HomeAppointment (the homepage's and About
@@ -30,8 +33,8 @@ import { ChevronDownIcon } from '@/components/icons'
  *  - The response message is a sentence in a roomier box than the reference's
  *    5px/10px pill. CF7's own output is "One or more fields have an error",
  *    which fits on one short line; these messages carry a phone number.
- *  - Submission is not wired yet — see the note on homeAppointment.endpoint and
- *    the handler below.
+ *  - Success is a redirect to /thank-you/ rather than a message in place, so
+ *    the conversion has a page of its own (src/pages/ThankYou.tsx).
  *
  * The date field is the native <input type="date">, as the reference's is. The
  * copy doc asks for dd-mm-yyyy; a native date input renders the visitor's own
@@ -114,7 +117,7 @@ function validate(values: Record<string, string>) {
   return errors
 }
 
-type Status = 'idle' | 'submitting' | 'success' | 'error' | 'unconfigured'
+type Status = 'idle' | 'submitting' | 'error' | 'unconfigured'
 
 /**
  * One field: the hidden label that names it, the control, and the message that
@@ -168,6 +171,9 @@ export function AppointmentForm({
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [status, setStatus] = useState<Status>('idle')
   const formRef = useRef<HTMLFormElement>(null)
+  const navigate = useNavigate()
+  /** Which form this is, in the sheet's Form column and the lead_submit event. */
+  const formName = idPrefix === 'book-' ? 'book' : 'home'
 
   const idFor = (id: string) => `${idPrefix}${id}`
   const doctorId = idFor(homeAppointment.doctorField.id)
@@ -188,17 +194,19 @@ export function AppointmentForm({
    * Four outcomes, and the third is the one that matters.
    *
    * With no endpoint configured this reports that booking is not live and gives
-   * the clinic's number. It must never render the success message in that
-   * state: a patient who is told "thank you, we will call you back" and then
-   * hears nothing is worse off than one who was never offered the form.
+   * the clinic's number. It must never reach /thank-you/ in that state: a
+   * patient who is told "thank you, we will call you back" and then hears
+   * nothing is worse off than one who was never offered the form.
    *
-   * With an endpoint, the request goes to a Google Apps Script web app.
-   * URLSearchParams sends application/x-www-form-urlencoded, which is
-   * CORS-safelisted, so there is no preflight for Apps Script to fail; `no-cors`
-   * because it answers without CORS headers, which also makes the response
-   * opaque — a fetch that resolves is the only success signal available. On the
-   * script side, doPost(e) reads the six values off e.parameter under the
-   * `name` keys in homeAppointment.fields.
+   * With an endpoint, the request goes to the Google Apps Script web app in
+   * apps-script/Code.gs. URLSearchParams sends
+   * application/x-www-form-urlencoded, which is CORS-safelisted, so there is no
+   * preflight for Apps Script to fail; `no-cors` because it answers without
+   * CORS headers, which also makes the response opaque — a fetch that resolves
+   * is the only success signal available. doPost(e) reads the values off
+   * e.parameter under the `name` keys in homeAppointment.fields, plus the
+   * form/page/attribution values added below, which are not fields and so do
+   * not live in `values`.
    */
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -220,27 +228,37 @@ export function AppointmentForm({
     }
 
     setStatus('submitting')
+    const honeypot = formRef.current?.elements.namedItem('website')
     try {
       await fetch(homeAppointment.endpoint, {
         method: 'POST',
         mode: 'no-cors',
-        body: new URLSearchParams(values),
+        body: new URLSearchParams({
+          ...values,
+          form: formName,
+          page: window.location.href,
+          referrer: document.referrer,
+          ...getAttribution(),
+          website: honeypot instanceof HTMLInputElement ? honeypot.value : '',
+        }),
       })
-      setStatus('success')
-      setValues(emptyValues)
+      try {
+        sessionStorage.setItem(LEAD_FLAG, formName)
+      } catch {
+        /* no storage: the page still thanks them, the event just does not fire */
+      }
+      navigate('/thank-you/')
     } catch {
       setStatus('error')
     }
   }
 
   const message =
-    status === 'success'
-      ? homeAppointment.messages.success
-      : status === 'error'
-        ? homeAppointment.messages.error
-        : status === 'unconfigured'
-          ? homeAppointment.messages.unconfigured
-          : ''
+    status === 'error'
+      ? homeAppointment.messages.error
+      : status === 'unconfigured'
+        ? homeAppointment.messages.unconfigured
+        : ''
 
   return (
     <>
@@ -362,6 +380,21 @@ export function AppointmentForm({
         </div>
 
         {/*
+          Honeypot. Off-screen rather than display:none, which some bots skip;
+          out of the tab order and the accessibility tree, so no person fills it.
+          A POST with it set gets written nowhere (apps-script/Code.gs).
+        */}
+        <input
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden
+          defaultValue=""
+          className="absolute -left-[9999px] h-px w-px opacity-0"
+        />
+
+        {/*
           The reference's .btn-default wipe: a primary fill that grows out
           of the centre on hover. `isolate` keeps the -z-10 overlay inside
           the button, where it paints over the accent background but under
@@ -389,9 +422,7 @@ export function AppointmentForm({
         role="status"
         className={
           message
-            ? `mt-[10px] rounded-30 border px-[16px] py-[10px] font-sans text-[14px] leading-[22px] ${className} ${
-                status === 'success' ? 'border-success text-success' : 'border-error text-error'
-              }`
+            ? `mt-[10px] rounded-30 border border-error px-[16px] py-[10px] font-sans text-[14px] leading-[22px] text-error ${className}`
             : 'sr-only'
         }
       >

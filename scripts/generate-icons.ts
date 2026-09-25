@@ -13,7 +13,7 @@ import sharp from 'sharp'
 import { PUBLIC } from './paths.ts'
 
 const master = path.join(PUBLIC, 'images/brand/favicon-master.png')
-const logo = path.join(PUBLIC, 'images/brand/derma-solutions-logo-bg.png')
+const logo = path.join(PUBLIC, 'images/brand/derma-solutions-logo-master.png')
 
 /** Wrap a PNG in an ICO container. Every current browser reads PNG-in-ICO. */
 function pngToIco(png: Buffer, size: number): Buffer {

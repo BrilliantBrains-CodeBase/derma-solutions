@@ -229,7 +229,7 @@ export function Header() {
           <img
             src={assets.logo}
             alt={assets.logoAlt}
-            width={136}
+            width={126}
             height={51}
             className="h-[42px] w-auto lg:h-[51px]"
           />
@@ -262,7 +262,7 @@ export function Header() {
             <img
               src={assets.logo}
               alt=""
-              width={136}
+              width={126}
               height={51}
               className="h-[38px] w-auto"
             />

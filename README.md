@@ -41,6 +41,7 @@ src/
   seo/
     registry.generated.ts     92 SeoRecords          GENERATED
     schema/<key>.json         92 JSON-LD graphs      GENERATED (byte-verbatim copies)
+    schema-extra/<key>.json   43 authored JSON-LD graphs, injected as a second block  GENERATED
     Seo.tsx  JsonLd.tsx       <head> emitters
   routes.generated.tsx        the route table        GENERATED
   pages/                      55 blank stubs + BlogPost.tsx (37 posts) + NotFound.tsx
@@ -69,12 +70,16 @@ and which sections make up a page is in `theme-reference/08-pages/page-section-m
 
 | Command | Does |
 |---|---|
-| `npm run seo:generate` | registry + stubs + routes + assets + icons, all from the backups |
+| `npm run seo:generate` | og cards + registry + schema-extra + stubs + routes + assets + icons |
 | `npm run seo:verify` | asserts `dist/` reproduces the capture; asserts nav links resolve |
 | `npm run seo:registry` | just the SEO registry and the schema copies |
 | `npm run seo:routes` | just the route table |
 | `npm run seo:stubs` | new page stubs (never overwrites an existing file) |
 | `npm run seo:assets` / `seo:icons` | brand images out of the backup; derived favicons + og:image |
+| `npm run seo:og` | per-page 1200x630 share cards for treatment and doctor pages |
+| `npm run seo:schema-extra` | the authored second JSON-LD block (MedicalProcedure, FAQPage, clinic listing) |
+| `npm run seo:sitemap` | `sitemap.xml` (with images), `llms.txt`, `.well-known/llms.txt`, `llms-full.txt` — runs in `build` |
+| `npm run seo:wp-mirror` | copies the 40 still-referenced `/wp-content/uploads/` files into `dist/` — runs in `build` |
 | `npm run typecheck` | `tsc --noEmit` |
 
 ## Deploy notes
@@ -92,13 +97,13 @@ and which sections make up a page is in `theme-reference/08-pages/page-section-m
 - **Tracking** (fix-plan A1): GTM `GTM-PWVJVRQ`, GA4 `G-3KNBG0VTG0`, Pixel `1327906075791898`
   are recorded in `src/config/site.ts` but **not installed**. Export the GTM container config
   from the console first — it is not in the backup and cannot be recovered from the site.
-- **`/contact-us/`** — the Service schema points `serviceUrl` at it and it 404s today. Build
-  the page; do not edit the schema. `npm run seo:verify` reports this every run.
 - **Retirement decisions** (fix-plan A2/A3): `/maintenance-page/` and the IV Glutathione
   duplicate are built as normal routes for now. Both carry a `note` in the registry and in
   their stub's header comment. Both need GSC data before acting.
 - **`og:default.jpg` and the favicons are derived placeholders** — the sized crops were never
-  captured and the live site has no og:image at all. Replace with real clinic photography.
-- **Unresolved conflicts in `src/config/site.ts`**: opening hours (schema says Mon+Wed–Sun
-  10:00–20:00, the footer says all days 09:30–18:00) and the two address wordings. Search that
-  file for `CONFLICT`.
+  captured. Treatment and doctor pages now carry their own card (`public/images/og/`); the
+  ~19 remaining pages still fall back to the placeholder. Replace it with clinic photography.
+- **Google place ID** — `GOOGLE_PLACE_ID` in `src/config/site.ts` is null. Paste it in to switch
+  on the footer's "Review us on Google" link and the Maps listing in the authored `sameAs`/`hasMap`.
+- **Unresolved conflict in `src/config/site.ts`**: the two address wordings. Search that file
+  for `CONFLICT`. (Opening hours were settled on 2026-09-25 in favour of the schema's.)

@@ -14,7 +14,7 @@
  * Consumed by scripts/build-seo-registry.ts.
  */
 
-import { aboutUsExtraNodes, ourDoctorsExtraNodes } from './schema-nodes.ts'
+import { aboutUsExtraNodes, contactUsExtraNodes, ourDoctorsExtraNodes } from './schema-nodes.ts'
 
 /** Re-exported so this file stays the one place a new page is described. */
 export { SITE_URL } from './paths.ts'
@@ -153,5 +153,27 @@ export const ADDED_PAGES: AddedPage[] = [
     publishedTime: '2026-09-25T00:00:00+05:30',
     note:
       'New page, not in the live capture. Content is the PR agency\'s coverage report (May–August 2026); SEO copy is authored and needs client sign-off.',
+  },
+  {
+    // The live Service schema's serviceUrl has pointed at /contact-us/ since
+    // before the rebuild, and it 404'd (seo.contactPath). Building the page is
+    // the fix the README asks for — the schema ships byte-verbatim, so it could
+    // not be repointed instead.
+    //
+    // Carries the clinic's NAP, hours, map and directions: the page a local
+    // search result's "Website" and a Maps listing's visitor both expect.
+    //
+    // TODO(content): no copy doc — title, description and H1 are authored and
+    // need client sign-off.
+    slug: 'contact-us',
+    title: 'Contact Us | Skin & Hair Clinic in Marathahalli, Whitefield – Derma Solutions',
+    description:
+      'Visit Derma Solutions Skin & Hair Clinic near Marathahalli Bridge, Bengaluru. Address, phone, WhatsApp, opening hours and directions to the clinic.',
+    h1: 'Contact Us',
+    breadcrumbName: 'Contact Us',
+    publishedTime: '2026-09-25T00:00:00+05:30',
+    note:
+      'New page, not in the live capture. The Service schema\'s serviceUrl target. SEO copy is authored and needs client sign-off.',
+    extraNodes: contactUsExtraNodes,
   },
 ]

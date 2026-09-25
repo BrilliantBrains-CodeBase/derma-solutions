@@ -184,12 +184,12 @@ export const visitClinic = {
   // "Purvankara Apt"); location.addressDisplayLines is the clean version the
   // rest of the site prints. Hours and phone likewise come from site.ts.
   rows: [
-    { label: 'We Are Open On All Days:', value: hours.display },
+    { label: 'Opening Hours:', value: hours.display },
     { label: 'Clinic Address:', value: location.addressDisplayLines.join(' ') },
     phoneRow,
   ] satisfies readonly InfoRow[],
   directionsLabel: 'Get Directions',
-  directionsHref: location.mapUrl,
+  directionsHref: location.google.directionsUrl,
 } as const
 
 /** The CTA band's button, and the button beside every "CTA line". */

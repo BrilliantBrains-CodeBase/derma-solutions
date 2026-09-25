@@ -1,8 +1,8 @@
 /**
  * GENERATED FILE — DO NOT EDIT. Run `npm run seo:routes`.
  *
- * All 97 URLs, derived from src/seo/registry.generated.ts:
- *   59 WordPress pages · 37 posts · 1 category archive
+ * All 98 URLs, derived from src/seo/registry.generated.ts:
+ *   60 WordPress pages · 37 posts · 1 category archive
  *
  * Paths are written WITHOUT a trailing slash because that is react-router's
  * form; `dirStyle: 'nested'` in vite.config.ts turns each one back into
@@ -19,7 +19,7 @@ export const routes: RouteRecord[] = [
     children: [
       { index: true, lazy: async () => ({ Component: (await import('./pages/Home')).default }) },
 
-      /* ---- WordPress pages (59) ---------------------------------------------- */
+      /* ---- WordPress pages (60) ---------------------------------------------- */
   { path: 'abdominoplasty-tummy-tuck-treatment-in-bangalore', lazy: async () => ({ Component: (await import('./pages/AbdominoplastyTummyTuckTreatmentInBangalore')).default }) },
   { path: 'acne-scar-treatment-in-bangalore', lazy: async () => ({ Component: (await import('./pages/AcneScarTreatmentInBangalore')).default }) },
   { path: 'best-dermatologist-in-marathahalli-whitefield-bangalore', lazy: async () => ({ Component: (await import('./pages/BestDermatologistInMarathahalliWhitefieldBangalore')).default }) },
@@ -79,6 +79,7 @@ export const routes: RouteRecord[] = [
   { path: 'our-doctors', lazy: async () => ({ Component: (await import('./pages/OurDoctors')).default }) },
   { path: 'book-appointment', lazy: async () => ({ Component: (await import('./pages/BookAppointment')).default }) },
   { path: 'media', lazy: async () => ({ Component: (await import('./pages/Media')).default }) },
+  { path: 'contact-us', lazy: async () => ({ Component: (await import('./pages/ContactUs')).default }) },
 
       /* ---- Blog posts (37) — one shared template ---------------------------
        * Each route loads the template and its own content module
@@ -233,6 +234,13 @@ export const routes: RouteRecord[] = [
     const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/xanthelasma-removal-bengaluru')])
     return { Component: () => <BlogPost post={post} /> }
   } },
+
+      /* ---- Thank you -------------------------------------------------------
+       * AppointmentForm's success redirect. Hand-added rather than in the SEO
+       * registry, like the 404: prerendered, but noindex (its own <Head>) and
+       * never in the sitemap. See src/pages/ThankYou.tsx.
+       */
+      { path: 'thank-you', lazy: async () => ({ Component: (await import('./pages/ThankYou')).default }) },
 
       /* ---- Not found -------------------------------------------------------
        * '404' is prerendered so static hosts have a 404.html to serve; the

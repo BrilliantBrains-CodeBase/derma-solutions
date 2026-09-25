@@ -35,7 +35,7 @@ import { HomeLatestBlog } from '@/sections/HomeLatestBlog'
  *    see the note where homeHowItWorks used to sit in src/config/site.ts.
  *  - HomeTechBanner is new and renders twice. The doc stacks both banners
  *    between About and Meet the Dermatologist; they are split here because the
- *    two artworks are both 4.57:1 strips and consecutively they read as one
+ *    two artworks are both 3.2:1 strips and consecutively they read as one
  *    broken image. Banner 1 keeps the doc's slot, banner 2 follows the doctor.
  *
  * Bands the doc does not mention — Services, Video, Appointment — keep their

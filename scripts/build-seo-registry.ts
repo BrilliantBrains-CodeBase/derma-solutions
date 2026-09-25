@@ -15,7 +15,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { parseCsv } from './csv.ts'
-import { SEO_MAP_CSV, PER_PAGE_DIR, SCHEMA_DIR, SEO_OUT, SCHEMA_OUT, backupKey } from './paths.ts'
+import { SEO_MAP_CSV, PER_PAGE_DIR, SCHEMA_DIR, SEO_OUT, SCHEMA_OUT, PUBLIC, backupKey } from './paths.ts'
 import { ADDED_PAGES, SCHEMA_TEMPLATE_KEY, SITE_URL } from './added-pages.ts'
 import { H1_OVERRIDES, TITLE_OVERRIDES } from './seo-overrides.ts'
 
@@ -35,6 +35,25 @@ const NOTES: Record<string, string> = {
 const OG_IMAGE_FALLBACK = `${SITE_URL}/images/brand/og-default.jpg`
 const OG_IMAGE_W = '1200'
 const OG_IMAGE_H = '630'
+
+/** The page's own card from scripts/generate-og-images.ts, else the site-wide one. */
+function ogImageFor(slug: string): string {
+  return fs.existsSync(path.join(PUBLIC, 'images', 'og', `${slug}.jpg`))
+    ? `${SITE_URL}/images/og/${slug}.jpg`
+    : OG_IMAGE_FALLBACK
+}
+
+/**
+ * twitter:title / twitter:description, where the capture has none. X and
+ * Slack fall back to og:* anyway; stating them costs two tags and removes the
+ * dependence on that fallback. Added, never overwritten.
+ */
+function completeTwitter(twitter: Record<string, string>, og: Record<string, string>) {
+  twitter['twitter:title'] ??= og['og:title']
+  twitter['twitter:description'] ??= og['og:description']
+  twitter['twitter:image'] ??= og['og:image']
+  if (og['og:image:alt']) twitter['twitter:image:alt'] ??= og['og:image:alt']
+}
 
 type PerPage = {
   og?: Record<string, string>
@@ -76,12 +95,12 @@ const records = rows.map(r => {
 
   // A4 — ADD og:image where absent. Never overwrite one the live site already sets.
   if (!og['og:image']) {
-    og['og:image'] = OG_IMAGE_FALLBACK
+    og['og:image'] = ogImageFor(r.slug)
     og['og:image:width'] = OG_IMAGE_W
     og['og:image:height'] = OG_IMAGE_H
     og['og:image:alt'] = title
   }
-  if (!twitter['twitter:image']) twitter['twitter:image'] = og['og:image']
+  completeTwitter(twitter, og)
 
   // A5 — exactly one H1. The 5 multi-H1 pages keep only the first; the extras
   // become H2s when content lands. The captured heading TEXT is never edited
@@ -162,6 +181,22 @@ for (const page of ADDED_PAGES) {
   }
   fs.writeFileSync(path.join(SCHEMA_OUT, `${page.slug}.json`), JSON.stringify(graph))
 
+  const og: Record<string, string> = {
+    'og:title': page.title,
+    'og:type': 'article',
+    'og:description': page.description,
+    'og:url': url,
+    'og:locale': 'en',
+    'og:site_name': 'Derma Solutions Skin and Hair Clinic',
+    'article:published_time': page.publishedTime,
+    'og:image': ogImageFor(page.slug),
+    'og:image:width': OG_IMAGE_W,
+    'og:image:height': OG_IMAGE_H,
+    'og:image:alt': page.title,
+  }
+  const twitter: Record<string, string> = { 'twitter:card': 'summary_large_image' }
+  completeTwitter(twitter, og)
+
   records.push({
     slug: page.slug,
     key: page.slug,
@@ -173,20 +208,8 @@ for (const page of ADDED_PAGES) {
     canonical: url,
     robots: 'max-image-preview:large, max-snippet:-1, max-video-preview:-1',
     h1: page.h1,
-    og: {
-      'og:title': page.title,
-      'og:type': 'article',
-      'og:description': page.description,
-      'og:url': url,
-      'og:locale': 'en',
-      'og:site_name': 'Derma Solutions Skin and Hair Clinic',
-      'article:published_time': page.publishedTime,
-      'og:image': OG_IMAGE_FALLBACK,
-      'og:image:width': OG_IMAGE_W,
-      'og:image:height': OG_IMAGE_H,
-      'og:image:alt': page.title,
-    },
-    twitter: { 'twitter:card': 'summary_large_image', 'twitter:image': OG_IMAGE_FALLBACK },
+    og,
+    twitter,
     publishedTime: page.publishedTime,
     modifiedTime: page.publishedTime,
     markdown: null,
@@ -262,4 +285,4 @@ fs.writeFileSync(path.join(SEO_OUT, 'registry.generated.ts'), out)
 const counts = records.reduce<Record<string, number>>((a, r) => ((a[r.type] = (a[r.type] ?? 0) + 1), a), {})
 console.log(`registry: ${records.length} records`, counts)
 console.log(`schema:   ${fs.readdirSync(SCHEMA_OUT).length} .json graphs`)
-console.log(`og:image added to ${records.filter(r => r.og['og:image'] === OG_IMAGE_FALLBACK).length} pages (fix-plan A4)`)
+console.log(`og:image: ${records.filter(r => r.og['og:image'].includes('/images/og/')).length} page-specific, ${records.filter(r => r.og['og:image'] === OG_IMAGE_FALLBACK).length} site-wide fallback (fix-plan A4)`)

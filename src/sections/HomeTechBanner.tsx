@@ -3,13 +3,14 @@ import { homeTechBanners } from '@/config/site'
 
 /**
  * The technology banners. New in the 2026-09 revision round, which supplies two
- * 5000x1094 artworks through Zoho WorkDrive and, under each, a "Short paragraph
- * below the banner" and a "Section Subheading".
+ * artworks through Zoho WorkDrive (re-supplied taller later that month, at
+ * 5000x1562 = 3.2:1) and, under each, a "Short paragraph below the banner"
+ * and a "Section Subheading".
  *
  * One component rendered twice from homeTechBanners — the two are the same band
  * with different artwork — so it is the only Home* section that takes a prop.
  * Home.tsx splits them: banner 1 keeps the doc's slot after About, banner 2
- * follows Meet the Dermatologist, because two 4.57:1 strips stacked read as one
+ * follows Meet the Dermatologist, because two wide strips stacked read as one
  * broken image.
  *
  * There is no theme-reference behind this band either. It borrows the
@@ -28,12 +29,11 @@ import { homeTechBanners } from '@/config/site'
  *
  *    On a phone the baked type is ~4px tall and unreadable. The obvious fix is
  *    to crop past it on small screens and let the HTML subheading carry the
- *    message, and that was tried — it does not work on THIS artwork. Measured
- *    on the 2800px renditions, banner 1's text runs x 17.0%-84.8%, so it has
- *    devices at both edges and only ~16% of clear margin on either side; the
- *    widest left-anchored frame that clears the type is 0.78:1, i.e. taller
- *    than a square. Banner 2 is 2.61:1 on the left. There is no one crop that
- *    serves both, and a portrait-shaped slice of one machine throws away the
+ *    message, and that was tried — it does not work on THIS artwork. Banner 1
+ *    has devices at both edges with the type centred between them, so any
+ *    frame that clears the type is a portrait slice of one machine; banner 2
+ *    has its devices on the left and its type on the right. There is no one
+ *    crop that serves both, and a slice of one machine throws away the
  *    composition the client is paying for.
  *
  *    So the band renders at the artwork's own ratio at every width, and the
@@ -89,12 +89,12 @@ export function HomeTechBanner({
           sizes="(min-width: 1920px) 1880px, 100vw"
           alt={banner.imageAlt}
           width={2800}
-          height={613}
+          height={875}
           loading="lazy"
           decoding="async"
           // The artwork's own ratio at every width — see the header comment for
           // why there is no small-screen crop.
-          className="aspect-[2800/613] w-full object-cover"
+          className="aspect-[2800/875] w-full object-cover"
         />
       </div>
 

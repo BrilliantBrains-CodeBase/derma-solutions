@@ -23,10 +23,7 @@ const known = new Set(seoRecords.map(r => r.path))
  * Listed here so the check reports them without going permanently red — an
  * always-failing check is one nobody reads.
  */
-const KNOWN_DANGLING: Record<string, string> = {
-  '/contact-us/':
-    'Pre-existing on the live site. The Service schema sets serviceUrl to /contact-us/, which is not one of the 92 URLs — it 404s today. Already flagged as TODO(rebuild) in src/config/site.ts. Fix by building the page, NOT by editing the schema (it ships byte-verbatim).',
-}
+const KNOWN_DANGLING: Record<string, string> = {}
 const seen = new Map<string, string>() // path -> where it came from
 const record = (p: string, where: string) => { if (!seen.has(p)) seen.set(p, where) }
 

@@ -9,7 +9,7 @@
  *   npm run seo:registry
  *
  * Source: seo-backup/07-migration/seo-map.csv (92 URLs, captured 2026-09-02),
- * plus the authored pages in scripts/added-pages.ts (5) — those alone are
+ * plus the authored pages in scripts/added-pages.ts (6) — those alone are
  * NOT from the capture.
  */
 
@@ -68,7 +68,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Skin and Hair Clinic in Marathahalli, Whitefield - Bangalore",
+      "twitter:description": "Derma Solutions-Your One Point Destination for Skin, Hair & Aesthetic Transformation at our premier skin and hair clinic in Marathahalli, Whitefield - Bangalore",
+      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "twitter:image:alt": "Skin and Hair Clinic in Marathahalli, Whitefield - Bangalore"
     },
     "publishedTime": "2024-12-24T13:18:30",
     "modifiedTime": "2025-12-04T22:31:16",
@@ -96,14 +99,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T13:05:25+05:30",
       "article:modified_time": "2025-12-04T07:39:16+05:30",
       "og:updated_time": "2025-12-04T07:39:16+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/abdominoplasty-tummy-tuck-treatment-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Abdominoplasty - Tummy Tuck Treatment in Bangalore | Trusted"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Abdominoplasty - Tummy Tuck Treatment in Bangalore | Trusted",
+      "twitter:description": "Visit Derma Solutions - Best Abdominoplasty - Tummy Tuck surgery in Marathahalli - Whitefield. Safe, Affordable. Sr Plastic Surgeon. Book Your Appointment Today",
+      "twitter:image": "https://dermasolutions.co.in/images/og/abdominoplasty-tummy-tuck-treatment-in-bangalore.jpg",
+      "twitter:image:alt": "Abdominoplasty - Tummy Tuck Treatment in Bangalore | Trusted"
     },
     "publishedTime": "2024-12-30T13:05:25+05:30",
     "modifiedTime": "2025-12-04T07:39:16+05:30",
@@ -131,14 +137,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-28T10:27:36+05:30",
       "article:modified_time": "2025-01-05T11:32:01+05:30",
       "og:updated_time": "2025-01-05T11:32:01+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/acne-scar-treatment-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Acne Scar Treatment in Bangalore - Laser - Safe - Affordable"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Acne Scar Treatment in Bangalore - Laser - Safe - Affordable",
+      "twitter:description": "Visit Derma Solutions for the Best Acne Scar Laser Treatment in Bangalore. Safe, Affordable, and Advanced Laser treatments. Book Your Appointment Today!",
+      "twitter:image": "https://dermasolutions.co.in/images/og/acne-scar-treatment-in-bangalore.jpg",
+      "twitter:image:alt": "Acne Scar Treatment in Bangalore - Laser - Safe - Affordable"
     },
     "publishedTime": "2024-12-28T10:27:36+05:30",
     "modifiedTime": "2025-01-05T11:32:01+05:30",
@@ -174,7 +183,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/anti-aging-for-men-in-bangalore.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/anti-aging-for-men-in-bangalore.png",
+      "twitter:title": "Anti-Ageing Treatments for Men in Bengaluru | Expert Guide",
+      "twitter:description": "Discover how anti-ageing treatments for men differ from women. Learn about Botox, fillers, HIFU, lasers, skincare, and expert dermatologist advice.",
+      "twitter:image:alt": "Indian man consulting a dermatologist about anti-ageing treatments including Botox, skin tightening, laser rejuvenation, and men's skincare."
     },
     "publishedTime": "2026-06-30T17:14:45+05:30",
     "modifiedTime": "2026-06-30T17:33:18+05:30",
@@ -202,14 +214,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T15:24:27+05:30",
       "article:modified_time": "2025-01-17T15:34:16+05:30",
       "og:updated_time": "2025-01-17T15:34:16+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/best-dermatologist-in-marathahalli-whitefield-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Best Dermatologist in Bangalore | Marathahalli | Whitefield"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Best Dermatologist in Bangalore | Marathahalli | Whitefield",
+      "twitter:description": "Visit Derma Solutions Best Medical & Cosmetic Dermatologist - Skin & Hair Specialist in Bangalore - Marathahalli - Whitefield. Affordable. Book Appointment Now!",
+      "twitter:image": "https://dermasolutions.co.in/images/og/best-dermatologist-in-marathahalli-whitefield-bangalore.jpg",
+      "twitter:image:alt": "Best Dermatologist in Bangalore | Marathahalli | Whitefield"
     },
     "publishedTime": "2024-12-30T15:24:27+05:30",
     "modifiedTime": "2025-01-17T15:34:16+05:30",
@@ -237,14 +252,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T14:23:34+05:30",
       "article:modified_time": "2025-01-22T08:59:25+05:30",
       "og:updated_time": "2025-01-22T08:59:25+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/best-hair-loss-treatment-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Best Hair Loss Treatment in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Best Hair Loss Treatment in Bangalore – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Visit Derma Solutions for Best Hair Loss Treatment in Bangalore - Marathahalli - Whitefield. Safe & Affordable. Senior Dermatologist. Book Appointment Today!",
+      "twitter:image": "https://dermasolutions.co.in/images/og/best-hair-loss-treatment-in-bangalore.jpg",
+      "twitter:image:alt": "Best Hair Loss Treatment in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2024-12-30T14:23:34+05:30",
     "modifiedTime": "2025-01-22T08:59:25+05:30",
@@ -272,14 +290,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T03:30:18+05:30",
       "article:modified_time": "2025-01-05T11:31:22+05:30",
       "og:updated_time": "2025-01-05T11:31:22+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/best-hydrafacial-treatment-in-marathahalli-whitefield-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Best HydraFacial Treatment-Marathahalli-Whitefield-Bangalore"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Best HydraFacial Treatment-Marathahalli-Whitefield-Bangalore",
+      "twitter:description": "Visit Derma Solutions for the Best HydraFacial Treatment in Marathahalli, Whitefield Bangalore. Safe, Affordable & Best Results. Book Your Appointment Today!",
+      "twitter:image": "https://dermasolutions.co.in/images/og/best-hydrafacial-treatment-in-marathahalli-whitefield-bangalore.jpg",
+      "twitter:image:alt": "Best HydraFacial Treatment-Marathahalli-Whitefield-Bangalore"
     },
     "publishedTime": "2024-12-30T03:30:18+05:30",
     "modifiedTime": "2025-01-05T11:31:22+05:30",
@@ -315,7 +336,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/ChatGPT-Image-Jul-1-2026-07_46_32-PM.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/ChatGPT-Image-Jul-1-2026-07_46_32-PM.png",
+      "twitter:title": "Best Treatments for Open Pores and Uneven Skin Texture | Derma Solutions",
+      "twitter:description": "Discover the best dermatologist-approved treatments for open pores and uneven skin texture. Dr. Sandeep Mahapatra explains the causes, advanced treatment options, skincare tips, and how to achieve smoother, healthier-looking skin at Derma Solutions.",
+      "twitter:image:alt": "Open Pores"
     },
     "publishedTime": "2026-07-01T19:47:02+05:30",
     "modifiedTime": "2026-07-01T19:51:25+05:30",
@@ -351,7 +375,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/botox-vs-fillers-treatment-in-bangalore.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/botox-vs-fillers-treatment-in-bangalore.png",
+      "twitter:title": "Botox vs Fillers: Key Differences, Benefits & Which One You Need | Derma Solutions Bengaluru",
+      "twitter:description": "Confused between Botox and fillers? Learn the differences, benefits, costs, results, and ideal treatment options for facial rejuvenation at Derma Solutions Bengaluru.",
+      "twitter:image:alt": "Botox vs fillers treatment in bangalore"
     },
     "publishedTime": "2026-06-06T11:01:08+05:30",
     "modifiedTime": "2026-06-17T22:13:37+05:30",
@@ -387,7 +414,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/1200-x-628-px-image-01.jpg"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/1200-x-628-px-image-01.jpg",
+      "twitter:title": "Is Laser Treatment Safe for Indian Skin? | Safety, Risks & Benefits",
+      "twitter:description": "Wondering if laser treatment is safe for Indian skin? Learn about laser hair removal, acne scars, pigmentation, risks, and expert tips from Dr. Sandeep Mahapatra at Derma Solutions, Bengaluru.",
+      "twitter:image:alt": "laser hair treatment in bangalore"
     },
     "publishedTime": "2026-06-06T15:48:22+05:30",
     "modifiedTime": "2026-06-17T19:15:15+05:30",
@@ -422,7 +452,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Blogs & Media – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Blogs Medical Facial vs Salon Facial: What’s the Real Difference? Walk into any salon today, and you’ll find an extensive menu of facials promising",
+      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "twitter:image:alt": "Blogs & Media – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2026-06-05T19:01:58+05:30",
     "modifiedTime": "2026-06-26T17:53:30+05:30",
@@ -450,14 +483,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T04:02:29+05:30",
       "article:modified_time": "2025-03-21T22:12:54+05:30",
       "og:updated_time": "2025-03-21T22:12:54+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/botox-treatment-in-bangalore-whitefield-and-marathahalli.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Best Botox Treatment Bangalore | Whitefield | Marathahalli"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Best Botox Treatment Bangalore | Whitefield | Marathahalli",
+      "twitter:description": "Visit Derma Solutions for Best Botox Treatment in Bangalore, Whitefield and Marathahalli. Safe & Affordable. Senior Dermatologist. Book Your Appointment Today!",
+      "twitter:image": "https://dermasolutions.co.in/images/og/botox-treatment-in-bangalore-whitefield-and-marathahalli.jpg",
+      "twitter:image:alt": "Best Botox Treatment Bangalore | Whitefield | Marathahalli"
     },
     "publishedTime": "2024-12-30T04:02:29+05:30",
     "modifiedTime": "2025-03-21T22:12:54+05:30",
@@ -485,14 +521,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T13:22:41+05:30",
       "article:modified_time": "2025-01-21T10:34:12+05:30",
       "og:updated_time": "2025-01-21T10:34:12+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/breast-surgeries-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Breast Surgeries in Bangalore - Marathahalli - Whitefield"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Breast Surgeries in Bangalore - Marathahalli - Whitefield",
+      "twitter:description": "Visit Derma Solutions for Best Breast Surgeries in Bangalore - Marathahalli - Whitefield. Safe & Affordable. Senior Plastic Surgeon. Book Your Appointment Today",
+      "twitter:image": "https://dermasolutions.co.in/images/og/breast-surgeries-in-bangalore.jpg",
+      "twitter:image:alt": "Breast Surgeries in Bangalore - Marathahalli - Whitefield"
     },
     "publishedTime": "2024-12-30T13:22:41+05:30",
     "modifiedTime": "2025-01-21T10:34:12+05:30",
@@ -528,7 +567,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/Gemini_Generated_Image_9p0n4n9p0n4n9p0n.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/Gemini_Generated_Image_9p0n4n9p0n4n9p0n.png",
+      "twitter:title": "Breast Surgery: Why Specialist Evaluation Matters First",
+      "twitter:description": "Planning cosmetic surgery? Learn the essential questions to ask your surgeon about qualifications, risks, recovery, costs, and expected results before your procedure.",
+      "twitter:image:alt": "Breast Cancer"
     },
     "publishedTime": "2026-07-07T13:50:21+05:30",
     "modifiedTime": "2026-07-09T14:27:06+05:30",
@@ -559,7 +601,9 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Uncategorized – Derma Solutions Skin and Hair Clinic",
+      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "twitter:image:alt": "Uncategorized – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "",
     "modifiedTime": "",
@@ -587,14 +631,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2025-01-06T15:44:30+05:30",
       "article:modified_time": "2025-01-06T22:48:06+05:30",
       "og:updated_time": "2025-01-06T22:48:06+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/chemical-peel-treatment-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Best Chemical Peels Treatment in Bangalore | Safe-Affordable"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Best Chemical Peels Treatment in Bangalore | Safe-Affordable",
+      "twitter:description": "Visit Derma Solutions for the Best Chemical Peels Treatment in Bangalore for glowing skin. Safe, Affordable. Senior Dermatologist. Book Your Appointment Today!",
+      "twitter:image": "https://dermasolutions.co.in/images/og/chemical-peel-treatment-in-bangalore.jpg",
+      "twitter:image:alt": "Best Chemical Peels Treatment in Bangalore | Safe-Affordable"
     },
     "publishedTime": "2025-01-06T15:44:30+05:30",
     "modifiedTime": "2025-01-06T22:48:06+05:30",
@@ -630,7 +677,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/chemical-peels-vs-microneedling-vs-lasers-vs-injectables.webp.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/chemical-peels-vs-microneedling-vs-lasers-vs-injectables.webp.png",
+      "twitter:title": "Chemical Peels vs Lasers vs Injectables: Which Is Best?",
+      "twitter:description": "Not sure whether to choose chemical peels, microneedling, lasers, or injectables? Learn the differences, benefits, recovery, and expert recommendations.",
+      "twitter:image:alt": "Indian woman consulting a dermatologist while comparing chemical peels, microneedling, laser treatment, and injectable skin rejuvenation procedures."
     },
     "publishedTime": "2026-07-10T15:37:33+05:30",
     "modifiedTime": "2026-07-10T15:57:35+05:30",
@@ -666,7 +716,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/ChatGPT-Image-Jun-27-2026-04_48_51-PM.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/ChatGPT-Image-Jun-27-2026-04_48_51-PM.png",
+      "twitter:title": "How to Choose the Right Skin Treatment for Dull Skin, Pigmentation & Acne Scars",
+      "twitter:description": "Confused about which skin treatment is right for dull skin, pigmentation, or acne scars? Dr. Sandeep Mahapatra explains the best dermatologist-recommended treatments for healthier, radiant skin.",
+      "twitter:image:alt": "ChatGPT Image Jun 27, 2026, 04 48 51 PM"
     },
     "publishedTime": "2026-06-26T16:40:17+05:30",
     "modifiedTime": "2026-06-27T16:49:44+05:30",
@@ -702,7 +755,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/a.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/a.png",
+      "twitter:title": "How to Choose the Right Skin & Hair Specialist | Dr. Sandeep Mahapatra",
+      "twitter:description": "Looking for a skin or hair specialist? Dr. Sandeep Mahapatra explains how to choose the right dermatologist, evaluate clinics, verify treatment claims, and ensure safe, effective results.",
+      "twitter:image:alt": "Dr. Sandeep Mahapatra"
     },
     "publishedTime": "2026-06-18T12:26:12+05:30",
     "modifiedTime": "2026-06-22T14:04:10+05:30",
@@ -738,7 +794,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/ChatGPT-Image-Jun-17-2026-12_14_23-PM.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/ChatGPT-Image-Jun-17-2026-12_14_23-PM.png",
+      "twitter:title": "CoolSculpting for Stubborn Fat: Does It Really Work?",
+      "twitter:description": "Discover how CoolSculpting reduces stubborn fat without surgery. Learn benefits, results, side effects, and whether it's right for you.",
+      "twitter:image:alt": "ChatGPT Image Jun 17, 2026, 12 14 23 PM"
     },
     "publishedTime": "2026-06-17T12:04:36+05:30",
     "modifiedTime": "2026-06-18T14:01:04+05:30",
@@ -773,7 +832,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Cosmetic Dermatology in Bangalore – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Visit Derma Solutions for Best Cosmetic Dermatology in Bangalore, Marathahalli, Whitefield. Safe & Affordable. Senior Dermatologist. Book Your Appointment Today",
+      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "twitter:image:alt": "Cosmetic Dermatology in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2024-12-30T13:27:53+05:30",
     "modifiedTime": "2025-01-02T11:34:31+05:30",
@@ -808,7 +870,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Cosmetic Plastic Surgery in Marathahalli - Whitefield",
+      "twitter:description": "Visit Derma Solutions for the Best Cosmetic Plastic Surgery in Marathahalli - Whitefield. Safe & Affordable. Senior Plastic Surgeon. Book Your Appointment Today",
+      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "twitter:image:alt": "Cosmetic Plastic Surgery in Marathahalli - Whitefield"
     },
     "publishedTime": "2024-12-30T13:03:36+05:30",
     "modifiedTime": "2025-01-01T18:01:02+05:30",
@@ -836,14 +901,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2025-01-17T11:52:21+05:30",
       "article:modified_time": "2025-01-17T17:35:22+05:30",
       "og:updated_time": "2025-01-17T17:35:22+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/cryolipolysis-coolsculpting-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Cryolipolysis CoolSculpting in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Cryolipolysis CoolSculpting in Bangalore – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Reshape Your Body with Cryolipolysis / Cool Sculpting Treatment in Bangalore Non-invasive fat reduction for a slimmer, contoured you, available at Derma Solutio",
+      "twitter:image": "https://dermasolutions.co.in/images/og/cryolipolysis-coolsculpting-in-bangalore.jpg",
+      "twitter:image:alt": "Cryolipolysis CoolSculpting in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2025-01-17T11:52:21+05:30",
     "modifiedTime": "2025-01-17T17:35:22+05:30",
@@ -879,7 +947,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/Cryolipolysis-vs-Liposuction.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/Cryolipolysis-vs-Liposuction.png",
+      "twitter:title": "Cryolipolysis vs Liposuction: Which Fat Reduction Works?",
+      "twitter:description": "Compare Cryolipolysis and Liposuction for stubborn fat reduction. Learn the differences, benefits, recovery, risks, and expert advice from Dr. Sandeep Mahapatra.",
+      "twitter:image:alt": "Comparison of Cryolipolysis and Liposuction for stubborn fat reduction in an Indian patient undergoing body contouring treatment."
     },
     "publishedTime": "2026-07-07T20:05:12+05:30",
     "modifiedTime": "2026-07-07T20:22:50+05:30",
@@ -907,14 +978,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T04:08:26+05:30",
       "article:modified_time": "2025-01-09T09:31:12+05:30",
       "og:updated_time": "2025-01-09T09:31:12+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/dermal-fillers-treatment-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Best Dermal Fillers Bangalore - Whitefield - Marathahalli"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Best Dermal Fillers Bangalore - Whitefield - Marathahalli",
+      "twitter:description": "Visit Derma Solutions. Best Dermal Fillers in Bangalore, Whitefield, Marathahalli. Safe & Affordable. Senior Dermatologist. Book Your Appointment Today!",
+      "twitter:image": "https://dermasolutions.co.in/images/og/dermal-fillers-treatment-bangalore.jpg",
+      "twitter:image:alt": "Best Dermal Fillers Bangalore - Whitefield - Marathahalli"
     },
     "publishedTime": "2024-12-30T04:08:26+05:30",
     "modifiedTime": "2025-01-09T09:31:12+05:30",
@@ -942,14 +1016,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2025-09-15T11:20:05+05:30",
       "article:modified_time": "2025-09-16T08:58:17+05:30",
       "og:updated_time": "2025-09-16T08:58:17+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/dr-chandhana-vishal-n-plastic-surgeon.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Dr Chandhana Vishal N- Plastic Surgeon – Derma Solutions Skin and Hair Clinic"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Dr Chandhana Vishal N- Plastic Surgeon – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Meet Dr. Chandhana Vishal – Plastic Surgeon in Bangalore Your trusted Plastic, Reconstructive & Aesthetic Surgeon at Derma Solutions. Book Your Appointment with",
+      "twitter:image": "https://dermasolutions.co.in/images/og/dr-chandhana-vishal-n-plastic-surgeon.jpg",
+      "twitter:image:alt": "Dr Chandhana Vishal N- Plastic Surgeon – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2025-09-15T11:20:05+05:30",
     "modifiedTime": "2025-09-16T08:58:17+05:30",
@@ -977,14 +1054,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2025-05-17T16:45:49+05:30",
       "article:modified_time": "2025-05-17T18:13:04+05:30",
       "og:updated_time": "2025-05-17T18:13:04+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/dr-sumedha-tirthani-dermatologist.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Dr Sumedha Tirthani – Dermatologist – Derma Solutions Skin and Hair Clinic"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Dr Sumedha Tirthani – Dermatologist – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Meet Dr. Sumedha Tirthani – Expert Dermatologist in Bangalore Board-certified, gold medalist dermatologist with advanced expertise in clinical, cosmetic, and la",
+      "twitter:image": "https://dermasolutions.co.in/images/og/dr-sumedha-tirthani-dermatologist.jpg",
+      "twitter:image:alt": "Dr Sumedha Tirthani – Dermatologist – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2025-05-17T16:45:49+05:30",
     "modifiedTime": "2025-05-17T18:13:04+05:30",
@@ -1012,14 +1092,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T15:29:50+05:30",
       "article:modified_time": "2025-01-17T07:14:29+05:30",
       "og:updated_time": "2025-01-17T07:14:29+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/dr-thyagaraj-best-plastic-surgeon-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Dr. Thyagaraj Best Plastic Surgeon in Bangalore Marathahalli"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Dr. Thyagaraj Best Plastic Surgeon in Bangalore Marathahalli",
+      "twitter:description": "Visit Derma Solutions for Best Plastic Surgeon in Bangalore - Marathahalli - Whitefield. Safe & Affordable. Senior Plastic Surgeon. Book Your Appointment Today!",
+      "twitter:image": "https://dermasolutions.co.in/images/og/dr-thyagaraj-best-plastic-surgeon-in-bangalore.jpg",
+      "twitter:image:alt": "Dr. Thyagaraj Best Plastic Surgeon in Bangalore Marathahalli"
     },
     "publishedTime": "2024-12-30T15:29:50+05:30",
     "modifiedTime": "2025-01-17T07:14:29+05:30",
@@ -1047,14 +1130,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2026-04-10T11:16:14+05:30",
       "article:modified_time": "2026-04-17T19:32:16+05:30",
       "og:updated_time": "2026-04-17T19:32:16+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/ear-lobe-repair-surgery-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Ear Lobe Repair Surgery in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Ear Lobe Repair Surgery in Bangalore – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Ear Lobe Repair in Bangalore – Safe & Expert Treatment Safe, expert ear lobe repair in Bangalore at Derma Solution Clinic, delivering natural-looking results wi",
+      "twitter:image": "https://dermasolutions.co.in/images/og/ear-lobe-repair-surgery-in-bangalore.jpg",
+      "twitter:image:alt": "Ear Lobe Repair Surgery in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2026-04-10T11:16:14+05:30",
     "modifiedTime": "2026-04-17T19:32:16+05:30",
@@ -1090,7 +1176,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/Earlobe-Repair-Surgery.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/Earlobe-Repair-Surgery.png",
+      "twitter:title": "Torn Earlobe Repair Surgery in Bengaluru | Expert Guide",
+      "twitter:description": "Learn about earlobe repair surgery for torn, split, or stretched earlobes. Discover the procedure, recovery, FAQs, and expert advice from Dr. Sandeep Mahapatra.",
+      "twitter:image:alt": "ndian woman consulting a dermatologist for torn earlobe repair surgery in a modern dermatology clinic."
     },
     "publishedTime": "2026-07-08T12:41:13+05:30",
     "modifiedTime": "2026-07-08T13:04:14+05:30",
@@ -1118,14 +1207,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2025-03-14T09:15:25+05:30",
       "article:modified_time": "2025-03-14T11:14:24+05:30",
       "og:updated_time": "2025-03-14T11:14:24+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/fractional-co2-laser-skin-resurfacing-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Best Fractional CO2 Laser Skin Resurfacing Bangalore"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Best Fractional CO2 Laser Skin Resurfacing Bangalore",
+      "twitter:description": "Visit Derma Solutions for Best Fractional CO2 Laser Skin Resurfacing in Bangalore for acne scars, wrinkles, skin discoloration. Book your appointment today!",
+      "twitter:image": "https://dermasolutions.co.in/images/og/fractional-co2-laser-skin-resurfacing-in-bangalore.jpg",
+      "twitter:image:alt": "Best Fractional CO2 Laser Skin Resurfacing Bangalore"
     },
     "publishedTime": "2025-03-14T09:15:25+05:30",
     "modifiedTime": "2025-03-14T11:14:24+05:30",
@@ -1153,14 +1245,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T15:06:23+05:30",
       "article:modified_time": "2025-01-22T11:27:13+05:30",
       "og:updated_time": "2025-01-22T11:27:13+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/gfc-hair-treatment-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "GFC Hair treatment in Bangalore - Marathahalli - Whitefield"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "GFC Hair treatment in Bangalore - Marathahalli - Whitefield",
+      "twitter:description": "Visit Derma Solutions - Best Growth Factor Concentrate (GFC) Treatment in Bangalore - Marathahalli - Whitefield. Affordable. Sr Dermatologist. Book Appointment",
+      "twitter:image": "https://dermasolutions.co.in/images/og/gfc-hair-treatment-in-bangalore.jpg",
+      "twitter:image:alt": "GFC Hair treatment in Bangalore - Marathahalli - Whitefield"
     },
     "publishedTime": "2024-12-30T15:06:23+05:30",
     "modifiedTime": "2025-01-22T11:27:13+05:30",
@@ -1196,7 +1291,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/gynecomastia-surgery-in-bangalore.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/gynecomastia-surgery-in-bangalore.png",
+      "twitter:title": "Gynecomastia Surgery in Bengaluru | Male Chest Reduction",
+      "twitter:description": "Learn everything about gynecomastia surgery, including causes, diagnosis, procedure, recovery, risks, FAQs, and expert advice from Dr. Sandeep Mahapatra.",
+      "twitter:image:alt": "Gynecomastia surgery in bangalore"
     },
     "publishedTime": "2026-07-04T14:04:06+05:30",
     "modifiedTime": "2026-07-04T14:21:27+05:30",
@@ -1224,14 +1322,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T13:34:53+05:30",
       "article:modified_time": "2025-01-19T11:11:55+05:30",
       "og:updated_time": "2025-01-19T11:11:55+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/gynecomastia-surgery-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Gynecomastia Surgery in Bangalore - Marathahalli, Whitefield"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Gynecomastia Surgery in Bangalore - Marathahalli, Whitefield",
+      "twitter:description": "Visit Derma Solutions the Best Gynecomastia Surgery in Bangalore - Marathahalli - Whitefield. Safe, Affordable. Senior Plastic Surgeon. Book Appointment Today!",
+      "twitter:image": "https://dermasolutions.co.in/images/og/gynecomastia-surgery-in-bangalore.jpg",
+      "twitter:image:alt": "Gynecomastia Surgery in Bangalore - Marathahalli, Whitefield"
     },
     "publishedTime": "2024-12-30T13:34:53+05:30",
     "modifiedTime": "2025-01-19T11:11:55+05:30",
@@ -1259,14 +1360,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T15:08:32+05:30",
       "article:modified_time": "2025-01-22T12:03:39+05:30",
       "og:updated_time": "2025-01-22T12:03:39+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/hair-analysis-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Hair Analysis in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Hair Analysis in Bangalore – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Visit Derma Solutions for the Best Hair Analysis in Bangalore - Marathahalli - Whitefield. Safe & Affordable. Senior Dermatologist. Book Your Appointment Today!",
+      "twitter:image": "https://dermasolutions.co.in/images/og/hair-analysis-in-bangalore.jpg",
+      "twitter:image:alt": "Hair Analysis in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2024-12-30T15:08:32+05:30",
     "modifiedTime": "2025-01-22T12:03:39+05:30",
@@ -1294,14 +1398,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T14:21:56+05:30",
       "article:modified_time": "2025-06-23T19:32:57+05:30",
       "og:updated_time": "2025-06-23T19:32:57+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/hair-transplant-in-bangalore-marathahalli-whitefield.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Hair Transplant in Bangalore - Marathahalli - Whitefield"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Hair Transplant in Bangalore - Marathahalli - Whitefield",
+      "twitter:description": "Visit Derma Solutions - Hair Transplant in Bangalore - Marathahalli - Whitefield. Safe & Affordable. Senior Hair Transplant Surgeon. Book Your Appointment Today",
+      "twitter:image": "https://dermasolutions.co.in/images/og/hair-transplant-in-bangalore-marathahalli-whitefield.jpg",
+      "twitter:image:alt": "Hair Transplant in Bangalore - Marathahalli - Whitefield"
     },
     "publishedTime": "2024-12-30T14:21:56+05:30",
     "modifiedTime": "2025-06-23T19:32:57+05:30",
@@ -1337,7 +1444,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/ChatGPT-Image-Jun-17-2026-11_12_51-AM.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/ChatGPT-Image-Jun-17-2026-11_12_51-AM.png",
+      "twitter:title": "Can HIFU Tighten Sagging Skin? Non-Surgical Facelift Guide",
+      "twitter:description": "Discover how HIFU tightens sagging skin, lifts the face naturally, and stimulates collagen production. Learn benefits, results, and suitability.",
+      "twitter:image:alt": "HIFU"
     },
     "publishedTime": "2026-06-17T11:18:04+05:30",
     "modifiedTime": "2026-06-18T14:02:25+05:30",
@@ -1365,14 +1475,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T04:15:57+05:30",
       "article:modified_time": "2025-01-11T15:39:34+05:30",
       "og:updated_time": "2025-01-11T15:39:34+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/hifu-treatment-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "HIFU Treatment in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "HIFU Treatment in Bangalore – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Visit Derma Solutions for the Best HIFU Treatment in Bangalore, Marathahalli, Whitefield. Safe & Affordable. Senior Dermatologist. Book Your Appointment Today!",
+      "twitter:image": "https://dermasolutions.co.in/images/og/hifu-treatment-in-bangalore.jpg",
+      "twitter:image:alt": "HIFU Treatment in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2024-12-30T04:15:57+05:30",
     "modifiedTime": "2025-01-11T15:39:34+05:30",
@@ -1400,14 +1513,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-28T11:05:56+05:30",
       "article:modified_time": "2025-01-06T22:49:59+05:30",
       "og:updated_time": "2025-01-06T22:49:59+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/hollywood-facial-carbon-laser-peel-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Hollywood Facial - Carbon Laser Peel - Bangalore"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Hollywood Facial - Carbon Laser Peel - Bangalore",
+      "twitter:description": "Visit Derma Solutions - Best Hollywood Facial - Carbon Peel Treatment in Bangalore. Safe, Affordable, and Advanced Laser treatments. Book Your Appointment Today",
+      "twitter:image": "https://dermasolutions.co.in/images/og/hollywood-facial-carbon-laser-peel-bangalore.jpg",
+      "twitter:image:alt": "Hollywood Facial - Carbon Laser Peel - Bangalore"
     },
     "publishedTime": "2024-12-28T11:05:56+05:30",
     "modifiedTime": "2025-01-06T22:49:59+05:30",
@@ -1443,7 +1559,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/ChatGPT-Image-Jun-18-2026-11_41_25-AM.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/ChatGPT-Image-Jun-18-2026-11_41_25-AM.png",
+      "twitter:title": "How to Treat Stubborn Pigmentation: Causes, Melasma & Best Treatment Options",
+      "twitter:description": "Struggling with stubborn pigmentation? Dr. Sandeep Mahapatra explains the causes of pigmentation, melasma, laser treatments, chemical peels, skincare solutions, and sun protection for clearer, healthier skin.",
+      "twitter:image:alt": "Pigmentation"
     },
     "publishedTime": "2026-06-18T11:28:08+05:30",
     "modifiedTime": "2026-06-18T13:57:49+05:30",
@@ -1479,7 +1598,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/ChatGPT-Image-Jul-3-2026-05_19_28-PM.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/ChatGPT-Image-Jul-3-2026-05_19_28-PM.png",
+      "twitter:title": "How Dermatologists Treat Acne Scars: A Step-by-Step Guide | Dr. Sandeep Mahapatra",
+      "twitter:description": "Learn how dermatologists treat acne scars with this step-by-step guide by Dr. Sandeep Mahapatra. Discover treatments like MNRF, CO₂ Laser, PRP, PDRN, Subcision, Chemical Peels, and more.",
+      "twitter:image:alt": "Treating acne scars"
     },
     "publishedTime": "2026-07-03T17:15:43+05:30",
     "modifiedTime": "2026-07-03T17:25:17+05:30",
@@ -1515,7 +1637,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/ChatGPT-Image-Jun-27-2026-04_52_04-PM.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/ChatGPT-Image-Jun-27-2026-04_52_04-PM.png",
+      "twitter:title": "How Long Do Dermal Fillers Last? | Complete Guide by Dr. Sandeep Mahapatra",
+      "twitter:description": "Discover how long dermal fillers last, factors that affect longevity, treatment areas, benefits, side effects, and expert tips from Dr. Sandeep Mahapatra.",
+      "twitter:image:alt": "Derma Fillers"
     },
     "publishedTime": "2026-06-25T16:47:45+05:30",
     "modifiedTime": "2026-06-27T16:55:51+05:30",
@@ -1551,7 +1676,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/Gemini_Generated_Image_655qw7655qw7655q.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/Gemini_Generated_Image_655qw7655qw7655q.png",
+      "twitter:title": "Wedding Glow Starts Months Before the Big Day | Skin Timeline",
+      "twitter:description": "Planning your wedding? Follow this dermatologist-approved wedding skincare timeline by Dr. Sandeep Mahapatra to achieve healthy, glowing skin before your big day.",
+      "twitter:image:alt": "Wedding Glow"
     },
     "publishedTime": "2026-07-11T13:30:10+05:30",
     "modifiedTime": "2026-07-11T13:51:28+05:30",
@@ -1587,7 +1715,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/ChatGPT-Image-Jul-6-2026-11_19_39-AM.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/ChatGPT-Image-Jul-6-2026-11_19_39-AM.png",
+      "twitter:title": "HydraFacial vs Chemical Peel: Which Skin Treatment Is Better?",
+      "twitter:description": "Confused between HydraFacial and Chemical Peels? Learn the differences, benefits, results, and how to choose the right treatment for healthy, glowing skin.",
+      "twitter:image:alt": "ChatGPT Image Jul 6, 2026, 11 19 39 AM"
     },
     "publishedTime": "2026-06-27T15:46:33+05:30",
     "modifiedTime": "2026-07-06T11:20:48+05:30",
@@ -1622,7 +1753,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Image Gallery – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Transformations That Speak for Themselves See the remarkable results achieved at Derma Solutions with expert care by Dr. Sandeep Mahapatra. Explore our gallery",
+      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "twitter:image:alt": "Image Gallery – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2025-01-17T17:37:04+05:30",
     "modifiedTime": "2025-01-17T17:48:01+05:30",
@@ -1657,7 +1791,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Inch Reduction Treatment In Bangalore – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Visit Derma Solutions for Inch Reduction Treatment In Bangalore, Marathahalli, Whitefield. Safe & Affordable. Senior Dermatologist. Book Your Appointment Today!",
+      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "twitter:image:alt": "Inch Reduction Treatment In Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2024-12-30T14:15:54+05:30",
     "modifiedTime": "2025-01-01T10:59:16+05:30",
@@ -1692,7 +1829,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "IV Glutathione Treatment – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Glutathione IV Drip Treatment in Bangalore for Brighter, Healthier Skin! Safe, doctor-supervised IV Glutathione therapy for skin glow, detox, and anti-aging at",
+      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "twitter:image:alt": "IV Glutathione Treatment – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2026-04-10T15:47:47+05:30",
     "modifiedTime": "2026-04-15T18:21:29+05:30",
@@ -1720,14 +1860,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2025-11-21T10:06:41+05:30",
       "article:modified_time": "2026-04-17T19:48:39+05:30",
       "og:updated_time": "2026-04-17T19:48:39+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/iv-glutathione-treatment-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "IV Glutathione Treatment in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "IV Glutathione Treatment in Bangalore – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Glutathione IV Drip Treatment in Bangalore for Brighter, Healthier Skin! Safe, doctor-supervised IV Glutathione therapy for skin glow, detox, and anti-aging at",
+      "twitter:image": "https://dermasolutions.co.in/images/og/iv-glutathione-treatment-in-bangalore.jpg",
+      "twitter:image:alt": "IV Glutathione Treatment in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2025-11-21T10:06:41+05:30",
     "modifiedTime": "2026-04-17T19:48:39+05:30",
@@ -1755,14 +1898,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-26T10:22:21+05:30",
       "article:modified_time": "2025-11-29T18:26:21+05:30",
       "og:updated_time": "2025-11-29T18:26:21+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/laser-hair-removal-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Laser Hair Removal in Bangalore -Marathahalli - Whitefield"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Laser Hair Removal in Bangalore -Marathahalli - Whitefield",
+      "twitter:description": "Visit Derma Solutions Clinic for Best Laser Hair Removal in Bangalore. Safe, Affordable, Advanced Laser treatments. Senior Dermatologist. Book Appointment Today",
+      "twitter:image": "https://dermasolutions.co.in/images/og/laser-hair-removal-in-bangalore.jpg",
+      "twitter:image:alt": "Laser Hair Removal in Bangalore -Marathahalli - Whitefield"
     },
     "publishedTime": "2024-12-26T10:22:21+05:30",
     "modifiedTime": "2025-11-29T18:26:21+05:30",
@@ -1797,7 +1943,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Laser Tattoo Removal in Bangalore – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Home » Laser Tattoo Removal in Bangalore Remove Unwanted Tattoos Safely with Laser Tattoo Removal in Bangalore Say goodbye to unwanted tattoos with our ad",
+      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "twitter:image:alt": "Laser Tattoo Removal in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2024-12-26T19:52:06+05:30",
     "modifiedTime": "2024-12-27T10:19:53+05:30",
@@ -1833,7 +1982,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/ChatGPT-Image-Jul-2-2026-05_03_51-PM.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/ChatGPT-Image-Jul-2-2026-05_03_51-PM.png",
+      "twitter:title": "Laser Toning for Pigmentation: Results, Benefits & Recovery",
+      "twitter:description": "Learn how laser toning treats pigmentation, melasma, acne marks, and uneven skin tone. Dr. Sandeep Mahapatra explains results, sessions, recovery, and aftercare.",
+      "twitter:image:alt": "Lazer Toning for Pigmentation"
     },
     "publishedTime": "2026-07-02T17:12:01+05:30",
     "modifiedTime": "2026-07-03T17:25:33+05:30",
@@ -1861,14 +2013,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-27T10:20:25+05:30",
       "article:modified_time": "2025-08-07T10:30:55+05:30",
       "og:updated_time": "2025-08-07T10:30:55+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/laser-toning-treatment-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Laser Toning Treatment in Bangalore -Marathahalli-Whitefield"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Laser Toning Treatment in Bangalore -Marathahalli-Whitefield",
+      "twitter:description": "Visit Derma Solutions for the Best Laser Toning Treatment in Bangalore. Safe, Affordable, and Advanced Laser treatments. Book your appointment today!",
+      "twitter:image": "https://dermasolutions.co.in/images/og/laser-toning-treatment-in-bangalore.jpg",
+      "twitter:image:alt": "Laser Toning Treatment in Bangalore -Marathahalli-Whitefield"
     },
     "publishedTime": "2024-12-27T10:20:25+05:30",
     "modifiedTime": "2025-08-07T10:30:55+05:30",
@@ -1896,14 +2051,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T13:31:38+05:30",
       "article:modified_time": "2025-01-18T22:33:13+05:30",
       "og:updated_time": "2025-01-18T22:33:13+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/liposuction-treatment-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Liposuction Treatment in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Liposuction Treatment in Bangalore – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Visit Derma Solutions for the Best Liposuction in Bangalore - Marathahalli - Whitefield. Safe & Affordable. Senior Plastic Surgeon. Book Your Appointment Today!",
+      "twitter:image": "https://dermasolutions.co.in/images/og/liposuction-treatment-in-bangalore.jpg",
+      "twitter:image:alt": "Liposuction Treatment in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2024-12-30T13:31:38+05:30",
     "modifiedTime": "2025-01-18T22:33:13+05:30",
@@ -1938,7 +2096,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Maintenance Page – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Derma Solutions website is under-going a design & technology refresh. Regret the inconvenience cause. You can visit out Clinic for any Dermatological & Skin Tre",
+      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "twitter:image:alt": "Maintenance Page – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2024-12-23T16:58:32+05:30",
     "modifiedTime": "2024-12-23T19:18:49+05:30",
@@ -1974,7 +2135,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/ChatGPT-Image-Jul-15-2026-08_36_11-AM.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/ChatGPT-Image-Jul-15-2026-08_36_11-AM.png",
+      "twitter:title": "Medical Facial vs Salon Facial: What's the Real Difference?",
+      "twitter:description": "Confused between a medical facial and a salon facial? Dr. Sandeep Mahapatra explains the key differences, benefits, and how to choose the right facial for your skin.",
+      "twitter:image:alt": "Medical Vs Salon Facial"
     },
     "publishedTime": "2026-07-15T08:12:48+05:30",
     "modifiedTime": "2026-07-15T08:36:48+05:30",
@@ -2002,14 +2166,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T03:35:24+05:30",
       "article:modified_time": "2025-05-19T07:50:40+05:30",
       "og:updated_time": "2025-05-19T07:50:40+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/microdermabrasion-treatment-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Best Microdermabrasion Treatment Bangalore -Safe-Affordable"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Best Microdermabrasion Treatment Bangalore -Safe-Affordable",
+      "twitter:description": "Visit Derma Solutions for the Best Microdermabrasion Treatment in Bangalore. Safe, Affordable, & Best Results. Senior Dermatologist. Book Your Appointment Today",
+      "twitter:image": "https://dermasolutions.co.in/images/og/microdermabrasion-treatment-in-bangalore.jpg",
+      "twitter:image:alt": "Best Microdermabrasion Treatment Bangalore -Safe-Affordable"
     },
     "publishedTime": "2024-12-30T03:35:24+05:30",
     "modifiedTime": "2025-05-19T07:50:40+05:30",
@@ -2037,14 +2204,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T03:43:56+05:30",
       "article:modified_time": "2025-01-06T22:09:17+05:30",
       "og:updated_time": "2025-01-06T22:09:17+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/mnrf-treatment-in-bangalore-microneedling-with-radio-frequency.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "MNRF Treatment in Bangalore | Micro-Needling Radio Frequency"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "MNRF Treatment in Bangalore | Micro-Needling Radio Frequency",
+      "twitter:description": "Visit Derma Solutions for Best Micro-Needling Radio Frequency Skin Rejuvenation & Tightening Treatment in Bangalore. Safe, Affordable. Book Appointment Today",
+      "twitter:image": "https://dermasolutions.co.in/images/og/mnrf-treatment-in-bangalore-microneedling-with-radio-frequency.jpg",
+      "twitter:image:alt": "MNRF Treatment in Bangalore | Micro-Needling Radio Frequency"
     },
     "publishedTime": "2024-12-30T03:43:56+05:30",
     "modifiedTime": "2025-01-06T22:09:17+05:30",
@@ -2080,7 +2250,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/1-1.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/1-1.png",
+      "twitter:title": "MNRF vs CO₂ Laser for Acne Scars: Which Treatment Is Better? | Dr. Sandeep Mahapatra",
+      "twitter:description": "Confused between MNRF and CO₂ Laser for acne scars? Dr. Sandeep Mahapatra explains the differences, benefits, recovery, side effects, and how to choose the right treatment for smoother, healthier skin.",
+      "twitter:image:alt": "1"
     },
     "publishedTime": "2026-06-27T16:16:12+05:30",
     "modifiedTime": "2026-07-08T11:20:16+05:30",
@@ -2108,14 +2281,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-28T10:02:28+05:30",
       "article:modified_time": "2025-01-05T11:35:06+05:30",
       "og:updated_time": "2025-01-05T11:35:06+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/mole-removal-treatment-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Best Mole Removal Treatment in Bangalore - Laser - Safe"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Best Mole Removal Treatment in Bangalore - Laser - Safe",
+      "twitter:description": "Visit Derma Solutions for the Best Mole Removal Treatment in Bangalore. Safe, Affordable, and Advanced Laser treatments. Book Your Appointment Today!",
+      "twitter:image": "https://dermasolutions.co.in/images/og/mole-removal-treatment-in-bangalore.jpg",
+      "twitter:image:alt": "Best Mole Removal Treatment in Bangalore - Laser - Safe"
     },
     "publishedTime": "2024-12-28T10:02:28+05:30",
     "modifiedTime": "2025-01-05T11:35:06+05:30",
@@ -2143,14 +2319,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2026-04-10T12:23:28+05:30",
       "article:modified_time": "2026-04-17T19:42:37+05:30",
       "og:updated_time": "2026-04-17T19:42:37+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/nad-iv-drips-treatment-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "NAD IV Drips Treatment in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "NAD IV Drips Treatment in Bangalore – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Revitalize Your Body from Within with NAD IV Treatment In Bangalore Modern lifestyles and stress can drain your energy and affect overall wellness. At Derma Sol",
+      "twitter:image": "https://dermasolutions.co.in/images/og/nad-iv-drips-treatment-in-bangalore.jpg",
+      "twitter:image:alt": "NAD IV Drips Treatment in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2026-04-10T12:23:28+05:30",
     "modifiedTime": "2026-04-17T19:42:37+05:30",
@@ -2186,7 +2365,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/ChatGPT-Image-Jul-6-2026-11_07_47-AM-1.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/ChatGPT-Image-Jul-6-2026-11_07_47-AM-1.png",
+      "twitter:title": "What Is PDRN (Salmon DNA) Facial? Benefits, Results & Who Can Consider It | Dr. Sandeep Mahapatra",
+      "twitter:description": "Curious about the PDRN (Salmon DNA) Facial? Dr. Sandeep Mahapatra explains how PDRN works, its benefits, recovery, side effects, and who can benefit from this regenerative skin treatment.",
+      "twitter:image:alt": "What is PDRN ( SALMON DNA) facial"
     },
     "publishedTime": "2026-06-29T22:36:50+05:30",
     "modifiedTime": "2026-07-06T11:10:39+05:30",
@@ -2222,7 +2404,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/ChatGPT-Image-Jul-3-2026-09_58_19-PM.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/ChatGPT-Image-Jul-3-2026-09_58_19-PM.png",
+      "twitter:title": "Phototherapy for Skin Conditions: When Is It Used? | Dr. Sandeep Mahapatra",
+      "twitter:description": "Learn how phototherapy treats psoriasis, vitiligo, eczema, and other skin conditions. Dr. Sandeep Mahapatra explains the types, benefits, procedure, safety, side effects, and who can benefit from phototherapy.",
+      "twitter:image:alt": "Phototherapy"
     },
     "publishedTime": "2026-07-03T22:04:50+05:30",
     "modifiedTime": "2026-07-03T22:09:21+05:30",
@@ -2250,14 +2435,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T13:29:30+05:30",
       "article:modified_time": "2025-01-21T21:16:39+05:30",
       "og:updated_time": "2025-01-21T21:16:39+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/phototherapy-treatment-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Phototherapy Treatment in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Phototherapy Treatment in Bangalore – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Visit Derma Solutions for Best Phototherapy Treatment in Bangalore, Marathahalli, Whitefield. Safe-Affordable. Senior Dermatologist. Book Your Appointment Today",
+      "twitter:image": "https://dermasolutions.co.in/images/og/phototherapy-treatment-in-bangalore.jpg",
+      "twitter:image:alt": "Phototherapy Treatment in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2024-12-30T13:29:30+05:30",
     "modifiedTime": "2025-01-21T21:16:39+05:30",
@@ -2292,7 +2480,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Privacy Policy – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Privacy Policy Effective Date: 01-01-2025 NEOFOLLICLE AND NEOFERTILITY CLINIC LLP (“Company”, “we”, “us”, or “our”) respects the privacy of its users and is com",
+      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "twitter:image:alt": "Privacy Policy – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2024-12-23T05:10:00+05:30",
     "modifiedTime": "2025-05-27T17:35:44+05:30",
@@ -2320,14 +2511,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T04:14:40+05:30",
       "article:modified_time": "2025-05-19T07:49:07+05:30",
       "og:updated_time": "2025-05-19T07:49:07+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/radio-frequency-skin-tightening-treatment.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Radio Frequency Skin Tightening - Reaction Viora - Bangalore"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Radio Frequency Skin Tightening - Reaction Viora - Bangalore",
+      "twitter:description": "Visit Derma Solutions. Best Radio Frequency Skin Tightening Treatment In Marathahalli | Whitefield. Safe & Affordable. Sr. Dermatologist. Book Appointment Today",
+      "twitter:image": "https://dermasolutions.co.in/images/og/radio-frequency-skin-tightening-treatment.jpg",
+      "twitter:image:alt": "Radio Frequency Skin Tightening - Reaction Viora - Bangalore"
     },
     "publishedTime": "2024-12-30T04:14:40+05:30",
     "modifiedTime": "2025-05-19T07:49:07+05:30",
@@ -2363,7 +2557,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/ChatGPT-Image-Jul-8-2026-11_42_36-AM.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/ChatGPT-Image-Jul-8-2026-11_42_36-AM.png",
+      "twitter:title": "Reconstructive Surgery in Bangalore | Restore Form & Function | Dr. Sandeep Mahapatra",
+      "twitter:description": "Learn how reconstructive surgery restores function and appearance after trauma, burns, cancer, and congenital conditions. Expert care by Dr. Sandeep Mahapatra at Derma Solutions.",
+      "twitter:image:alt": "Surgery"
     },
     "publishedTime": "2026-07-08T11:44:07+05:30",
     "modifiedTime": "2026-07-09T14:23:48+05:30",
@@ -2399,7 +2596,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/rf-vs-hifu-skin-tightening.webp.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/rf-vs-hifu-skin-tightening.webp.png",
+      "twitter:title": "RF vs HIFU Skin Tightening: What Is the Difference and Which Treatment Is Better? – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Introduction One of the biggest concerns I hear from patients in their 30s, 40s, and 50s is this: \"Doctor, my skin looks loose. What can I do without surgery?\"",
+      "twitter:image:alt": "Comparison of RF and HIFU skin tightening treatments performed on an Indian woman for facial rejuvenation and non-surgical skin tightening."
     },
     "publishedTime": "2026-07-13T14:34:16+05:30",
     "modifiedTime": "2026-07-13T14:57:19+05:30",
@@ -2435,7 +2635,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/ChatGPT-Image-Jun-24-2026-04_02_44-PM.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/ChatGPT-Image-Jun-24-2026-04_02_44-PM.png",
+      "twitter:title": "Rhinoplasty in Bangalore | Nose Reshaping Surgery Guide",
+      "twitter:description": "Learn everything about rhinoplasty, including benefits, recovery, risks, and results. Expert insights from Dr. Sandeep Mahapatra, Bangalore.",
+      "twitter:image:alt": "Rhinoplasty"
     },
     "publishedTime": "2026-06-24T16:04:04+05:30",
     "modifiedTime": "2026-06-24T16:06:53+05:30",
@@ -2463,14 +2666,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T13:15:39+05:30",
       "article:modified_time": "2025-01-17T09:09:21+05:30",
       "og:updated_time": "2025-01-17T09:09:21+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/rhinoplasty-surgery-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Rhinoplasty Surgery in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Rhinoplasty Surgery in Bangalore – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Visit Derma Solutions for the Best Rhinoplasty surgery in Marathahalli - Whitefield. Safe & Affordable. Senior Plastic Surgeon. Book Your Appointment Today!",
+      "twitter:image": "https://dermasolutions.co.in/images/og/rhinoplasty-surgery-in-bangalore.jpg",
+      "twitter:image:alt": "Rhinoplasty Surgery in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2024-12-30T13:15:39+05:30",
     "modifiedTime": "2025-01-17T09:09:21+05:30",
@@ -2498,14 +2704,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2025-05-18T19:04:48+05:30",
       "article:modified_time": "2025-05-19T17:00:24+05:30",
       "og:updated_time": "2025-05-19T17:00:24+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/salmon-sperm-pdrn-facial-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Salmon Sperm – PDRN Facial in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Salmon Sperm – PDRN Facial in Bangalore – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Experience Youthful, Radiant Skin with the Salmon Sperm – PDRN Facial in Bangalore A revolutionary anti-aging and skin-repair facial using regenerative biotechn",
+      "twitter:image": "https://dermasolutions.co.in/images/og/salmon-sperm-pdrn-facial-in-bangalore.jpg",
+      "twitter:image:alt": "Salmon Sperm – PDRN Facial in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2025-05-18T19:04:48+05:30",
     "modifiedTime": "2025-05-19T17:00:24+05:30",
@@ -2541,7 +2750,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/skin-boosters-treatment-in-bangalore.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/skin-boosters-treatment-in-bangalore.png",
+      "twitter:title": "Skin Boosters for Under-Eye & Face Hydration in Bangalore",
+      "twitter:description": "Learn how skin boosters improve under-eye hydration, skin texture, glow, and elasticity. Discover benefits, procedure, recovery, FAQs, and expert advice.",
+      "twitter:image:alt": "Indian woman with healthy glowing hydrated skin after skin booster treatment for under-eye and facial rejuvenation."
     },
     "publishedTime": "2026-07-03T15:58:54+05:30",
     "modifiedTime": "2026-07-03T16:12:20+05:30",
@@ -2569,14 +2781,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2025-11-20T13:04:10+05:30",
       "article:modified_time": "2025-12-03T14:10:41+05:30",
       "og:updated_time": "2025-12-03T14:10:41+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/skin-boosters-treatment-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Skin Boosters Treatment in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Skin Boosters Treatment in Bangalore – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Revitalize Your Skin Naturally with Skin Boosters Treatment in Bangalore Rejuvenate dull, tired, and aging skin with clinically proven injectable skin boosters",
+      "twitter:image": "https://dermasolutions.co.in/images/og/skin-boosters-treatment-in-bangalore.jpg",
+      "twitter:image:alt": "Skin Boosters Treatment in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2025-11-20T13:04:10+05:30",
     "modifiedTime": "2025-12-03T14:10:41+05:30",
@@ -2612,7 +2827,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/ChatGPT-Image-Jul-6-2026-11_14_38-AM.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/ChatGPT-Image-Jul-6-2026-11_14_38-AM.png",
+      "twitter:title": "Skin Boosters vs Dermal Fillers: What's the Difference? | Dr. Sandeep Mahapatra",
+      "twitter:description": "Confused between skin boosters and dermal fillers? Dr. Sandeep Mahapatra explains the key differences, benefits, longevity, side effects, and how to choose the right treatment for natural facial rejuvenation.",
+      "twitter:image:alt": "Skin Boosters Vs Derma Fillers"
     },
     "publishedTime": "2026-06-29T12:07:13+05:30",
     "modifiedTime": "2026-07-06T11:16:31+05:30",
@@ -2640,14 +2858,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T03:45:05+05:30",
       "article:modified_time": "2025-01-06T22:11:02+05:30",
       "og:updated_time": "2025-01-06T22:11:02+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/skin-lightening-treatment-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Best Skin Lightening Treatment in Bangalore -Safe-Affordable"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Best Skin Lightening Treatment in Bangalore -Safe-Affordable",
+      "twitter:description": "Visit Derma Solutions for Best Skin Lightening Treatment in Bangalore for Skin Pigmentation, Dark Spots & Uneven skin tone. Affordable. Book Appointment Today",
+      "twitter:image": "https://dermasolutions.co.in/images/og/skin-lightening-treatment-in-bangalore.jpg",
+      "twitter:image:alt": "Best Skin Lightening Treatment in Bangalore -Safe-Affordable"
     },
     "publishedTime": "2024-12-30T03:45:05+05:30",
     "modifiedTime": "2025-01-06T22:11:02+05:30",
@@ -2675,14 +2896,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T04:11:52+05:30",
       "article:modified_time": "2025-01-11T11:34:17+05:30",
       "og:updated_time": "2025-01-11T11:34:17+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/skin-tightening-treatment-in-marathahalli-whitefield.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Skin Tightening Treatment In Marathahalli | Whitefield"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Skin Tightening Treatment In Marathahalli | Whitefield",
+      "twitter:description": "Visit Derma Solutions for the Best Skin Tightening Treatment In Marathahalli | Whitefield. Safe & Affordable. Senior Dermatologist. Book Your Appointment Today!",
+      "twitter:image": "https://dermasolutions.co.in/images/og/skin-tightening-treatment-in-marathahalli-whitefield.jpg",
+      "twitter:image:alt": "Skin Tightening Treatment In Marathahalli | Whitefield"
     },
     "publishedTime": "2024-12-30T04:11:52+05:30",
     "modifiedTime": "2025-01-11T11:34:17+05:30",
@@ -2717,7 +2941,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Terms Of Use – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Terms Of Use Effective Date: 01-01-2025 These Terms of Use (\"Terms\") govern your access to and use of the websites and services operated by NEOFOLLICLE AND NEOF",
+      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "twitter:image:alt": "Terms Of Use – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2025-05-27T17:36:09+05:30",
     "modifiedTime": "2025-05-27T17:37:49+05:30",
@@ -2753,7 +2980,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/Thread-lift-vs-fillers.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/Thread-lift-vs-fillers.png",
+      "twitter:title": "Thread Lift vs Fillers in Bengaluru | Expert Dermatologist",
+      "twitter:description": "Confused between a thread lift and dermal fillers? Learn the differences, benefits, longevity, recovery, and which treatment suits your facial concerns.",
+      "twitter:image:alt": "Indian woman comparing thread lift and dermal filler treatments for facial rejuvenation at a dermatology clinic."
     },
     "publishedTime": "2026-07-02T14:38:22+05:30",
     "modifiedTime": "2026-07-02T15:06:12+05:30",
@@ -2781,14 +3011,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T04:18:40+05:30",
       "article:modified_time": "2025-01-11T19:03:26+05:30",
       "og:updated_time": "2025-01-11T19:03:26+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/thread-lifts.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Thread Lifts | Skin Rejuvenation & Tightening | Bangalore"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Thread Lifts | Skin Rejuvenation & Tightening | Bangalore",
+      "twitter:description": "Visit Derma Solutions for Best Thread Lifts Treatment in Bangalore, Marathahalli, Whitefield. Safe & Affordable. Senior Dermatologist. Book Appointment Today!",
+      "twitter:image": "https://dermasolutions.co.in/images/og/thread-lifts.jpg",
+      "twitter:image:alt": "Thread Lifts | Skin Rejuvenation & Tightening | Bangalore"
     },
     "publishedTime": "2024-12-30T04:18:40+05:30",
     "modifiedTime": "2025-01-11T19:03:26+05:30",
@@ -2824,7 +3057,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/ChatGPT-Image-Jul-9-2026-02_21_40-PM.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/ChatGPT-Image-Jul-9-2026-02_21_40-PM.png",
+      "twitter:title": "VASER Liposuction: Benefits, Procedure & Recovery Guide | Derma Solutions",
+      "twitter:description": "Learn everything about VASER Liposuction, including its benefits, procedure, recovery, risks, and results. Expert insights by Dr. Sandeep Mahapatra at Derma Solutions.",
+      "twitter:image:alt": "Vaser Liposuction"
     },
     "publishedTime": "2026-07-09T14:22:28+05:30",
     "modifiedTime": "2026-07-09T14:25:32+05:30",
@@ -2859,7 +3095,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Video Gallery – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Explore Our Video Gallery Transformations and Procedures by Dr. Sandeep Mahapatra See the expert care and precision in action with videos of our advanced dermat",
+      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "twitter:image:alt": "Video Gallery – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2025-01-17T17:17:14+05:30",
     "modifiedTime": "2025-01-17T17:33:56+05:30",
@@ -2887,14 +3126,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T13:21:29+05:30",
       "article:modified_time": "2025-01-18T22:30:58+05:30",
       "og:updated_time": "2025-01-18T22:30:58+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/vitiligo-laser-treatment-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Vitiligo Laser Treatment Bangalore - Marathahalli Whitefield"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Vitiligo Laser Treatment Bangalore - Marathahalli Whitefield",
+      "twitter:description": "Visit Derma Solutions - Best Vitiligo Laser Treatment in Bangalore, Marathahalli, Whitefield. Safe & Affordable. Senior Dermatologist. Book Appointment Today!",
+      "twitter:image": "https://dermasolutions.co.in/images/og/vitiligo-laser-treatment-in-bangalore.jpg",
+      "twitter:image:alt": "Vitiligo Laser Treatment Bangalore - Marathahalli Whitefield"
     },
     "publishedTime": "2024-12-30T13:21:29+05:30",
     "modifiedTime": "2025-01-18T22:30:58+05:30",
@@ -2930,7 +3172,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/ChatGPT-Image-Jun-19-2026-11_31_40-AM.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/ChatGPT-Image-Jun-19-2026-11_31_40-AM.png",
+      "twitter:title": "Vitiligo Treatment: Modern Skin Repigmentation Options | Derma Solutions",
+      "twitter:description": "Learn about vitiligo causes, types, advanced treatment options, phototherapy, skin grafting, and modern repigmentation techniques with Dr. Sandeep at Derma Solutions.",
+      "twitter:image:alt": "Vitiligo"
     },
     "publishedTime": "2026-06-19T11:32:43+05:30",
     "modifiedTime": "2026-06-22T14:02:26+05:30",
@@ -2958,14 +3203,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-28T10:20:03+05:30",
       "article:modified_time": "2025-01-05T11:38:09+05:30",
       "og:updated_time": "2025-01-05T11:38:09+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/warts-removal-treatment-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Best Warts Removal Treatment in Bangalore - Laser - Safe"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Best Warts Removal Treatment in Bangalore - Laser - Safe",
+      "twitter:description": "Visit Derma Solutions for the Best Wart Removal Laser Treatment in Bangalore. Safe, Affordable, and Advanced Laser treatments. Book Your Appointment Today!",
+      "twitter:image": "https://dermasolutions.co.in/images/og/warts-removal-treatment-in-bangalore.jpg",
+      "twitter:image:alt": "Best Warts Removal Treatment in Bangalore - Laser - Safe"
     },
     "publishedTime": "2024-12-28T10:20:03+05:30",
     "modifiedTime": "2025-01-05T11:38:09+05:30",
@@ -3001,7 +3249,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/ChatGPT-Image-Jun-23-2026-02_35_52-PM.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/ChatGPT-Image-Jun-23-2026-02_35_52-PM.png",
+      "twitter:title": "Weight Loss Injections in Bangalore | Benefits, Results & Safety",
+      "twitter:description": "Discover how weight loss injections help reduce appetite, control cravings, and support sustainable weight loss. Learn benefits, side effects, and results from Dr. Sandeep Mahapatra.",
+      "twitter:image:alt": "Weight Loss Injection"
     },
     "publishedTime": "2026-06-23T14:36:43+05:30",
     "modifiedTime": "2026-06-23T15:03:44+05:30",
@@ -3029,14 +3280,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2026-06-06T11:14:33+05:30",
       "article:modified_time": "2026-06-13T10:26:27+05:30",
       "og:updated_time": "2026-06-13T10:26:27+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/weight-loss-injections-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Weight Loss Injections in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Weight Loss Injections in Bangalore – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Lose Weight Safely with Doctor-Prescribed Injections in Bangalore Safe, doctor-supervised Weight Loss Injections in Bangalore to help you shed stubborn fat when",
+      "twitter:image": "https://dermasolutions.co.in/images/og/weight-loss-injections-in-bangalore.jpg",
+      "twitter:image:alt": "Weight Loss Injections in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2026-06-06T11:14:33+05:30",
     "modifiedTime": "2026-06-13T10:26:27+05:30",
@@ -3071,7 +3325,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Weight Loss Treatment In Marathahalli – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Visit Derma Solutions for Weight Loss Treatment In Marathahalli, Marathahalli, Whitefield. Safe & Affordable. Senior Dermatologist. Book Your Appointment Today!",
+      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "twitter:image:alt": "Weight Loss Treatment In Marathahalli – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2024-12-30T14:17:04+05:30",
     "modifiedTime": "2025-01-01T11:18:52+05:30",
@@ -3107,7 +3364,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/PREVENTIVE-BOTOX-IN-BANGALORE.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/PREVENTIVE-BOTOX-IN-BANGALORE.png",
+      "twitter:title": "Preventive Botox in Bengaluru | Expert Dermatologist Guide",
+      "twitter:description": "Wondering if preventive Botox is right for you? Learn how it works, the ideal age to start, benefits, myths, safety, and expert advice from a dermatologist.",
+      "twitter:image:alt": "Young Indian woman receiving preventive Botox treatment from a dermatologist to reduce early expression lines and delay wrinkles."
     },
     "publishedTime": "2026-07-01T12:27:23+05:30",
     "modifiedTime": "2026-07-01T16:01:00+05:30",
@@ -3143,7 +3403,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/1.jpg"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/1.jpg",
+      "twitter:title": "What to Ask Before Cosmetic Surgery | Expert Guide",
+      "twitter:description": "Planning cosmetic surgery? Learn the essential questions to ask your surgeon about qualifications, risks, recovery, costs, and expected results before your procedure.",
+      "twitter:image:alt": "pic"
     },
     "publishedTime": "2026-07-07T12:30:22+05:30",
     "modifiedTime": "2026-07-07T12:42:07+05:30",
@@ -3179,7 +3442,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/anti-aging-treament-bangalore.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/anti-aging-treament-bangalore.png",
+      "twitter:title": "When Should You Start Anti-Ageing Treatments? A Dermatologist's Perspective",
+      "twitter:description": "Wondering when to start anti-ageing treatments? Learn the right age for Botox, skin boosters, HIFU, lasers, and expert skincare from a dermatologist.",
+      "twitter:image:alt": "Anti aging treament bangalore"
     },
     "publishedTime": "2026-06-29T16:17:50+05:30",
     "modifiedTime": "2026-06-29T16:40:32+05:30",
@@ -3215,7 +3481,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/650-x-450-px-image-05.jpg"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/06/650-x-450-px-image-05.jpg",
+      "twitter:title": "Why Daily Sunscreen Is Your Best Skin Investment | Dermatologist Guide | Derma Solutions Bengaluru",
+      "twitter:description": "Learn why daily sunscreen use is essential for preventing pigmentation, tanning, premature aging, wrinkles, and sun damage. Expert skincare insights from Derma Solutions Bengaluru.",
+      "twitter:image:alt": "Daily sunscreen skincare routine recommended by dermatologists at Derma Solutions Bengaluru for healthy, youthful skin."
     },
     "publishedTime": "2026-06-05T19:14:28+05:30",
     "modifiedTime": "2026-06-06T11:10:39+05:30",
@@ -3251,7 +3520,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/Xanthelasma-Removal-in-Bengaluru.png"
+      "twitter:image": "https://dermasolutions.co.in/wp-content/uploads/2026/07/Xanthelasma-Removal-in-Bengaluru.png",
+      "twitter:title": "Xanthelasma Removal in Bengaluru | Expert Dermatologist",
+      "twitter:description": "Learn about xanthelasma removal, causes, symptoms, laser treatment, surgery, recovery, recurrence, and expert care from Dr. Sandeep Mahapatra.",
+      "twitter:image:alt": "Xanthelasma Removal in Bengaluru"
     },
     "publishedTime": "2026-07-06T16:39:50+05:30",
     "modifiedTime": "2026-07-06T17:02:02+05:30",
@@ -3279,14 +3551,17 @@ export const seoRecords: SeoRecord[] = [
       "article:published_time": "2024-12-30T03:51:36+05:30",
       "article:modified_time": "2025-11-20T12:52:15+05:30",
       "og:updated_time": "2025-11-20T12:52:15+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/xanthelasma-removal-treatment-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Xanthelasma Removal Treatment in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Xanthelasma Removal Treatment in Bangalore – Derma Solutions Skin and Hair Clinic",
+      "twitter:description": "Visit Derma Solutions for the Best Xanthelasma Removal Treatment in Bangalore. Safe, Affordable. Senior & Experienced Dermatologist. Book Your Appointment Today",
+      "twitter:image": "https://dermasolutions.co.in/images/og/xanthelasma-removal-treatment-in-bangalore.jpg",
+      "twitter:image:alt": "Xanthelasma Removal Treatment in Bangalore – Derma Solutions Skin and Hair Clinic"
     },
     "publishedTime": "2024-12-30T03:51:36+05:30",
     "modifiedTime": "2025-11-20T12:52:15+05:30",
@@ -3312,14 +3587,17 @@ export const seoRecords: SeoRecord[] = [
       "og:locale": "en",
       "og:site_name": "Derma Solutions Skin and Hair Clinic",
       "article:published_time": "2026-09-17T00:00:00+05:30",
-      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image": "https://dermasolutions.co.in/images/og/dermato-surgery-in-bangalore.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "Dermato Surgery in Bangalore | Mole, Cyst & Wart Removal – Derma Solutions"
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Dermato Surgery in Bangalore | Mole, Cyst & Wart Removal – Derma Solutions",
+      "twitter:description": "Dermato surgery in Marathahalli, Whitefield, Bangalore. Minimally invasive removal of moles, cysts, warts and skin tags, plus acne scar revision and vitiligo surgery. Book a consultation.",
+      "twitter:image": "https://dermasolutions.co.in/images/og/dermato-surgery-in-bangalore.jpg",
+      "twitter:image:alt": "Dermato Surgery in Bangalore | Mole, Cyst & Wart Removal – Derma Solutions"
     },
     "publishedTime": "2026-09-17T00:00:00+05:30",
     "modifiedTime": "2026-09-17T00:00:00+05:30",
@@ -3352,7 +3630,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "About Derma Solutions | Skin & Hair Clinic, Marathahalli",
+      "twitter:description": "Meet the MD dermatologists and plastic surgeons behind Derma Solutions, a doctor-led skin, hair and aesthetic clinic in Marathahalli, Whitefield, Bangalore.",
+      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "twitter:image:alt": "About Derma Solutions | Skin & Hair Clinic, Marathahalli"
     },
     "publishedTime": "2026-09-20T00:00:00+05:30",
     "modifiedTime": "2026-09-20T00:00:00+05:30",
@@ -3385,7 +3666,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Our Doctors | Dermatologists & Plastic Surgeons in Marathahalli, Whitefield – Derma Solutions",
+      "twitter:description": "Meet the doctors at Derma Solutions, Marathahalli, Whitefield, Bangalore: MD dermatologists Dr. Sandeep Mahapatra and Dr. Sumedha Tirthani, and senior plastic surgeon Dr. Thyagaraj.",
+      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "twitter:image:alt": "Our Doctors | Dermatologists & Plastic Surgeons in Marathahalli, Whitefield – Derma Solutions"
     },
     "publishedTime": "2026-09-21T00:00:00+05:30",
     "modifiedTime": "2026-09-21T00:00:00+05:30",
@@ -3418,7 +3702,10 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Book an Appointment | Dermatologist in Marathahalli, Whitefield – Derma Solutions",
+      "twitter:description": "Book a consultation with the dermatologists and plastic surgeons at Derma Solutions, Marathahalli, Whitefield, Bangalore. Choose your doctor and preferred date, or call the clinic.",
+      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "twitter:image:alt": "Book an Appointment | Dermatologist in Marathahalli, Whitefield – Derma Solutions"
     },
     "publishedTime": "2026-09-25T00:00:00+05:30",
     "modifiedTime": "2026-09-25T00:00:00+05:30",
@@ -3451,12 +3738,51 @@ export const seoRecords: SeoRecord[] = [
     },
     "twitter": {
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg"
+      "twitter:title": "Media Coverage | Dr. Sandeep Mahapatra in the Press – Derma Solutions",
+      "twitter:description": "Press coverage featuring Dr. Sandeep Mahapatra of Derma Solutions, Bangalore — expert commentary, interviews and authored articles in Femina, News18, OnlyMyHealth, TheHealthSite, Happiest Health and more.",
+      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "twitter:image:alt": "Media Coverage | Dr. Sandeep Mahapatra in the Press – Derma Solutions"
     },
     "publishedTime": "2026-09-25T00:00:00+05:30",
     "modifiedTime": "2026-09-25T00:00:00+05:30",
     "markdown": null,
     "note": "New page, not in the live capture. Content is the PR agency's coverage report (May–August 2026); SEO copy is authored and needs client sign-off."
+  },
+  {
+    "slug": "contact-us",
+    "key": "contact-us",
+    "path": "/contact-us/",
+    "type": "page",
+    "wpId": null,
+    "title": "Contact Us | Skin & Hair Clinic in Marathahalli, Whitefield – Derma Solutions",
+    "description": "Visit Derma Solutions Skin & Hair Clinic near Marathahalli Bridge, Bengaluru. Address, phone, WhatsApp, opening hours and directions to the clinic.",
+    "canonical": "https://dermasolutions.co.in/contact-us/",
+    "robots": "max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "h1": "Contact Us",
+    "og": {
+      "og:title": "Contact Us | Skin & Hair Clinic in Marathahalli, Whitefield – Derma Solutions",
+      "og:type": "article",
+      "og:description": "Visit Derma Solutions Skin & Hair Clinic near Marathahalli Bridge, Bengaluru. Address, phone, WhatsApp, opening hours and directions to the clinic.",
+      "og:url": "https://dermasolutions.co.in/contact-us/",
+      "og:locale": "en",
+      "og:site_name": "Derma Solutions Skin and Hair Clinic",
+      "article:published_time": "2026-09-25T00:00:00+05:30",
+      "og:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "og:image:width": "1200",
+      "og:image:height": "630",
+      "og:image:alt": "Contact Us | Skin & Hair Clinic in Marathahalli, Whitefield – Derma Solutions"
+    },
+    "twitter": {
+      "twitter:card": "summary_large_image",
+      "twitter:title": "Contact Us | Skin & Hair Clinic in Marathahalli, Whitefield – Derma Solutions",
+      "twitter:description": "Visit Derma Solutions Skin & Hair Clinic near Marathahalli Bridge, Bengaluru. Address, phone, WhatsApp, opening hours and directions to the clinic.",
+      "twitter:image": "https://dermasolutions.co.in/images/brand/og-default.jpg",
+      "twitter:image:alt": "Contact Us | Skin & Hair Clinic in Marathahalli, Whitefield – Derma Solutions"
+    },
+    "publishedTime": "2026-09-25T00:00:00+05:30",
+    "modifiedTime": "2026-09-25T00:00:00+05:30",
+    "markdown": null,
+    "note": "New page, not in the live capture. The Service schema's serviceUrl target. SEO copy is authored and needs client sign-off."
   }
 ]
 

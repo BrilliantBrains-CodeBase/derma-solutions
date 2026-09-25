@@ -5,13 +5,9 @@
  * Only these — the other ~440 captured images are page content and land with
  * the content. Sources verified against seo-backup/06-media/files/.
  *
- * WARNING: this OVERWRITES its destinations, and one of them has since been
- * replaced by hand. public/images/brand/derma-solutions-logo-bg.png in the repo
- * is a TRANSPARENT re-export; the backup's original is opaque, and restoring it
- * puts a white box behind the mark whenever the header bar is not fully opaque
- * — see the note on assets.logo in src/config/site.ts. Because `npm run
- * seo:generate` runs this script, a routine regeneration silently reverts it.
- * Check `git status public/images/brand/` after any seo:generate.
+ * The site logo is NOT copied from here: the 2026-09 rebrand replaced it (see
+ * the note on assets.logo in src/config/site.ts), and the backup only holds the
+ * old purple/teal mark.
  *
  * Run: npm run seo:assets
  */
@@ -22,7 +18,6 @@ import { MEDIA_FILES, PUBLIC } from './paths.ts'
 /** source (relative to 06-media/files/) -> destination (relative to public/) */
 const ASSETS: Record<string, string> = {
   '2024/12/DermaSolutions-Logo.svg': 'images/brand/derma-solutions-logo.svg',
-  '2024/12/Derma-Solutions-LOGO-with-bg-12.png': 'images/brand/derma-solutions-logo-bg.png',
   '2025/04/Derma-Solutions-Clinic-Reception.jpeg': 'images/brand/clinic-reception.jpeg',
   '2024/12/cropped-DermaSolutions-Favicon-with-BG.png': 'images/brand/favicon-master.png',
   '2025/01/Dr-Sandeep-Mahapatra-3.jpg': 'images/team/dr-sandeep-mahapatra.jpg',

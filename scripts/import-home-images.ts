@@ -133,17 +133,19 @@ const IMAGES: Entry[] = [
    * them is wider than ~620 CSS px; these run the full 1400 band, and one 2800
    * file would be a ~300 KB download on a phone that renders it at 335.
    *
-   * 5000x1094 is 4.570 and both outputs are ~4.56, so the crop is under a
-   * pixel — 'centre' only to keep 'attention' from finding the devices at the
-   * edges and shaving the other side.
+   * The 2026-09 re-supply (3-3.png, 4-2.png) is taller than the first pair
+   * (1.png, 2.png at 5000x1094): 5000x1562 is 3.201, and 2800x875 / 1400x437
+   * are within half a pixel of it, so the crop is nil — 'centre' only to keep
+   * 'attention' from finding the devices at the edges and shaving the other
+   * side.
    *
    * NOTE: both banners carry their heading text baked into the pixels. That is
-   * why assets.techBanner*Alt quotes the words, and why HomeTechBanner crops to
-   * the device below lg rather than scaling 7px type no one can read. */
-  { from: 'Technology Banner/1.png', to: 'images/decor/tech-banner-1.jpg', width: 2800, height: 613, position: 'centre' },
-  { from: 'Technology Banner/1.png', to: 'images/decor/tech-banner-1-1400.jpg', width: 1400, height: 307, position: 'centre' },
-  { from: 'Technology Banner/2.png', to: 'images/decor/tech-banner-2.jpg', width: 2800, height: 613, position: 'centre' },
-  { from: 'Technology Banner/2.png', to: 'images/decor/tech-banner-2-1400.jpg', width: 1400, height: 307, position: 'centre' },
+   * why assets.techBanner*Alt quotes the words. HomeTechBanner renders them at
+   * the artwork's own ratio at every width. */
+  { from: 'Technology Banner/3-3.png', to: 'images/decor/tech-banner-1.jpg', width: 2800, height: 875, position: 'centre' },
+  { from: 'Technology Banner/3-3.png', to: 'images/decor/tech-banner-1-1400.jpg', width: 1400, height: 437, position: 'centre' },
+  { from: 'Technology Banner/4-2.png', to: 'images/decor/tech-banner-2.jpg', width: 2800, height: 875, position: 'centre' },
+  { from: 'Technology Banner/4-2.png', to: 'images/decor/tech-banner-2-1400.jpg', width: 1400, height: 437, position: 'centre' },
 
   /* See the Difference. These arrive pre-composed — both halves and their
    * Before/After labels are already in the file — so the band renders them

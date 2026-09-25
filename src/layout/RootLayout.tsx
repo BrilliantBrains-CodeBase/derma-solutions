@@ -5,7 +5,9 @@ import { Header } from './Header'
 import { PreFooter } from './PreFooter'
 import { Footer } from './Footer'
 import { MobileActionBar } from './MobileActionBar'
-import { assets, seo } from '@/config/site'
+import { TrackingHead, TrackingNoScript } from './Tracking'
+import { assets, location, seo } from '@/config/site'
+import { captureAttribution } from '@/lib/attribution'
 import '@/styles/index.css'
 
 /**
@@ -26,8 +28,13 @@ function RouteScrollReset() {
 
 /** Wraps all 92 routes. Only site-wide <head> defaults live here — per-page tags come from <Seo>. */
 export function RootLayout() {
+  /* Once per page load: keep the landing URL's utm_* / click ids for the lead form. */
+  useEffect(captureAttribution, [])
+
   return (
     <>
+      <TrackingNoScript />
+      <TrackingHead />
       <RouteScrollReset />
       <Head>
         {/* viewport and charset live in index.html — not repeated here */}
@@ -36,6 +43,15 @@ export function RootLayout() {
         <link rel="icon" type="image/png" sizes="32x32" href={assets.favicon.png32} />
         <link rel="icon" type="image/png" sizes="192x192" href={assets.favicon.png192} />
         <link rel="apple-touch-icon" href={assets.favicon.appleTouchIcon} />
+        {/* --color-primary: the browser chrome on Android matches the header. */}
+        <meta name="theme-color" content="#481E0B" />
+        {/* Local-search hints: the clinic's region and pin, from location.geo. */}
+        <meta name="geo.region" content="IN-KA" />
+        <meta name="geo.placename" content={location.address.locality} />
+        <meta name="geo.position" content={`${location.geo.latitude};${location.geo.longitude}`} />
+        <meta name="ICBM" content={`${location.geo.latitude}, ${location.geo.longitude}`} />
+        {/* Points LLM crawlers at the plain-text summary scripts/generate-sitemap.ts writes. */}
+        <link rel="alternate" type="text/plain" title="LLM summary" href="/llms.txt" />
       </Head>
       {/* Visually hidden until focused, so it does not sit above the header. */}
       <a

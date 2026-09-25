@@ -13,6 +13,7 @@ import path from 'node:path'
 import { parseCsv } from './csv.ts'
 import { SEO_MAP_CSV, SCHEMA_DIR, DIST, backupKey } from './paths.ts'
 import { TITLE_OVERRIDES } from './seo-overrides.ts'
+import { seoRecords } from '../src/seo/registry.generated.ts'
 
 if (!fs.existsSync(DIST)) throw new Error('dist/ not found — run `npm run build` first')
 
@@ -85,6 +86,62 @@ for (const row of rows) {
   else if (!row.og_image) ogImageAdded++
 }
 
+/* ---- every built page, captured or authored: the share + local surface --- */
+// The checks above hold the 92 captured URLs to the capture. These hold all of
+// seoRecords — the authored pages too — to what a page needs whatever its
+// origin: a self-referencing canonical, a complete share card, parseable
+// structured data, and no same-origin URL in <head> that 404s.
+const SITE = 'https://dermasolutions.co.in'
+const SHARE_TAGS: [attr: 'name' | 'property', key: string][] = [
+  ['property', 'og:title'], ['property', 'og:description'], ['property', 'og:url'],
+  ['property', 'og:image'], ['property', 'og:image:width'], ['property', 'og:image:height'],
+  ['property', 'og:image:alt'], ['name', 'twitter:card'], ['name', 'twitter:title'],
+  ['name', 'twitter:description'], ['name', 'twitter:image'],
+]
+let extraBlocks = 0
+const deadUrls = new Map<string, string>() // url -> first page it was seen on
+
+/** A same-origin URL resolves if dist/ holds that file, or that directory's index.html. */
+function resolvesInDist(url: string): boolean {
+  const pathname = decodeURIComponent(new URL(url).pathname)
+  const file = path.join(DIST, pathname)
+  return pathname.endsWith('/') ? fs.existsSync(path.join(file, 'index.html')) : fs.existsSync(file)
+}
+
+for (const record of seoRecords) {
+  const file = path.join(DIST, record.path, 'index.html')
+  if (!fs.existsSync(file)) { fail(record.canonical, `NOT BUILT — expected ${path.relative(DIST, file)}`); continue }
+  const html = fs.readFileSync(file, 'utf8')
+  const head = html.slice(0, html.indexOf('</head>'))
+
+  const canonical = decode(head.match(/<link[^>]*rel="canonical"[^>]*>/i)?.[0].match(/href="([^"]*)"/)?.[1] ?? '')
+  if (canonical !== `${SITE}${record.path}`) fail(record.canonical, `canonical is not self-referencing: ${canonical}`)
+
+  for (const [attr, key] of SHARE_TAGS) {
+    // A page the capture gives no description (the category archive) has none
+    // to mirror, and inventing one is not this check's call.
+    if (key.endsWith(':description') && !record.description) continue
+    if (!meta(head, attr, key)) fail(record.canonical, `missing ${key}`)
+  }
+  const ogUrl = meta(head, 'property', 'og:url')
+  if (ogUrl && ogUrl !== canonical) fail(record.canonical, `og:url ${ogUrl} differs from canonical`)
+
+  const blocks = [...head.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => m[1])
+  if (blocks.length > 1) extraBlocks++
+  for (const [i, block] of blocks.entries()) {
+    try { JSON.parse(block) } catch { fail(record.canonical, `JSON-LD block ${i + 1} does not parse`) }
+  }
+
+  const urls = [
+    ...[...head.matchAll(/\b(?:content|href)="(https:\/\/dermasolutions\.co\.in\/[^"]*)"/g)].map(m => decode(m[1])),
+    ...blocks.flatMap(b => [...b.matchAll(/"(https:\/\/dermasolutions\.co\.in\/[^"#?]*)/g)].map(m => m[1])),
+  ]
+  for (const url of urls) {
+    if (!deadUrls.has(url) && !resolvesInDist(url)) deadUrls.set(url, record.canonical)
+  }
+}
+for (const [url, page] of deadUrls) fail(page, `same-origin URL in <head> or JSON-LD does not resolve in dist/: ${url}`)
+
 /* ---- the JSON-LD must not also be sitting in the JS bundle --------------- */
 const assets = path.join(DIST, 'assets')
 const leaked = fs.existsSync(assets)
@@ -111,3 +168,7 @@ console.log('  title, meta description, canonical, robots, twitter:card  identic
 console.log('  JSON-LD                                                   byte-identical')
 console.log('  <h1>                                                      exactly one per page (fix-plan A5)')
 console.log(`  og:image                                                  added to ${ogImageAdded} pages that had none (fix-plan A4)`)
+console.log(`\nAll ${seoRecords.length} built pages (captured + authored):`)
+console.log('  canonical self-referencing; og:* and twitter:* share card complete')
+console.log('  every JSON-LD block parses; every same-origin URL in <head> and JSON-LD resolves in dist/')
+console.log(`  authored second JSON-LD block on ${extraBlocks} pages (src/seo/schema-extra/)`)
