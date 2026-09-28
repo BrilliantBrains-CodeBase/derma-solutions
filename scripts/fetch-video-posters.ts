@@ -22,6 +22,7 @@
  */
 import fs from 'node:fs'
 import path from 'node:path'
+import { pathToFileURL } from 'node:url'
 import { PUBLIC, SRC } from './paths.ts'
 import { videoPosterPath, videoPosterSlot } from '../src/content/videoPosters.ts'
 import { treatmentFallbackYoutubeId, treatmentMedia } from '../src/content/treatmentMedia.ts'
@@ -45,7 +46,7 @@ for (const [slug, media] of Object.entries(treatmentMedia)) {
 want(treatmentFallbackYoutubeId, 'the treatment pages\' fallback')
 
 for (const file of fs.readdirSync(postsDir).filter(f => f.endsWith('.ts'))) {
-  const post: BlogPostContent = (await import(path.join(postsDir, file))).default
+  const post: BlogPostContent = (await import(pathToFileURL(path.join(postsDir, file)).href)).default
   for (const block of post.blocks) {
     if (block.type === 'video') want(block.youtubeId, `blog/${post.slug}`)
   }

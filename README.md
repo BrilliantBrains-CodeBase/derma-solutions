@@ -94,9 +94,14 @@ and which sections make up a page is in `theme-reference/08-pages/page-section-m
 
 ## Still owed before launch
 
-- **Tracking** (fix-plan A1): GTM `GTM-PWVJVRQ`, GA4 `G-3KNBG0VTG0`, Pixel `1327906075791898`
-  are recorded in `src/config/site.ts` but **not installed**. Export the GTM container config
-  from the console first — it is not in the backup and cannot be recovered from the site.
+- **Tracking** (fix-plan A1): GTM `GTM-PWVJVRQ` **is installed** — `src/layout/Tracking.tsx`
+  puts the script in every page's `<head>` and the `<noscript>` iframe at the top of `<body>`,
+  reading the ID from `tracking.gtmId` in `src/config/site.ts`. GA4 `G-3KNBG0VTG0` and Pixel
+  `1327906075791898` are deliberately **not** in the code: they fire as tags inside the
+  container, so what is still owed is on the GTM side — confirm the container is published
+  with both tags, and add the `lead_submit` trigger described in `apps-script/README.md`.
+  Export the container config from the console first — it is not in the backup and cannot be
+  recovered from the site.
 - **Retirement decisions** (fix-plan A2/A3): `/maintenance-page/` and the IV Glutathione
   duplicate are built as normal routes for now. Both carry a `note` in the registry and in
   their stub's header comment. Both need GSC data before acting.

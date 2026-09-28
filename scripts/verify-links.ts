@@ -10,6 +10,7 @@
  */
 import fs from 'node:fs'
 import path from 'node:path'
+import { pathToFileURL } from 'node:url'
 import { seoRecords } from '../src/seo/registry.generated.ts'
 import { PUBLIC, SRC } from './paths.ts'
 import { blogIndex } from '../src/content/blog/index.generated.ts'
@@ -52,7 +53,7 @@ for (const post of blogIndex) {
   record(post.path, 'blog index')
   const file = path.join(SRC, 'content', 'blog', 'posts', `${post.slug}.ts`)
   const source = fs.readFileSync(file, 'utf8')
-  const { default: content } = await import(file)
+  const { default: content } = await import(pathToFileURL(file).href)
   for (const slug of content.relatedSlugs) {
     const target = blogIndex.find(p => p.slug === slug)
     record(target?.path ?? `/${slug}/ (unknown post)`, `blog:${post.slug}:related`)

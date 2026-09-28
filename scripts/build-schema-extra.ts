@@ -20,6 +20,7 @@
  */
 import fs from 'node:fs'
 import path from 'node:path'
+import { pathToFileURL } from 'node:url'
 import { SEO_OUT, SITE_URL, SRC } from './paths.ts'
 import { seoRecords, type SeoRecord } from '../src/seo/registry.generated.ts'
 import { brand, contact, location, serviceAreas, serviceMenu, socialProfiles } from '../src/config/site.ts'
@@ -169,7 +170,7 @@ for (const record of seoRecords) {
 
   const treatmentFile = path.join(SRC, 'content', 'treatments', `${record.slug}.ts`)
   if (fs.existsSync(treatmentFile)) {
-    const content: TreatmentContent = (await import(treatmentFile)).default
+    const content: TreatmentContent = (await import(pathToFileURL(treatmentFile).href)).default
     nodes.push(...treatmentNodes(record, content))
     counts.treatment++
   }
@@ -177,7 +178,7 @@ for (const record of seoRecords) {
   // The hand-ported content pages that print an FAQ (ContentPage renders `faqs`).
   const pageFile = path.join(SRC, 'content', 'pages', `${record.slug}.ts`)
   if (fs.existsSync(pageFile)) {
-    const content: ContentPageContent = (await import(pageFile)).default
+    const content: ContentPageContent = (await import(pathToFileURL(pageFile).href)).default
     if (content.faqs?.length) {
       nodes.push(faqPage(record.canonical, content.faqHeading ?? `${content.name} FAQs`, content.faqs))
       counts.contentFaq++

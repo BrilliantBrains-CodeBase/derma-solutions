@@ -9,6 +9,7 @@
  */
 import fs from 'node:fs'
 import path from 'node:path'
+import { pathToFileURL } from 'node:url'
 import { DIST, PUBLIC, SRC } from './paths.ts'
 import { seoRecords } from '../src/seo/registry.generated.ts'
 import { blogIndex } from '../src/content/blog/index.generated.ts'
@@ -128,7 +129,7 @@ for (const group of serviceMenu) {
   for (const item of group.items) {
     const file = path.join(SRC, 'content', 'treatments', `${item.path.replace(/^\/|\/$/g, '')}.ts`)
     if (!fs.existsSync(file)) continue
-    const t: TreatmentContent = (await import(file)).default
+    const t: TreatmentContent = (await import(pathToFileURL(file).href)).default
     const flat = (p: string | readonly string[]) => (typeof p === 'string' ? p : p.join('\n\n'))
     treatmentSections.push(`## ${t.name}
 

@@ -28,6 +28,7 @@
  */
 import fs from 'node:fs'
 import path from 'node:path'
+import { pathToFileURL } from 'node:url'
 import { PUBLIC, SRC } from './paths.ts'
 import { galleryPosterPath, galleryPosterSlot, galleryVideos } from '../src/content/galleryMedia.ts'
 import { fetchPoster, POSTER_SOURCES, writePoster } from './youtube-poster.ts'
@@ -41,7 +42,7 @@ fs.mkdirSync(posterDir, { recursive: true })
 
 /** Whatever the last run wrote, so one dead video does not wipe thirty good titles. */
 const previous: Record<string, string> = fs.existsSync(OUT_FILE)
-  ? ((await import(/* @vite-ignore */ OUT_FILE)).videoTitles ?? {})
+  ? ((await import(/* @vite-ignore */ pathToFileURL(OUT_FILE).href)).videoTitles ?? {})
   : {}
 
 const titles: Record<string, string> = {}
