@@ -1,8 +1,8 @@
 /**
  * GENERATED FILE — DO NOT EDIT. Run `npm run seo:routes`.
  *
- * All 98 URLs, derived from src/seo/registry.generated.ts:
- *   60 WordPress pages · 37 posts · 1 category archive
+ * All 99 URLs, derived from src/seo/registry.generated.ts:
+ *   60 WordPress pages · 38 posts · 1 category archive
  *
  * Paths are written WITHOUT a trailing slash because that is react-router's
  * form; `dirStyle: 'nested'` in vite.config.ts turns each one back into
@@ -81,7 +81,7 @@ export const routes: RouteRecord[] = [
   { path: 'media', lazy: async () => ({ Component: (await import('./pages/Media')).default }) },
   { path: 'contact-us', lazy: async () => ({ Component: (await import('./pages/ContactUs')).default }) },
 
-      /* ---- Blog posts (37) — one shared template ---------------------------
+      /* ---- Blog posts (38) — one shared template ---------------------------
        * Each route loads the template and its own content module
        * (src/content/blog/posts/<slug>.ts, from `npm run content:blog`), so no
        * page carries the other posts' bodies.
@@ -232,6 +232,10 @@ export const routes: RouteRecord[] = [
   } },
   { path: 'xanthelasma-removal-bengaluru', lazy: async () => {
     const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/xanthelasma-removal-bengaluru')])
+    return { Component: () => <BlogPost post={post} /> }
+  } },
+  { path: 'laser-tattoo-removal-sessions-pain-cost', lazy: async () => {
+    const [{ default: BlogPost }, { default: post }] = await Promise.all([import('./pages/BlogPost'), import('./content/blog/posts/laser-tattoo-removal-sessions-pain-cost')])
     return { Component: () => <BlogPost post={post} /> }
   } },
 

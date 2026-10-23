@@ -9,8 +9,8 @@
  *   npm run seo:registry
  *
  * Source: seo-backup/07-migration/seo-map.csv (92 URLs, captured 2026-09-02),
- * plus the authored pages in scripts/added-pages.ts (6) — those alone are
- * NOT from the capture.
+ * plus the authored pages in scripts/added-pages.ts (6) and posts in
+ * scripts/added-posts.ts (1) — those alone are NOT from the capture.
  */
 
 export type PageType = 'page' | 'post' | 'other'
@@ -3783,6 +3783,45 @@ export const seoRecords: SeoRecord[] = [
     "modifiedTime": "2026-09-25T00:00:00+05:30",
     "markdown": null,
     "note": "New page, not in the live capture. The Service schema's serviceUrl target. SEO copy is authored and needs client sign-off."
+  },
+  {
+    "slug": "laser-tattoo-removal-sessions-pain-cost",
+    "key": "laser-tattoo-removal-sessions-pain-cost",
+    "path": "/laser-tattoo-removal-sessions-pain-cost/",
+    "type": "post",
+    "wpId": null,
+    "title": "Laser Tattoo Removal in Bangalore: Sessions, Pain & Cost",
+    "description": "How many sessions does laser tattoo removal take, does it hurt, and what decides the cost? A dermatologist’s guide from Derma Solutions, Marathahalli.",
+    "canonical": "https://dermasolutions.co.in/laser-tattoo-removal-sessions-pain-cost/",
+    "robots": "max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "h1": "Laser Tattoo Removal in Bangalore: How Many Sessions, Does It Hurt and What Does It Cost?",
+    "og": {
+      "og:title": "Laser Tattoo Removal in Bangalore: Sessions, Pain & Cost",
+      "og:type": "article",
+      "og:image": "https://dermasolutions.co.in/images/blog/laser-tattoo-removal-sessions-pain-cost.jpg",
+      "og:image:width": "1200",
+      "og:image:height": "627",
+      "og:image:alt": "Laser tattoo removal in Bangalore banner with the Derma Solutions logo",
+      "og:description": "How many sessions does laser tattoo removal take, does it hurt, and what decides the cost? A dermatologist’s guide from Derma Solutions, Marathahalli.",
+      "og:url": "https://dermasolutions.co.in/laser-tattoo-removal-sessions-pain-cost/",
+      "og:locale": "en",
+      "og:site_name": "Derma Solutions Skin and Hair Clinic",
+      "article:published_time": "2026-10-23T10:00:00+05:30",
+      "article:modified_time": "2026-10-23T10:00:00+05:30",
+      "og:updated_time": "2026-10-23T10:00:00+05:30",
+      "article:section": "Uncategorized"
+    },
+    "twitter": {
+      "twitter:card": "summary_large_image",
+      "twitter:title": "Laser Tattoo Removal in Bangalore: Sessions, Pain & Cost",
+      "twitter:description": "How many sessions does laser tattoo removal take, does it hurt, and what decides the cost? A dermatologist’s guide from Derma Solutions, Marathahalli.",
+      "twitter:image": "https://dermasolutions.co.in/images/blog/laser-tattoo-removal-sessions-pain-cost.jpg",
+      "twitter:image:alt": "Laser tattoo removal in Bangalore banner with the Derma Solutions logo"
+    },
+    "publishedTime": "2026-10-23T10:00:00+05:30",
+    "modifiedTime": "2026-10-23T10:00:00+05:30",
+    "markdown": null,
+    "note": "New post, not in the live capture. Blog 01 brief; copy verbatim. In-body image tattoo-removal-sessions-fading.jpg is still owed."
   }
 ]
 

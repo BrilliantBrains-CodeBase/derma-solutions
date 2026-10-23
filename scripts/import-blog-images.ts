@@ -21,7 +21,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import sharp from 'sharp'
 import { PUBLIC } from './paths.ts'
-import { loadSourcePosts } from './blog-source.ts'
+import { BLOG_INLINE_IMAGE_MAX_WIDTH, blogInlineImagePath, loadSourcePosts } from './blog-source.ts'
 
 const FRAME = { width: 1200, height: 627 }
 const RATIO = FRAME.width / FRAME.height
@@ -56,6 +56,16 @@ for (const post of loadSourcePosts()) {
     .resize(640, Math.round(640 / RATIO))
     .jpeg({ quality: 80, mozjpeg: true })
     .toFile(path.join(outDir, `${post.slug}-640.jpg`))
+
+  // An authored post's in-body images (scripts/added-posts.ts): uncropped,
+  // only scaled down. extract-blog-content.ts records the same size.
+  for (const [src, file] of post.inlineImages) {
+    if (!file) continue
+    await sharp(file)
+      .resize({ width: BLOG_INLINE_IMAGE_MAX_WIDTH, withoutEnlargement: true })
+      .jpeg({ quality: 82, mozjpeg: true })
+      .toFile(path.join(PUBLIC, blogInlineImagePath(src)))
+  }
 }
 
 console.log(`blog images: ${fs.readdirSync(outDir).length} files in public/images/blog/ (${small} below 1200 wide at source)`)

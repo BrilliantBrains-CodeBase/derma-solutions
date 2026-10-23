@@ -1,5 +1,7 @@
 /**
- * Turns the 37 captured WordPress posts into typed content modules.
+ * Turns the 37 captured WordPress posts, and the posts authored since
+ * (scripts/added-posts.ts, bodies in content/blog/ in the same HTML subset),
+ * into typed content modules.
  *
  * Source: seo-backup/03-wp-rest/posts.json — each post's Gutenberg HTML, which
  * is regular enough to read block by block: p, h1–h4, ul/ol, hr, and figures
@@ -39,15 +41,19 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { parse, type HTMLElement, type Node } from 'node-html-parser'
+import sharp from 'sharp'
 import { BACKUP, SRC } from './paths.ts'
-import { blogImagePath, blogImageSmallPath, loadSourcePosts } from './blog-source.ts'
+import {
+  BLOG_INLINE_IMAGE_MAX_WIDTH, blogImagePath, blogImageSmallPath, blogInlineImagePath, loadSourcePosts, type SourcePost,
+} from './blog-source.ts'
+import { ADDED_POSTS } from './added-posts.ts'
 import { seoRecords } from '../src/seo/registry.generated.ts'
 import { serviceMenu } from '../src/config/site.ts'
 import type { BlogBlock, BlogPostContent, BlogSummary, BlogTocEntry } from '../src/content/blog.ts'
 
 const OUT_DIR = path.join(SRC, 'content', 'blog')
 const POSTS_DIR = path.join(OUT_DIR, 'posts')
-const EXPECTED_POSTS = 37
+const EXPECTED_POSTS = 37 + ADDED_POSTS.length
 
 /** fix-plan A2b's hub/spoke pairs (plus the skin-boosters pair the same map implies): post -> service page. */
 const SERVICE_LINKS: Record<string, string> = {
@@ -56,6 +62,7 @@ const SERVICE_LINKS: Record<string, string> = {
   'xanthelasma-removal-bengaluru': '/xanthelasma-removal-treatment-in-bangalore/',
   'earlobe-repair-surgery-bengaluru': '/ear-lobe-repair-surgery-in-bangalore/',
   'skin-boosters-treatment-bengaluru': '/skin-boosters-treatment-in-bangalore/',
+  ...Object.fromEntries(ADDED_POSTS.filter(p => p.servicePath).map(p => [p.slug, p.servicePath!])),
 }
 
 /**
@@ -78,6 +85,9 @@ const RELATED_OVERRIDES: Record<string, [string, string, string]> = {
   'how-can-you-treat-stubborn-pigmentation-and-achieve-clearer-skin': ['laser-toning-for-pigmentation', 'choose-right-skin-treatment-dull-skin-pigmentation-acne-scars', 'chemical-peels-vs-microneedling-vs-lasers-vs-injectables'],
   'xanthelasma-removal-bengaluru': ['choosing-the-right-skin-and-hair-doctor', 'earlobe-repair-surgery-bengaluru', 'what-to-ask-before-cosmetic-surgery'],
   'choosing-the-right-skin-and-hair-doctor': ['what-to-ask-before-cosmetic-surgery', 'blog-is-laser-treatment-safe-for-indian-skin', 'choose-right-skin-treatment-dull-skin-pigmentation-acne-scars'],
+  // Blog 01 links to the laser-safety post in its body; that post links back.
+  'laser-tattoo-removal-sessions-pain-cost': ['blog-is-laser-treatment-safe-for-indian-skin', 'laser-toning-for-pigmentation', 'choosing-the-right-skin-and-hair-doctor'],
+  'blog-is-laser-treatment-safe-for-indian-skin': ['laser-tattoo-removal-sessions-pain-cost', 'choosing-the-right-skin-and-hair-doctor', 'mnrf-vs-co2-laser-for-acne-scars'],
 }
 
 const knownPaths = new Set(seoRecords.map(r => r.path))
@@ -110,6 +120,8 @@ function link(slug: string, rawHref: string, inner: string): string {
     report.push(`${slug}: unlinked unusual href "${href}"`)
     return inner
   }
+  // A phone or mail link hands off to an app; a new tab would only be left blank.
+  if (/^(mailto:|tel:)/.test(href)) return `<a href="${escapeAttr(href)}">${inner}</a>`
   return `<a href="${escapeAttr(href)}" target="_blank" rel="noopener noreferrer">${inner}</a>`
 }
 
@@ -155,8 +167,10 @@ const slugify = (text: string) =>
 /** Normalised heading text, for checking a TOC anchor belongs to the heading it is paired with. */
 const loose = (text: string) => text.toLowerCase().replace(/[^a-z0-9]/g, '')
 
-function liveToc(slug: string): { text: string; id: string }[] {
-  const md = fs.readFileSync(path.join(BACKUP, '02-markdown', `${slug}.md`), 'utf8')
+/** The live TOC's anchors. An authored post was never live, so it has none and every id is generated. */
+function liveToc(src: SourcePost): { text: string; id: string }[] {
+  if (!src.record.markdown) return []
+  const md = fs.readFileSync(path.join(BACKUP, src.record.markdown), 'utf8')
   return [...md.matchAll(/^\d+\. \[(.+?)\]\([^)#]*#([^)]+)\)$/gm)].map(m => ({ text: m[1], id: m[2] }))
 }
 
@@ -169,9 +183,14 @@ interface Extracted {
   words: number
 }
 
-function extract(slug: string, html: string, pageH1: string): Extracted {
+/** Output size of each authored in-body image, measured before the sync extraction below. */
+const inlineImageSizes = new Map<string, { width: number; height: number }>()
+
+function extract(src: SourcePost): Extracted {
+  const { slug, html } = src
+  const pageH1 = src.record.h1
   const root = parse(html)
-  const live = liveToc(slug)
+  const live = liveToc(src)
   const blocks: BlogBlock[] = []
   const toc: BlogTocEntry[] = []
   const usedIds = new Set<string>()
@@ -288,10 +307,23 @@ function extract(slug: string, html: string, pageH1: string): Extracted {
         }
 
         if (el.classList.contains('wp-block-image')) {
-          const src = el.querySelector('img')?.getAttribute('src') ?? ''
-          if (/BEFORE-AFTER/i.test(src)) report.push(`${slug}: dropped before/after image ${path.basename(src)} (content doc note 8)`)
-          else if (/images\.openai\.com/.test(src)) report.push(`${slug}: dropped hotlinked image from images.openai.com`)
-          else problems.push(`${slug}: in-body image with no rule for it: ${src}`)
+          const img = el.querySelector('img')
+          const imgSrc = img?.getAttribute('src') ?? ''
+          if (src.inlineImages.has(imgSrc)) {
+            const file = src.inlineImages.get(imgSrc)
+            const alt = img?.getAttribute('alt')?.trim() ?? ''
+            if (!alt) problems.push(`${slug}: in-body image ${imgSrc} has no alt text`)
+            if (!file) {
+              report.push(`${slug}: in-body image ${imgSrc} not in content/blog/ yet — left out of the page`)
+              break
+            }
+            const size = inlineImageSizes.get(file)!
+            blocks.push({ type: 'image', src: blogInlineImagePath(imgSrc), alt, ...size })
+            break
+          }
+          if (/BEFORE-AFTER/i.test(imgSrc)) report.push(`${slug}: dropped before/after image ${path.basename(imgSrc)} (content doc note 8)`)
+          else if (/images\.openai\.com/.test(imgSrc)) report.push(`${slug}: dropped hotlinked image from images.openai.com`)
+          else problems.push(`${slug}: in-body image with no rule for it: ${imgSrc}`)
           break
         }
 
@@ -335,12 +367,22 @@ if (sources.length !== EXPECTED_POSTS) problems.push(`expected ${EXPECTED_POSTS}
 
 const serviceLabels = new Map<string, string>(serviceMenu.flatMap(g => g.items.map(i => [i.path, i.label] as const)))
 
+// The size import-blog-images.ts writes each authored in-body image at.
+for (const src of sources) {
+  for (const file of src.inlineImages.values()) {
+    if (!file) continue
+    const meta = await sharp(file).metadata()
+    const width = Math.min(BLOG_INLINE_IMAGE_MAX_WIDTH, meta.width!)
+    inlineImageSizes.set(file, { width, height: Math.round((meta.height! * width) / meta.width!) })
+  }
+}
+
 const posts = sources
   .map(src => {
     const published = src.record.publishedTime
     const modified = src.record.modifiedTime
     if (!published || !modified) problems.push(`${src.slug}: registry record has no published/modified time`)
-    return { src, published: published ?? '', modified: modified ?? '', ...extract(src.slug, src.html, src.record.h1) }
+    return { src, published: published ?? '', modified: modified ?? '', ...extract(src) }
   })
   .sort((a, b) => b.published.localeCompare(a.published))
 
@@ -375,6 +417,17 @@ for (const p of posts) {
   if (!p.toc.length) problems.push(`${p.src.slug}: no H2s, so no table of contents`)
   if (!p.src.image.alt) problems.push(`${p.src.slug}: featured image has no alt text`)
 }
+// An added post's FAQPage node (built from added-posts.ts) must say what the
+// page says: each question an H3, followed by its answer as the next paragraph.
+for (const added of ADDED_POSTS) {
+  const blocks = posts.find(p => p.src.slug === added.slug)?.blocks ?? []
+  for (const { question, answer } of added.faq ?? []) {
+    const at = blocks.findIndex(b => b.type === 'h3' && b.text === question)
+    const next = blocks[at + 1]
+    if (at < 0) problems.push(`${added.slug}: FAQ question "${question}" is not an H3 in the body`)
+    else if (next?.type !== 'p' || next.html !== answer) problems.push(`${added.slug}: FAQ answer to "${question}" does not match the body`)
+  }
+}
 
 if (problems.length) {
   console.error(`blog content: ${problems.length} problem(s)\n  ${problems.join('\n  ')}`)
@@ -402,7 +455,7 @@ for (const p of posts) {
  * GENERATED FILE — DO NOT EDIT. Run \`npm run content:blog\`.
  *
  * ${p.src.record.path}
- * Source: seo-backup/03-wp-rest/posts.json
+ * Source: ${p.src.source}
  */
 import type { BlogPostContent } from '@/content/blog'
 
@@ -431,7 +484,7 @@ fs.writeFileSync(
  * GENERATED FILE — DO NOT EDIT. Run \`npm run content:blog\`.
  *
  * All ${index.length} posts, newest first. Source: seo-backup/03-wp-rest/posts.json
- * joined to src/seo/registry.generated.ts.
+ * and scripts/added-posts.ts, joined to src/seo/registry.generated.ts.
  */
 import type { BlogSummary } from '@/content/blog'
 

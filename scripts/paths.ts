@@ -24,6 +24,8 @@ export const SCHEMA_OUT = path.join(SEO_OUT, 'schema')
 export const PAGES_OUT = path.join(SRC, 'pages')
 export const PUBLIC = path.join(ROOT, 'public')
 export const DIST = path.join(ROOT, 'dist')
+/** Bodies and source images of the posts in scripts/added-posts.ts. */
+export const ADDED_POSTS_DIR = path.join(ROOT, 'content', 'blog')
 
 /**
  * The backup names two files specially: the homepage is captured as `_homepage`

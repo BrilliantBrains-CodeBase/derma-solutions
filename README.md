@@ -66,6 +66,20 @@ never overwritten, so filling one in is safe.
 Section specs for the visual rebuild are in `theme-reference/04-sections/<NN>-<name>/notes.md`,
 and which sections make up a page is in `theme-reference/08-pages/page-section-map.json`.
 
+## Adding a blog post
+
+New posts go through the same pipeline as the 37 captured ones, so the listing, sidebar,
+related posts, sitemap and JSON-LD all pick them up.
+
+1. Put the body in `content/blog/<slug>.html` — plain `p`, `h2`, `h3`, `ul`/`ol`, `strong`/`em`,
+   links, and `<figure class="wp-block-image"><img src="…" alt="…"></figure>` for an in-body image.
+   No `<h1>`. Put the banner and any in-body images beside it.
+2. Add the SEO fields (title, description, H1, date, banner, FAQ) to `scripts/added-posts.ts`.
+3. `npm run seo:registry && npm run content:blog && npm run assets:blog && npm run seo:routes`,
+   then `npm run build && npm run seo:verify`.
+
+To pin a post's three related posts, add it to `RELATED_OVERRIDES` in `scripts/extract-blog-content.ts`.
+
 ## Scripts
 
 | Command | Does |

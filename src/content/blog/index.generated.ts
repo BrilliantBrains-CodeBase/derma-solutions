@@ -1,12 +1,23 @@
 /**
  * GENERATED FILE — DO NOT EDIT. Run `npm run content:blog`.
  *
- * All 37 posts, newest first. Source: seo-backup/03-wp-rest/posts.json
- * joined to src/seo/registry.generated.ts.
+ * All 38 posts, newest first. Source: seo-backup/03-wp-rest/posts.json
+ * and scripts/added-posts.ts, joined to src/seo/registry.generated.ts.
  */
 import type { BlogSummary } from '@/content/blog'
 
 export const blogIndex: BlogSummary[] = [
+  {
+    "slug": "laser-tattoo-removal-sessions-pain-cost",
+    "path": "/laser-tattoo-removal-sessions-pain-cost/",
+    "title": "Laser Tattoo Removal in Bangalore: How Many Sessions, Does It Hurt and What Does It Cost?",
+    "published": "2026-10-23T10:00:00+05:30",
+    "modified": "2026-10-23T10:00:00+05:30",
+    "image": "/images/blog/laser-tattoo-removal-sessions-pain-cost.jpg",
+    "imageSmall": "/images/blog/laser-tattoo-removal-sessions-pain-cost-640.jpg",
+    "imageAlt": "Laser tattoo removal in Bangalore banner with the Derma Solutions logo",
+    "readingMinutes": 5
+  },
   {
     "slug": "medical-facial-vs-salon-facial",
     "path": "/medical-facial-vs-salon-facial/",

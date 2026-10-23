@@ -17,6 +17,7 @@ import path from 'node:path'
 import { parseCsv } from './csv.ts'
 import { SEO_MAP_CSV, PER_PAGE_DIR, SCHEMA_DIR, SEO_OUT, SCHEMA_OUT, PUBLIC, backupKey } from './paths.ts'
 import { ADDED_PAGES, SCHEMA_TEMPLATE_KEY, SITE_URL } from './added-pages.ts'
+import { ADDED_POSTS, POST_SCHEMA_TEMPLATE_KEY } from './added-posts.ts'
 import { H1_OVERRIDES, TITLE_OVERRIDES } from './seo-overrides.ts'
 
 /* fix-plan A2/A3 — recorded so the decision is not lost, deliberately not acted on. */
@@ -217,6 +218,130 @@ for (const page of ADDED_PAGES) {
   })
 }
 
+/**
+ * Posts that are not in the capture — see scripts/added-posts.ts. Same idea as
+ * the added pages, from a captured post's graph: its page-specific nodes (the
+ * breadcrumb, WebPage, ReadAction, thumbnail and Article) are replaced with
+ * this post's, shaped like the captured ones so all the posts' graphs read
+ * alike. Two deliberate differences: the Article's author is Dr Sandeep's
+ * #physician node rather than the WordPress user node, and there is no
+ * wordCount, which only exists once content:blog has run.
+ */
+const postTemplateGraph: { '@graph': { '@id'?: string }[] } = JSON.parse(
+  fs.readFileSync(path.join(SCHEMA_DIR, `${POST_SCHEMA_TEMPLATE_KEY}.jsonld`), 'utf8'),
+)
+const postTemplateUrl = `${SITE_URL}/${POST_SCHEMA_TEMPLATE_KEY}/`
+
+for (const post of ADDED_POSTS) {
+  if (records.some(r => r.slug === post.slug)) {
+    throw new Error(`added post "${post.slug}" is already in the registry — remove it from scripts/added-posts.ts`)
+  }
+  const url = `${SITE_URL}/${post.slug}/`
+  const modified = post.modifiedTime ?? post.publishedTime
+  // scripts/import-blog-images.ts's 1200x627 rendition — the post's featured
+  // image, as a captured post's og:image is its WordPress featured image.
+  const image = `${SITE_URL}/images/blog/${post.slug}.jpg`
+
+  const graph = {
+    ...postTemplateGraph,
+    '@graph': [
+      ...postTemplateGraph['@graph'].filter(node => !node['@id']?.startsWith(postTemplateUrl)),
+      {
+        '@type': 'BreadcrumbList',
+        name: 'Breadcrumbs',
+        '@id': `${url}#breadcrumblist`,
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+          { '@type': 'ListItem', position: 2, name: 'Uncategorized', item: `${SITE_URL}/category/uncategorized/` },
+          { '@type': 'ListItem', position: 3, name: post.h1 },
+        ],
+      },
+      {
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url,
+        inLanguage: 'en',
+        name: post.title,
+        description: post.description,
+        datePublished: post.publishedTime,
+        dateModified: modified,
+        isPartOf: { '@id': `${SITE_URL}/#website` },
+        breadcrumb: { '@id': `${url}#breadcrumblist` },
+        potentialAction: { '@id': `${url}#readaction` },
+        primaryImageOfPage: { '@id': `${url}#thumbnail` },
+        image: { '@id': `${url}#thumbnail` },
+      },
+      { '@type': 'ReadAction', '@id': `${url}#readaction`, target: url },
+      { '@type': 'ImageObject', '@id': `${url}#thumbnail`, url: image, contentUrl: image, width: 1200, height: 627 },
+      {
+        '@type': 'Article',
+        '@id': `${url}#article`,
+        url,
+        headline: post.h1,
+        datePublished: post.publishedTime,
+        dateModified: modified,
+        articleSection: ['Uncategorized'],
+        isPartOf: { '@id': `${url}#webpage` },
+        mainEntityOfPage: { '@id': `${url}#webpage` },
+        image: { '@id': `${url}#thumbnail` },
+        publisher: { '@id': `${SITE_URL}/#organization` },
+        author: { '@id': `${SITE_URL}/best-dermatologist-in-marathahalli-whitefield-bangalore/#physician` },
+      },
+      ...(post.faq?.length
+        ? [{
+            '@type': 'FAQPage',
+            '@id': `${url}#faq`,
+            isPartOf: { '@id': `${url}#webpage` },
+            mainEntity: post.faq.map(q => ({
+              '@type': 'Question',
+              name: q.question,
+              acceptedAnswer: { '@type': 'Answer', text: q.answer },
+            })),
+          }]
+        : []),
+    ],
+  }
+  fs.writeFileSync(path.join(SCHEMA_OUT, `${post.slug}.json`), JSON.stringify(graph))
+
+  const og: Record<string, string> = {
+    'og:title': post.title,
+    'og:type': 'article',
+    'og:image': image,
+    'og:image:width': '1200',
+    'og:image:height': '627',
+    'og:image:alt': post.bannerAlt,
+    'og:description': post.description,
+    'og:url': url,
+    'og:locale': 'en',
+    'og:site_name': 'Derma Solutions Skin and Hair Clinic',
+    'article:published_time': post.publishedTime,
+    'article:modified_time': modified,
+    'og:updated_time': modified,
+    'article:section': 'Uncategorized',
+  }
+  const twitter: Record<string, string> = { 'twitter:card': 'summary_large_image' }
+  completeTwitter(twitter, og)
+
+  records.push({
+    slug: post.slug,
+    key: post.slug,
+    path: `/${post.slug}/`,
+    type: 'post',
+    wpId: null,
+    title: post.title,
+    description: post.description,
+    canonical: url,
+    robots: 'max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+    h1: post.h1,
+    og,
+    twitter,
+    publishedTime: post.publishedTime,
+    modifiedTime: modified,
+    markdown: null,
+    note: post.note,
+  })
+}
+
 const banner = `/**
  * GENERATED FILE — DO NOT EDIT.
  *
@@ -228,8 +353,8 @@ const banner = `/**
  *   npm run seo:registry
  *
  * Source: seo-backup/07-migration/seo-map.csv (92 URLs, captured 2026-09-02),
- * plus the authored pages in scripts/added-pages.ts (${ADDED_PAGES.length}) — those alone are
- * NOT from the capture.
+ * plus the authored pages in scripts/added-pages.ts (${ADDED_PAGES.length}) and posts in
+ * scripts/added-posts.ts (${ADDED_POSTS.length}) — those alone are NOT from the capture.
  */
 `
 

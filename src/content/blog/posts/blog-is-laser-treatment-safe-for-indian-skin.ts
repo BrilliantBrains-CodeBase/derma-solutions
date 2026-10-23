@@ -662,9 +662,9 @@ const post: BlogPostContent = {
   ],
   "reviewedDate": "2026-06-17",
   "relatedSlugs": [
+    "laser-tattoo-removal-sessions-pain-cost",
     "choosing-the-right-skin-and-hair-doctor",
-    "mnrf-vs-co2-laser-for-acne-scars",
-    "laser-toning-for-pigmentation"
+    "mnrf-vs-co2-laser-for-acne-scars"
   ],
   "serviceLink": null
 }

@@ -160,6 +160,21 @@ function Block({ block }: { block: BlogBlock }) {
           className="mt-[40px] aspect-video w-full rounded-card"
         />
       )
+
+    case 'image':
+      // The featured image's rounding, at its own aspect ratio. Lazy: an
+      // in-body image is never the page's largest paint.
+      return (
+        <img
+          src={block.src}
+          alt={block.alt}
+          width={block.width}
+          height={block.height}
+          loading="lazy"
+          decoding="async"
+          className="mt-[40px] h-auto w-full rounded-card"
+        />
+      )
   }
 }
 
