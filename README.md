@@ -98,7 +98,12 @@ To pin a post's three related posts, add it to `RELATED_OVERRIDES` in `scripts/e
 
 ## Deploy notes
 
-`dist/` is static. The host needs:
+`dist/` is static: upload its contents (not `dist/.vite/`, an unused build manifest) as the
+site root. Host config ships with the repo, and each host reads only its own:
+`public/.htaccess` (Apache/cPanel/LiteSpeed — 404 page, https and www redirects, caching),
+`public/_headers` (Netlify/Cloudflare Pages caching), `netlify.toml` and `vercel.json`.
+
+The host needs:
 
 - **Trailing slashes preserved.** Every URL ends in `/` and `dist/<path>/index.html` matches
   that. A host configured to strip trailing slashes will 301 all 92 URLs.

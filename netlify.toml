@@ -1,0 +1,9 @@
+# Netlify build settings. Cache headers are in public/_headers.
+# No redirects block on purpose: an SPA catch-all to /index.html would serve
+# the homepage's <head> on every unknown URL. dist/404.html is used as is.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
